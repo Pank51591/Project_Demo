@@ -1,0 +1,309 @@
+C51 COMPILER V9.60.0.0   SC_IT                                                             04/26/2023 14:07:03 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE SC_IT
+OBJECT MODULE PLACED IN ..\Output\SC_it.obj
+COMPILER INVOKED BY: D:\Program Files (x86)\keil_v5\C51\BIN\C51.EXE ..\User\SC_it.c LARGE OBJECTADVANCED OPTIMIZE(9,SIZE
+                    -) BROWSE INCDIR(..\FWLib\SC95F_Lib\inc;..\User;..\User\Funtion;..\SOC_DebugTouchKey_Lib;..\SOC_DebugTouchKey_Lib;..\IAP_
+                    -Lib) DEFINE(SC95F8x1xB) DEBUG PRINT(..\List\SC_it.lst) TABS(2) OBJECT(..\Output\SC_it.obj)
+
+line level    source
+
+   1          #include "SC_System.h"
+   2          
+   3          extern void Buzzer_Process(void);
+   4          
+   5          void IR_StartSend_36KHZ(void);
+   6          void IR_StopSend_36KHZ(void);
+   7          
+   8          extern uint8_t gcOneMsCount;
+   9          extern uint8_t  gcIRSendStatus;
+  10          extern uint8_t IRSendDataBitCount; // 24bit
+  11          extern uint32_t gllIRSendData;    // IR Send Data
+  12          extern uint32_t gllIRSendDataBak; // IR Send Data
+  13          extern uint16_t gcIRSendDelayTime; // 1S
+  14          extern uint8_t gcIRSendCount;      // 3
+  15          extern uint8_t gcSpeedLevel;
+  16          extern volatile uint8_t gcADCDelayTime;
+  17          extern uint8_t gcIRSendLightOnCount;
+  18          extern uint8_t gcIRSendLightOnTime ;
+  19          extern uint8_t gcIRSendLightOffCount ;        //灯开发送计数
+  20          extern uint8_t gcIRSendLightOffTime ;
+  21          extern uint8_t gcIRSendSpeedOffCount;        
+  22          extern uint8_t gcIRSendSpeedOffTime;
+  23          extern uint8_t gcIRSendSpeedCommandCount ;   
+  24          extern uint8_t gcIRSendSpeedCommandTime ;
+  25          extern uint8_t gcT250MsCount;
+  26          extern uint16_t gi500msCount;
+  27          extern bit  BTM_WakeUpFlag ;  //BTM唤醒标志位
+  28          extern uint8_t gcBurnerStatus;
+  29          extern uint8_t gcBurnerOpenCount;
+  30          
+  31          void TC1_Timer16bitPeriodSet(uint16_t Count)
+  32          {
+  33   1        TIM0_Mode1SetReloadCounter(Count);
+  34   1      }
+  35          
+  36          
+  37          void INT0Interrupt()    interrupt 0       
+  38          {
+  39   1          TCON &= 0XFD;
+  40   1      //  BTM_WakeUpFlag = 1;
+  41   1      }
+  42          void INT1Interrupt()    interrupt 2   
+  43          {
+  44   1          TCON &= 0XF7;//Clear interrupt flag bit       
+  45   1      //  BTM_WakeUpFlag = 1;
+  46   1      }
+  47          
+  48          
+  49          void INT2Interrupt()    interrupt 10
+  50          { 
+  51   1        
+  52   1      //  BTM_WakeUpFlag = 1;
+  53   1      }
+C51 COMPILER V9.60.0.0   SC_IT                                                             04/26/2023 14:07:03 PAGE 2   
+
+  54          
+  55          /*定时器0中断*/
+  56          void Timer0Interrupt()    interrupt 1        
+  57          {
+  58   1          
+  59   1          if (IRSendEnFlag)
+  60   1          {
+  61   2              switch (gcIRSendStatus)
+  62   2              {
+  63   3                  case 0:     // Start Conditon 1088us
+  64   3                  {
+  65   4                      IR_StartSend_36KHZ();
+  66   4                      if (gcIRSendCount !=1 )
+  67   4                      {
+  68   5                           TC1_Timer16bitPeriodSet(Time_705us);    // 1 and 3   Faber 
+  69   5                      }
+  70   4                      else
+  71   4                      {
+  72   5                           TC1_Timer16bitPeriodSet(Time_738us);  //2 Elica
+  73   5                      }
+  74   4                      gcIRSendStatus = 1;
+  75   4                      IRSendDataBitCount = 0;
+  76   4                  }
+  77   3                  break;
+  78   3                  case 1:         // Send Data 
+  79   3                  {
+  80   4                      if (gllIRSendData&0x0001)      //1
+  81   4                      {
+  82   5                          IR_StopSend_36KHZ();
+  83   5                          if (gcIRSendCount !=1 )
+  84   5                          {
+  85   6                              TC1_Timer16bitPeriodSet(Time_705us);  // 1 and 3  Faber 
+  86   6                          }
+  87   5                          else
+  88   5                          {
+  89   6                              TC1_Timer16bitPeriodSet(Time_738us);
+  90   6                          }
+  91   5                          
+  92   5                      }
+  93   4                      else                        // 0
+  94   4                      {
+  95   5                         IR_StartSend_36KHZ();
+  96   5                         if (gcIRSendCount !=1 )
+  97   5                         {
+  98   6                             TC1_Timer16bitPeriodSet(Time_738us); 
+  99   6                         }
+ 100   5                         else
+ 101   5                         {
+ 102   6                             TC1_Timer16bitPeriodSet(Time_705us); 
+ 103   6                         }
+ 104   5                         
+ 105   5                      }
+ 106   4                      gllIRSendData = (gllIRSendData>>1);
+ 107   4                      IRSendDataBitCount++;
+ 108   4                      if (IRSendDataBitCount > 24)
+ 109   4                      {
+ 110   5                          IRSendDataBitCount = 0;
+ 111   5                          gllIRSendData = gllIRSendDataBak;
+ 112   5                          gcIRSendStatus = 0;
+ 113   5                          IR_StopSend_36KHZ();             // stop PWM 36KHZ
+ 114   5                          TC1_Timer16bitPeriodSet(Time_5ms);  // 50ms
+ 115   5                          gcIRSendDelayTime = 0;
+C51 COMPILER V9.60.0.0   SC_IT                                                             04/26/2023 14:07:03 PAGE 3   
+
+ 116   5                          Clr_IRSendEnFlag;    // Send End
+ 117   5                         
+ 118   5                          if (SendLightOnEnFlag)
+ 119   5                          {
+ 120   6                            gcIRSendLightOnTime = 0;
+ 121   6                            Clr_SendLightOnEnFlag;
+ 122   6                            gcIRSendLightOnCount++;
+ 123   6                            if (gcIRSendLightOnCount >= 3)
+ 124   6                            {
+ 125   7                              gcIRSendLightOnCount = 0;
+ 126   7                              Clr_SendLightOnCommandFlag;
+ 127   7                            }
+ 128   6                          }
+ 129   5                           
+ 130   5                          if (SendLightOffEnFlag)
+ 131   5                          {
+ 132   6                            gcIRSendLightOffTime = 0;
+ 133   6                            Clr_SendLightOffEnFlag;
+ 134   6                            gcIRSendLightOffCount++;
+ 135   6                            if (gcIRSendLightOffCount >= 3)
+ 136   6                            {
+ 137   7                              gcIRSendLightOffCount = 0;
+ 138   7                              Clr_SendLightOffCommandFlag;
+ 139   7                            }
+ 140   6                          }     
+ 141   5      
+ 142   5                          if (SendSpeedOffEnFlag)
+ 143   5                          {
+ 144   6                            gcIRSendSpeedOffTime = 0;
+ 145   6                            Clr_SendSpeedOffEnFlag;
+ 146   6                            gcIRSendSpeedOffCount++;
+ 147   6                            if (gcIRSendSpeedOffCount >= 3)
+ 148   6                            {
+ 149   7                              gcIRSendSpeedOffCount = 0;
+ 150   7                              Clr_SendSpeedOffCommandFlag;
+ 151   7                              if(AutoFanFlag)       //AutoFan
+ 152   7                              {
+ 153   8                                  Clr_AutoFanFlag;
+ 154   8                                  Clr_IRSendEnFlag;                                
+ 155   8      //                            Clr_INTENSIVEONModeFlag;       //清除密集模式                               
+ 156   8                                  Set_SendSpeedCommandFlag;
+ 157   8        //                                Clr_FirstSendSpeedCommandFlag;
+ 158   8                                  gcIRSendSpeedCommandTime =  SPEEDCOMMANDTIME;
+ 159   8                                
+ 160   8                                  Clr_FirstSendSpeedOffCommandFlag; 
+ 161   8      
+ 162   8                                  Clr_LightOffDelayStartFlag;
+ 163   8                                  Clr_SpeedDelayOffStartFlag;
+ 164   8                                  
+ 165   8                                  if ((gcBurnerStatus&0x01) ||(gcBurnerStatus&0x02) )   // work burner 
+ 166   8                                  {
+ 167   9                                     gcSpeedLevel=2;
+ 168   9                                  }
+ 169   8                                  else if (gcBurnerOpenCount > 1)
+ 170   8                                  {
+ 171   9                                       gcSpeedLevel = 2;
+ 172   9                                  }
+ 173   8                                  else
+ 174   8                                  {
+ 175   9                                    gcSpeedLevel = 1; 
+ 176   9                                  }
+ 177   8                                 
+C51 COMPILER V9.60.0.0   SC_IT                                                             04/26/2023 14:07:03 PAGE 4   
+
+ 178   8                              }
+ 179   7                              if(INTENSIVEONModeFlag)
+ 180   7                              {
+ 181   8                                    Clr_INTENSIVEONModeFlag;
+ 182   8                                    Set_SendSpeedCommandFlag;
+ 183   8                                    Clr_FirstSendSpeedCommandFlag;
+ 184   8                                    gcSpeedLevel = 1;   
+ 185   8                                    gcIRSendSpeedCommandTime = 100;
+ 186   8                                    if (FirstLightOffFlag == 0)
+ 187   8                                    {
+ 188   9                                        Set_FirstLightOffFlag;
+ 189   9                                        Set_LightOffDelayStartFlag;
+ 190   9                                    }
+ 191   8                                   if (FirstSpeedOffFlag == 0)
+ 192   8                                   {
+ 193   9                                       Set_FirstSpeedOffFlag;
+ 194   9                                       Set_SpeedDelayOffStartFlag;
+ 195   9                                   }
+ 196   8                              }                       
+ 197   7                            }
+ 198   6                          } 
+ 199   5                          
+ 200   5                          if (SendSpeedCommandEnFlag)
+ 201   5                          {
+ 202   6                            gcIRSendSpeedCommandTime = 0;
+ 203   6                            Clr_SendSpeedCommandEnFlag;
+ 204   6                            gcIRSendSpeedCommandCount++;
+ 205   6                            if (gcIRSendSpeedCommandCount >= 3)
+ 206   6                            {
+ 207   7                              gcIRSendSpeedCommandCount = 0;
+ 208   7                              Clr_SendSpeedCommandFlag;
+ 209   7                            }
+ 210   6                          }                     
+ 211   5                      }
+ 212   4                  }
+ 213   3                  break;
+ 214   3                  case 2:         // 3???
+ 215   3                  {
+ 216   4                     TC1_Timer16bitPeriodSet(Time_5ms);  // 50ms
+ 217   4                      gcIRSendDelayTime++;
+ 218   4                      if (gcIRSendDelayTime >= 199 ) // (199+1)*5ms = 1S
+ 219   4                      {
+ 220   5                          gcIRSendStatus = 0;         //reSendIR
+ 221   5                                          
+ 222   5                      }
+ 223   4                  }
+ 224   3                  break;
+ 225   3              }
+ 226   2          }
+ 227   1          else
+ 228   1          {
+ 229   2              IR_StopSend_36KHZ();             // stop PWM 36KHZ
+ 230   2              gcIRSendStatus = 0;
+ 231   2              gcIRSendDelayTime = 0;
+ 232   2              IRSendDataBitCount = 0;      
+ 233   2          }
+ 234   1      }
+ 235          
+ 236          
+ 237          /* 定时器中断 1ms一次 */
+ 238          void Timer1Interrupt()    interrupt 3   
+ 239          {
+C51 COMPILER V9.60.0.0   SC_IT                                                             04/26/2023 14:07:03 PAGE 5   
+
+ 240   1          
+ 241   1          TIM1_Mode1SetReloadCounter(Time_1ms);    //重载值
+ 242   1          gcOneMsCount++;
+ 243   1          gcT250MsCount++;
+ 244   1      
+ 245   1          Buzzer_Process();
+ 246   1      }
+ 247          
+ 248          
+ 249          void IR_StartSend_36KHZ(void)
+ 250          {
+ 251   1          if (ExtIRFlag == 0)
+ 252   1          {
+ 253   2      
+ 254   2              Set_InsideIR_Send;
+ 255   2          }
+ 256   1          else
+ 257   1          {
+ 258   2              Set_ExternalIR_Send;
+ 259   2          }
+ 260   1      }
+ 261          
+ 262          void IR_StopSend_36KHZ(void)
+ 263          {
+ 264   1          if (ExtIRFlag == 0)
+ 265   1          {
+ 266   2              Clr_InsideIR_Send;
+ 267   2          }
+ 268   1          else
+ 269   1          {
+ 270   2              Clr_ExternalIR_Send;
+ 271   2          }
+ 272   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    818    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

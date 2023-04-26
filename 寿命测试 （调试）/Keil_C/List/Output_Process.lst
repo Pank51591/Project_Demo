@@ -1,0 +1,414 @@
+C51 COMPILER V9.60.0.0   OUTPUT_PROCESS                                                    04/26/2023 14:07:04 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE OUTPUT_PROCESS
+OBJECT MODULE PLACED IN ..\Output\Output_Process.obj
+COMPILER INVOKED BY: D:\Program Files (x86)\keil_v5\C51\BIN\C51.EXE ..\User\Funtion\Output_Process.c LARGE OBJECTADVANCE
+                    -D OPTIMIZE(9,SIZE) BROWSE INCDIR(..\FWLib\SC95F_Lib\inc;..\User;..\User\Funtion;..\SOC_DebugTouchKey_Lib;..\SOC_DebugTou
+                    -chKey_Lib;..\IAP_Lib) DEFINE(SC95F8x1xB) DEBUG PRINT(..\List\Output_Process.lst) TABS(2) OBJECT(..\Output\Output_Process
+                    -.obj)
+
+line level    source
+
+   1          #include "SC_System.h"
+   2          #include "Burner_Process.h"
+   3          #include "Output_Process.h"
+   4          extern void SC_PWM3_Init_2Khz(void);
+   5          
+   6          extern void SC_PWM3_Init_41Khz(void);
+   7          
+   8          extern void SC_PWM3_Init(void);
+   9          extern void SC_PWM3_Init_33Khz(void);
+  10          
+  11          extern uint8_t gcBurner1OpenCount;       
+  12          extern uint8_t gcBurner1CloseCount;       
+  13          
+  14          extern uint8_t gcBurner2OpenCount;        
+  15          extern uint8_t gcBurner2CloseCount;       
+  16          
+  17          extern uint8_t gcBurner3OpenCount;        
+  18          extern uint8_t gcBurner3CloseCount;      
+  19          
+  20          extern uint8_t gcBurner4OpenCount;         
+  21          extern uint8_t gcBurner4CloseCount;        
+  22          
+  23          extern uint8_t gcBurner5OpenCount;        
+  24          extern uint8_t gcBurner5CloseCount;        
+  25          
+  26          extern uint8_t gcBurner6OpenCount;         
+  27          extern uint8_t gcBurner6CloseCount;        
+  28          
+  29          extern uint8_t gcBurnerStatus;            
+  30          extern uint8_t gcBurnerOpenCount;   
+  31          
+  32          extern uint8_t gcKeyStatus;                
+  33          extern uint8_t gcKeyCount;                
+  34          extern uint8_t gcOneMsCount;               
+  35          extern uint32_t gcButton1State;             
+  36          extern uint8_t gcKeyValue;                
+  37          extern uint16_t giKeySW6LongDownTime;      
+  38          extern uint8_t gcBuzzerTime; 
+  39          extern uint16_t giPowerUpTime;
+  40          extern uint8_t  gcPowerUpTime;
+  41          extern uint16_t giLEDPwmValue;
+  42          extern uint16_t giLEDFlashTime;
+  43          extern uint8_t gcLEDFlashCount;
+  44          extern uint8_t gcSpeedLevel;
+  45          extern uint32_t gllIRSendData;                //IR Send Data
+  46          extern uint32_t gllIRSendDataBak;                //IR Send Data
+  47          extern uint8_t  IRSendDataBitCount;          // 24bit
+  48          extern uint8_t  gcIRSendStatus;
+  49          extern uint16_t  gcIRSendDelayTime;             // 1S
+  50          extern uint8_t gcIRSendCount;                  // 3
+  51          extern uint8_t gcIRSendLightOnCount;
+  52          extern uint8_t gcIRSendLightOnTime;
+C51 COMPILER V9.60.0.0   OUTPUT_PROCESS                                                    04/26/2023 14:07:04 PAGE 2   
+
+  53          
+  54          extern uint8_t gcIRSendLightOffCount ;        //灯开发送计数
+  55          extern uint8_t gcIRSendLightOffTime ;
+  56          
+  57          extern uint8_t gcIRSendSpeedOffCount;        
+  58          extern uint8_t gcIRSendSpeedOffTime;
+  59          
+  60          extern uint8_t gcIRSendSpeedCommandCount ;   
+  61          extern uint8_t gcIRSendSpeedCommandTime ;
+  62          
+  63          extern uint8_t gclifeteststatus;
+  64          
+  65          uint8_t gcPWMCly = 0;
+  66          uint8_t gcPWMWaitTime = 0;
+  67          uint16_t gcPWMCount = 0;
+  68          uint8_t PWMUpDown_Flag;
+  69          uint8_t gcPWMDelayTime = 0;
+  70          
+  71          uint8_t gcSleedFlashTime = 0;
+  72          unsigned char gcSleepDelayTime=0;
+  73          void LED_Process(void);
+  74          
+  75          #define PWMMaxTime         31999
+  76          uint8_t gcSleepTime;
+  77          void Set_PWMDuty(uint16_t PWM)
+  78          {
+  79   1         // TC2_Compare16bitMatch1Set(PWM);
+  80   1        PWM_IndependentModeConfigEX(PWM20, PWM, PWM_OUTPUTSTATE_ENABLE);
+  81   1      }
+  82          
+  83          void WakeAutoSleep(void)
+  84          {
+  85   1      
+  86   1        if(SysWakeUpSleepFlag)
+  87   1            {
+  88   2              Clr_SysWakeUpSleepFlag;
+  89   2              TouchKey_QuitLowPowerMode();
+  90   2            }
+  91   1            
+  92   1      }
+  93          void SleepLED_Process(void)
+  94          {
+  95   1        
+  96   1        if (PowerUpFlag)
+  97   1        {
+  98   2          
+  99   2        }
+ 100   1        else
+ 101   1        {
+ 102   2          if(DisPlayModeFlag == 0)
+ 103   2            LED_Process();
+ 104   2        }
+ 105   1      }
+ 106          void LED_Process(void)
+ 107          {
+ 108   1          if (BatLowWarrnFlag)      //低电压报警时，优先显示LED状态
+ 109   1            {
+ 110   2              
+ 111   2                if (LowFlashLedFlag)
+ 112   2                {
+ 113   3                  Set_LED;
+ 114   3                }
+C51 COMPILER V9.60.0.0   OUTPUT_PROCESS                                                    04/26/2023 14:07:04 PAGE 3   
+
+ 115   2                else
+ 116   2                {
+ 117   3                  Clr_LED;
+ 118   3                }
+ 119   2                gcSleepTime = 0;
+ 120   2            }
+ 121   1          else if ((LightOffDelayStartFlag)||(SpeedDelayOffStartFlag))
+ 122   1              {
+ 123   2      
+ 124   2                if (HalfSecondFlag)
+ 125   2                {
+ 126   3                  Set_LED;
+ 127   3                }
+ 128   2                else
+ 129   2                {
+ 130   3                  Clr_LED;
+ 131   3                }
+ 132   2              }
+ 133   1      //    else if (ActivateModeFlag)
+ 134   1      //         {
+ 135   1      //             if (gcBurnerStatus != 0)
+ 136   1      //             {
+ 137   1      //                  Set_LED;
+ 138   1      //                  gcPWMCount = 0;
+ 139   1      //                
+ 140   1      //             }
+ 141   1      //             else
+ 142   1      //             {
+ 143   1      //                 
+ 144   1      //                 Clr_LED;
+ 145   1      //             }
+ 146   1      //               
+ 147   1      //         }
+ 148   1          else if(DisPlayModeFlag == 0) 
+ 149   1                {
+ 150   2                   if (TestModeFlag)
+ 151   2                   {
+ 152   3                        Set_LED;                
+ 153   3                   }
+ 154   2                   else
+ 155   2                   {
+ 156   3                       
+ 157   3                       Clr_LED;
+ 158   3                   }
+ 159   2                     
+ 160   2               }
+ 161   1          else
+ 162   1               {
+ 163   2                 
+ 164   2                  Clr_LED;
+ 165   2               }
+ 166   1               
+ 167   1      //   if(TestModeFlag) 
+ 168   1      //  
+ 169   1      //    Set_LED;
+ 170   1      //       else  
+ 171   1      //     Clr_LED;
+ 172   1      
+ 173   1      
+ 174   1      }
+ 175          //=======================================================================================
+ 176          //                  void Output_Process(void)
+C51 COMPILER V9.60.0.0   OUTPUT_PROCESS                                                    04/26/2023 14:07:04 PAGE 4   
+
+ 177          //                  Run once in 10ms         
+ 178          //                  Return value::No
+ 179          //=======================================================================================
+ 180           void Output_Process(void)
+ 181           {
+ 182   1           if (PowerUpFlag)
+ 183   1           {
+ 184   2               if (giPowerUpTime == 0)
+ 185   2               {
+ 186   3                   Set_LEDOnFlag;
+ 187   3                   Set_LED;
+ 188   3                //   Set_KeyBuzzerFlag;
+ 189   3                   gcPWMCount = 0;
+ 190   3               }
+ 191   2               
+ 192   2               giPowerUpTime++;
+ 193   2               if (giPowerUpTime >= 80)    //上电亮0.8ms
+ 194   2               {
+ 195   3                   Clr_LED;
+ 196   3                   giLEDPwmValue = 0;
+ 197   3                   PWMUpDown_Flag = 1;
+ 198   3                   Clr_PowerUpFlag;
+ 199   3                   giPowerUpTime = 0; 
+ 200   3                 
+ 201   3                   gcPWMCount = 31999;
+ 202   3               }
+ 203   2              gcSleepTime = 0;
+ 204   2           }
+ 205   1           else
+ 206   1           {
+ 207   2             if(DisPlayModeFlag == 0)
+ 208   2              LED_Process();
+ 209   2      
+ 210   2              if(SendSpeedOffCommandFlag)
+ 211   2              {
+ 212   3                if((SendSpeedOffEnFlag)&&(IRSendEnFlag==0))
+ 213   3                {
+ 214   4                      Set_FirstSendSpeedOffCommandFlag;
+ 215   4                      gllIRSendData = 0x5B9B1B; //  
+ 216   4                      gllIRSendDataBak = gllIRSendData;
+ 217   4      
+ 218   4                      gcIRSendStatus = 0;
+ 219   4                      gcIRSendDelayTime = 0;
+ 220   4                      IRSendDataBitCount = 0;
+ 221   4                      gcIRSendCount = gcIRSendSpeedOffCount;
+ 222   4                      Set_IRSendEnFlag;
+ 223   4                }
+ 224   3                else 
+ 225   3                {
+ 226   4                  gcIRSendSpeedOffTime++;
+ 227   4                  if (gcIRSendSpeedOffTime >= 100)
+ 228   4                  {
+ 229   5                    gcIRSendSpeedOffTime = 0;
+ 230   5                    Set_SendSpeedOffEnFlag;
+ 231   5                  }
+ 232   4                  
+ 233   4                }
+ 234   3              }
+ 235   2              else
+ 236   2              {
+ 237   3                gcIRSendSpeedOffTime = SPEEDOFFTIME;
+ 238   3                gcIRSendSpeedOffCount = 0;
+C51 COMPILER V9.60.0.0   OUTPUT_PROCESS                                                    04/26/2023 14:07:04 PAGE 5   
+
+ 239   3              }
+ 240   2              
+ 241   2              if(SendLightOnCommandFlag)
+ 242   2              {
+ 243   3                  if ((SendLightOnEnFlag)&&(IRSendEnFlag==0)) 
+ 244   3                    { 
+ 245   4                      Set_FirSendLightOnCommandFlag;
+ 246   4                      gllIRSendData =0x2BCB4B;// 0x2D2C2B; // 210-211-212
+ 247   4                      gllIRSendDataBak = gllIRSendData;
+ 248   4      
+ 249   4                      gcIRSendStatus = 0;
+ 250   4                      gcIRSendDelayTime = 0;
+ 251   4                      IRSendDataBitCount = 0;
+ 252   4                      gcIRSendCount = gcIRSendLightOnCount;
+ 253   4                      Set_IRSendEnFlag;
+ 254   4        
+ 255   4                    }
+ 256   3                else
+ 257   3                  {
+ 258   4                    gcIRSendLightOnTime++;
+ 259   4                    if (gcIRSendLightOnTime >=100)
+ 260   4                    {
+ 261   5                      gcIRSendLightOnTime = 0;
+ 262   5                      Set_SendLightOnEnFlag;
+ 263   5                    }
+ 264   4                  }
+ 265   3              }
+ 266   2              else
+ 267   2              {
+ 268   3                gcIRSendLightOnTime = LIGHTONTIME;      //为了使其首次进入时立即发送. 
+ 269   3                gcIRSendLightOnCount = 0;
+ 270   3              }
+ 271   2              
+ 272   2              if(SendLightOffCommandFlag)
+ 273   2              {
+ 274   3                  if((SendLightOffEnFlag)&&(IRSendEnFlag==0)) 
+ 275   3                  {
+ 276   4                      Set_FirSendLightOffCommandFlag;
+ 277   4                      gllIRSendData = 0xEB6BAB; // 
+ 278   4                      gllIRSendDataBak = gllIRSendData;
+ 279   4      
+ 280   4                      gcIRSendStatus = 0;
+ 281   4                      gcIRSendDelayTime = 0;
+ 282   4                      IRSendDataBitCount = 0;
+ 283   4                      gcIRSendCount = gcIRSendLightOffCount; 
+ 284   4                      Set_IRSendEnFlag;
+ 285   4                  }
+ 286   3                  else
+ 287   3                  {
+ 288   4                    gcIRSendLightOffTime++;
+ 289   4                    if (gcIRSendLightOffTime >= 100)
+ 290   4                    {
+ 291   5                      gcIRSendLightOffTime = 0;
+ 292   5                      Set_SendLightOffEnFlag;
+ 293   5                    }
+ 294   4                  }
+ 295   3              }
+ 296   2              else
+ 297   2              {
+ 298   3                gcIRSendLightOffTime = LIGHTOFFTIME;
+ 299   3                gcIRSendLightOffCount = 0;
+ 300   3              }
+C51 COMPILER V9.60.0.0   OUTPUT_PROCESS                                                    04/26/2023 14:07:04 PAGE 6   
+
+ 301   2              
+ 302   2             if (SendSpeedCommandFlag)
+ 303   2              {
+ 304   3                if ((SendSpeedCommandEnFlag)&&(IRSendEnFlag==0))
+ 305   3                {
+ 306   4                      Set_FirstSendSpeedCommandFlag;
+ 307   4                      switch(gcSpeedLevel)
+ 308   4                      {
+ 309   5                          case 1:
+ 310   5                          {
+ 311   6                               gllIRSendData = 0x76B636; //  
+ 312   6                          }
+ 313   5                          break;
+ 314   5                          case 2:
+ 315   5                          {
+ 316   6                               gllIRSendData = 0x8E0EF6; //  
+ 317   6                          }
+ 318   5                          break;
+ 319   5                          case 3:
+ 320   5                          {
+ 321   6                               gllIRSendData = 0xC74787; //  
+ 322   6                          }
+ 323   5                          break;
+ 324   5                          case 4:
+ 325   5                          {
+ 326   6                               gllIRSendData = 0x2ECE4E; //
+ 327   6                          }
+ 328   5                          break;
+ 329   5                          default:
+ 330   5                              break;
+ 331   5                      }
+ 332   4                     
+ 333   4                      gllIRSendDataBak = gllIRSendData;
+ 334   4      
+ 335   4                      gcIRSendStatus = 0;
+ 336   4                      gcIRSendDelayTime = 0;
+ 337   4                      IRSendDataBitCount = 0;
+ 338   4                      gcIRSendCount = gcIRSendSpeedCommandCount;     
+ 339   4                      Set_IRSendEnFlag;
+ 340   4                }
+ 341   3                else
+ 342   3                {
+ 343   4                    gcIRSendSpeedCommandTime++;
+ 344   4                    if (gcIRSendSpeedCommandTime >= 100)
+ 345   4                    {
+ 346   5                      gcIRSendSpeedCommandTime = 0;
+ 347   5                      Set_SendSpeedCommandEnFlag;
+ 348   5                    }
+ 349   4                }
+ 350   3              }
+ 351   2              else
+ 352   2              {
+ 353   3                gcIRSendSpeedCommandTime =  SPEEDCOMMANDTIME;
+ 354   3                gcIRSendSpeedCommandCount = 0;          
+ 355   3              }
+ 356   2              if (gcSleepDelayTime < 100)
+ 357   2              {
+ 358   3                gcSleepDelayTime++;
+ 359   3                
+ 360   3              }
+ 361   2           
+ 362   2              if ((SendLightOnCommandFlag == 0) &&(SendLightOffCommandFlag == 0) &&(SendSpeedOffCommandFlag == 0) &&
+C51 COMPILER V9.60.0.0   OUTPUT_PROCESS                                                    04/26/2023 14:07:04 PAGE 7   
+
+             -(SendSpeedCommandFlag == 0)&&(gcSleepDelayTime == 100)&&(BatLowWarrnFlag == 0)&&(DisPlayModeFlag == 0))
+ 363   2              {     
+ 364   3                gcSleepDelayTime = 101;
+ 365   3                Set_AllDataSendEndFlag;    //所有命令发送完成之后，允许睡眠
+ 366   3                Set_SleepEnFlag;
+ 367   3              }  
+ 368   2              
+ 369   2           }// end else
+ 370   1      
+ 371   1       }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    928    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      9    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

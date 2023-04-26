@@ -1,0 +1,4 @@
+--c99 -c --cpu Cortex-M0 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\..\..\..\Device\MM32F0140\Include -I ..\..\..\..\..\Device\MM32F0140\HAL_Lib\Inc -I ..\..\..\..\..\Device\CMSIS\KEIL_Core -I ..\USER -I ..\SYSTEM\UART -I ..\SYSTEM\SYS -I ..\SYSTEM\DELAY -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\HARDWARE -I ..\HARDWARE\TIM -I ..\HARDWARE\LED_RF -I ..\HARDWARE\RF_A7325 -I ..\HARDWARE\Test --diag_suppress=177
+-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\Include"
+-D__UVISION_VERSION="533" -DUSE_STDPERIPH_DRIVER
+-o .\obj\hal_div.o --omf_browse .\obj\hal_div.crf --depend .\obj\hal_div.d "..\..\..\..\..\Device\MM32F0140\HAL_Lib\Src\hal_div.c"

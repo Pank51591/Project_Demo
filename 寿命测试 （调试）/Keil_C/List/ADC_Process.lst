@@ -1,0 +1,232 @@
+C51 COMPILER V9.60.0.0   ADC_PROCESS                                                       04/26/2023 14:07:03 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE ADC_PROCESS
+OBJECT MODULE PLACED IN ..\Output\ADC_Process.obj
+COMPILER INVOKED BY: D:\Program Files (x86)\keil_v5\C51\BIN\C51.EXE ..\User\Funtion\ADC_Process.c LARGE OBJECTADVANCED O
+                    -PTIMIZE(9,SIZE) BROWSE INCDIR(..\FWLib\SC95F_Lib\inc;..\User;..\User\Funtion;..\SOC_DebugTouchKey_Lib;..\SOC_DebugTouchK
+                    -ey_Lib;..\IAP_Lib) DEFINE(SC95F8x1xB) DEBUG PRINT(..\List\ADC_Process.lst) TABS(2) OBJECT(..\Output\ADC_Process.obj)
+
+line level    source
+
+   1          #include "SC_System.h"
+   2           void SC_ADC_EXIRChange(uint8_t ADC_CHANNEL9_NUM);
+   3           void SC_ADC_BatChange(uint8_t ADC_CHANNEL1_NUM);
+   4           void SC_ADC1_Multichannal();
+   5           void SC_ADC9_Multichannal();
+   6          
+   7          extern uint8_t gcBurner1OpenCount;
+   8          extern uint8_t gcBurner1CloseCount;
+   9          
+  10          extern uint8_t gcBurner2OpenCount;
+  11          extern uint8_t gcBurner2CloseCount;
+  12          
+  13          extern uint8_t gcBurner3OpenCount;
+  14          extern uint8_t gcBurner3CloseCount;
+  15          
+  16          extern uint8_t gcBurner4OpenCount;
+  17          extern uint8_t gcBurner4CloseCount;
+  18          
+  19          extern uint8_t gcBurner5OpenCount;
+  20          extern uint8_t gcBurner5CloseCount;
+  21          
+  22          extern uint8_t gcBurner6OpenCount;
+  23          extern uint8_t gcBurner6CloseCount;
+  24          
+  25          extern uint8_t gcBurnerStatus;
+  26          extern uint8_t gcBurnerOpenCount;
+  27          
+  28          extern uint8_t gcKeyStatus;
+  29          extern uint8_t gcKeyCount;
+  30          extern uint8_t gcOneMsCount;
+  31          extern uint32_t gcButton1State;
+  32          extern uint8_t gcKeyValue;
+  33          extern uint16_t giKeySW6LongDownTime;
+  34          extern uint8_t gcBuzzerTime;
+  35          
+  36          extern uint32_t gllIRAdcSumValue;
+  37          extern uint16_t giIRADCValue;
+  38          extern uint8_t gcIRADCCount;
+  39          extern uint16_t gcCookingTimes;
+  40          extern unsigned char Readbuff[12];
+  41          extern uint8_t RadioFREQ[10];
+  42          
+  43          extern void Write_EEPROM(void);
+  44          
+  45          extern volatile uint8_t gcADCDelayTime;
+  46          uint32_t gllBatAdcSumValue = 0;
+  47          uint16_t giBatValue = 0;
+  48          uint8_t gcBatAdcCount = 0;
+  49          uint16_t giADCValue = 0;
+  50          uint8_t gcBatLowCount = 0;
+  51          
+  52          void Delay_Time(uint16_t Count)
+  53          {
+C51 COMPILER V9.60.0.0   ADC_PROCESS                                                       04/26/2023 14:07:03 PAGE 2   
+
+  54   1          uint16_t i = 0;
+  55   1          for (i = 0; i < Count; i++)
+  56   1          {
+  57   2              //        asm("NOP");
+  58   2          }
+  59   1      }
+  60          
+  61          void ADC_ExtIR_Check(void)    /* 上电检查 */
+  62          {
+  63   1          uint8_t i = 0;
+  64   1          Set_ExternalIR_Send1;
+  65   1          Delay1ms(); 
+  66   1          Delay1ms(); 
+  67   1          Delay1ms(); 
+  68   1          Delay1ms(); 
+  69   1          Delay1ms();
+  70   1          Delay1ms(); 
+  71   1          Delay1ms(); 
+  72   1          Delay1ms(); 
+  73   1          Delay1ms(); 
+  74   1          Delay1ms(); 
+  75   1          SC_ADC_EXIRChange(4);   /* 上电默认是第九通道启动，直接转换即可 */
+  76   1        
+  77   1          if ((giIRADCValue > EXTIR_ADC_MIN_VALUE)&&(giIRADCValue < EXTIR_ADC_MAX_VALUE))
+  78   1          {
+  79   2            Set_ExtIRFlag;
+  80   2          }
+  81   1          else
+  82   1          {
+  83   2            Clr_ExtIRFlag;
+  84   2          }
+  85   1          /*
+  86   1          if (giIRADCValue >= EXTIR_ADC_VALUE)
+  87   1          {
+  88   1              Clr_ExtIRFlag;
+  89   1          }
+  90   1          else
+  91   1          {
+  92   1              Set_ExtIRFlag;
+  93   1          }*/
+  94   1          Clr_ExternalIR_Send;
+  95   1          
+  96   1          Set_BAT_EN; /* 打开电池检测的三极管管脚 */
+  97   1          SC_ADC1_Multichannal();
+  98   1          SC_ADC_BatChange(4);
+  99   1          Clr_ExternalIR_Send;
+ 100   1      }
+ 101          
+ 102          void ADC_Process(void)
+ 103          {
+ 104   1          Set_BAT_EN; /* 打开电池检测的三极管管脚 */
+ 105   1        
+ 106   1          SC_ADC1_Multichannal();/* 先切换通道再转化 */
+ 107   1          SC_ADC_BatChange(16);/*切换转换出值 */
+ 108   1        
+ 109   1          if (BatLowWarrnEnFlag)
+ 110   1          {
+ 111   2            if (giBatValue < VOL_LOW_VALUE)
+ 112   2            {
+ 113   3              gcBatLowCount ++;
+ 114   3              if (gcBatLowCount >= 200)
+ 115   3              {
+C51 COMPILER V9.60.0.0   ADC_PROCESS                                                       04/26/2023 14:07:03 PAGE 3   
+
+ 116   4                  gcBatLowCount = 0;
+ 117   4                  Set_BatLowWarrnFlag;
+ 118   4                  Set_ToEEPROMFlag;      //设置低电压存储
+ 119   4                
+ 120   4                if(ToEEPROMFlag)         //如果发生低电压报警，就存储
+ 121   4                {   
+ 122   5                    Clr_ToEEPROMFlag;
+ 123   5                    Clr_BatLowWarrnEnFlag;      //禁止低电压检测 （保证这段程序只在低电压的时候�
+             -�一次）
+ 124   5                    gcCookingTimes = 124;  
+ 125   5                  
+ 126   5                    RadioFREQ[0] =  gcCookingTimes / 1000;          
+ 127   5                    RadioFREQ[1] =  gcCookingTimes / 100 % 10; 
+ 128   5                    RadioFREQ[2] =  gcCookingTimes / 10 % 10;       
+ 129   5                    RadioFREQ[3] =  gcCookingTimes % 10;  
+ 130   5                    RadioFREQ[4] =  0x01;
+ 131   5                        
+ 132   5                    Write_EEPROM(); 
+ 133   5                }
+ 134   4              }
+ 135   3              
+ 136   3              
+ 137   3              
+ 138   3            }
+ 139   2            else
+ 140   2            {
+ 141   3              gcBatLowCount = 0;
+ 142   3            }
+ 143   2          }
+ 144   1      }
+ 145          /* -----ADC转换函数------- */
+ 146          /* ===ADC_CHANNEL_NUM是转换次数============= */
+ 147          void SC_ADC_EXIRChange(uint8_t ADC_CHANNEL9_NUM)
+ 148          {
+ 149   1          uint8_t i;
+ 150   1          gllIRAdcSumValue = 0;
+ 151   1          giADCValue = 0;
+ 152   1          for (i = 0; i < ADC_CHANNEL9_NUM; i++)
+ 153   1          {
+ 154   2              ADCCON |= 0x40; //开始ADC转换
+ 155   2              while (!(ADCCON & 0x20));
+ 156   2              //等待标志位（不同的型号该寄存器的标志位不同，需要该，下一句同样）
+ 157   2              ADCCON &= 0xDF; //清标志位
+ 158   2              giADCValue = (ADCVH << 4) + (ADCVL >> 4);
+ 159   2              gllIRAdcSumValue += giADCValue;
+ 160   2          }
+ 161   1          giIRADCValue = gllIRAdcSumValue / ADC_CHANNEL9_NUM; //返回数值
+ 162   1      }
+ 163          
+ 164          void SC_ADC_BatChange(uint8_t ADC_CHANNEL1_NUM)
+ 165          {
+ 166   1          uint8_t i;
+ 167   1          giADCValue=0;//
+ 168   1          gllBatAdcSumValue=0;
+ 169   1          for (i = 0; i < ADC_CHANNEL1_NUM; i++)
+ 170   1          {
+ 171   2              ADCCON |= 0x40; //开始ADC转换
+ 172   2              while (!(ADCCON & 0x20));
+ 173   2              //等待标志位（不同的型号该寄存器的标志位不同，需要该，下一句同样）
+ 174   2              ADCCON &= 0xDF; //清标志位
+ 175   2              giADCValue = (ADCVH << 4) + (ADCVL >> 4);
+ 176   2              gllBatAdcSumValue += giADCValue;
+C51 COMPILER V9.60.0.0   ADC_PROCESS                                                       04/26/2023 14:07:03 PAGE 4   
+
+ 177   2          }
+ 178   1          giBatValue = gllBatAdcSumValue / ADC_CHANNEL1_NUM; //返回数值
+ 179   1          /* >16次  gllBatAdcSumValue是否要清零*/
+ 180   1      }
+ 181          
+ 182          
+ 183          /* -------ADC双通道轮流切换---------- */
+ 184          void SC_ADC1_Multichannal()
+ 185          {
+ 186   1          ADC_Cmd(ENABLE);
+ 187   1          ADC_ChannelConfig(ADC_CHANNEL_1, ENABLE); /* 切换AIN 1 */
+ 188   1          /* 转换出BAT_VOL值 */
+ 189   1      }
+ 190          
+ 191          void SC_ADC9_Multichannal()
+ 192          {
+ 193   1          ADC_Cmd(ENABLE);
+ 194   1          ADC_ChannelConfig(ADC_CHANNEL_9, ENABLE); /*切换AIN 9 */
+ 195   1          /* 转换出值IR值 */
+ 196   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    621    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =     10       5
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,498 @@
+C51 COMPILER V9.60.0.0   BURNER_PROCESS                                                    04/26/2023 14:07:04 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE BURNER_PROCESS
+OBJECT MODULE PLACED IN ..\Output\Burner_Process.obj
+COMPILER INVOKED BY: D:\Program Files (x86)\keil_v5\C51\BIN\C51.EXE ..\User\Funtion\Burner_Process.c LARGE OBJECTADVANCE
+                    -D OPTIMIZE(9,SIZE) BROWSE INCDIR(..\FWLib\SC95F_Lib\inc;..\User;..\User\Funtion;..\SOC_DebugTouchKey_Lib;..\SOC_DebugTou
+                    -chKey_Lib;..\IAP_Lib) DEFINE(SC95F8x1xB) DEBUG PRINT(..\List\Burner_Process.lst) TABS(2) OBJECT(..\Output\Burner_Process
+                    -.obj)
+
+line level    source
+
+   1          #include "SC_System.h"
+   2          #include "Burner_Process.h"
+   3          
+   4          extern uint8_t gcBurner1OpenCount;         
+   5          extern uint8_t gcBurner1CloseCount;        
+   6          
+   7          extern uint8_t gcBurner2OpenCount;        
+   8          extern uint8_t gcBurner2CloseCount;      
+   9          
+  10          extern uint8_t gcBurner3OpenCount;         
+  11          extern uint8_t gcBurner3CloseCount;        
+  12          
+  13          extern uint8_t gcBurner4OpenCount;        
+  14          extern uint8_t gcBurner4CloseCount;       
+  15          
+  16          extern uint8_t gcBurner5OpenCount;        
+  17          extern uint8_t gcBurner5CloseCount;        
+  18          
+  19          extern uint8_t gcBurner6OpenCount;         
+  20          extern uint8_t gcBurner6CloseCount;        
+  21          
+  22          extern uint8_t gcBurnerStatus;             
+  23          extern uint8_t gcBurnerOpenCount;   
+  24          
+  25          extern uint8_t gcKeyStatus;               
+  26          extern uint8_t gcKeyCount;               
+  27          extern uint8_t gcOneMsCount;               
+  28          extern uint32_t gcButton1State;            
+  29          extern uint8_t gcKeyValue;                 
+  30          extern uint16_t giKeySW6LongDownTime;      
+  31          extern uint8_t gcSpeedLevel;
+  32          extern uint8_t gcBuzzerTime; 
+  33          extern uint8_t gcIRSendLightOnCount;
+  34          extern uint8_t gcIRSendLightOnTime;
+  35          
+  36          extern uint8_t gcIRSendLightOffCount ;        //灯开发送计数
+  37          extern uint8_t gcIRSendLightOffTime ;
+  38          
+  39          extern uint8_t gcIRSendSpeedOffCount;        
+  40          extern uint8_t gcIRSendSpeedOffTime;
+  41          
+  42          extern uint8_t gcIRSendSpeedCommandCount ;   
+  43          extern uint8_t gcIRSendSpeedCommandTime ;
+  44          
+  45          uint8_t gcBurnerCheckStatus;
+  46          uint8_t gcBurnerCheckCount;
+  47          
+  48          uint8_t gcBurnerStatusBak;
+  49          
+  50          void BurnerOpenNumber_Check(void)
+  51          {
+  52   1          uint8_t i = 0;
+C51 COMPILER V9.60.0.0   BURNER_PROCESS                                                    04/26/2023 14:07:04 PAGE 2   
+
+  53   1          uint8_t lcBurnerStatus = 0;
+  54   1          
+  55   1          lcBurnerStatus = gcBurnerStatus;
+  56   1          gcBurnerOpenCount = 0;
+  57   1          
+  58   1          for (i=0;i<6;i++)
+  59   1          {
+  60   2             if (lcBurnerStatus & 0x01) 
+  61   2             {
+  62   3                 gcBurnerOpenCount++;  
+  63   3             }
+  64   2             lcBurnerStatus = (lcBurnerStatus >> 1);
+  65   2          }
+  66   1                
+  67   1      }
+  68          //=======================================================================================
+  69          //                  void Burner_Process(void)
+  70          //                  Run once in 10ms         
+  71          //                  Return value::No
+  72          //=======================================================================================
+  73           void Burner_Process(void)
+  74           {
+  75   1           if (SW1_Get() == BURNER_STATUS_ON)        //Burnur 1
+  76   1           {
+  77   2               gcBurner1CloseCount = 0;
+  78   2               if (gcBurner1OpenCount < BURNER_TIME)
+  79   2               {
+  80   3                    gcBurner1OpenCount++;
+  81   3               }
+  82   2               if (gcBurner1OpenCount == BURNER_TIME )
+  83   2               {
+  84   3                   gcBurner1OpenCount = BURNER_TIME +1;
+  85   3                   gcBurnerStatus |= BURNER_1_STATUS;
+  86   3               }
+  87   2           }
+  88   1           else
+  89   1           {
+  90   2               gcBurner1OpenCount = 0;
+  91   2               if (gcBurner1CloseCount < BURNER_TIME)
+  92   2               {
+  93   3                    gcBurner1CloseCount++;
+  94   3               }
+  95   2               if (gcBurner1CloseCount == BURNER_TIME )
+  96   2               {
+  97   3                   gcBurner1CloseCount = BURNER_TIME +1;
+  98   3                   gcBurnerStatus &= (0xff - BURNER_1_STATUS);
+  99   3               }
+ 100   2           }
+ 101   1           
+ 102   1        if (SW2_Get() == BURNER_STATUS_ON)        //Burnur 2
+ 103   1           {
+ 104   2               gcBurner2CloseCount = 0;
+ 105   2               if (gcBurner2OpenCount < BURNER_TIME)
+ 106   2               {
+ 107   3                    gcBurner2OpenCount++;
+ 108   3               }
+ 109   2               if (gcBurner2OpenCount == BURNER_TIME )
+ 110   2               {
+ 111   3                   gcBurner2OpenCount = BURNER_TIME +1;
+ 112   3                   gcBurnerStatus |= BURNER_2_STATUS;
+ 113   3               }
+ 114   2           }
+C51 COMPILER V9.60.0.0   BURNER_PROCESS                                                    04/26/2023 14:07:04 PAGE 3   
+
+ 115   1           else
+ 116   1           {
+ 117   2               gcBurner2OpenCount = 0;
+ 118   2               if (gcBurner2CloseCount < BURNER_TIME)
+ 119   2               {
+ 120   3                    gcBurner2CloseCount++;
+ 121   3               }
+ 122   2               if (gcBurner2CloseCount == BURNER_TIME )
+ 123   2               {
+ 124   3                   gcBurner2CloseCount = BURNER_TIME +1;
+ 125   3                   gcBurnerStatus &= (0xff - BURNER_2_STATUS);
+ 126   3               }
+ 127   2           }
+ 128   1           
+ 129   1        if (SW3_Get() == BURNER_STATUS_ON)        //Burnur 3
+ 130   1           {
+ 131   2               gcBurner3CloseCount = 0;
+ 132   2               if (gcBurner3OpenCount < BURNER_TIME)
+ 133   2               {
+ 134   3                    gcBurner3OpenCount++;
+ 135   3               }
+ 136   2               if (gcBurner3OpenCount == BURNER_TIME )
+ 137   2               {
+ 138   3                   gcBurner3OpenCount = BURNER_TIME +1;
+ 139   3                   gcBurnerStatus |= BURNER_3_STATUS;
+ 140   3               }
+ 141   2           }
+ 142   1           else
+ 143   1           {
+ 144   2               gcBurner3OpenCount = 0;
+ 145   2               if (gcBurner3CloseCount < BURNER_TIME)
+ 146   2               {
+ 147   3                    gcBurner3CloseCount++;
+ 148   3               }
+ 149   2               if (gcBurner3CloseCount == BURNER_TIME )
+ 150   2               {
+ 151   3                   gcBurner3CloseCount = BURNER_TIME +1;
+ 152   3                   gcBurnerStatus &= (0xff - BURNER_3_STATUS);
+ 153   3               }
+ 154   2           }
+ 155   1           
+ 156   1        if (SW4_Get() == BURNER_STATUS_ON)        //Burnur 4
+ 157   1           {
+ 158   2               gcBurner4CloseCount = 0;
+ 159   2               if (gcBurner4OpenCount < BURNER_TIME)
+ 160   2               {
+ 161   3                    gcBurner4OpenCount++;
+ 162   3               }
+ 163   2               if (gcBurner4OpenCount == BURNER_TIME )
+ 164   2               {
+ 165   3                   gcBurner4OpenCount = BURNER_TIME +1;
+ 166   3                   gcBurnerStatus |= BURNER_4_STATUS;
+ 167   3               }
+ 168   2           }
+ 169   1           else
+ 170   1           {
+ 171   2               gcBurner4OpenCount = 0;
+ 172   2               if (gcBurner4CloseCount < BURNER_TIME)
+ 173   2               {
+ 174   3                    gcBurner4CloseCount++;
+ 175   3               }
+ 176   2               if (gcBurner4CloseCount == BURNER_TIME )
+C51 COMPILER V9.60.0.0   BURNER_PROCESS                                                    04/26/2023 14:07:04 PAGE 4   
+
+ 177   2               {
+ 178   3                   gcBurner4CloseCount = BURNER_TIME +1;
+ 179   3                   gcBurnerStatus &= (0xff - BURNER_4_STATUS);
+ 180   3               }
+ 181   2           } 
+ 182   1         
+ 183   1        if (SW5_Get() == BURNER_STATUS_ON)        //Burnur 5
+ 184   1           {
+ 185   2               gcBurner5CloseCount = 0;
+ 186   2               if (gcBurner5OpenCount < BURNER_TIME)
+ 187   2               {
+ 188   3                    gcBurner5OpenCount++;
+ 189   3               }
+ 190   2               if (gcBurner5OpenCount == BURNER_TIME )
+ 191   2               {
+ 192   3                   gcBurner5OpenCount = BURNER_TIME +1;
+ 193   3                   gcBurnerStatus |= BURNER_5_STATUS;
+ 194   3               }
+ 195   2           }
+ 196   1           else
+ 197   1           {
+ 198   2               gcBurner5OpenCount = 0;
+ 199   2               if (gcBurner5CloseCount < BURNER_TIME)
+ 200   2               {
+ 201   3                    gcBurner5CloseCount++;
+ 202   3               }
+ 203   2               if (gcBurner5CloseCount == BURNER_TIME )
+ 204   2               {
+ 205   3                   gcBurner5CloseCount = BURNER_TIME +1;
+ 206   3                   gcBurnerStatus &= (0xff - BURNER_5_STATUS);
+ 207   3               }
+ 208   2           } 
+ 209   1           
+ 210   1        if (SW6_Get() == BURNER_STATUS_ON)        //Burnur 6
+ 211   1           {
+ 212   2               gcBurner6CloseCount = 0;
+ 213   2               if (gcBurner6OpenCount < BURNER_TIME)
+ 214   2               {
+ 215   3                    gcBurner6OpenCount++;
+ 216   3               }
+ 217   2               if (gcBurner6OpenCount == BURNER_TIME )
+ 218   2               {
+ 219   3                   gcBurner6OpenCount = BURNER_TIME +1;
+ 220   3                   gcBurnerStatus |= BURNER_6_STATUS;
+ 221   3               }
+ 222   2           }
+ 223   1           else
+ 224   1           {
+ 225   2               gcBurner6OpenCount = 0;
+ 226   2               if (gcBurner6CloseCount < BURNER_TIME)
+ 227   2               {
+ 228   3                    gcBurner6CloseCount++;
+ 229   3               }
+ 230   2               if (gcBurner6CloseCount == BURNER_TIME )
+ 231   2               {
+ 232   3                   gcBurner6CloseCount = BURNER_TIME +1;
+ 233   3                   gcBurnerStatus &= (0xff - BURNER_6_STATUS);
+ 234   3               }
+ 235   2           }  
+ 236   1           
+ 237   1           BurnerOpenNumber_Check();        // Burners open number detection
+ 238   1       
+C51 COMPILER V9.60.0.0   BURNER_PROCESS                                                    04/26/2023 14:07:04 PAGE 5   
+
+ 239   1           /**/
+ 240   1           switch(gcBurnerCheckStatus)
+ 241   1           {
+ 242   2               case 0:     
+ 243   2               {
+ 244   3                   if (gcBurnerStatus != 0)          //有炉头开启
+ 245   3                   {
+ 246   4                       gcBurnerCheckCount++;
+ 247   4                       if (gcBurnerCheckCount >= 12)
+ 248   4                       {
+ 249   5                           gcBurnerCheckCount = 0;
+ 250   5                           if (gcBurnerStatus != gcBurnerStatusBak)
+ 251   5                           {
+ 252   6                               gcBurnerStatusBak = gcBurnerStatus;
+ 253   6                             
+ 254   6                              /* 在炉头开启之后，这3个状态就被清掉了，后续再发送一些信号时，用来判断炉头是否由开
+             -启转为了关闭的变化状态 */                 
+ 255   6                              Clr_FirstLightOffFlag; 
+ 256   6                              Clr_FirstSpeedOffFlag;
+ 257   6                              Clr_FirstPowerUpFlag;
+ 258   6        
+ 259   6                              if (ActivateModeFlag)       
+ 260   6                              {
+ 261   7                                  
+ 262   7                                  if (AutoModeFlag)
+ 263   7                                  {
+ 264   8      
+ 265   8                                      /**/
+ 266   8                                      if(gcSpeedLevel == 4)
+ 267   8                                      {
+ 268   9                                        Clr_IRSendEnFlag;
+ 269   9                                        Set_SendSpeedOffCommandFlag;
+ 270   9                                        gcSpeedLevel = 0;   
+ 271   9                                        gcIRSendSpeedOffTime = 100;
+ 272   9                                        Set_SendSpeedOffEnFlag;                                     
+ 273   9      //                                  gcIRSendSpeedCommandTime =  SPEEDCOMMANDTIME;
+ 274   9                                        Set_AutoFanFlag;
+ 275   9                                      }
+ 276   8                                    else
+ 277   8                                      {
+ 278   9                                        Clr_IRSendEnFlag;                                
+ 279   9                                        Clr_INTENSIVEONModeFlag;       //清除密集模式                               
+ 280   9                                        Set_SendSpeedCommandFlag;
+ 281   9        //                                Clr_FirstSendSpeedCommandFlag;
+ 282   9                                        gcIRSendSpeedCommandTime =  SPEEDCOMMANDTIME;
+ 283   9                                      
+ 284   9                                        Clr_FirstSendSpeedOffCommandFlag; 
+ 285   9      
+ 286   9                                        Clr_LightOffDelayStartFlag;
+ 287   9                                        Clr_SpeedDelayOffStartFlag;
+ 288   9                                        
+ 289   9                                        if(ModeChangeFlag)        //
+ 290   9                                        {
+ 291  10                                          Clr_ModeChangeFlag;
+ 292  10                                          if ((gcBurnerStatus&0x01) ||(gcBurnerStatus&0x02) )   // work burner 
+ 293  10                                          {
+ 294  11                                             gcSpeedLevel=2;
+ 295  11                                          }
+ 296  10                                          else if (gcBurnerOpenCount > 1)
+ 297  10                                          {
+ 298  11                                               gcSpeedLevel = 2;
+ 299  11                                          }
+C51 COMPILER V9.60.0.0   BURNER_PROCESS                                                    04/26/2023 14:07:04 PAGE 6   
+
+ 300  10                                          else
+ 301  10                                          {
+ 302  11                                            gcSpeedLevel = 1; 
+ 303  11                                          }
+ 304  10                                        }
+ 305   9                                        else        //在自动模式下，如果是2档风速，就保持2档
+ 306   9                                        {
+ 307  10                                          if(gcSpeedLevel < 2)
+ 308  10                                          {
+ 309  11                                            if ((gcBurnerStatus&0x01) ||(gcBurnerStatus&0x02) )   // work burner 
+ 310  11                                            {
+ 311  12                                               gcSpeedLevel=2;
+ 312  12                                            }
+ 313  11                                            else if (gcBurnerOpenCount > 1)
+ 314  11                                            {
+ 315  12                                                 gcSpeedLevel = 2;
+ 316  12                                            }
+ 317  11                                            else
+ 318  11                                            {
+ 319  12                                              gcSpeedLevel = 1; 
+ 320  12                                            }
+ 321  11                                          }
+ 322  10                                        }
+ 323   9                                  }
+ 324   8                             }
+ 325   7                                
+ 326   7                                /*按客户要求，在手动关闭灯之后，关闭所有阀头，在打开一个阀头，烟机上的灯会亮起  7.1*/ 
+ 327   7                                if ((FirstLightOnFlag == 0)&&(LightOffDelayStartFlag == 0))
+ 328   7                                  {
+ 329   8                                      Clr_IRSendEnFlag;
+ 330   8                                      Set_FirstLightOnFlag;
+ 331   8                                      Set_SendLightOnCommandFlag;
+ 332   8                                      Clr_FirSendLightOnCommandFlag;
+ 333   8                                      gcIRSendLightOnTime = LIGHTONTIME;      //为了使其首次进入时立即发送. 
+ 334   8       
+ 335   8                                  } 
+ 336   7                                  
+ 337   7                              }
+ 338   6                              else        // deactivate mode 
+ 339   6                              {
+ 340   7                                  if (gcSpeedLevel == 0)
+ 341   7                                  {
+ 342   8                                      if (AllSwitchOFFFlag)
+ 343   8                                      {
+ 344   9                                          Clr_AllSwitchOFFFlag;
+ 345   9                                          Set_DeactivateModeFirstLightFlag;
+ 346   9                                      }
+ 347   8                                  }
+ 348   7                              }
+ 349   6                           }
+ 350   5                      }
+ 351   4                   }
+ 352   3                   else               // all off change to status 1
+ 353   3                   {
+ 354   4                       gcBurnerCheckStatus = 1;
+ 355   4                   }
+ 356   3               }
+ 357   2               break;
+ 358   2               case 1:                  //所有的炉头关闭
+ 359   2               {
+ 360   3                    if ((gcBurnerStatus == 0)&&(FirstPowerUpFlag == 0))  
+ 361   3                    {
+C51 COMPILER V9.60.0.0   BURNER_PROCESS                                                    04/26/2023 14:07:04 PAGE 7   
+
+ 362   4                        gcBurnerCheckCount++;
+ 363   4                        if (gcBurnerCheckCount >= 12)
+ 364   4                        {
+ 365   5                          gcBurnerCheckCount = 0; 
+ 366   5                          
+ 367   5                          if (gcBurnerStatus!= gcBurnerStatusBak)      //表示有操作过炉头
+ 368   5                          {
+ 369   6                              Set_AllHodClodeFlag;      //发出所有炉头关闭的声音
+ 370   6                              Set_AllSwitchOFFFlag;
+ 371   6                              if (ActivateModeFlag) 
+ 372   6                              {
+ 373   7                                  if (AutoModeFlag)         //如果在自动模式下，灯闪5分钟，之后发送关风扇的指令
+ 374   7                                      {
+ 375   8                                        Clr_FirstLightOnFlag;
+ 376   8                                         if (FirstLightOffFlag == 0)
+ 377   8                                         {
+ 378   9                                             Set_FirstLightOffFlag;
+ 379   9                                             Set_LightOffDelayStartFlag;                                        
+ 380   9                                         }
+ 381   8                                        if (FirstSpeedOffFlag == 0)
+ 382   8                                        {
+ 383   9                                            Set_FirstSpeedOffFlag;
+ 384   9                                            Set_SpeedDelayOffStartFlag;
+ 385   9                                        }
+ 386   8      
+ 387   8                                        Clr_IRSendEnFlag;
+ 388   8                                        Set_SendSpeedCommandFlag;
+ 389   8                                         gcIRSendSpeedCommandTime =  SPEEDCOMMANDTIME;
+ 390   8                                        Clr_FirstSendSpeedCommandFlag;
+ 391   8                                        gcSpeedLevel = 1;                            
+ 392   8                                      }
+ 393   7                                  else
+ 394   7                                      {
+ 395   8                                          Set_AutoModeFlag;
+ 396   8                                          Clr_FirstLightOnFlag;
+ 397   8                                          if (gcSpeedLevel == 0)
+ 398   8                                          {
+ 399   9                                              Set_AutoModeFlag;
+ 400   9                                              Clr_IRSendEnFlag;
+ 401   9                                                 
+ 402   9                                              gcIRSendLightOffTime = LIGHTOFFTIME;
+ 403   9                                              Set_SendLightOffCommandFlag; 
+ 404   9                                                 
+ 405   9                                          }
+ 406   8                                          else     //
+ 407   8                                          {
+ 408   9                                              if (gcSpeedLevel!=4)
+ 409   9                                              {
+ 410  10                                                  Clr_IRSendEnFlag;
+ 411  10                                                  Set_SendSpeedCommandFlag;
+ 412  10                                                  gcIRSendSpeedCommandTime =  SPEEDCOMMANDTIME;
+ 413  10                                                  Clr_FirstSendSpeedCommandFlag;
+ 414  10                                                  gcSpeedLevel = 1;      
+ 415  10                                                  if (FirstLightOffFlag == 0)
+ 416  10                                                  {
+ 417  11                                                      Set_FirstLightOffFlag;
+ 418  11                                                      Set_LightOffDelayStartFlag;
+ 419  11                                                  }
+ 420  10                                                 if (FirstSpeedOffFlag == 0)
+ 421  10                                                 {
+ 422  11                                                     Set_FirstSpeedOffFlag;
+ 423  11                                                     Set_SpeedDelayOffStartFlag;
+C51 COMPILER V9.60.0.0   BURNER_PROCESS                                                    04/26/2023 14:07:04 PAGE 8   
+
+ 424  11                                                 }
+ 425  10                                              }
+ 426   9                                              else   // 4档
+ 427   9                                              {
+ 428  10                                                  Clr_IRSendEnFlag;
+ 429  10                                                  Set_SendSpeedOffCommandFlag;
+ 430  10                                                  Clr_FirstSendSpeedOffCommandFlag;
+ 431  10                                                  gcSpeedLevel = 0;   
+ 432  10                                                  Set_INTENSIVEONModeFlag;
+ 433  10                                                  gcIRSendSpeedOffTime = 100;
+ 434  10                                                                                          
+ 435  10                                              } 
+ 436   9                                          }
+ 437   8                                      }
+ 438   7                              }//end  if (ActivateModeFlag)
+ 439   6                             
+ 440   6                          }
+ 441   5                          
+ 442   5                          gcBurnerStatusBak = 0;
+ 443   5      
+ 444   5                        }
+ 445   4                    }
+ 446   3                    else
+ 447   3                    {
+ 448   4                        gcBurnerCheckStatus = 0;
+ 449   4                    }
+ 450   3               }
+ 451   2               break;
+ 452   2           }
+ 453   1       }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1309    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      3    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

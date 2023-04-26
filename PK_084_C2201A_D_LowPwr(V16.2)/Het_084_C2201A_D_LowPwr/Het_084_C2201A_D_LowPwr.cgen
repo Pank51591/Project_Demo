@@ -1,0 +1,35 @@
+[Project]
+Project.Name=Het_084_C2201A_D_LowPwr
+Project.Path=D:\FAE\项目\和而泰\燃气灶\Het_084_C2201A_D_LowPwr
+Project.KeilPath=D:\FAE\项目\和而泰\燃气灶\Het_084_C2201A_D_LowPwr\Keil_C\
+Project.CurrentPath=D:\FAE\项目\和而泰\燃气灶\Het_084_C2201A_D_LowPwr\Het_084_C2201A_D_LowPwr.cgen
+Project.CreationTime=20220614113358
+Project.ModificationTime=20220614113358
+Project.Version=EasyCodeCube 3.1.4
+Project.IsBootloaderProject=false
+Project.IsUnifiedVersionProject=True
+[/Project]
+[Peripheral]GPIO_panel:{X=0,Y=0}
+[/Peripheral]
+[Peripheral]GPIO[Index]0[/Index]
+[Configure][PinNumber]35[/PinNumber][UpperIndex]4[/UpperIndex][Iindex]0[/Iindex]
+[/Configure][/Peripheral]
+[Peripheral]OPTION[Index]1[/Index]
+[Configure]系统时钟Fsys=0
+频率(Hz)=[32000000]
+Option配置使能=0
+内外振选择=0
+参考电压选择=0
+LVR 电压选择=0
+IAP操作范围=0
+JTAG口切换控制=0
+[/Configure][/Peripheral]
+[Peripheral]TK触控[DriverType]Custom[/DriverType]
+[Configure]1-应用类型=弹簧触控_按键_低功耗
+10-普通按键通道(不含滑轮滑条)=12
+6-低功耗唤醒按键总数=[1]
+7-低功耗所用TK按键通道=12
+8-低功耗按键扫描间隔=3
+9-低功耗按键确认次数=[10]
+[/Configure][/Peripheral]
+[PinMode]0[/PinMode]

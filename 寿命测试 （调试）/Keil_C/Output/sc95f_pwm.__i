@@ -1,0 +1,1 @@
+"..\FWLib\SC95F_Lib\src\sc95f_pwm.c" LARGE OBJECTADVANCED OPTIMIZE (9,SIZE) BROWSE INCDIR(..\FWLib\SC95F_Lib\inc;..\User;..\User\Funtion;..\SOC_DebugTouchKey_Lib;..\SOC_DebugTouchKey_Lib;..\IAP_Lib) DEFINE (SC95F8x1xB) DEBUG PRINT(..\List\sc95f_pwm.lst) TABS (2) OBJECT(..\Output\sc95f_pwm.obj)

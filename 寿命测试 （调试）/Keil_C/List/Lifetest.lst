@@ -1,0 +1,306 @@
+C51 COMPILER V9.60.0.0   LIFETEST                                                          04/26/2023 14:07:04 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE LIFETEST
+OBJECT MODULE PLACED IN ..\Output\Lifetest.obj
+COMPILER INVOKED BY: D:\Program Files (x86)\keil_v5\C51\BIN\C51.EXE ..\User\Funtion\Lifetest.c LARGE OBJECTADVANCED OPTI
+                    -MIZE(9,SIZE) BROWSE INCDIR(..\FWLib\SC95F_Lib\inc;..\User;..\User\Funtion;..\SOC_DebugTouchKey_Lib;..\SOC_DebugTouchKey_
+                    -Lib;..\IAP_Lib) DEFINE(SC95F8x1xB) DEBUG PRINT(..\List\Lifetest.lst) TABS(2) OBJECT(..\Output\Lifetest.obj)
+
+line level    source
+
+   1          #include "Lifetest.h"
+   2          #include "SC_System.h"
+   3          #include "Burner_Process.h"
+   4          #include "Output_Process.h"
+   5          #include "Key_Process.h"
+   6          #include "Time_Process.h"
+   7          
+   8          extern void Write_EEPROM(void);
+   9          
+  10          extern void Life_Process(void);
+  11          extern uint8_t gcSpeedLevel;
+  12          extern uint8_t gcBurnerStatus;
+  13          extern uint8_t gcKeyValue;
+  14          extern uint8_t gcIRSendSpeedOffTime;
+  15          extern uint8_t gcIRSendSpeedCommandTime; 
+  16          extern uint8_t gcIRSendLightOffTime ;
+  17          extern uint8_t gcIRSendSpeedOffTime;
+  18          extern uint8_t gcIRSendLightOnTime;
+  19          extern uint8_t gcTestDay = 0;
+  20          
+  21          extern unsigned char Readbuff[12];
+  22          extern uint8_t RadioFREQ[10];
+  23          extern uint16_t  giTimesCount;  
+  24          uint8_t gclifeteststatus = 0;
+  25          uint8_t gcCookingCount = 0;
+  26          uint16_t gcWait30minCount = 0;
+  27          uint8_t gcWaitCount;
+  28          uint8_t gctime;
+  29          uint16_t gcCookingTimes = 0;
+  30          
+  31          extern uint8_t gchightbit; 
+  32          extern uint8_t gcmediumbit;
+  33          extern uint8_t gclowbit;
+  34          extern uint8_t gcfallowbit;
+  35          
+  36          /***运行周期：125ms***/
+  37          void Life_Process(void)
+  38          {
+  39   1      //     P31=~P31;        //非BTM唤醒，用户根据需要自行增添处理程序
+  40   1        if((DisPlayModeFlag == 0)&&(BatLowWarrnEnFlag == 1))             //测试模式，且没有发生过低电压报警
+  41   1        {
+  42   2          
+  43   2          
+  44   2          
+  45   2        switch (gclifeteststatus)
+  46   2          {
+  47   3            
+  48   3          case 0 :
+  49   3            {
+  50   4              Set_TestModeFlag;
+  51   4              gctime++;
+  52   4              if(gctime >= 1)
+  53   4              {
+C51 COMPILER V9.60.0.0   LIFETEST                                                          04/26/2023 14:07:04 PAGE 2   
+
+  54   5                gctime = 2;
+  55   5                Hood_light_on();  
+  56   5                Set_SysWakeUpSleepFlag;         //退出低功耗模式      
+  57   5                gcWaitCount = 0;
+  58   5                gclifeteststatus = 1;
+  59   5                
+  60   5              }         
+  61   4            }
+  62   3            break;
+  63   3          case 1 :     //等待6秒
+  64   3            {
+  65   4              gcWaitCount++;
+  66   4              if(gcWaitCount>=8*6)
+  67   4              {
+  68   5                gctime = 0;
+  69   5                gcSpeedLevel = 1;
+  70   5                Hood_level();
+  71   5                Set_SysWakeUpSleepFlag;         //退出低功耗模式
+  72   5                Set_KeyBuzzerFlag;    //发出按键音
+  73   5                gcWaitCount = 26;
+  74   5                gclifeteststatus = 2;
+  75   5              } 
+  76   4            }
+  77   3            break;
+  78   3          case 2 :
+  79   3            { 
+  80   4              gctime++;
+  81   4              if(gctime >= 1)
+  82   4              {
+  83   5                gctime = 2;
+  84   5                Hood_light_on();  
+  85   5                Set_SysWakeUpSleepFlag;         //退出低功耗模式      
+  86   5                gcWaitCount = 0;
+  87   5                gclifeteststatus = 3;
+  88   5              } 
+  89   4            }
+  90   3            break;
+  91   3          case 3 :
+  92   3            {
+  93   4              gcWaitCount++;
+  94   4              if(gcWaitCount>=8*6)
+  95   4              {
+  96   5                gctime = 0;
+  97   5                Set_KeyBuzzerFlag;
+  98   5                Hood_level();
+  99   5                Set_SysWakeUpSleepFlag;         //退出低功耗模式
+ 100   5                gcSpeedLevel = 2;
+ 101   5                gcWaitCount = 26;
+ 102   5                gclifeteststatus = 4;
+ 103   5              } 
+ 104   4            }
+ 105   3            break;
+ 106   3          case 4 :
+ 107   3            {   
+ 108   4              gctime++;
+ 109   4              if(gctime >= 1)
+ 110   4              {
+ 111   5                gctime = 2;
+ 112   5                Hood_light_on();  
+ 113   5                Set_SysWakeUpSleepFlag;         //退出低功耗模式      
+ 114   5                gcWaitCount = 0;
+ 115   5                gclifeteststatus = 5;
+C51 COMPILER V9.60.0.0   LIFETEST                                                          04/26/2023 14:07:04 PAGE 3   
+
+ 116   5              } 
+ 117   4                
+ 118   4            }
+ 119   3            break;
+ 120   3          case 5 :
+ 121   3            { 
+ 122   4              gcWaitCount++;
+ 123   4              if(gcWaitCount>=8*6)
+ 124   4              {
+ 125   5                gctime = 0;
+ 126   5                Set_KeyBuzzerFlag;    //发出按键音
+ 127   5                Hood_level();
+ 128   5                Set_SysWakeUpSleepFlag;         //退出低功耗模式
+ 129   5                gcSpeedLevel = 3;
+ 130   5                gcWaitCount = 26;
+ 131   5                gclifeteststatus = 6;
+ 132   5              } 
+ 133   4          
+ 134   4            }
+ 135   3            break;
+ 136   3          case 6 :
+ 137   3            {     
+ 138   4              gctime++;
+ 139   4              if(gctime >= 1)
+ 140   4              {
+ 141   5                gctime = 2;
+ 142   5                Hood_light_on();  
+ 143   5                Set_SysWakeUpSleepFlag;         //退出低功耗模式      
+ 144   5                gcWaitCount = 0;
+ 145   5                gclifeteststatus = 7;
+ 146   5              } 
+ 147   4              
+ 148   4            }
+ 149   3            break;
+ 150   3          case 7 :   
+ 151   3            {
+ 152   4              gcWaitCount++;
+ 153   4              if(gcWaitCount>=8*6)
+ 154   4              {
+ 155   5                gctime = 0;
+ 156   5                Set_KeyBuzzerFlag;      //发出按键音
+ 157   5                Hood_level();
+ 158   5                Set_SysWakeUpSleepFlag;         //退出低功耗模式
+ 159   5                gcSpeedLevel = 4;
+ 160   5                gcWaitCount = 26;
+ 161   5                gclifeteststatus = 8;
+ 162   5                
+ 163   5              } 
+ 164   4              
+ 165   4            }
+ 166   3            break;
+ 167   3          case 8 :       //烹饪30分钟
+ 168   3            {
+ 169   4              gcWait30minCount++;
+ 170   4              if(gcWait30minCount >= 8 * 6)        // 6
+ 171   4              {     
+ 172   5                gclifeteststatus = 9;
+ 173   5              }     
+ 174   4            }
+ 175   3            break;
+ 176   3          case 9 :     //关风扇
+ 177   3            {
+C51 COMPILER V9.60.0.0   LIFETEST                                                          04/26/2023 14:07:04 PAGE 4   
+
+ 178   4              Clr_TestModeFlag;       
+ 179   4              gcWait30minCount = 0;
+ 180   4              Clr_IRSendEnFlag;
+ 181   4              Set_SendSpeedOffCommandFlag;
+ 182   4              gcSpeedLevel = 0;                 //风速为0时  
+ 183   4              gcIRSendSpeedOffTime = 100;
+ 184   4              gclifeteststatus = 10;
+ 185   4              
+ 186   4              Set_SysWakeUpSleepFlag;           //退出低功耗模式
+ 187   4            }
+ 188   3            break;
+ 189   3          case 10:
+ 190   3          {
+ 191   4               /* 关灯的指令 */ 
+ 192   4      //        Set_LightOffDelayStartFlag;
+ 193   4      //        Set_SpeedDelayOffStartFlag;
+ 194   4      //        Set_SendLightOffCommandFlag;  
+ 195   4      //        Set_SendLightOffEnFlag;
+ 196   4      //        Set_SendSpeedOffEnFlag;
+ 197   4      //        Clr_IRSendEnFlag;
+ 198   4      //      
+ 199   4      //        Set_SysWakeUpSleepFlag;          //退出低功耗模式
+ 200   4                
+ 201   4             
+ 202   4              gcCookingTimes++;
+ 203   4      //        gcCookingCount++;
+ 204   4      //        if(gcCookingCount >= 3)           //每3次存储一次，防止断电
+ 205   4      //        {
+ 206   4      //          gcCookingCount = 0;
+ 207   4                
+ 208   4      //          RadioFREQ[0] =  gcCookingTimes / 1000;          
+ 209   4      //          RadioFREQ[1] =  gcCookingTimes / 100 % 10;   //(gcCookingTimes - (gcCookingTimes / 1000) *1000)/100
+             - ;
+ 210   4      //          RadioFREQ[2] =  gcCookingTimes / 10 % 10;    //(gcCookingTimes - (gcCookingTimes / 1000) *1000 - ((
+             -gcCookingTimes - (gcCookingTimes / 1000) *1000)/100 ) *100) / 10; 
+ 211   4      //          RadioFREQ[3] =  gcCookingTimes % 10;         //(gcCookingTimes - (gcCookingTimes / 1000) *1000 - ((
+             -gcCookingTimes - (gcCookingTimes / 1000) *1000)/100 ) *100) % 10;
+ 212   4      //          RadioFREQ[4] = 0x01;     //测试用
+ 213   4      //          Write_EEPROM();
+ 214   4      //              
+ 215   4      //        }
+ 216   4           Set_KeySureBuzzerFlag;   
+ 217   4           gclifeteststatus = 0;   //测试用     
+ 218   4          }   
+ 219   3          break;    
+ 220   3            default :
+ 221   3              break;        
+ 222   3        }
+ 223   2      
+ 224   2      }
+ 225   1        
+ 226   1      
+ 227   1      //if(ToEEPROMFlag)         //如果发生低电压报警，就存储
+ 228   1      //    {   
+ 229   1      //        Clr_ToEEPROMFlag;
+ 230   1      //        Clr_BatLowWarrnEnFlag;      //禁止低电压检测 （保证这段程序只在低电压的时候跑一次）
+ 231   1      //      
+ 232   1      //        RadioFREQ[0] =  gcCookingTimes / 1000;          
+ 233   1      //        RadioFREQ[1] =  gcCookingTimes / 100 % 10; 
+ 234   1      //        RadioFREQ[2] =  gcCookingTimes / 10 % 10;       
+ 235   1      //        RadioFREQ[3] =  gcCookingTimes % 10;  
+ 236   1      //        RadioFREQ[4] = 0x01;
+C51 COMPILER V9.60.0.0   LIFETEST                                                          04/26/2023 14:07:04 PAGE 5   
+
+ 237   1      //            
+ 238   1      //        Write_EEPROM(); 
+ 239   1      //    }
+ 240   1      
+ 241   1      
+ 242   1      }
+ 243          
+ 244          /*发送 Hood light ON 指令*/
+ 245          void Hood_light_on(void)
+ 246          {
+ 247   1        Set_SendLightOnCommandFlag;
+ 248   1        Set_SendLightOnEnFlag;
+ 249   1        gcIRSendLightOnTime = LIGHTONTIME;
+ 250   1        Clr_LightOffDelayStartFlag;
+ 251   1        Clr_IRSendEnFlag; 
+ 252   1      }
+ 253            
+ 254          /*发送 Hood_level指令*/
+ 255          void Hood_level(void)
+ 256          {
+ 257   1        Set_SendSpeedCommandFlag;
+ 258   1        Set_SendSpeedCommandEnFlag;
+ 259   1        gcIRSendSpeedCommandTime =  SPEEDCOMMANDTIME;
+ 260   1        Clr_IRSendEnFlag; 
+ 261   1        Clr_SpeedDelayOffStartFlag; 
+ 262   1      }
+ 263          
+ 264          
+ 265          
+ 266          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    611    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      9    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

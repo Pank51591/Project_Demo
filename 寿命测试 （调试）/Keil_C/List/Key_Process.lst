@@ -1,0 +1,327 @@
+C51 COMPILER V9.60.0.0   KEY_PROCESS                                                       04/26/2023 14:07:04 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE KEY_PROCESS
+OBJECT MODULE PLACED IN ..\Output\Key_Process.obj
+COMPILER INVOKED BY: D:\Program Files (x86)\keil_v5\C51\BIN\C51.EXE ..\User\Funtion\Key_Process.c LARGE OBJECTADVANCED O
+                    -PTIMIZE(9,SIZE) BROWSE INCDIR(..\FWLib\SC95F_Lib\inc;..\User;..\User\Funtion;..\SOC_DebugTouchKey_Lib;..\SOC_DebugTouchK
+                    -ey_Lib;..\IAP_Lib) DEFINE(SC95F8x1xB) DEBUG PRINT(..\List\Key_Process.lst) TABS(2) OBJECT(..\Output\Key_Process.obj)
+
+line level    source
+
+   1          #include "SC_System.h"
+   2          #include "Key_Process.h"
+   3          #include "Buzzer_Process.h"
+   4          #include "SR_EEPROM.h"
+   5          #include "IapOperation.h"
+   6          
+   7          extern void SC_PWM3_Init_2Khz(void);
+   8          
+   9          extern void SC_PWM3_Init_41Khz(void);
+  10          
+  11          extern void SC_PWM3_Init(void);
+  12          extern void SC_PWM3_Init_33Khz(void);
+  13          
+  14          extern uint8_t gcBurner1OpenCount;         
+  15          extern uint8_t gcBurner1CloseCount;         
+  16          
+  17          extern uint8_t gcBurner2OpenCount;         
+  18          extern uint8_t gcBurner2CloseCount;       
+  19          
+  20          extern uint8_t gcBurner3OpenCount;        
+  21          extern uint8_t gcBurner3CloseCount;        
+  22          
+  23          extern uint8_t gcBurner4OpenCount;         
+  24          extern uint8_t gcBurner4CloseCount;        
+  25          
+  26          extern uint8_t gcBurner5OpenCount;        
+  27          extern uint8_t gcBurner5CloseCount;       
+  28          
+  29          extern uint8_t gcBurner6OpenCount;        
+  30          extern uint8_t gcBurner6CloseCount;        
+  31          
+  32          extern uint8_t gcBurnerStatus;           
+  33          extern uint8_t gcBurnerOpenCount;   
+  34          
+  35          extern uint8_t gcKeyStatus;               
+  36          extern uint8_t gcKeyCount;                
+  37          extern uint8_t gcOneMsCount;              
+  38          extern uint32_t gcButton1State;            
+  39          extern uint8_t gcKeyValue;                 
+  40          extern uint16_t giKeySW6LongDownTime;      
+  41          extern uint8_t gcBuzzerTime; 
+  42          
+  43          extern uint8_t  gcPowerUpTime;
+  44          extern uint16_t giLEDPwmValue;
+  45          extern uint16_t giLEDFlashTime;
+  46          extern uint8_t gcLEDFlashCount;
+  47          extern uint8_t gcSpeedLevel;
+  48          
+  49          extern uint32_t gllIRSendData;                   //IR Send Data
+  50          extern uint32_t gllIRSendDataBak;                //IR Send Data
+  51          
+  52          extern uint8_t gcPWMCly;
+  53          extern uint8_t  gcPWMWaitTime;
+C51 COMPILER V9.60.0.0   KEY_PROCESS                                                       04/26/2023 14:07:04 PAGE 2   
+
+  54          extern uint16_t gcPWMCount;
+  55          extern uint8_t gcLEDFlashCount;
+  56          extern uint16_t giLEDFlashTime;
+  57          
+  58          extern uint8_t gcIRSendLightOnCount;
+  59          extern uint8_t gcIRSendLightOnTime;
+  60          
+  61          extern uint8_t gcIRSendLightOffCount ;        //灯开发送计数
+  62          extern uint8_t gcIRSendLightOffTime ;
+  63          
+  64          extern uint8_t gcIRSendSpeedOffCount;        
+  65          extern uint8_t gcIRSendSpeedOffTime;
+  66          
+  67          extern uint8_t gcIRSendSpeedCommandCount ;   
+  68          extern uint8_t gcIRSendSpeedCommandTime ;
+  69          
+  70          extern uint8_t gcSleepDelayTime;
+  71          
+  72          extern uint8_t gcBurnerStatusBak;
+  73          
+  74          extern uint8_t gchightbit; 
+  75          extern uint8_t gcmediumbit;
+  76          extern uint8_t gclowbit;
+  77          extern uint8_t gcfallowbit;
+  78          extern uint16_t  giTimesCount;
+  79          
+  80          extern uint8_t gcTestDay;
+  81          extern uint8_t gcKey;
+  82          extern uint8_t gcLedCount;
+  83          uint8_t gcKey_Count = 0;
+  84          
+  85          extern unsigned char Readbuff[12];
+  86          extern void IAP_Read_NByte(unsigned long Sadd,unsigned long Eadd,unsigned char Iapade);
+  87          extern uint8_t L1x,L2x,L3x,L4x;
+  88          extern uint8_t TestLowPower;
+  89          
+  90          
+  91          //=======================================================================================
+  92          //                  uint16_t Key_Check(void)
+  93          //                  10ms ????
+  94          //                  ??????
+  95          //=======================================================================================
+  96          uint8_t Key_Check(void)
+  97          {
+  98   1          gcButton1State = exKeyValueFlag;
+  99   1        
+ 100   1          switch (gcKeyStatus)
+ 101   1          {
+ 102   2              case 0:
+ 103   2              {
+ 104   3                  if (gcButton1State) 
+ 105   3                  {
+ 106   4                      gcKeyCount++;
+ 107   4                      if (gcKeyCount >= 1)
+ 108   4                      {
+ 109   5                          gcKeyCount = 0;
+ 110   5                          gcKeyStatus = 1;
+ 111   5      
+ 112   5                      }
+ 113   4                  }
+ 114   3              }
+ 115   2              break;
+C51 COMPILER V9.60.0.0   KEY_PROCESS                                                       04/26/2023 14:07:04 PAGE 3   
+
+ 116   2              case 1:
+ 117   2              {
+ 118   3                  if (gcButton1State)
+ 119   3                  {
+ 120   4                      Set_KeyDownFlag;
+ 121   4                      gcKeyValue = SW6_KEY_VALUE; 
+ 122   4                      if(gcBurnerStatus != 0)        //表示有炉头开启
+ 123   4                      {
+ 124   5      //                  if(BatLowWarrnFlag == 0)     //有炉头开启，并且不在低电压模式下
+ 125   5      //                  {
+ 126   5                          Set_KeyBuzzerFlag;     //按键音
+ 127   5      //                    Set_ToEEPROMFlag;          //测试用
+ 128   5      //                  }
+ 129   5                      }
+ 130   4                  }
+ 131   3                  gcKeyStatus = 2;
+ 132   3                  
+ 133   3                  Clr_Buzzer;
+ 134   3                  
+ 135   3              }
+ 136   2              break;
+ 137   2              case 2:
+ 138   2              {
+ 139   3                 gcSleepDelayTime = 0;
+ 140   3                  if (gcButton1State == 0) 
+ 141   3                  {
+ 142   4                      gcKeyCount++;
+ 143   4                      if (gcKeyCount >= 2)
+ 144   4                      {
+ 145   5                          gcKeyCount = 0;
+ 146   5                          gcKeyStatus = 0;
+ 147   5                          giKeySW6LongDownTime = 0;
+ 148   5                          if (KeyDownFlag) 
+ 149   5                          {
+ 150   6                              Set_KeyReturnFlag;
+ 151   6                              Set_KeyFlashFlag;
+ 152   6                              Set_ShortDownFlag;
+ 153   6                              gcKeyValue = SW6_KEY_VALUE;      
+ 154   6                          }
+ 155   5                      }     
+ 156   4                  }
+ 157   3                  else     
+ 158   3                  {
+ 159   4                      if (giKeySW6LongDownTime < SW6_LONGDOWN_TIME)
+ 160   4                      {
+ 161   5                          giKeySW6LongDownTime++;
+ 162   5                      }
+ 163   4                      
+ 164   4                      if (giKeySW6LongDownTime == SW6_LONGDOWN_TIME)
+ 165   4                      {               
+ 166   5                          
+ 167   5                          if (gcBurnerStatus != 0)
+ 168   5                          {
+ 169   6      //                        gcKeyStatus = 0;
+ 170   6                              gcKeyValue = SW6_KEY_LONG_VALUE; 
+ 171   6                              giKeySW6LongDownTime = SW6_LONGDOWN_TIME+1;
+ 172   6                              Clr_KeyDownFlag;
+ 173   6                              Set_KeyReturnFlag;
+ 174   6                          }
+ 175   5                        //  gcKeyStatus = 0;
+ 176   5                      }
+ 177   4                  } // end else
+C51 COMPILER V9.60.0.0   KEY_PROCESS                                                       04/26/2023 14:07:04 PAGE 4   
+
+ 178   3              }
+ 179   2              break;
+ 180   2          }
+ 181   1          
+ 182   1          if (KeyReturnFlag)
+ 183   1          {
+ 184   2              Clr_KeyReturnFlag;
+ 185   2              return gcKeyValue;
+ 186   2          }
+ 187   1          else
+ 188   1          {
+ 189   2              return 0x00;
+ 190   2          }
+ 191   1      }
+ 192          
+ 193          //=======================================================================================
+ 194          //                  void Key_Process(void)
+ 195          //                  10ms ????
+ 196          //                  ????
+ 197          //=======================================================================================
+ 198           void Key_Process(void)
+ 199           {
+ 200   1           switch (Key_Check())
+ 201   1           {
+ 202   2               case SW6_KEY_VALUE:
+ 203   2               {
+ 204   3               
+ 205   3                 if(DisPlayModeFlag)         //先长按之后，短按才有效
+ 206   3                 {
+ 207   4                   
+ 208   4      //             gchightbit = gcTestDay / 100;
+ 209   4      //             gcmediumbit = (gcTestDay - gchightbit *100)/10;
+ 210   4      //             gclowbit = (gcTestDay - gchightbit *100)%10; 
+ 211   4                   
+ 212   4                   if(ShortDownFlag)
+ 213   4                   {
+ 214   5                    gcKey_Count++;      //保证有按键再加
+ 215   5                    Clr_ShortDownFlag;
+ 216   5                   }
+ 217   4                   
+ 218   4                   switch(gcKey_Count)
+ 219   4                   {
+ 220   5                     case 1:   //显示高位
+ 221   5                     {
+ 222   6                       gcLedCount = 0;
+ 223   6                       gcKey = 1;Clr_LED;
+ 224   6                     }
+ 225   5                     break;
+ 226   5                     case 2:   //显示中位
+ 227   5                     {
+ 228   6                       gcLedCount = 0;
+ 229   6                       gcKey = 2;Clr_LED;
+ 230   6                     }
+ 231   5                     break;
+ 232   5                     case 3:   //显示低位
+ 233   5                     {
+ 234   6                       gcLedCount = 0;
+ 235   6                       gcKey = 3;Clr_LED;
+ 236   6                     }
+ 237   5                     break;
+ 238   5                      case 4:   //显示低位
+ 239   5                     {
+C51 COMPILER V9.60.0.0   KEY_PROCESS                                                       04/26/2023 14:07:04 PAGE 5   
+
+ 240   6                       gcLedCount = 0;Clr_LED;
+ 241   6                       gcKey = 4;
+ 242   6                       gcKey_Count = 0;       //清零，重新从高位开始显示
+ 243   6                     } 
+ 244   5                     break;
+ 245   5                   
+ 246   5                  }
+ 247   4         
+ 248   4      //          }
+ 249   4              }
+ 250   3                 
+ 251   3               }
+ 252   2               break;
+ 253   2               
+ 254   2               case SW6_KEY_LONG_VALUE:           
+ 255   2               {
+ 256   3                 Set_KeySureBuzzerFlag;
+ 257   3                             
+ 258   3                 if(KeyLongDownFlag)
+ 259   3                  {
+ 260   4                    Clr_DisPlayModeFlag;
+ 261   4                    Clr_KeyLongDownFlag;        //在测试模式下
+ 262   4                  }
+ 263   3                else
+ 264   3                  {
+ 265   4                                  
+ 266   4                    Set_KeyLongDownFlag;        //长按按键，进入查询次数
+ 267   4                    Set_DisPlayModeFlag;
+ 268   4                    Clr_LED;
+ 269   4                    
+ 270   4                     /*读数据*/
+ 271   4                  IAP_Read_NByte(0,10,EEPROM);
+ 272   4                 
+ 273   4                  L1x =  Readbuff[1];
+ 274   4                  L2x =  Readbuff[2];
+ 275   4                  L3x =  Readbuff[3];
+ 276   4                  L4x =  Readbuff[4]; 
+ 277   4                    
+ 278   4                  TestLowPower = Readbuff[5];
+ 279   4                              
+ 280   4                  }
+ 281   3      
+ 282   3              }
+ 283   2               break;
+ 284   2           }
+ 285   1           
+ 286   1           gcKeyValue = 0;
+ 287   1      
+ 288   1       }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    576    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      1    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+C51 COMPILER V9.60.0.0   KEY_PROCESS                                                       04/26/2023 14:07:04 PAGE 6   
+
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

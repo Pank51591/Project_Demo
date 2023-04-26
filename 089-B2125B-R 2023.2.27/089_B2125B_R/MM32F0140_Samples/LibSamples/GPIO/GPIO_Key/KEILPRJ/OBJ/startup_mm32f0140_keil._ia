@@ -1,0 +1,4 @@
+--cpu Cortex-M0 -g --apcs=interwork --pd "__MICROLIB SETA 1"
+-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\Include"
+--pd "__UVISION_VERSION SETA 533"
+--list .\obj\startup_mm32f0140_keil.lst --xref -o .\obj\startup_mm32f0140_keil.o --depend .\obj\startup_mm32f0140_keil.d "..\..\..\..\..\Device\MM32F0140\Source\KEIL_StartAsm\startup_mm32f0140_keil.s"

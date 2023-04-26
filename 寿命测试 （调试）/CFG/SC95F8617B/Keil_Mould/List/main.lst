@@ -1,0 +1,52 @@
+C51 COMPILER V9.01   MAIN                                                                  09/11/2020 09:24:37 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN ..\Output\main.obj
+COMPILER INVOKED BY: E:\Keil\C51\BIN\C51.EXE ..\User\main.c OMF2 BROWSE INCDIR(..\FWLib\SC95F_Lib\inc;..\User) DEFINE(SC
+                    -95F8x2x) DEBUG PRINT(..\List\main.lst) OBJECT(..\Output\main.obj)
+
+line level    source
+
+   1          //************************************************************
+   2          //  Copyright (c) 深圳市赛元微电子有限公司
+   3          //      文件名称        : main.c
+   4          //      模块功能        : 主函数
+   5          //  说明        : 包含MCU初始化函数及其头文件
+   6          //************************************************************
+   7          
+   8          #include "SC_Init.h"    //MCU初始化头文件，包含固件库所有头文件
+   9          #include "SC_it.h"
+  10          #include "..\Drivers\SCDriver_List.h"
+  11          int main(void)
+  12          {       
+  13   1      
+  14   1              /*** MCU初始化函数 ***/
+  15   1              SC_Init();
+  16   1      
+  17   1              while(1)
+  18   1              {
+  19   2                      
+  20   2              }
+  21   1      
+  22   1      }
+  23          
+  24          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =      5    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

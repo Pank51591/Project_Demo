@@ -1,0 +1,172 @@
+C51 COMPILER V9.60.0.0   TIME_PROCESS                                                      04/26/2023 14:07:04 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE TIME_PROCESS
+OBJECT MODULE PLACED IN ..\Output\Time_Process.obj
+COMPILER INVOKED BY: D:\Program Files (x86)\keil_v5\C51\BIN\C51.EXE ..\User\Funtion\Time_Process.c LARGE OBJECTADVANCED 
+                    -OPTIMIZE(9,SIZE) BROWSE INCDIR(..\FWLib\SC95F_Lib\inc;..\User;..\User\Funtion;..\SOC_DebugTouchKey_Lib;..\SOC_DebugTouch
+                    -Key_Lib;..\IAP_Lib) DEFINE(SC95F8x1xB) DEBUG PRINT(..\List\Time_Process.lst) TABS(2) OBJECT(..\Output\Time_Process.obj)
+
+line level    source
+
+   1          #include "SC_System.h"
+   2          #include "Burner_Process.h"
+   3          #include "Output_Process.h"
+   4          #include "Lifetest.h"
+   5          
+   6          extern uint8_t gcBurner1OpenCount;       
+   7          extern uint8_t gcBurner1CloseCount;       
+   8          
+   9          extern uint8_t gcBurner2OpenCount;        
+  10          extern uint8_t gcBurner2CloseCount;       
+  11          
+  12          extern uint8_t gcBurner3OpenCount;        
+  13          extern uint8_t gcBurner3CloseCount;      
+  14          
+  15          extern uint8_t gcBurner4OpenCount;         
+  16          extern uint8_t gcBurner4CloseCount;        
+  17          
+  18          extern uint8_t gcBurner5OpenCount;        
+  19          extern uint8_t gcBurner5CloseCount;        
+  20          
+  21          extern uint8_t gcBurner6OpenCount;         
+  22          extern uint8_t gcBurner6CloseCount;        
+  23          
+  24          extern uint8_t gcBurnerStatus;            
+  25          extern uint8_t gcBurnerOpenCount;   
+  26          
+  27          extern uint8_t gcKeyStatus;                
+  28          extern uint8_t gcKeyCount;                
+  29          extern uint8_t gcOneMsCount;               
+  30          extern uint32_t gcButton1State;             
+  31          extern uint8_t gcKeyValue;                
+  32          extern uint16_t giKeySW6LongDownTime;      
+  33          extern uint8_t gcBuzzerTime; 
+  34          extern uint8_t  gcPowerUpTime;
+  35          extern uint16_t giLEDPwmValue;
+  36          extern volatile uint16_t giLightDelayOffTime;  // 5minute
+  37          extern volatile uint16_t giSpeedDelayOffTime;  // 5minute
+  38          extern uint8_t gcIRSendLightOnCount;
+  39          extern uint8_t gcIRSendLightOnTime;
+  40          
+  41          extern uint8_t gcIRSendLightOffCount ;        //灯开发送计数
+  42          extern uint8_t gcIRSendLightOffTime ;
+  43          
+  44          extern uint8_t gcIRSendSpeedOffCount;        
+  45          extern uint8_t gcIRSendSpeedOffTime;
+  46          
+  47          extern uint8_t gcIRSendSpeedCommandCount ;   
+  48          extern uint8_t gcIRSendSpeedCommandTime ;
+  49          
+  50          extern uint8_t gclifeteststatus;
+  51          
+  52          uint8_t gcTenMsCount = 0;
+  53          uint8_t gcT10MsCount = 0;
+C51 COMPILER V9.60.0.0   TIME_PROCESS                                                      04/26/2023 14:07:04 PAGE 2   
+
+  54          
+  55          uint8_t gcT500MsCount = 0;
+  56          
+  57          //=======================================================================================
+  58          //                  void Time_Process(void)
+  59          //                  Run once in 125ms         
+  60          //                  Return value::No
+  61          //=======================================================================================
+  62           void Time_Process(void)
+  63           {
+  64   1         
+  65   1         gcT500MsCount++;
+  66   1         if (gcT500MsCount >= 2 * 2)
+  67   1         {
+  68   2           gcT500MsCount = 0;
+  69   2           if (LowFlashLedFlag)
+  70   2             Clr_LowFlashLedFlag;
+  71   2           else
+  72   2             Set_LowFlashLedFlag;
+  73   2         }
+  74   1          gcT10MsCount++;
+  75   1          if (gcT10MsCount >= 4  * 2 )   //按照define设定时间进行闪烁
+  76   1          {
+  77   2            gcT10MsCount = 0;
+  78   2             
+  79   2             if (HalfSecondFlag)
+  80   2             {
+  81   3                 Clr_HalfSecondFlag;
+  82   3             }
+  83   2             else
+  84   2             {
+  85   3                 Set_HalfSecondFlag;
+  86   3               
+  87   3             }
+  88   2          }
+  89   1           gcTenMsCount++;
+  90   1           if (gcTenMsCount >= 4  * 2)   // 1s
+  91   1           {
+  92   2               gcTenMsCount = 0;
+  93   2      
+  94   2               if (LightOffDelayStartFlag)      // 计时5分钟
+  95   2               {
+  96   3                 
+  97   3                   if (giLightDelayOffTime <= 60*5)
+  98   3                   giLightDelayOffTime++;
+  99   3                   if (giLightDelayOffTime == 60*5)
+ 100   3                   {
+ 101   4                       Set_KeySureBuzzerFlag;      //五分钟结束后，蜂鸣器响一声
+ 102   4                       giLightDelayOffTime = 0;
+ 103   4                       Clr_LightOffDelayStartFlag;
+ 104   4                       Set_SendLightOffCommandFlag; 
+ 105   4                       Clr_FirSendLightOnCommandFlag;
+ 106   4                     
+ 107   4                       gcIRSendLightOffTime = LIGHTOFFTIME;
+ 108   4                      // Set_SendLightOffCommandFlag; 
+ 109   4                     Set_SysWakeUpSleepFlag;
+ 110   4                     
+ 111   4                     gclifeteststatus = 0;  
+ 112   4                   }
+ 113   3               }
+ 114   2               else
+ 115   2               {
+C51 COMPILER V9.60.0.0   TIME_PROCESS                                                      04/26/2023 14:07:04 PAGE 3   
+
+ 116   3                   giLightDelayOffTime = 0;
+ 117   3               }
+ 118   2               
+ 119   2               if (SpeedDelayOffStartFlag)
+ 120   2               {
+ 121   3                   if (giSpeedDelayOffTime <= 60*5)
+ 122   3                   giSpeedDelayOffTime++;
+ 123   3                   if (giSpeedDelayOffTime == 60*5)
+ 124   3                   {
+ 125   4                       giSpeedDelayOffTime = 0;
+ 126   4                       Clr_SpeedDelayOffStartFlag;
+ 127   4                       Set_SendSpeedOffCommandFlag; 
+ 128   4                       Clr_FirstSendSpeedOffCommandFlag;
+ 129   4                        gcIRSendSpeedOffTime = SPEEDOFFTIME;
+ 130   4                        Set_SysWakeUpSleepFlag;
+ 131   4                   }
+ 132   3               }
+ 133   2               else
+ 134   2               {
+ 135   3                   giSpeedDelayOffTime = 0;
+ 136   3               }
+ 137   2           }
+ 138   1        
+ 139   1       }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    309    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      3    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

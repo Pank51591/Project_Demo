@@ -1,0 +1,1 @@
+"..\User\SR_EEPROM.c" LARGE OBJECTADVANCED OPTIMIZE (9,SIZE) BROWSE INCDIR(..\FWLib\SC95F_Lib\inc;..\User;..\User\Funtion;..\SOC_DebugTouchKey_Lib;..\SOC_DebugTouchKey_Lib;..\IAP_Lib) DEFINE (SC95F8x1xB) DEBUG PRINT(..\List\SR_EEPROM.lst) TABS (2) OBJECT(..\Output\SR_EEPROM.obj)
