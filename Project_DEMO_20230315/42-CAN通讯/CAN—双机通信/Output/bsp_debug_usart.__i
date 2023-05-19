@@ -1,0 +1,5 @@
+-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\User -I ..\..\Libraries\CMSIS -I ..\..\Libraries\FWlib\inc
+-I"D:\Program Files (x86)\keil_v5\Keil\STM32F1xx_DFP\2.4.0\Device\Include"
+-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\Include"
+-D__UVISION_VERSION="533" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER
+-o ..\..\output\bsp_debug_usart.o --omf_browse ..\..\output\bsp_debug_usart.crf --depend ..\..\output\bsp_debug_usart.d "..\..\User\usart\bsp_debug_usart.c"
