@@ -91,12 +91,12 @@ int main()
 
 				/*使用串口接收设置的时间，输入数字时注意末尾要加回车*/
 				Time_Regulate_Get(&set_time);
+				
 				/*用接收到的时间设置RTC*/
 				Time_Adjust(&set_time);
 				
 				//向备份寄存器写入标志
 				BKP_WriteBackupRegister(RTC_BKP_DRX, RTC_BKP_DATA);
-
 			} 			
 	  }
 }
