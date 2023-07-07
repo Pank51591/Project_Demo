@@ -20,7 +20,7 @@ int main(void)
 	char *pbuf;
 	uint16_t len;
 	
-	LED_GPIO_Config();	
+	//LED_GPIO_Config();	
 	
   /*初始化USART1*/
   Debug_USART_Config();
@@ -28,7 +28,7 @@ int main(void)
 	/*初始化485使用的串口，使用中断模式接收*/
 	RS485_Config();
 	
-	LED_BLUE;
+	//LED_BLUE;
 	
 	Key_GPIO_Config();
 	
@@ -47,7 +47,7 @@ int main(void)
 		{
 			uint16_t i;
 			
-			LED_BLUE;
+			//LED_BLUE;
 			
 			RS485_TX_EN();
 			
@@ -61,14 +61,14 @@ int main(void)
 			
 			RS485_RX_EN();         //PC2为低的时候，RS485为接收模式
 			
-			LED_GREEN;
+			//LED_GREEN;
 			
 			printf("\r\n发送数据成功！\r\n"); //使用调试串口打印调试信息到终端
 
 		}
 		else
 		{		
-			LED_BLUE;
+			//LED_BLUE;
 			
 			pbuf = get_rebuff(&len);
 			

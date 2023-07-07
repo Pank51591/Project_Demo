@@ -297,9 +297,9 @@ I (..\..\Libraries\FWlib\inc\stm32f10x_gpio.h)(0x616F8C0E)
 I (..\..\Libraries\FWlib\inc\stm32f10x_rcc.h)(0x616F8C0E)
 I (..\..\Libraries\FWlib\inc\stm32f10x_usart.h)(0x616F8C0E)
 I (..\..\Libraries\FWlib\inc\misc.h)(0x616F8C0E)
-I (..\..\User\./485/bsp_485.h)(0x6422D013)
+I (..\..\User\./485/bsp_485.h)(0x64A403BE)
 I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
-F (..\..\User\main.c)(0x6422C730)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\User -I ..\..\Libraries\CMSIS -I ..\..\Libraries\FWlib\inc-I"D:\Program Files (x86)\keil_v5\Keil\STM32F1xx_DFP\2.4.0\Device\Include"-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="533" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\..\output\main.o --omf_browse ..\..\output\main.crf --depend ..\..\output\main.d)
+F (..\..\User\main.c)(0x64A40581)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\User -I ..\..\Libraries\CMSIS -I ..\..\Libraries\FWlib\inc-I"D:\Program Files (x86)\keil_v5\Keil\STM32F1xx_DFP\2.4.0\Device\Include"-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="533" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\..\output\main.o --omf_browse ..\..\output\main.crf --depend ..\..\output\main.d)
 I (..\..\Libraries\CMSIS\stm32f10x.h)(0x616F8C0E)
 I (..\..\Libraries\CMSIS\core_cm3.h)(0x616F8C0E)
 I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
@@ -314,7 +314,7 @@ I (..\..\User\./usart/bsp_debug_usart.h)(0x616F8C0E)
 I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
 I (..\..\User\./led/bsp_led.h)(0x616F8C0E)
 I (..\..\User\./key/bsp_key.h)(0x6422D1AB)
-I (..\..\User\./485/bsp_485.h)(0x6422D013)
+I (..\..\User\./485/bsp_485.h)(0x64A403BE)
 F (..\..\User\led\bsp_led.c)(0x616F8C0E)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\User -I ..\..\Libraries\CMSIS -I ..\..\Libraries\FWlib\inc-I"D:\Program Files (x86)\keil_v5\Keil\STM32F1xx_DFP\2.4.0\Device\Include"-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="533" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\..\output\bsp_led.o --omf_browse ..\..\output\bsp_led.crf --depend ..\..\output\bsp_led.d)
 I (..\..\User\./led/bsp_led.h)(0x616F8C0E)
 I (..\..\Libraries\CMSIS\stm32f10x.h)(0x616F8C0E)
@@ -353,7 +353,7 @@ I (..\..\Libraries\FWlib\inc\stm32f10x_usart.h)(0x616F8C0E)
 I (..\..\Libraries\FWlib\inc\misc.h)(0x616F8C0E)
 I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
 F (..\..\User\485\bsp_485.c)(0x6422D015)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\User -I ..\..\Libraries\CMSIS -I ..\..\Libraries\FWlib\inc-I"D:\Program Files (x86)\keil_v5\Keil\STM32F1xx_DFP\2.4.0\Device\Include"-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="533" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\..\output\bsp_485.o --omf_browse ..\..\output\bsp_485.crf --depend ..\..\output\bsp_485.d)
-I (..\..\User\./485/bsp_485.h)(0x6422D013)
+I (..\..\User\./485/bsp_485.h)(0x64A403BE)
 I (..\..\Libraries\CMSIS\stm32f10x.h)(0x616F8C0E)
 I (..\..\Libraries\CMSIS\core_cm3.h)(0x616F8C0E)
 I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)

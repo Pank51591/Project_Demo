@@ -18,7 +18,6 @@
   ************************************************************************
   */
 
-
 /*
 *************************************************************************
 *                             包含的头文件
@@ -90,7 +89,7 @@ int main(void)
 	                &rt_flag1_thread_stack[0],        /* 线程栈起始地址 */
 	                sizeof(rt_flag1_thread_stack) );  /* 线程栈大小，单位为字节 */
 	/* 将线程插入到就绪列表 */
-	rt_list_insert_before( &(rt_thread_priority_table[0]),&(rt_flag1_thread.tlist) );
+	rt_list_insert_before( &(rt_thread_priority_table[0]),&(rt_flag1_thread.tlist) );    //线程链表节点
 	
 	/* 初始化线程 */
 	rt_thread_init( &rt_flag2_thread,                 /* 线程控制块 */
