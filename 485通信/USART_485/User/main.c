@@ -1,10 +1,16 @@
- 
+ /*********************************************
+ *  说明：这个代码里面的串口3可以接收，但是现在的问题是用串口工具的话，好像不能接收485转成串口的信号。
+ *
+ *
+ *
+ **********************************************/
 
 #include "stm32f10x.h"
 #include "./usart/bsp_debug_usart.h"
 #include "./led/bsp_led.h"   
 #include "./key/bsp_key.h"  
 #include "./485/bsp_485.h"
+#include "bsp_SysTick.h"
 
 #define Receive_Size 150
 #define Send_Size  150
@@ -24,8 +30,8 @@ uint8_t UART_Send_Buffer[Send_Size];
 int main(void)
 { 
 
-//	char *pbuf;
-	uint16_t len;
+  // char *pbuf;
+//	uint16_t len;
 	
 	//LED_GPIO_Config();	
 	
@@ -41,21 +47,9 @@ int main(void)
 	
   while(1)
   {
+		SysTick_Delay_Ms( 1000 );
 		
-		
-//		pbuf = get_rebuff(&len);
-		
-//		printf("\r\n接收到长度为%d的数据\r\n",len);	
-		
-//		RS485_DEBUG_ARRAY((uint8_t*)pbuf,len);      //通过串口显示485的数据
-		
-		
-//		clean_rebuff();
-//		
-//		/*加短暂延时，保证485发送数据完毕*/
-//		Delay(0xFFF);
-		
-		#if 0
+		#if 1
 		/*按一次按键发送一次数据*/
 		if(	Key_Scan(KEY1_GPIO_PORT,KEY1_GPIO_PIN) == KEY_ON)
 		{
@@ -63,7 +57,7 @@ int main(void)
 			
 			RS485_TX_EN();
 			
-			for(i=0;i<=0xff;i++)
+			for(i=0;i<=9;i++)
 			{
 				RS485_SendByte(i);	 //发送数据
 			}
@@ -72,20 +66,13 @@ int main(void)
 			Delay(0xFFF);
 			
 			RS485_RX_EN();         //PC2为低的时候，RS485为接收模式
-				
-			printf("\r\n发送数据成功！\r\n"); //使用调试串口打印调试信息到终端
+			
 
 		}
-		else    //没有按键按下，就是接收
-		{	  
-			pbuf = get_rebuff(&len);
-			
-			if(len>=256)
-			{
-				printf("\r\n接收到长度为%d的数据\r\n",len);	
-				RS485_DEBUG_ARRAY((uint8_t*)pbuf,len);
-				clean_rebuff();
-			}
+		else    //没有按键按下
+		{	 
+			/* 将串口3接收到的数据用串口1发送出去 */
+			usart1_send_data();
 		}
 		
 		#endif

@@ -15,3 +15,4 @@
 ..\..\output\main.o: ..\..\User\./led/bsp_led.h
 ..\..\output\main.o: ..\..\User\./key/bsp_key.h
 ..\..\output\main.o: ..\..\User\./485/bsp_485.h
+..\..\output\main.o: ..\..\User\SysTick\bsp_SysTick.h

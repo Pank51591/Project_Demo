@@ -153,6 +153,7 @@ volatile    uint16_t uart_p = 0;
 uint8_t     uart_buff[UART_BUFF_SIZE];
 extern  uint8_t     Flag_Receive;
 extern u16 Uart3MaxRxdByte;
+
 /*********************************************************
 ***函数名：bsp_RS485_IRQHandler
 ***函数功能：串口3接收中断
@@ -209,10 +210,42 @@ static void Delay(__IO uint32_t nCount)	 //简单的延时函数
 }
 
 
-//将485接收到的信号，通过串口1发送出去
-void Send_Buffer (void)
+/*********************************************************
+*** 函数名：USART1_Send_Buffer
+*** 函数功能：通过串口1发送字符串数据
+*** 参数：
+*** 返回值：
+**********************************************************/
+void USART1_Send_Buffer (uint8_t *Str, uint8_t len)
 {
+	uint8_t index ;
+	for(index=0; index < len; index++)
+	{
+		USART_SendData(USART1,Str[index]);
+		
+		while (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET)    // 等待发送完成标志
+		{	
+		}
+	}
 	
 }
 
+
+/*********************************************************
+***函数名：usart1_send_data
+***函数功能：将串口3接收到的数据，发送到串口1
+***参数：
+***返回值：
+**********************************************************/
+void usart1_send_data (void)
+{
+	uint8_t i;
+	for (i= 0;i < Uart3MaxRxdByte; i++)
+	{
+		UART_Send_Buffer[i] = UART_Receive_Buffer[i];
+		
+	}
+	
+	USART1_Send_Buffer(UART_Send_Buffer,Uart3MaxRxdByte);
+}
 

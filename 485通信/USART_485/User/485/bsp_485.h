@@ -100,4 +100,8 @@ void RS485_SendString(  uint8_t *str);
 void bsp_RS485_IRQHandler(void);
 char *get_rebuff(uint16_t *len);
 void clean_rebuff(void);
+void USART1_Send_Buffer (uint8_t *Str, uint8_t len);																			 
+void usart1_send_data (void);
+
+																			 
 #endif /* _RS485_H */

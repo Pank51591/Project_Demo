@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD, USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\User;..\..\Libraries\CMSIS;..\..\Libraries\FWlib\inc</IncludePath>
+              <IncludePath>..\..\User;..\..\Libraries\CMSIS;..\..\Libraries\FWlib\inc;..\..\User\SysTick</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -557,6 +557,11 @@
               <FileName>bsp_485.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\User\485\bsp_485.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_SysTick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\SysTick\bsp_SysTick.c</FilePath>
             </File>
           </Files>
         </Group>

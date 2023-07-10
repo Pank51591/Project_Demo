@@ -31,6 +31,7 @@
 "..\..\output\bsp_key.o"
 "..\..\output\bsp_debug_usart.o"
 "..\..\output\bsp_485.o"
+"..\..\output\bsp_systick.o"
 --library_type=microlib --strict --scatter "..\..\Output\485.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
