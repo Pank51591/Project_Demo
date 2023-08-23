@@ -1,1 +1,0 @@
-"..\FWLib\SC95F_Lib\src\sc95f_timer1.c" LARGE OBJECTADVANCED OPTIMIZE (9,SIZE) BROWSE INCDIR(..\FWLib\SC95F_Lib\inc;..\User;..\User\Funtion;..\SOC_DebugTouchKey_Lib;..\SOC_DebugTouchKey_Lib) DEFINE (SC95F8x1xB) DEBUG PRINT(..\List\sc95f_timer1.lst) TABS (2) OBJECT(..\Output\sc95f_timer1.obj)

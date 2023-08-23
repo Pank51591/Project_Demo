@@ -552,7 +552,7 @@ void ADC_DiscModeCmd(ADC_TypeDef* ADCx, FunctionalState NewState)
 
 /**
   * @brief  Configures for the selected ADC regular channel its corresponding
-  *         rank in the sequencer and its sample time.
+  *         rank in the sequencer and its sample time.   为所选ADC常规通道配置其在定序器中的相应等级及其采样时间。
   * @param  ADCx: where x can be 1, 2 or 3 to select the ADC peripheral.
   * @param  ADC_Channel: the ADC channel to configure. 
   *   This parameter can be one of the following values:
@@ -574,7 +574,7 @@ void ADC_DiscModeCmd(ADC_TypeDef* ADCx, FunctionalState NewState)
   *     @arg ADC_Channel_15: ADC Channel15 selected
   *     @arg ADC_Channel_16: ADC Channel16 selected
   *     @arg ADC_Channel_17: ADC Channel17 selected
-  * @param  Rank: The rank in the regular group sequencer. This parameter must be between 1 to 16.
+  * @param  Rank: The rank in the regular group sequencer. This parameter must be between 1 to 16.  常规组序列器中的秩。此参数必须介于1到16之间。
   * @param  ADC_SampleTime: The sample time value to be set for the selected channel. 
   *   This parameter can be one of the following values:
   *     @arg ADC_SampleTime_1Cycles5: Sample time equal to 1.5 cycles

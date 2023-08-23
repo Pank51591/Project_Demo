@@ -23,7 +23,7 @@ static void ADCx_GPIO_Config(void)
 }
 
 /**
-  * @brief  配置ADC工作模式
+  * @brief  配置ADC工作模式   （DMA的方式）
   * @param  无
   * @retval 无
   */
@@ -48,7 +48,7 @@ static void ADCx_Mode_Config(void)
 	DMA_InitStructure.DMA_MemoryBaseAddr = (uint32_t)&ADC_ConvertedValue;
 	
 	// 数据源来自外设
-	DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC;
+	DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC;        //数据的方向
 	
 	// 缓冲区大小为1，缓冲区的大小应该等于存储器的大小
 	DMA_InitStructure.DMA_BufferSize = 1;
@@ -106,7 +106,7 @@ static void ADCx_Mode_Config(void)
 	RCC_ADCCLKConfig(RCC_PCLK2_Div8); 
 	
 	// 配置 ADC 通道转换顺序为1，第一个转换，采样时间为55.5个时钟周期
-	ADC_RegularChannelConfig(ADCx, ADC_CHANNEL, 1, ADC_SampleTime_55Cycles5);
+	ADC_RegularChannelConfig(ADCx, ADC_CHANNEL, 1, ADC_SampleTime_55Cycles5);      //通道11
 	
 	// 使能ADC DMA 请求
 	ADC_DMACmd(ADCx, ENABLE);
