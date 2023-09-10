@@ -1,0 +1,4 @@
+[PinNumber]4[/PinNumber][UpperIndex]2[/UpperIndex][Iindex]0[/Iindex]
+[PinNumber]5[/PinNumber][UpperIndex]2[/UpperIndex][Iindex]0[/Iindex]
+[PinNumber]12[/PinNumber][UpperIndex]0[/UpperIndex][Iindex]2[/Iindex]
+[PinNumber]37[/PinNumber][UpperIndex]1[/UpperIndex][Iindex]0[/Iindex]

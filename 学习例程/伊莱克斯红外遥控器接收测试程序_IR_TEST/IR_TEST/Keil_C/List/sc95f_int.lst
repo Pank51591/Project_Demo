@@ -1,0 +1,284 @@
+C51 COMPILER V9.60.0.0   SC95F_INT                                                         09/08/2023 13:17:58 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE SC95F_INT
+OBJECT MODULE PLACED IN ..\Output\sc95f_int.obj
+COMPILER INVOKED BY: D:\Program Files (x86)\keil_v5\C51\BIN\C51.EXE ..\FWLib\SC95F_Lib\src\sc95f_int.c LARGE OBJECTADVAN
+                    -CED OPTIMIZE(9,SIZE) BROWSE INCDIR(..\FWLib\SC95F_Lib\inc;..\User;..\Project) DEFINE(SC95F8x1xB) DEBUG PRINT(..\List\sc9
+                    -5f_int.lst) TABS(2) OBJECT(..\Output\sc95f_int.obj)
+
+line level    source
+
+   1          //************************************************************
+   2          //  Copyright (c) 深圳市赛元微电子有限公司
+   3          //  文件名称  : sc95f_int.c
+   4          //  作者    :
+   5          //  模块功能  : INT固件库函数C文件
+   6          //  最后更正日期: 2020/8/13
+   7          //  版本    : V1.0
+   8          //  说明        :该文件仅适用于SC95F系列芯片
+   9          //*************************************************************
+  10          
+  11          #include "sc95f_int.h"
+  12          
+  13          /**************************************************
+  14          *函数名称:void INT_DeInit(INTx_Typedef INTx)
+  15          *函数功能:INTx相关寄存器复位至缺省值
+  16          *入口参数:
+  17          INTx_Typedef:INTx:INTx选择
+  18          *出口参数:void
+  19          **************************************************/
+  20          void INT_DeInit(INTx_Typedef INTx)
+  21          {
+  22   1        switch (INTx)
+  23   1        {
+  24   2        case INT0:
+  25   2          INT0R = 0x00;
+  26   2          INT0F = 0x00;
+  27   2          IE &= (~0X01);
+  28   2          IP &= ~0X01;
+  29   2          TCON &= (~0X02);
+  30   2          break;
+  31   2      
+  32   2        case INT1:
+  33   2          INT1R = 0x00;
+  34   2          INT1F = 0x00;
+  35   2          IE &= (~0X04);
+  36   2          IP &= ~0X04;
+  37   2          TCON &= (~0X08);
+  38   2          break;
+  39   2      
+  40   2        case INT2:
+  41   2          INT2R = 0x00;
+  42   2          INT2F = 0x00;
+  43   2          IE1 &= (~0X08);
+  44   2          IP1 &= ~0X08;
+  45   2          break;
+  46   2      
+  47   2        default:
+  48   2          break;
+  49   2        }
+  50   1      }
+  51          
+  52          /**************************************************
+  53          *函数名称:void INT0_SetTriggerMode(uint8_t INT0x, INT_TriggerMode_Typedef TriggerMode)
+C51 COMPILER V9.60.0.0   SC95F_INT                                                         09/08/2023 13:17:58 PAGE 2   
+
+  54          *函数功能:INT0x中断触发方式配置函数
+  55          *入口参数:
+  56            INT0x_Typedef:INT0x:INT0x选择（uint8_t作为入参，方便进行位或操作）
+  57            INT_TriggerMode_Typedef:TriggerMode:中断触发方式选择
+  58          *出口参数:void
+  59          **************************************************/
+  60          void INT0_SetTriggerMode(uint8_t INT0x, INT_TriggerMode_Typedef TriggerMode)
+  61          {
+  62   1        switch (TriggerMode)
+  63   1        {
+  64   2        case INT_TRIGGER_RISE_ONLY:
+  65   2          INT0R |= INT0x;
+  66   2          INT0F &= (~INT0x);
+  67   2          break;
+  68   2      
+  69   2        case INT_TRIGGER_FALL_ONLY:
+  70   2          INT0R &= (~INT0x);
+  71   2          INT0F |= INT0x;
+  72   2          break;
+  73   2      
+  74   2        case INT_TRIGGER_RISE_FALL:
+  75   2          INT0R |= INT0x;
+  76   2          INT0F |= INT0x;
+  77   2          break;
+  78   2      
+  79   2        case INT_TRIGGER_DISABLE:
+  80   2          INT0R &= (~INT0x);
+  81   2          INT0F &= (~INT0x);
+  82   2      
+  83   2        default:
+  84   2          break;
+  85   2        }
+  86   1      }
+  87          
+  88          /**************************************************
+  89          *函数名称:void INT1_SetTriggerMode(uint8_t INT1x, INT_TriggerMode_Typedef TriggerMode)
+  90          *函数功能:INT1x中断触发方式配置函数
+  91          *入口参数:
+  92          INT1x_Typedef:INT1x:INT1x选择（uint8_t作为入参，方便进行位或操作）
+  93          INT_TriggerMode_Typedef:TriggerMode:中断触发方式选择
+  94          *出口参数:void
+  95          **************************************************/
+  96          void INT1_SetTriggerMode(uint8_t INT1x, INT_TriggerMode_Typedef TriggerMode)
+  97          {
+  98   1        switch (TriggerMode)
+  99   1        {
+ 100   2        case INT_TRIGGER_RISE_ONLY:
+ 101   2          INT1R |= INT1x;
+ 102   2          INT1F &= (~INT1x);
+ 103   2          break;
+ 104   2      
+ 105   2        case INT_TRIGGER_FALL_ONLY:
+ 106   2          INT1R &= (~INT1x);
+ 107   2          INT1F |= INT1x;
+ 108   2          break;
+ 109   2      
+ 110   2        case INT_TRIGGER_RISE_FALL:
+ 111   2          INT1R |= INT1x;
+ 112   2          INT1F |= INT1x;
+ 113   2          break;
+ 114   2      
+ 115   2        case INT_TRIGGER_DISABLE:
+C51 COMPILER V9.60.0.0   SC95F_INT                                                         09/08/2023 13:17:58 PAGE 3   
+
+ 116   2          INT1R &= (~INT1x);
+ 117   2          INT1F &= (~INT1x);
+ 118   2      
+ 119   2        default:
+ 120   2          break;
+ 121   2        }
+ 122   1      }
+ 123          
+ 124          /**************************************************
+ 125          *函数名称:void INT2_SetTriggerMode(uint8_t INT2x, INT_TriggerMode_Typedef TriggerMode)
+ 126          *函数功能:INT2x中断触发方式配置函数
+ 127          *入口参数:
+ 128          INT2x_Typedef:INT2x:INT2x选择（uint8_t作为入参，方便进行位或操作）
+ 129          INT_TriggerMode_Typedef:TriggerMode:中断触发方式选择
+ 130          *出口参数:void
+ 131          **************************************************/
+ 132          void INT2_SetTriggerMode(uint8_t INT2x, INT_TriggerMode_Typedef TriggerMode)
+ 133          {
+ 134   1        switch (TriggerMode)
+ 135   1        {
+ 136   2        case INT_TRIGGER_RISE_ONLY:
+ 137   2          INT2R |= INT2x;
+ 138   2          INT2F &= (~INT2x);
+ 139   2          break;
+ 140   2      
+ 141   2        case INT_TRIGGER_FALL_ONLY:
+ 142   2          INT2R &= (~INT2x);
+ 143   2          INT2F |= INT2x;
+ 144   2          break;
+ 145   2      
+ 146   2        case INT_TRIGGER_RISE_FALL:
+ 147   2          INT2R |= INT2x;
+ 148   2          INT2F |= INT2x;
+ 149   2          break;
+ 150   2      
+ 151   2        case INT_TRIGGER_DISABLE:
+ 152   2          INT2R &= (~INT2x);
+ 153   2          INT2F &= (~INT2x);
+ 154   2      
+ 155   2        default:
+ 156   2          break;
+ 157   2        }
+ 158   1      }
+ 159          
+ 160          /*****************************************************
+ 161          *函数名称:void INT0_ITConfig(FunctionalState NewState, PriorityStatus Priority)
+ 162          *函数功能:INT0中断初始化
+ 163          *入口参数:
+ 164          FunctionalState:NewState:中断使能/关闭选择
+ 165          PriorityStatus:Priority:中断优先级选择
+ 166          *出口参数:void
+ 167          *****************************************************/
+ 168          void INT0_ITConfig(FunctionalState NewState, PriorityStatus Priority)
+ 169          {
+ 170   1        if (NewState != DISABLE)
+ 171   1        {
+ 172   2          IE |= 0X01;
+ 173   2        }
+ 174   1        else
+ 175   1        {
+ 176   2          IE &= (~0X01);
+ 177   2        }
+C51 COMPILER V9.60.0.0   SC95F_INT                                                         09/08/2023 13:17:58 PAGE 4   
+
+ 178   1      
+ 179   1        if (Priority == LOW)
+ 180   1        {
+ 181   2          IP &= ~0X01;
+ 182   2        }
+ 183   1        else
+ 184   1        {
+ 185   2          IP |= 0X01;
+ 186   2        }
+ 187   1      }
+ 188          
+ 189          /*****************************************************
+ 190          *函数名称:void INT1_ITConfig(FunctionalState NewState, PriorityStatus Priority)
+ 191          *函数功能:INT1中断初始化
+ 192          *入口参数:
+ 193          FunctionalState:NewState:中断使能/关闭选择
+ 194          PriorityStatus:Priority:中断优先级选择
+ 195          *出口参数:void
+ 196          *****************************************************/
+ 197          void INT1_ITConfig(FunctionalState NewState, PriorityStatus Priority)
+ 198          {
+ 199   1        if (NewState != DISABLE)
+ 200   1        {
+ 201   2          IE |= 0X04;
+ 202   2        }
+ 203   1        else
+ 204   1        {
+ 205   2          IE &= (~0X04);
+ 206   2        }
+ 207   1      
+ 208   1        if (Priority == LOW)
+ 209   1        {
+ 210   2          IP &= ~0X04;
+ 211   2        }
+ 212   1        else
+ 213   1        {
+ 214   2          IP |= 0X04;
+ 215   2        }
+ 216   1      }
+ 217          
+ 218          /*****************************************************
+ 219          *函数名称:void INT2_ITConfig(FunctionalState NewState, PriorityStatus Priority)
+ 220          *函数功能:INT0中断初始化
+ 221          *入口参数:
+ 222          FunctionalState:NewState:中断使能/关闭选择
+ 223          PriorityStatus:Priority:中断优先级选择
+ 224          *出口参数:void
+ 225          *****************************************************/
+ 226          void INT2_ITConfig(FunctionalState NewState, PriorityStatus Priority)
+ 227          {
+ 228   1        if (NewState != DISABLE)
+ 229   1        {
+ 230   2          IE1 |= 0X08;
+ 231   2        }
+ 232   1        else
+ 233   1        {
+ 234   2          IE1 &= (~0X08);
+ 235   2        }
+ 236   1      
+ 237   1        if (Priority == LOW)
+ 238   1        {
+ 239   2          IP1 &= ~0X08;
+C51 COMPILER V9.60.0.0   SC95F_INT                                                         09/08/2023 13:17:58 PAGE 5   
+
+ 240   2        }
+ 241   1        else
+ 242   1        {
+ 243   2          IP1 |= 0X08;
+ 244   2        }
+ 245   1      }
+ 246          
+ 247          /******************* (C) COPYRIGHT 2020 SinOne Microelectronics *****END OF FILE****/
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    317    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,15 @@
+"..\Output\main.obj",
+"..\Output\SC_Init.obj",
+"..\Output\SC_it.obj",
+"..\Output\SysFunVarDefine.obj",
+"..\Output\ir.obj",
+"..\Output\sc95f_timer0.obj",
+"..\Output\sc95f_usci0.obj",
+"..\Output\sc95f_int.obj",
+"..\Output\sc95f_gpio.obj",
+"..\Output\STARTUP.obj" 
+TO "..\Output\IR_TEST" 
+
+PRINT("..\List\IR_TEST.map") REMOVEUNUSED 
+CLASSES (CODE(C:0X100),
+CONST(C:0X100)) 

@@ -4,6 +4,7 @@
   * @author  MCD Application Team
   * @version V4.5.0
   * @date    07-March-2011
+	*
   * @brief   This file provides a set of functions needed to manage the SDIO SD 
   *          Card memory mounted on STM32xx-EVAL board (refer to stm32_eval.h
   *          to know about the boards supporting this memory). 

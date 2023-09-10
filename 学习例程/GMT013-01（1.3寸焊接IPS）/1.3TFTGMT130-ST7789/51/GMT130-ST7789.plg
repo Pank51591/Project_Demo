@@ -1,0 +1,117 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+D:\液晶屏驱动代码\源代码\2020.4.46\1.3TFTGMT130-ST7789\51\GMT130-ST7789.uvproj
+Project File Date:  04/19/2020
+
+<h2>Output:</h2>
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling 1.3TFTSPI7.c...
+1.3TFTSPI7.c(315): error C202: 'chines_word': undefined identifier
+1.3TFTSPI7.c(351): error C202: 'PIC_NUM': undefined identifier
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling 1.3TFTSPI7.c...
+1.3TFTSPI7.c(318): error C202: 'chines_word': undefined identifier
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling 1.3TFTSPI7.c...
+1.3TFTSPI7.c(318): error C202: 'chines_word': undefined identifier
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling 1.3TFTSPI7.c...
+1.3TFTSPI7.c(318): error C202: 'chines_word': undefined identifier
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling 1.3TFTSPI7.c...
+1.3TFTSPI7.c(384): error C202: 'china_char': undefined identifier
+1.3TFTSPI7.c(385): error C202: 'china_char': undefined identifier
+1.3TFTSPI7.c(386): error C202: 'china_char': undefined identifier
+1.3TFTSPI7.c(387): error C202: 'china_char': undefined identifier
+1.3TFTSPI7.c(388): error C202: 'china_char': undefined identifier
+1.3TFTSPI7.c(389): error C202: 'china_char': undefined identifier
+1.3TFTSPI7.c(390): error C202: 'china_char': undefined identifier
+1.3TFTSPI7.c(391): error C202: 'china_char': undefined identifier
+1.3TFTSPI7.c(392): error C202: 'china_char': undefined identifier
+1.3TFTSPI7.c(393): error C202: 'china_char': undefined identifier
+1.3TFTSPI7.c(394): error C202: 'china_char': undefined identifier
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling 1.3TFTSPI7.c...
+1.3TFTSPI7.c(384): warning C214: 'Argument': conversion: pointer to non-pointer
+1.3TFTSPI7.c(385): warning C214: 'Argument': conversion: pointer to non-pointer
+1.3TFTSPI7.c(386): warning C214: 'Argument': conversion: pointer to non-pointer
+1.3TFTSPI7.c(387): warning C214: 'Argument': conversion: pointer to non-pointer
+1.3TFTSPI7.c(388): warning C214: 'Argument': conversion: pointer to non-pointer
+1.3TFTSPI7.c(389): warning C214: 'Argument': conversion: pointer to non-pointer
+1.3TFTSPI7.c(390): warning C214: 'Argument': conversion: pointer to non-pointer
+1.3TFTSPI7.c(391): warning C214: 'Argument': conversion: pointer to non-pointer
+1.3TFTSPI7.c(392): warning C214: 'Argument': conversion: pointer to non-pointer
+1.3TFTSPI7.c(393): warning C214: 'Argument': conversion: pointer to non-pointer
+1.3TFTSPI7.c(394): warning C214: 'Argument': conversion: pointer to non-pointer
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_US?1_3TFTSPI7
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_PICTURE_DISPLAY?1_3TFTSPI7
+Program Size: data=30.0 xdata=0 code=1629
+creating hex file from "GMT130-ST7789"...
+"GMT130-ST7789" - 0 Error(s), 13 Warning(s).
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling 1.3TFTSPI7.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_US?1_3TFTSPI7
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_PICTURE_DISPLAY?1_3TFTSPI7
+Program Size: data=30.0 xdata=0 code=1628
+creating hex file from "GMT130-ST7789"...
+"GMT130-ST7789" - 0 Error(s), 2 Warning(s).
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling 1.3TFTSPI7.c...
+1.3TFTSPI7.c(207): warning C206: 'Delay_ms': missing function-prototype
+1.3TFTSPI7.c(207): error C267: 'Delay_ms': requires ANSI-style prototype
+Target not created
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling 1.3TFTSPI7.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_US?1_3TFTSPI7
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_PICTURE_DISPLAY?1_3TFTSPI7
+Program Size: data=30.0 xdata=0 code=1637
+creating hex file from "GMT130-ST7789"...
+"GMT130-ST7789" - 0 Error(s), 2 Warning(s).
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling 1.3TFTSPI7.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_US?1_3TFTSPI7
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_PICTURE_DISPLAY?1_3TFTSPI7
+Program Size: data=30.0 xdata=0 code=1623
+creating hex file from "GMT130-ST7789"...
+"GMT130-ST7789" - 0 Error(s), 2 Warning(s).
+Rebuild target 'Target 1'
+assembling STARTUP.A51...
+compiling 1.3TFTSPI7.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_US?1_3TFTSPI7
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_PICTURE_DISPLAY?1_3TFTSPI7
+Program Size: data=30.0 xdata=0 code=1620
+creating hex file from "GMT130-ST7789"...
+"GMT130-ST7789" - 0 Error(s), 2 Warning(s).

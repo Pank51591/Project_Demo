@@ -1,0 +1,11 @@
+INT10=False
+INT11=False
+INT12=False
+INT13=False
+INT14=False
+INT15=False
+INT16=True
+INT17=False
+中断触发方式=1
+中断设置=1
+$37$INT16模式:带上拉的输入
