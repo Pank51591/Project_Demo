@@ -22,6 +22,8 @@
 #include <unistd.h>
 #include <sys/stat.h>
 #include <compiler_private.h>
+
+
 #ifdef RT_USING_POSIX_STDIO
 #include "libc.h"
 #endif /* RT_USING_POSIX_STDIO */

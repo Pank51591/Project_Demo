@@ -265,7 +265,7 @@ RTM_EXPORT(rt_thread_self);
 
 /**
  * This function will start a thread and put it to system ready queue
- *
+ * 此函数将启动线程并将其放入系统就绪队列
  * @param thread the thread to be started
  *
  * @return the operation status, RT_EOK on OK, -RT_ERROR on error
