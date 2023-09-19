@@ -1,0 +1,11 @@
+..\Output\chipid.o: chipid.c
+..\Output\chipid.o: chipid.h
+..\Output\chipid.o: ..\CMSIS\stm32f10x.h
+..\Output\chipid.o: ..\CMSIS\core_cm3.h
+..\Output\chipid.o: D:\Keil\ARM\RV31\INC\stdint.h
+..\Output\chipid.o: ..\CMSIS\system_stm32f10x.h
+..\Output\chipid.o: ..\USER\stm32f10x_conf.h
+..\Output\chipid.o: ..\FWlib\inc\stm32f10x_gpio.h
+..\Output\chipid.o: ..\CMSIS\stm32f10x.h
+..\Output\chipid.o: ..\FWlib\inc\stm32f10x_rcc.h
+..\Output\chipid.o: ..\FWlib\inc\stm32f10x_usart.h

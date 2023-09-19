@@ -1,0 +1,6 @@
+-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I ..\CMSIS -I ..\FWlib\inc -I ..\USER
+-I"D:\Program Files (x86)\keil_v5\ARM\RV31\INC"
+-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\Include"
+-I"D:\Program Files (x86)\keil_v5\ARM\INC\ST\STM32F10x"
+-D__UVISION_VERSION="533" -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD
+-o ..\output\stm32f10x_gpio.o --omf_browse ..\output\stm32f10x_gpio.crf --depend ..\output\stm32f10x_gpio.d "..\FWlib\src\stm32f10x_gpio.c"
