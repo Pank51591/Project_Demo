@@ -1,10 +1,10 @@
 .\obj\delay.o: ..\SYSTEM\DELAY\delay.c
 .\obj\delay.o: ..\SYSTEM\DELAY\delay.h
-.\obj\delay.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\obj\delay.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\obj\delay.o: ..\..\..\Device\MM32F327x\Include\mm32_device.h
 .\obj\delay.o: ..\..\..\Device\MM32F327x\Include\mm32_reg.h
-.\obj\delay.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\obj\delay.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\obj\delay.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\delay.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\obj\delay.o: ..\..\..\Device\MM32F327x\Include\types.h
 .\obj\delay.o: ..\..\..\Device\MM32F327x\Include\reg_common.h
 .\obj\delay.o: ..\..\..\Device\CMSIS\KEIL_Core\core_cm3.h

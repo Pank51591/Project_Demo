@@ -1,10 +1,10 @@
 .\obj\led.o: ..\HARDWARE\LED\led.c
 .\obj\led.o: ..\HARDWARE\LED\led.h
-.\obj\led.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\obj\led.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\obj\led.o: ..\..\..\Device\MM32F327x\Include\mm32_device.h
 .\obj\led.o: ..\..\..\Device\MM32F327x\Include\mm32_reg.h
-.\obj\led.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\obj\led.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\obj\led.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\led.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\obj\led.o: ..\..\..\Device\MM32F327x\Include\types.h
 .\obj\led.o: ..\..\..\Device\MM32F327x\Include\reg_common.h
 .\obj\led.o: ..\..\..\Device\CMSIS\KEIL_Core\core_cm3.h

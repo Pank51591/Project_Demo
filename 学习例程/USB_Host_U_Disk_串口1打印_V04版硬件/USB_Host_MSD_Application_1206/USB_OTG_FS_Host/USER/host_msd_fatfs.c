@@ -377,7 +377,7 @@ static void USB_HostMsdFatfsUserReadWrite(usb_host_msd_fatfs_instance_t *msdFatf
     uint32_t freeClusterNumber;
     uint32_t index;
     uint32_t resultSize;
-    char *testString;
+    //char *testString;
     uint8_t driverNumberBuffer[3];
 
 #if _USE_LFN

@@ -1,9 +1,9 @@
 .\obj\sys.o: ..\SYSTEM\SYS\sys.c
-.\obj\sys.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\obj\sys.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\obj\sys.o: ..\..\..\Device\MM32F327x\Include\mm32_device.h
 .\obj\sys.o: ..\..\..\Device\MM32F327x\Include\mm32_reg.h
-.\obj\sys.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\obj\sys.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\obj\sys.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\sys.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\obj\sys.o: ..\..\..\Device\MM32F327x\Include\types.h
 .\obj\sys.o: ..\..\..\Device\MM32F327x\Include\reg_common.h
 .\obj\sys.o: ..\..\..\Device\CMSIS\KEIL_Core\core_cm3.h
@@ -68,4 +68,4 @@
 .\obj\sys.o: ..\..\..\Device\MM32F327x\HAL_Lib\Inc\HAL_eth_conf.h
 .\obj\sys.o: ..\..\..\Device\MM32F327x\HAL_Lib\Inc\hal_fsmc.h
 .\obj\sys.o: ..\..\..\Device\MM32F327x\Include\reg_fsmc.h
-.\obj\sys.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\sys.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

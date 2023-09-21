@@ -1,8 +1,8 @@
 .\obj\hal_pwr.o: ..\..\..\Device\MM32F327x\HAL_Lib\Src\hal_pwr.c
 .\obj\hal_pwr.o: ..\..\..\Device\MM32F327x\HAL_Lib\Inc\hal_pwr.h
 .\obj\hal_pwr.o: ..\..\..\Device\MM32F327x\Include\types.h
-.\obj\hal_pwr.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\obj\hal_pwr.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\obj\hal_pwr.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\hal_pwr.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\obj\hal_pwr.o: ..\..\..\Device\MM32F327x\Include\reg_pwr.h
 .\obj\hal_pwr.o: ..\..\..\Device\MM32F327x\Include\reg_syscfg.h
 .\obj\hal_pwr.o: ..\..\..\Device\MM32F327x\HAL_Lib\Inc\hal_rcc.h

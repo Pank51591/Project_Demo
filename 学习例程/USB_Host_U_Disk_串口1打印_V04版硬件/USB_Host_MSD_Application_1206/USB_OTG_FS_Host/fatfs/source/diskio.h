@@ -9,6 +9,8 @@
 extern "C" {
 #endif
 
+
+/************************(为每个物理设备定义一个物理编号)***************************/
 /* Definitions of physical drive number for each drive */
 #define RAMDISK         0       /* Example: ram disk to physical drive 0 */
 #define USBDISK         1       /* usb disk to physical drive 1 */

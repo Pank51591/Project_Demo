@@ -1,10 +1,10 @@
 .\obj\uart.o: ..\SYSTEM\UART\uart.c
-.\obj\uart.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\uart.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\obj\uart.o: ..\SYSTEM\UART\uart.h
 .\obj\uart.o: ..\..\..\Device\MM32F327x\Include\mm32_device.h
 .\obj\uart.o: ..\..\..\Device\MM32F327x\Include\mm32_reg.h
-.\obj\uart.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\obj\uart.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\obj\uart.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\uart.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\obj\uart.o: ..\..\..\Device\MM32F327x\Include\types.h
 .\obj\uart.o: ..\..\..\Device\MM32F327x\Include\reg_common.h
 .\obj\uart.o: ..\..\..\Device\CMSIS\KEIL_Core\core_cm3.h

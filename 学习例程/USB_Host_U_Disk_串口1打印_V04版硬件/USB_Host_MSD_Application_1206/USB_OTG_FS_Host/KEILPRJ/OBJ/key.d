@@ -1,10 +1,10 @@
 .\obj\key.o: ..\HARDWARE\KEY\key.c
 .\obj\key.o: ..\HARDWARE\KEY\key.h
-.\obj\key.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\obj\key.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\obj\key.o: ..\..\..\Device\MM32F327x\Include\mm32_device.h
 .\obj\key.o: ..\..\..\Device\MM32F327x\Include\mm32_reg.h
-.\obj\key.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\obj\key.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\obj\key.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\key.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\obj\key.o: ..\..\..\Device\MM32F327x\Include\types.h
 .\obj\key.o: ..\..\..\Device\MM32F327x\Include\reg_common.h
 .\obj\key.o: ..\..\..\Device\CMSIS\KEIL_Core\core_cm3.h

@@ -14,6 +14,10 @@
 /* This is an example of glue functions to attach various exsisting      */
 /* storage control modules to the FatFs module with a defined API.       */
 /*-----------------------------------------------------------------------*/
+
+/*************************(底层设备驱动函数)***************************/
+
+
 #include "ffconf.h"     /* FatFs configuration options */
 #include "ff.h"			/* Obtains integer types */
 #include "diskio.h"		/* Declarations of disk functions */
@@ -22,7 +26,7 @@
 #include "fsl_ram_disk.h"
 #endif
 
-#ifdef USB_DISK_ENABLE
+#ifdef USB_DISK_ENABLE      //U盘
 #include "fsl_usb_disk.h"
 #endif
 
@@ -43,7 +47,7 @@
 #endif
 
 /*-----------------------------------------------------------------------*/
-/* Get Drive Status                                                      */
+/* Get Drive Status      获取设备状态                                    */
 /*-----------------------------------------------------------------------*/
 
 DSTATUS disk_status (
@@ -58,7 +62,7 @@ DSTATUS disk_status (
             stat = ram_disk_status(pdrv);
             return stat;
 #endif
-#ifdef USB_DISK_ENABLE
+#ifdef USB_DISK_ENABLE       //U盘状态
         case USBDISK:
             stat = USB_HostMsdGetDiskStatus(pdrv);
             return stat;
@@ -92,11 +96,11 @@ DSTATUS disk_status (
 
 
 /*-----------------------------------------------------------------------*/
-/* Inidialize a Drive                                                    */
+/* Inidialize a Drive       设备初始化                                   */
 /*-----------------------------------------------------------------------*/
 
 DSTATUS disk_initialize (
-	BYTE pdrv				/* Physical drive nmuber to identify the drive */
+	BYTE pdrv				 /* Physical drive nmuber to identify the drive 用于识别驱动器的物理驱动器nmuber */
 )
 {
 	DSTATUS stat;
@@ -142,7 +146,7 @@ DSTATUS disk_initialize (
 
 
 /*-----------------------------------------------------------------------*/
-/* Read Sector(s)                                                        */
+/* Read Sector(s)      扇区读取                                          */
 /*-----------------------------------------------------------------------*/
 
 DRESULT disk_read (
@@ -196,7 +200,7 @@ DRESULT disk_read (
 
 
 /*-----------------------------------------------------------------------*/
-/* Write Sector(s)                                                       */
+/* Write Sector(s)     扇区写入                                          */
 /*-----------------------------------------------------------------------*/
 
 #if FF_FS_READONLY == 0
@@ -250,12 +254,12 @@ DRESULT disk_write (
 
 
 /*-----------------------------------------------------------------------*/
-/* Miscellaneous Functions                                               */
+/* Miscellaneous Functions     其他函数                                  */
 /*-----------------------------------------------------------------------*/
 
 DRESULT disk_ioctl (
 	BYTE pdrv,		/* Physical drive nmuber (0..) */
-	BYTE cmd,		/* Control code */
+	BYTE cmd,		  /* Control code 控制指令*/
 	void *buff		/* Buffer to send/receive control data */
 )
 {

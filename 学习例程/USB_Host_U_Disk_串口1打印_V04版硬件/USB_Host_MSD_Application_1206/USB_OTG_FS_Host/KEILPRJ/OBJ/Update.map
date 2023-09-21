@@ -3170,34 +3170,34 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       304         54          0          4          0      28925   app.o
-        32          6          0          4          0       1716   delay.o
-       184          0          0          0          0       4198   diskio.o
-      6806         86         10          2         12      53610   ff.o
-       954        114          0         10         20       7430   fsl_usb_disk_bm.o
-       208         40          0          0          0       6731   hal_flash.o
-       234          0          0          0          0       6257   hal_gpio.o
-       276         56          0         16          0       7457   hal_rcc.o
-       154          4          0          0          0       4309   hal_uart.o
-      3204       1284         79         22       2128      36681   host_msd_fatfs.o
-         0          0          0          0          0       5940   key.o
-       196         12          0          0          0       1163   led.o
-       172        110          0          0          0      19227   main.o
-        36          8        400          0       9216        932   startup_mm32f327x_keil.o
-       864         64          0         20          0     153236   system_mm32f327x.o
+       304         54          0          4          0      28933   app.o
+        32          6          0          4          0       1728   delay.o
+       184          0          0          0          0       4210   diskio.o
+      6806         86         10          2         12      53746   ff.o
+       954        114          0         10         20       7450   fsl_usb_disk_bm.o
+       208         40          0          0          0       6751   hal_flash.o
+       234          0          0          0          0       6273   hal_gpio.o
+       276         56          0         16          0       7489   hal_rcc.o
+       154          4          0          0          0       4329   hal_uart.o
+      3204       1284         79         22       2128      36665   host_msd_fatfs.o
+         0          0          0          0          0       5948   key.o
+       196         12          0          0          0       1167   led.o
+       172        110          0          0          0      19239   main.o
+        36          8        400          0       9216        936   startup_mm32f327x_keil.o
+       864         64          0         20          0     153188   system_mm32f327x.o
        244         18          0          0          0       3139   uart.o
-      3120         42         56          4          0      21579   usb_host_devices.o
-       130          0          0          0          0       2931   usb_host_framework.o
-      1124         30         28          0        940      15534   usb_host_hci.o
-      1026         10          0          0          0      12320   usb_host_hub.o
-      2926        124          0          8         16      14836   usb_host_hub_app.o
-      5426        234          4         24        512      25659   usb_host_khci.o
-      2584         52          0          0          0      16695   usb_host_msd.o
-       444         50          0          0          0       6008   usb_host_msd_ufi.o
-       424         10          0          0        208      18004   usb_osa_bm.o
+      3120         42         56          4          0      21639   usb_host_devices.o
+       130          0          0          0          0       2943   usb_host_framework.o
+      1124         30         28          0        940      15578   usb_host_hci.o
+      1026         10          0          0          0      12368   usb_host_hub.o
+      2926        124          0          8         16      14880   usb_host_hub_app.o
+      5426        234          4         24        512      25731   usb_host_khci.o
+      2584         52          0          0          0      16755   usb_host_msd.o
+       444         50          0          0          0       6028   usb_host_msd_ufi.o
+       424         10          0          0        208      18036   usb_osa_bm.o
 
     ----------------------------------------------------------------------
-     31118       2408        612        120      13436     474517   Object Totals
+     31118       2408        612        120      13436     475149   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         46          0          3          6        384          0   (incl. Padding)
 
@@ -3244,8 +3244,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     32752       2504        612        132      13436     463461   Grand Totals
-     32752       2504        612        132      13436     463461   ELF Image Totals
+     32752       2504        612        132      13436     464093   Grand Totals
+     32752       2504        612        132      13436     464093   ELF Image Totals
      32752       2504        612        132          0          0   ROM Totals
 
 ==============================================================================

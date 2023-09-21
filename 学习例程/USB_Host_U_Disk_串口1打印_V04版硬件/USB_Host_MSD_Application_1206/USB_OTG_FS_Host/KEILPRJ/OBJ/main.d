@@ -1,10 +1,10 @@
 .\obj\main.o: ..\USER\main.c
 .\obj\main.o: ..\HARDWARE\KEY\key.h
-.\obj\main.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\obj\main.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\obj\main.o: ..\..\..\Device\MM32F327x\Include\mm32_device.h
 .\obj\main.o: ..\..\..\Device\MM32F327x\Include\mm32_reg.h
-.\obj\main.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\obj\main.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\obj\main.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\main.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\obj\main.o: ..\..\..\Device\MM32F327x\Include\types.h
 .\obj\main.o: ..\..\..\Device\MM32F327x\Include\reg_common.h
 .\obj\main.o: ..\..\..\Device\CMSIS\KEIL_Core\core_cm3.h
@@ -71,7 +71,7 @@
 .\obj\main.o: ..\HARDWARE\LED\led.h
 .\obj\main.o: ..\SYSTEM\DELAY\delay.h
 .\obj\main.o: ..\SYSTEM\UART\uart.h
-.\obj\main.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\main.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\obj\main.o: ..\SYSTEM\SYS\sys.h
 .\obj\main.o: ..\USER\usb_host_config.h
 .\obj\main.o: ..\usb\include\usb.h

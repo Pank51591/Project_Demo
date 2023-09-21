@@ -593,11 +593,12 @@ ARM Macro Assembler    Page 10
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
 ork --depend=.\obj\startup_mm32f327x_keil.d -o.\obj\startup_mm32f327x_keil.o -I
-"D:\Program Files (x86)\keil_v5\MindMotion\MM32F3270_DFP\1.0.5\Device\MM32F327x
-\Include" -I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\Include" --predefine="__M
-ICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 533" --predefine="MM32F3273
-G8P SETA 1" --predefine="__MM3U1 SETA 1" --list=.\obj\startup_mm32f327x_keil.ls
-t ..\..\..\Device\MM32F327x\Source\KEIL_StartAsm\startup_mm32f327x_keil.s
+.\RTE\_MM32Series -I"D:\Program Files\Keil_v5\MindMotion\MM32F3270_DFP\1.0.5\De
+vice\MM32F327x\Include" -I"D:\Program Files\Keil_v5\ARM\CMSIS\Include" --predef
+ine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 527" --predefine="M
+M32F3273G8P SETA 1" --predefine="__MM3U1 SETA 1" --list=.\obj\startup_mm32f327x
+_keil.lst ..\..\..\Device\MM32F327x\Source\KEIL_StartAsm\startup_mm32f327x_keil
+.s
 
 
 

@@ -2,21 +2,21 @@
 .\obj\app.o: ..\USER\usb_host_config.h
 .\obj\app.o: ..\usb\host\usb_host.h
 .\obj\app.o: ..\usb\include\usb.h
-.\obj\app.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\obj\app.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\app.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\app.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\obj\app.o: ..\usb\osa\usb_osa.h
 .\obj\app.o: ..\usb\osa\usb_osa_bm.h
 .\obj\app.o: ..\usb\include\usb_misc.h
 .\obj\app.o: ..\..\..\Device\MM32F327x\Include\types.h
-.\obj\app.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\obj\app.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\obj\app.o: ..\usb\include\usb_spec.h
 .\obj\app.o: ..\usb\host\usb_host_framework.h
 .\obj\app.o: ..\USER\host_msd_fatfs.h
 .\obj\app.o: ..\usb\host\class\usb_host_msd.h
 .\obj\app.o: ..\USER\fsl_common.h
-.\obj\app.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\assert.h
-.\obj\app.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\obj\app.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\obj\app.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\assert.h
+.\obj\app.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\obj\app.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\obj\app.o: ..\..\..\Device\MM32F327x\HAL_Lib\Inc\HAL_device.h
 .\obj\app.o: ..\..\..\Device\MM32F327x\Include\mm32_device.h
 .\obj\app.o: ..\..\..\Device\MM32F327x\Include\mm32_reg.h

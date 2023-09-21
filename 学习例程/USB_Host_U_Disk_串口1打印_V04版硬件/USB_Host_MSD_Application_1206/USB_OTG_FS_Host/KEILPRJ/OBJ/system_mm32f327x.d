@@ -1,8 +1,8 @@
 .\obj\system_mm32f327x.o: ..\..\..\Device\MM32F327x\Source\system_mm32f327x.c
 .\obj\system_mm32f327x.o: ..\..\..\Device\MM32F327x\Include\mm32_device.h
 .\obj\system_mm32f327x.o: ..\..\..\Device\MM32F327x\Include\mm32_reg.h
-.\obj\system_mm32f327x.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\obj\system_mm32f327x.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\obj\system_mm32f327x.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\system_mm32f327x.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\obj\system_mm32f327x.o: ..\..\..\Device\MM32F327x\Include\types.h
 .\obj\system_mm32f327x.o: ..\..\..\Device\MM32F327x\Include\reg_common.h
 .\obj\system_mm32f327x.o: ..\..\..\Device\CMSIS\KEIL_Core\core_cm3.h

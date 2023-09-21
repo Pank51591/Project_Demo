@@ -81,6 +81,13 @@ static inline void USB_HostControllerTaskFunction(usb_host_handle hostHandle)
 #endif /* USB_HOST_CONFIG_OHCI */
 }
 
+
+/*************************************************************
+***函数名：
+***函数功能：USB 大容量存储器的初始化
+***输入：
+***输出：
+**************************************************************/
 DSTATUS USB_HostMsdInitializeDisk(BYTE pdrv)
 {
     uint32_t address;
@@ -148,11 +155,18 @@ DSTATUS USB_HostMsdInitializeDisk(BYTE pdrv)
     return 0x00;
 }
 
+
 DSTATUS USB_HostMsdGetDiskStatus(BYTE pdrv)
 {
     return 0x00;
 }
 
+/*************************************************************
+***函数名：
+***函数功能：读取U盘的扇区
+***输入：pdrv：设备类型，（未用到） *buff 缓存区的地址指针   
+***输出：
+**************************************************************/
 DRESULT USB_HostMsdReadDisk(BYTE pdrv, BYTE *buff, LBA_t sector, UINT count)
 {
     DRESULT fatfs_code = RES_ERROR;
@@ -222,6 +236,12 @@ DRESULT USB_HostMsdReadDisk(BYTE pdrv, BYTE *buff, LBA_t sector, UINT count)
     return fatfs_code;
 }
 
+/*************************************************************
+***函数名：USB_HostMsdWriteDisk
+***函数功能：往U盘里面写入数据
+***输入：
+***输出：
+**************************************************************/
 DRESULT USB_HostMsdWriteDisk(BYTE pdrv, const BYTE *buff, LBA_t sector, UINT count)
 {
     DRESULT fatfs_code = RES_ERROR;
@@ -291,6 +311,12 @@ DRESULT USB_HostMsdWriteDisk(BYTE pdrv, const BYTE *buff, LBA_t sector, UINT cou
     return fatfs_code;
 }
 
+/*************************************************************
+***函数名：
+***函数功能：U盘的其他操作
+***输入：
+***输出：
+**************************************************************/
 DRESULT USB_HostMsdIoctlDisk(BYTE pdrv, BYTE cmd, void *buff)
 {
     uint32_t address;
@@ -301,7 +327,7 @@ DRESULT USB_HostMsdIoctlDisk(BYTE pdrv, BYTE cmd, void *buff)
     switch (cmd)
     {
         case GET_SECTOR_COUNT:
-        case GET_SECTOR_SIZE:
+        case GET_SECTOR_SIZE:      //扇区的大小
             if (!buff)
             {
                 return RES_ERROR;
