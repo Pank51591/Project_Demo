@@ -100,8 +100,6 @@ The upgrade file name must be "Update.bin"
         USB_HostTaskFn(g_HostHandle);
 			
         USB_HostMsdTask(&g_MsdFatfsInstance);
-			  
-//			 printf("中国美国中国美国 \r\n");
 			
     }
 		

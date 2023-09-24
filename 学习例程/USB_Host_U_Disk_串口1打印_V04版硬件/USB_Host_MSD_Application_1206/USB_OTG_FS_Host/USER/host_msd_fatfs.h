@@ -28,16 +28,16 @@ typedef enum _usb_host_msd_run_state
     kUSB_HostMsdRunMassStorageTest   /*!< execute mass storage test code */
 } usb_host_msd_run_state_t;
 
-/*! @brief USB host msd fatfs instance structure */
+/*! @brief USB host msd fatfs instance structure USB主机msd-fatfs实例结构*/
 typedef struct _usb_host_msd_fatfs_instance
 {
     usb_host_configuration_handle configHandle; /*!< configuration handle */
     usb_device_handle deviceHandle;             /*!< device handle */
     usb_host_class_handle classHandle;          /*!< class handle */
     usb_host_interface_handle interfaceHandle;  /*!< interface handle */
-    uint8_t prevDeviceState;                    /*!< device attach/detach previous status */
-    uint8_t deviceState;                        /*!< device attach/detach status */
-    uint8_t runWaitState; /*!< application wait status, go to next run status when the wait status success */
+    uint8_t prevDeviceState;                    /*!< device attach/detach previous status 设备连接/分离以前的状态*/
+    uint8_t deviceState;                        /*!< device attach/detach status 设备连接/分离状态*/
+    uint8_t runWaitState; /*!< application wait status, go to next run status when the wait status success 应用程序等待状态，等待状态成功时转到下一个运行状态*/
     uint8_t runState;     /*!< application run status */
 } usb_host_msd_fatfs_instance_t;
 

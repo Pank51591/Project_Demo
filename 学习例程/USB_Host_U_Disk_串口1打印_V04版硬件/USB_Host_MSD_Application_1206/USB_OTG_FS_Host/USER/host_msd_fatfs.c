@@ -805,7 +805,7 @@ static void USB_HostMsdFatfsUserReadWrite(usb_host_msd_fatfs_instance_t *msdFatf
 void USB_HostMsdTask(void *arg)
 {
     usb_status_t status;
-    usb_host_msd_fatfs_instance_t *msdFatfsInstance = (usb_host_msd_fatfs_instance_t *)arg;
+    usb_host_msd_fatfs_instance_t *msdFatfsInstance = (usb_host_msd_fatfs_instance_t *)arg;   //各种状态状态的结构体
 
     if (msdFatfsInstance->deviceState != msdFatfsInstance->prevDeviceState)
     {
@@ -827,7 +827,7 @@ void USB_HostMsdTask(void *arg)
                 msdFatfsInstance->runState = kUSB_HostMsdRunSetInterface;
                 break;
 
-            case kStatus_DEV_Detached: /* device is detached */
+            case kStatus_DEV_Detached: /* device is detached 设备已分离*/
                 msdFatfsInstance->deviceState = kStatus_DEV_Idle;
                 msdFatfsInstance->runState    = kUSB_HostMsdRunIdle;
                 USB_HostMsdDeinit(msdFatfsInstance->deviceHandle,
@@ -835,8 +835,6 @@ void USB_HostMsdTask(void *arg)
                 msdFatfsInstance->classHandle = NULL;
 
                 usb_echo("mass storage device detached\r\n");
-						
-//						    printf("中国\r\n");
 						
                 break;
 

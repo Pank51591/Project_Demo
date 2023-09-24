@@ -127,16 +127,16 @@ typedef DWORD LBA_t;
 
 
 
-/* Filesystem object structure (FATFS) */
+/* Filesystem object structure (FATFS) 文件系统对象结构（FATFS）*/
 
 typedef struct {
 	BYTE	fs_type;		/* Filesystem type (0:not mounted) */
-	BYTE	pdrv;			/* Associated physical drive */
+	BYTE	pdrv;			  /* Associated physical drive */
 	BYTE	n_fats;			/* Number of FATs (1 or 2) */
 	BYTE	wflag;			/* win[] flag (b0:dirty) */
 	BYTE	fsi_flag;		/* FSINFO flags (b7:disabled, b0:dirty) */
-	WORD	id;				/* Volume mount ID */
-	WORD	n_rootdir;		/* Number of root directory entries (FAT12/16) */
+	WORD	id;				  /* Volume mount ID */
+	WORD	n_rootdir;	/* Number of root directory entries (FAT12/16) */
 	WORD	csize;			/* Cluster size [sectors] */
 #if FF_MAX_SS != FF_MIN_SS
 	WORD	ssize;			/* Sector size (512, 1024, 2048 or 4096) */
@@ -151,8 +151,8 @@ typedef struct {
 	FF_SYNC_t	sobj;		/* Identifier of sync object */
 #endif
 #if !FF_FS_READONLY
-	DWORD	last_clst;		/* Last allocated cluster */
-	DWORD	free_clst;		/* Number of free clusters */
+	DWORD	last_clst;		/* Last allocated cluster 上次分配的群集*/
+	DWORD	free_clst;		/* Number of free clusters 可用群集数*/
 #endif
 #if FF_FS_RPATH
 	DWORD	cdir;			/* Current directory start cluster (0:root) */

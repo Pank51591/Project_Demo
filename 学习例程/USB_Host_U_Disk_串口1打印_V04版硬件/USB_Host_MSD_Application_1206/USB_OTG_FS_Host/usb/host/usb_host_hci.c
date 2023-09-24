@@ -219,6 +219,12 @@ static usb_host_instance_t* USB_HostGetInstance(void)
     return NULL;
 }
 
+/*************************************************************
+***函数名：
+***函数功能：释放实例
+***输入：
+***输出：
+**************************************************************/
 static void USB_HostReleaseInstance(usb_host_instance_t* hostInstance)
 {
     USB_OSA_SR_ALLOC();
@@ -273,14 +279,14 @@ usb_status_t USB_HostInit(uint8_t controllerId, usb_host_handle* hostHandle, hos
         return kStatus_USB_InvalidHandle;    //无效
     }
 
-    /* get khci/ehci API table */
+    /* get khci/ehci API table    获取khci/ehci API表*/
     USB_HostGetControllerInterface(controllerId, &hostInstance->controllerTable);
     if (hostInstance->controllerTable == NULL) {
-        USB_HostReleaseInstance(hostInstance);
+        USB_HostReleaseInstance(hostInstance);    //释放实例
         return kStatus_USB_ControllerNotFound;
     }
 
-    /* judge the controller interface one time at here */
+    /* judge the controller interface one time at here 在这里判断一次控制器接口*/
     if ((hostInstance->controllerTable->controllerCreate == NULL) ||
             (hostInstance->controllerTable->controllerDestory == NULL) ||
             (hostInstance->controllerTable->controllerOpenPipe == NULL) ||
@@ -303,7 +309,7 @@ usb_status_t USB_HostInit(uint8_t controllerId, usb_host_handle* hostHandle, hos
         return kStatus_USB_Error;
     }
 
-    /* initialize transfer list */
+    /* initialize transfer list 初始化传输列表*/
 
     hostInstance->transferHead = &hostInstance->transferList[0];
     transferPrev = hostInstance->transferHead;

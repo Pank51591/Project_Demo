@@ -355,7 +355,7 @@ I (..\..\..\Device\MM32F327x\HAL_Lib\Inc\hal_eth.h)(0x650C2A3F)
 I (..\..\..\Device\MM32F327x\HAL_Lib\Inc\HAL_eth_conf.h)(0x650C2A3F)
 I (..\..\..\Device\MM32F327x\HAL_Lib\Inc\hal_fsmc.h)(0x650C2A3F)
 I (..\..\..\Device\MM32F327x\Include\reg_fsmc.h)(0x650C2A40)
-F (..\USER\main.c)(0x650C2A40)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\..\Device\CMSIS\KEIL_Core -I ..\..\..\Device\MM32F327x\Include -I ..\..\..\Device\MM32F327x\HAL_Lib\Inc -I ..\USER -I ..\SYSTEM\UART -I ..\SYSTEM\SYS -I ..\SYSTEM\DELAY -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\usb -I ..\usb\osa -I ..\usb\device -I ..\usb\host\class -I ..\utilities\io -I ..\utilities\str -I ..\utilities\log -I ..\usb\include -I ..\utilities -I ..\usb\host -I ..\fatfs\source -I ..\fatfs\source\fsl_usb_disk --diag_suppress=188-I.\RTE\_MM32Series-I"D:\Program Files\Keil_v5\MindMotion\MM32F3270_DFP\1.0.5\Device\MM32F327x\Include"-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="527" -DMM32F3273G8P -DUSE_STDPERIPH_DRIVER -DUSB_STACK_BM -D__KEIL-o .\obj\main.o --omf_browse .\obj\main.crf --depend .\obj\main.d)
+F (..\USER\main.c)(0x650FF6D7)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\..\Device\CMSIS\KEIL_Core -I ..\..\..\Device\MM32F327x\Include -I ..\..\..\Device\MM32F327x\HAL_Lib\Inc -I ..\USER -I ..\SYSTEM\UART -I ..\SYSTEM\SYS -I ..\SYSTEM\DELAY -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\usb -I ..\usb\osa -I ..\usb\device -I ..\usb\host\class -I ..\utilities\io -I ..\utilities\str -I ..\utilities\log -I ..\usb\include -I ..\utilities -I ..\usb\host -I ..\fatfs\source -I ..\fatfs\source\fsl_usb_disk --diag_suppress=188-I.\RTE\_MM32Series-I"D:\Program Files\Keil_v5\MindMotion\MM32F3270_DFP\1.0.5\Device\MM32F327x\Include"-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="527" -DMM32F3273G8P -DUSE_STDPERIPH_DRIVER -DUSB_STACK_BM -D__KEIL-o .\obj\main.o --omf_browse .\obj\main.crf --depend .\obj\main.d)
 I (..\HARDWARE\KEY\key.h)(0x650C2A40)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\string.h)(0x5E8E2EB2)
 I (..\..\..\Device\MM32F327x\Include\mm32_device.h)(0x650C2A40)
@@ -437,9 +437,9 @@ I (..\usb\include\usb_misc.h)(0x650C2A40)
 I (..\usb\include\usb_spec.h)(0x650C2A40)
 I (..\usb\host\usb_host.h)(0x650C2A40)
 I (..\usb\host\usb_host_framework.h)(0x650C2A40)
-I (..\USER\host_msd_fatfs.h)(0x650C2A40)
+I (..\USER\host_msd_fatfs.h)(0x650FFE8C)
 I (..\usb\host\class\usb_host_msd.h)(0x650C2A40)
-F (..\USER\app.c)(0x650C2A40)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\..\Device\CMSIS\KEIL_Core -I ..\..\..\Device\MM32F327x\Include -I ..\..\..\Device\MM32F327x\HAL_Lib\Inc -I ..\USER -I ..\SYSTEM\UART -I ..\SYSTEM\SYS -I ..\SYSTEM\DELAY -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\usb -I ..\usb\osa -I ..\usb\device -I ..\usb\host\class -I ..\utilities\io -I ..\utilities\str -I ..\utilities\log -I ..\usb\include -I ..\utilities -I ..\usb\host -I ..\fatfs\source -I ..\fatfs\source\fsl_usb_disk --diag_suppress=188-I.\RTE\_MM32Series-I"D:\Program Files\Keil_v5\MindMotion\MM32F3270_DFP\1.0.5\Device\MM32F327x\Include"-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="527" -DMM32F3273G8P -DUSE_STDPERIPH_DRIVER -DUSB_STACK_BM -D__KEIL-o .\obj\app.o --omf_browse .\obj\app.crf --depend .\obj\app.d)
+F (..\USER\app.c)(0x650FFEA1)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\..\Device\CMSIS\KEIL_Core -I ..\..\..\Device\MM32F327x\Include -I ..\..\..\Device\MM32F327x\HAL_Lib\Inc -I ..\USER -I ..\SYSTEM\UART -I ..\SYSTEM\SYS -I ..\SYSTEM\DELAY -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\usb -I ..\usb\osa -I ..\usb\device -I ..\usb\host\class -I ..\utilities\io -I ..\utilities\str -I ..\utilities\log -I ..\usb\include -I ..\utilities -I ..\usb\host -I ..\fatfs\source -I ..\fatfs\source\fsl_usb_disk --diag_suppress=188-I.\RTE\_MM32Series-I"D:\Program Files\Keil_v5\MindMotion\MM32F3270_DFP\1.0.5\Device\MM32F327x\Include"-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="527" -DMM32F3273G8P -DUSE_STDPERIPH_DRIVER -DUSB_STACK_BM -D__KEIL-o .\obj\app.o --omf_browse .\obj\app.crf --depend .\obj\app.d)
 I (..\USER\usb_host_config.h)(0x650C2A40)
 I (..\usb\host\usb_host.h)(0x650C2A40)
 I (..\usb\include\usb.h)(0x650C2A40)
@@ -452,7 +452,7 @@ I (..\..\..\Device\MM32F327x\Include\types.h)(0x650C2A40)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5E8E2EB2)
 I (..\usb\include\usb_spec.h)(0x650C2A40)
 I (..\usb\host\usb_host_framework.h)(0x650C2A40)
-I (..\USER\host_msd_fatfs.h)(0x650C2A40)
+I (..\USER\host_msd_fatfs.h)(0x650FFE8C)
 I (..\usb\host\class\usb_host_msd.h)(0x650C2A40)
 I (..\USER\fsl_common.h)(0x650C2A40)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\assert.h)(0x5E8E2EB2)
@@ -492,11 +492,11 @@ I (..\..\..\Device\MM32F327x\Include\reg_uart.h)(0x650C2A40)
 I (..\..\..\Device\MM32F327x\Include\reg_usb_otg_fs.h)(0x650C2A40)
 I (..\..\..\Device\MM32F327x\Include\reg_wwdg.h)(0x650C2A40)
 I (..\..\..\Device\MM32F327x\Include\mm32_reg_redefine_v1.h)(0x650C2A40)
-I (..\USER\app.h)(0x650C2A40)
+I (..\USER\app.h)(0x650FFE8A)
 I (..\..\..\Device\MM32F327x\HAL_Lib\Inc\HAL_gpio.h)(0x650C2A3F)
 I (..\..\..\Device\MM32F327x\HAL_Lib\Inc\HAL_rcc.h)(0x650C2A3F)
 I (..\..\..\Device\MM32F327x\HAL_Lib\Inc\HAL_uart.h)(0x650C2A3F)
-F (..\USER\host_msd_fatfs.c)(0x650C6560)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\..\Device\CMSIS\KEIL_Core -I ..\..\..\Device\MM32F327x\Include -I ..\..\..\Device\MM32F327x\HAL_Lib\Inc -I ..\USER -I ..\SYSTEM\UART -I ..\SYSTEM\SYS -I ..\SYSTEM\DELAY -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\usb -I ..\usb\osa -I ..\usb\device -I ..\usb\host\class -I ..\utilities\io -I ..\utilities\str -I ..\utilities\log -I ..\usb\include -I ..\utilities -I ..\usb\host -I ..\fatfs\source -I ..\fatfs\source\fsl_usb_disk --diag_suppress=188-I.\RTE\_MM32Series-I"D:\Program Files\Keil_v5\MindMotion\MM32F3270_DFP\1.0.5\Device\MM32F327x\Include"-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="527" -DMM32F3273G8P -DUSE_STDPERIPH_DRIVER -DUSB_STACK_BM -D__KEIL-o .\obj\host_msd_fatfs.o --omf_browse .\obj\host_msd_fatfs.crf --depend .\obj\host_msd_fatfs.d)
+F (..\USER\host_msd_fatfs.c)(0x651013DD)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\..\Device\CMSIS\KEIL_Core -I ..\..\..\Device\MM32F327x\Include -I ..\..\..\Device\MM32F327x\HAL_Lib\Inc -I ..\USER -I ..\SYSTEM\UART -I ..\SYSTEM\SYS -I ..\SYSTEM\DELAY -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\usb -I ..\usb\osa -I ..\usb\device -I ..\usb\host\class -I ..\utilities\io -I ..\utilities\str -I ..\utilities\log -I ..\usb\include -I ..\utilities -I ..\usb\host -I ..\fatfs\source -I ..\fatfs\source\fsl_usb_disk --diag_suppress=188-I.\RTE\_MM32Series-I"D:\Program Files\Keil_v5\MindMotion\MM32F3270_DFP\1.0.5\Device\MM32F327x\Include"-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="527" -DMM32F3273G8P -DUSE_STDPERIPH_DRIVER -DUSB_STACK_BM -D__KEIL-o .\obj\host_msd_fatfs.o --omf_browse .\obj\host_msd_fatfs.crf --depend .\obj\host_msd_fatfs.d)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
 I (..\USER\usb_host_config.h)(0x650C2A40)
 I (..\usb\host\usb_host.h)(0x650C2A40)
@@ -510,11 +510,11 @@ I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5E8E2EB2)
 I (..\usb\include\usb_spec.h)(0x650C2A40)
 I (..\usb\host\usb_host_framework.h)(0x650C2A40)
 I (..\usb\host\class\usb_host_msd.h)(0x650C2A40)
-I (..\USER\host_msd_fatfs.h)(0x650C2A40)
-I (..\fatfs\source\ff.h)(0x650C2A40)
+I (..\USER\host_msd_fatfs.h)(0x650FFE8C)
+I (..\fatfs\source\ff.h)(0x650FF96B)
 I (..\USER\ffconf.h)(0x650C2A40)
 I (..\fatfs\source\diskio.h)(0x650C6548)
-I (..\USER\app.h)(0x650C2A40)
+I (..\USER\app.h)(0x650FFE8A)
 I (..\..\..\Device\MM32F327x\HAL_Lib\Inc\hal_flash.h)(0x650C2A3F)
 I (..\..\..\Device\MM32F327x\Include\reg_common.h)(0x650C2A40)
 I (..\..\..\Device\CMSIS\KEIL_Core\core_cm3.h)(0x650C2A3F)
@@ -1250,7 +1250,7 @@ I (..\usb\include\usb_spec.h)(0x650C2A40)
 I (..\usb\host\usb_host_framework.h)(0x650C2A40)
 I (..\usb\host\usb_host_hci.h)(0x650C2A40)
 I (..\usb\host\usb_host_devices.h)(0x650C2A40)
-F (..\usb\host\usb_host_hci.c)(0x650C2A40)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\..\Device\CMSIS\KEIL_Core -I ..\..\..\Device\MM32F327x\Include -I ..\..\..\Device\MM32F327x\HAL_Lib\Inc -I ..\USER -I ..\SYSTEM\UART -I ..\SYSTEM\SYS -I ..\SYSTEM\DELAY -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\usb -I ..\usb\osa -I ..\usb\device -I ..\usb\host\class -I ..\utilities\io -I ..\utilities\str -I ..\utilities\log -I ..\usb\include -I ..\utilities -I ..\usb\host -I ..\fatfs\source -I ..\fatfs\source\fsl_usb_disk --diag_suppress=188-I.\RTE\_MM32Series-I"D:\Program Files\Keil_v5\MindMotion\MM32F3270_DFP\1.0.5\Device\MM32F327x\Include"-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="527" -DMM32F3273G8P -DUSE_STDPERIPH_DRIVER -DUSB_STACK_BM -D__KEIL-o .\obj\usb_host_hci.o --omf_browse .\obj\usb_host_hci.crf --depend .\obj\usb_host_hci.d)
+F (..\usb\host\usb_host_hci.c)(0x651005B5)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\..\Device\CMSIS\KEIL_Core -I ..\..\..\Device\MM32F327x\Include -I ..\..\..\Device\MM32F327x\HAL_Lib\Inc -I ..\USER -I ..\SYSTEM\UART -I ..\SYSTEM\SYS -I ..\SYSTEM\DELAY -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\usb -I ..\usb\osa -I ..\usb\device -I ..\usb\host\class -I ..\utilities\io -I ..\utilities\str -I ..\utilities\log -I ..\usb\include -I ..\utilities -I ..\usb\host -I ..\fatfs\source -I ..\fatfs\source\fsl_usb_disk --diag_suppress=188-I.\RTE\_MM32Series-I"D:\Program Files\Keil_v5\MindMotion\MM32F3270_DFP\1.0.5\Device\MM32F327x\Include"-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="527" -DMM32F3273G8P -DUSE_STDPERIPH_DRIVER -DUSB_STACK_BM -D__KEIL-o .\obj\usb_host_hci.o --omf_browse .\obj\usb_host_hci.crf --depend .\obj\usb_host_hci.d)
 I (..\..\..\Device\MM32F327x\HAL_Lib\Inc\HAL_device.h)(0x650C2A3F)
 I (..\..\..\Device\MM32F327x\Include\mm32_device.h)(0x650C2A40)
 I (..\..\..\Device\MM32F327x\Include\mm32_reg.h)(0x650C2A40)
@@ -1464,7 +1464,7 @@ I (D:\Program Files\Keil_v5\ARM\ARMCC\include\assert.h)(0x5E8E2EB2)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\string.h)(0x5E8E2EB2)
 F (..\fatfs\source\diskio.c)(0x650C6548)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\..\Device\CMSIS\KEIL_Core -I ..\..\..\Device\MM32F327x\Include -I ..\..\..\Device\MM32F327x\HAL_Lib\Inc -I ..\USER -I ..\SYSTEM\UART -I ..\SYSTEM\SYS -I ..\SYSTEM\DELAY -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\usb -I ..\usb\osa -I ..\usb\device -I ..\usb\host\class -I ..\utilities\io -I ..\utilities\str -I ..\utilities\log -I ..\usb\include -I ..\utilities -I ..\usb\host -I ..\fatfs\source -I ..\fatfs\source\fsl_usb_disk --diag_suppress=188-I.\RTE\_MM32Series-I"D:\Program Files\Keil_v5\MindMotion\MM32F3270_DFP\1.0.5\Device\MM32F327x\Include"-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="527" -DMM32F3273G8P -DUSE_STDPERIPH_DRIVER -DUSB_STACK_BM -D__KEIL-o .\obj\diskio.o --omf_browse .\obj\diskio.crf --depend .\obj\diskio.d)
 I (..\USER\ffconf.h)(0x650C2A40)
-I (..\fatfs\source\ff.h)(0x650C2A40)
+I (..\fatfs\source\ff.h)(0x650FF96B)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
 I (..\fatfs\source\diskio.h)(0x650C6548)
 I (..\fatfs\source\fsl_usb_disk\fsl_usb_disk.h)(0x650C2A40)
@@ -1481,17 +1481,17 @@ I (..\usb\include\usb_spec.h)(0x650C2A40)
 I (..\usb\host\usb_host_framework.h)(0x650C2A40)
 I (..\usb\host\class\usb_host_msd.h)(0x650C2A40)
 F (..\fatfs\source\ff.c)(0x650C2A40)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\..\Device\CMSIS\KEIL_Core -I ..\..\..\Device\MM32F327x\Include -I ..\..\..\Device\MM32F327x\HAL_Lib\Inc -I ..\USER -I ..\SYSTEM\UART -I ..\SYSTEM\SYS -I ..\SYSTEM\DELAY -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\usb -I ..\usb\osa -I ..\usb\device -I ..\usb\host\class -I ..\utilities\io -I ..\utilities\str -I ..\utilities\log -I ..\usb\include -I ..\utilities -I ..\usb\host -I ..\fatfs\source -I ..\fatfs\source\fsl_usb_disk --diag_suppress=188-I.\RTE\_MM32Series-I"D:\Program Files\Keil_v5\MindMotion\MM32F3270_DFP\1.0.5\Device\MM32F327x\Include"-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="527" -DMM32F3273G8P -DUSE_STDPERIPH_DRIVER -DUSB_STACK_BM -D__KEIL-o .\obj\ff.o --omf_browse .\obj\ff.crf --depend .\obj\ff.d)
-I (..\fatfs\source\ff.h)(0x650C2A40)
+I (..\fatfs\source\ff.h)(0x650FF96B)
 I (..\USER\ffconf.h)(0x650C2A40)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
 I (..\fatfs\source\diskio.h)(0x650C6548)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5E8E2EB2)
 F (..\fatfs\source\ffsystem.c)(0x650C2A40)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\..\Device\CMSIS\KEIL_Core -I ..\..\..\Device\MM32F327x\Include -I ..\..\..\Device\MM32F327x\HAL_Lib\Inc -I ..\USER -I ..\SYSTEM\UART -I ..\SYSTEM\SYS -I ..\SYSTEM\DELAY -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\usb -I ..\usb\osa -I ..\usb\device -I ..\usb\host\class -I ..\utilities\io -I ..\utilities\str -I ..\utilities\log -I ..\usb\include -I ..\utilities -I ..\usb\host -I ..\fatfs\source -I ..\fatfs\source\fsl_usb_disk --diag_suppress=188-I.\RTE\_MM32Series-I"D:\Program Files\Keil_v5\MindMotion\MM32F3270_DFP\1.0.5\Device\MM32F327x\Include"-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="527" -DMM32F3273G8P -DUSE_STDPERIPH_DRIVER -DUSB_STACK_BM -D__KEIL-o .\obj\ffsystem.o --omf_browse .\obj\ffsystem.crf --depend .\obj\ffsystem.d)
-I (..\fatfs\source\ff.h)(0x650C2A40)
+I (..\fatfs\source\ff.h)(0x650FF96B)
 I (..\USER\ffconf.h)(0x650C2A40)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
 F (..\fatfs\source\ffunicode.c)(0x650C2A40)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\..\Device\CMSIS\KEIL_Core -I ..\..\..\Device\MM32F327x\Include -I ..\..\..\Device\MM32F327x\HAL_Lib\Inc -I ..\USER -I ..\SYSTEM\UART -I ..\SYSTEM\SYS -I ..\SYSTEM\DELAY -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\usb -I ..\usb\osa -I ..\usb\device -I ..\usb\host\class -I ..\utilities\io -I ..\utilities\str -I ..\utilities\log -I ..\usb\include -I ..\utilities -I ..\usb\host -I ..\fatfs\source -I ..\fatfs\source\fsl_usb_disk --diag_suppress=188-I.\RTE\_MM32Series-I"D:\Program Files\Keil_v5\MindMotion\MM32F3270_DFP\1.0.5\Device\MM32F327x\Include"-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="527" -DMM32F3273G8P -DUSE_STDPERIPH_DRIVER -DUSB_STACK_BM -D__KEIL-o .\obj\ffunicode.o --omf_browse .\obj\ffunicode.crf --depend .\obj\ffunicode.d)
-I (..\fatfs\source\ff.h)(0x650C2A40)
+I (..\fatfs\source\ff.h)(0x650FF96B)
 I (..\USER\ffconf.h)(0x650C2A40)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
 F (..\fatfs\source\fsl_usb_disk\fsl_usb_disk_bm.c)(0x650C6548)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\..\Device\CMSIS\KEIL_Core -I ..\..\..\Device\MM32F327x\Include -I ..\..\..\Device\MM32F327x\HAL_Lib\Inc -I ..\USER -I ..\SYSTEM\UART -I ..\SYSTEM\SYS -I ..\SYSTEM\DELAY -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\usb -I ..\usb\osa -I ..\usb\device -I ..\usb\host\class -I ..\utilities\io -I ..\utilities\str -I ..\utilities\log -I ..\usb\include -I ..\utilities -I ..\usb\host -I ..\fatfs\source -I ..\fatfs\source\fsl_usb_disk --diag_suppress=188-I.\RTE\_MM32Series-I"D:\Program Files\Keil_v5\MindMotion\MM32F3270_DFP\1.0.5\Device\MM32F327x\Include"-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="527" -DMM32F3273G8P -DUSE_STDPERIPH_DRIVER -DUSB_STACK_BM -D__KEIL-o .\obj\fsl_usb_disk_bm.o --omf_browse .\obj\fsl_usb_disk_bm.crf --depend .\obj\fsl_usb_disk_bm.d)
@@ -1510,5 +1510,5 @@ I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5E8E2EB2)
 I (..\usb\include\usb_spec.h)(0x650C2A40)
 I (..\usb\host\usb_host_framework.h)(0x650C2A40)
 I (..\usb\host\class\usb_host_msd.h)(0x650C2A40)
-I (..\fatfs\source\ff.h)(0x650C2A40)
+I (..\fatfs\source\ff.h)(0x650FF96B)
 I (..\fatfs\source\diskio.h)(0x650C6548)

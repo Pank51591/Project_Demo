@@ -81,7 +81,7 @@ void BOARD_InitHardware(void);
  * Variables
  ******************************************************************************/
 
-/*! @brief USB host msd command instance global variable */
+/*! @brief USB host msd command instance global variable USB主机msd命令实例全局变量*/
 usb_host_handle g_HostHandle;
 
 /*******************************************************************************
@@ -92,7 +92,12 @@ void OTG_FS_IRQHandler(void)
     USB_HostKhciIsrFunction(g_HostHandle);
 }
 
-/*主机时钟*/
+/*************************************************************
+***函数名：
+***函数功能：USB时钟源的初始化
+***输入：
+***输出：
+**************************************************************/
 void USB_HostClockInit(void)
 { 
     /* Select USBCLK source */
@@ -105,6 +110,12 @@ void USB_HostClockInit(void)
 //    RCC_USBCLKConfig(RCC_USBCLKSource_PLLCLK_Div2); //RCC->AHB2ENR |= 0x1 << 7;
 }
 
+/*************************************************************
+***函数名：
+***函数功能：USB的中断使能
+***输入：
+***输出：
+**************************************************************/
 void USB_HostIsrEnable(void)
 {
     uint8_t irqNumber;
@@ -118,7 +129,7 @@ void USB_HostIsrEnable(void)
 
 /*********************************************************
 ***函数名：
-***函数功能：
+***函数功能：USB的任务函数
 ***参数：
 ***返回值：
 **********************************************************/
@@ -127,12 +138,13 @@ void USB_HostTaskFn(void* param)
     USB_HostKhciTaskFunction(param);
 }
 
+
 /*!
  * @brief USB isr function.
  */
 /*********************************************************
 ***函数名：
-***函数功能：
+***函数功能：回调函数
 ***参数：
 ***返回值：
 **********************************************************/
@@ -141,6 +153,7 @@ static usb_status_t USB_HostEvent(usb_device_handle deviceHandle,
                                   uint32_t eventCode)
 {
     usb_status_t status = kStatus_USB_Success;
+	
     switch (eventCode) {
         case kUSB_HostEventAttach:
             status = USB_HostMsdEvent(deviceHandle, configurationHandle, eventCode);
@@ -164,19 +177,24 @@ static usb_status_t USB_HostEvent(usb_device_handle deviceHandle,
     return status;
 }
 
-
+/*************************************************************
+***函数名：
+***函数功能：
+***输入：
+***输出：
+**************************************************************/
 void USB_HostApplicationInit(void)
 {
     usb_status_t status = kStatus_USB_Success;
 
     USB_HostClockInit();
 
-    status = USB_HostInit(CONTROLLER_ID, &g_HostHandle, USB_HostEvent);      //枚举，回调函数
+    status = USB_HostInit(CONTROLLER_ID, &g_HostHandle, USB_HostEvent);     //枚举，回调函数
     if (status != kStatus_USB_Success) {
         return;
     }
 		
-    USB_HostIsrEnable();
+    USB_HostIsrEnable();      //中断使能
 
 }
 
