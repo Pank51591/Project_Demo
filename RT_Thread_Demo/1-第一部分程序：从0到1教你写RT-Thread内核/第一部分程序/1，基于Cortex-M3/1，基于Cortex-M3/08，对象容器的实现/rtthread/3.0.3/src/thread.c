@@ -1,6 +1,14 @@
 #include <rtthread.h>
 #include <rthw.h>
 
+
+
+/*************************************************************
+***函数名：
+***函数功能：线程初始化
+***输入：
+***输出：
+**************************************************************/
 rt_err_t rt_thread_init(struct rt_thread *thread,
                         const char       *name,
                         void (*entry)(void *parameter),

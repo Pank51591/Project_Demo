@@ -4,6 +4,12 @@
 /* 硬件定时器列表 */
 static rt_list_t rt_timer_list[RT_TIMER_SKIP_LIST_LEVEL];
 
+/*************************************************************
+***函数名：
+***函数功能：
+***输入：
+***输出：
+**************************************************************/
 void rt_system_timer_init(void)
 {
     int i;
@@ -14,6 +20,12 @@ void rt_system_timer_init(void)
     }
 }
 
+/*************************************************************
+***函数名：
+***函数功能：
+***输入：
+***输出：
+**************************************************************/
 static void _rt_timer_init(rt_timer_t timer,
                            void (*timeout)(void *parameter),
                            void      *parameter,
@@ -39,7 +51,7 @@ static void _rt_timer_init(rt_timer_t timer,
     /* 初始化定时器的内置节点 */
     for (i = 0; i < RT_TIMER_SKIP_LIST_LEVEL; i++)
     {
-        rt_list_init(&(timer->row[i]));
+        rt_list_init(&(timer->row[i]));    //初始化链表节点
     }
 }
 

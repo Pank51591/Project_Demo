@@ -40,11 +40,17 @@ enum rt_object_info_type
     RT_Object_Info_Unknown,                            /* 对象未知 */
 };
 
-
-
 #define _OBJ_CONTAINER_LIST_INIT(c)     \
     {&(rt_object_container[c].object_list), &(rt_object_container[c].object_list)}
-		
+	
+
+
+/*************************************************************
+***函数名：
+***函数功能：初始化对象容器（容器数值）
+***输入：
+***输出：
+**************************************************************/		
 static struct rt_object_information rt_object_container[RT_Object_Info_Unknown] =
 {
     /* 初始化对象容器 - 线程 */

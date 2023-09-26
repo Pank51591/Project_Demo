@@ -1,0 +1,6 @@
+--c99 -c --cpu Cortex-M3 --li -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\rtthread\3.0.3\bsp -I ..\rtthread\3.0.3\components\finsh -I ..\rtthread\3.0.3\include -I ..\rtthread\3.0.3\include\libc
+-I.\RTE\_Target_1
+-I"D:\Program Files\Keil_v5\ARM\CMSIS\5.7.0\CMSIS\Core\Include"
+-I"D:\Program Files\Keil_v5\ARM\CMSIS\5.7.0\Device\ARM\ARMCM3\Include"
+-D__UVISION_VERSION="527" -D_RTE_ -DARMCM3
+-o .\objects\kservice.o --omf_browse .\objects\kservice.crf --depend .\objects\kservice.d "..\rtthread\3.0.3\src\kservice.c"

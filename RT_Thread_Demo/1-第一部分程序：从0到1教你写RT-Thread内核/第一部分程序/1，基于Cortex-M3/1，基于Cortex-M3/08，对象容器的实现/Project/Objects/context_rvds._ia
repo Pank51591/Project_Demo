@@ -1,0 +1,6 @@
+--cpu Cortex-M3 --li -g --apcs=interwork 
+-I.\RTE\_Target_1
+-I"D:\Program Files\Keil_v5\ARM\CMSIS\5.7.0\CMSIS\Core\Include"
+-I"D:\Program Files\Keil_v5\ARM\CMSIS\5.7.0\Device\ARM\ARMCM3\Include"
+--pd "__UVISION_VERSION SETA 527" --pd "_RTE_ SETA 1" --pd "ARMCM3 SETA 1"
+--list .\listings\context_rvds.lst --xref -o .\objects\context_rvds.o --depend .\objects\context_rvds.d "..\rtthread\3.0.3\libcpu\arm\cortex-m3\context_rvds.s"

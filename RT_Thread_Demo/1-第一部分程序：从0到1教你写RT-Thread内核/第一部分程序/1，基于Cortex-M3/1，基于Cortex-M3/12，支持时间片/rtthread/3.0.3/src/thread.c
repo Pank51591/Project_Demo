@@ -5,15 +5,20 @@ extern struct rt_thread *rt_current_thread;
 extern rt_uint32_t rt_thread_ready_priority_group;
 extern rt_list_t rt_thread_priority_table[RT_THREAD_PRIORITY_MAX];
 
-
-rt_err_t rt_thread_init(struct rt_thread *thread,
-                        const char       *name,
-                        void (*entry)(void *parameter),
-                        void             *parameter,
-                        void             *stack_start,
-                        rt_uint32_t       stack_size,
-                        rt_uint8_t        priority,
-                        rt_uint32_t       tick)
+/*************************************************************
+***函数名：
+***函数功能：初始化线程
+***输入：
+***输出：
+**************************************************************/
+rt_err_t rt_thread_init(struct rt_thread *thread,     //线程控制块（指针变量）
+                        const char       *name,       //线程的名称，字符串形式 （）
+                        void (*entry)(void *parameter),    //线程入口地址
+                        void             *parameter,       //线程形参
+                        void             *stack_start,  //线程栈起始地址
+                        rt_uint32_t       stack_size,   //线程栈大小
+                        rt_uint8_t        priority,     //优先级
+                        rt_uint32_t       tick)         //时间片
 {
 	/* 线程对象初始化 */
 	/* 线程结构体开头部分的成员就是rt_object_t类型 */
@@ -21,18 +26,18 @@ rt_err_t rt_thread_init(struct rt_thread *thread,
     rt_list_init(&(thread->tlist));
 	
 	thread->entry = (void *)entry;
-	thread->parameter = parameter;
+	thread->parameter = parameter;      //线程的入口地址
 
-	thread->stack_addr = stack_start;
-	thread->stack_size = stack_size;
+	thread->stack_addr = stack_start;       //线程栈起始地址
+	thread->stack_size = stack_size;        //线程大小
 	
-	/* 初始化线程栈，并返回线程栈指针 */
+	/* 初始化线程栈，并返回线程栈指针 （） */
 	thread->sp = (void *)rt_hw_stack_init( thread->entry, 
 		                                   thread->parameter,
 							               (void *)((char *)thread->stack_addr + thread->stack_size - 4) );
 	
-    thread->init_priority    = priority;
-    thread->current_priority = priority;
+    thread->init_priority    = priority;      //初始化优先级
+    thread->current_priority = priority;      //当前优先级
     thread->number_mask = 0;
     
     /* 错误码和状态 */
@@ -208,10 +213,11 @@ rt_err_t rt_thread_startup(rt_thread_t thread)
 {
     /* 设置当前优先级为初始优先级 */
     thread->current_priority = thread->init_priority;
-    thread->number_mask = 1L << thread->current_priority;    
+    thread->number_mask = 1L << thread->current_priority;       //得到当前优先级的掩码 
     
     /* 改变线程的状态为挂起状态 */
-    thread->stat = RT_THREAD_SUSPEND;    
+    thread->stat = RT_THREAD_SUSPEND;   
+	
     /* 然后恢复线程 */
     rt_thread_resume(thread);
     

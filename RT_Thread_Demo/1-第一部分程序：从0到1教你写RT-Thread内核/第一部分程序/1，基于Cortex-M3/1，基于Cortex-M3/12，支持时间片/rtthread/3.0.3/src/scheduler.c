@@ -1,4 +1,4 @@
-/*
+/*       线程的时间调度
 *************************************************************************
 *                             包含的头文件
 *************************************************************************
@@ -36,7 +36,6 @@ rt_list_t rt_thread_defunct;
 *                               函数实现
 *************************************************************************
 */
-
 /* 初始化系统调度器 */
 void rt_system_scheduler_init(void)
 {	
@@ -68,10 +67,11 @@ void rt_system_scheduler_init(void)
 	/* 初始化当前线程控制块指针 */
 	rt_current_thread = RT_NULL;
     
-    /* 初始化线程就绪优先级组 */
-    rt_thread_ready_priority_group = 0;
+	/* 初始化线程就绪优先级组 */
+	rt_thread_ready_priority_group = 0;
 #endif    
 }
+
 
 /* 启动系统调度器 */
 void rt_system_scheduler_start(void)
@@ -110,7 +110,12 @@ void rt_system_scheduler_start(void)
 #endif                              
 }
 
-
+/*************************************************************
+***函数名：
+***函数功能：将线程插到就序列表
+***输入：
+***输出：
+**************************************************************/
 void rt_schedule_insert_thread(struct rt_thread *thread)
 {
     register rt_base_t temp;
@@ -132,7 +137,12 @@ void rt_schedule_insert_thread(struct rt_thread *thread)
     rt_hw_interrupt_enable(temp);
 }
 
-
+/*************************************************************
+***函数名：
+***函数功能：移除线程
+***输入：
+***输出：
+**************************************************************/
 void rt_schedule_remove_thread(struct rt_thread *thread)
 {
     register rt_base_t temp;
@@ -153,7 +163,12 @@ void rt_schedule_remove_thread(struct rt_thread *thread)
     rt_hw_interrupt_enable(temp);
 }
 
-
+/*************************************************************
+***函数名：
+***函数功能：系统调度
+***输入：
+***输出：
+**************************************************************/
 void rt_schedule(void)
 {
     rt_base_t level;
@@ -166,7 +181,8 @@ void rt_schedule(void)
 
     /* 获取就绪的最高优先级 */
     highest_ready_priority = __rt_ffs(rt_thread_ready_priority_group) - 1;
-    /* 获取就绪的最高优先级对应的线程控制块 */
+    
+	  /* 获取就绪的最高优先级对应的线程控制块 */
     to_thread = rt_list_entry(rt_thread_priority_table[highest_ready_priority].next,
                               struct rt_thread,
                               tlist);

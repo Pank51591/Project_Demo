@@ -54,6 +54,7 @@ struct rt_thread rt_flag2_thread;
 struct rt_thread rt_flag3_thread;
 
 ALIGN(RT_ALIGN_SIZE)
+
 /* 定义线程栈 */
 rt_uint8_t rt_flag1_thread_stack[512];
 rt_uint8_t rt_flag2_thread_stack[512];
@@ -91,53 +92,53 @@ int main(void)
     SysTick_Config( SystemCoreClock / RT_TICK_PER_SECOND );
     
     /* 系统定时器列表初始化 */
-	rt_system_timer_init();
+		rt_system_timer_init();
 	
-	/* 调度器初始化 */
-	rt_system_scheduler_init();
+		/* 调度器初始化 */
+		rt_system_scheduler_init();
 
     /* 初始化空闲线程 */    
     rt_thread_idle_init();	
 	
-	/* 初始化线程 */
-	rt_thread_init( &rt_flag1_thread,                 /* 线程控制块 */
-                    "rt_flag1_thread",                /* 线程名字，字符串形式 */
-	                flag1_thread_entry,               /* 线程入口地址 */
-	                RT_NULL,                          /* 线程形参 */
-	                &rt_flag1_thread_stack[0],        /* 线程栈起始地址 */
-	                sizeof(rt_flag1_thread_stack),    /* 线程栈大小，单位为字节 */
-                    2,                                /* 优先级 */
-                    4);                               /* 时间片 */
-	/* 将线程插入到就绪列表 */
-    rt_thread_startup(&rt_flag1_thread);
+		/* 初始化线程 */
+		rt_thread_init( &rt_flag1_thread,                 /* 线程控制块 */
+											"rt_flag1_thread",              /* 线程名字，字符串形式 */
+										flag1_thread_entry,               /* 线程入口地址 */
+										RT_NULL,                          /* 线程形参 */
+										&rt_flag1_thread_stack[0],        /* 线程栈起始地址 */
+										sizeof(rt_flag1_thread_stack),    /* 线程栈大小，单位为字节 */
+											2,                              /* 优先级 */
+											4);                             /* 时间片 */
+		/* 将线程插入到就绪列表 */
+			rt_thread_startup(&rt_flag1_thread);
 	
-	/* 初始化线程 */
-	rt_thread_init( &rt_flag2_thread,                 /* 线程控制块 */
-                    "rt_flag2_thread",                /* 线程名字，字符串形式 */
-	                flag2_thread_entry,               /* 线程入口地址 */
-	                RT_NULL,                          /* 线程形参 */
-	                &rt_flag2_thread_stack[0],        /* 线程栈起始地址 */
-	                sizeof(rt_flag2_thread_stack),    /* 线程栈大小，单位为字节 */
-                    3,                                /* 优先级 */
-                    2);                               /* 时间片 */
-	/* 将线程插入到就绪列表 */
-	rt_thread_startup(&rt_flag2_thread);
-                    
-                    
-	/* 初始化线程 */
-	rt_thread_init( &rt_flag3_thread,                 /* 线程控制块 */
-                    "rt_flag3_thread",                /* 线程名字，字符串形式 */
-	                flag3_thread_entry,               /* 线程入口地址 */
-	                RT_NULL,                          /* 线程形参 */
-	                &rt_flag3_thread_stack[0],        /* 线程栈起始地址 */
-	                sizeof(rt_flag3_thread_stack),    /* 线程栈大小，单位为字节 */
-                    3,                                /* 优先级 */
-                    3);                               /* 时间片 */
-	/* 将线程插入到就绪列表 */
-	rt_thread_startup(&rt_flag3_thread);                    
-    
-	/* 启动系统调度器 */
-	rt_system_scheduler_start(); 
+		/* 初始化线程 */
+		rt_thread_init( &rt_flag2_thread,                   /* 线程控制块 */
+											"rt_flag2_thread",                /* 线程名字，字符串形式 */
+										flag2_thread_entry,                 /* 线程入口地址 */
+										RT_NULL,                            /* 线程形参 */
+										&rt_flag2_thread_stack[0],          /* 线程栈起始地址 */
+										sizeof(rt_flag2_thread_stack),      /* 线程栈大小，单位为字节 */
+											3,                                /* 优先级 */
+											2);                               /* 时间片 */
+		/* 将线程插入到就绪列表 */
+		rt_thread_startup(&rt_flag2_thread);
+											
+											
+		/* 初始化线程 */
+		rt_thread_init( &rt_flag3_thread,                 /* 线程控制块 */
+											"rt_flag3_thread",              /* 线程名字，字符串形式 */
+										flag3_thread_entry,               /* 线程入口地址 */
+										RT_NULL,                          /* 线程形参 */
+										&rt_flag3_thread_stack[0],        /* 线程栈起始地址 */
+										sizeof(rt_flag3_thread_stack),    /* 线程栈大小，单位为字节 */
+											3,                              /* 优先级 */
+											3);                             /* 时间片 */
+		/* 将线程插入到就绪列表 */
+		rt_thread_startup(&rt_flag3_thread);                    
+			
+		/* 启动系统调度器 */
+		rt_system_scheduler_start(); 
 }
 
 /*
@@ -151,7 +152,7 @@ void delay (uint32_t count)
 	for(; count!=0; count--);
 }
 
-/* 线程1 */
+/* 线程1 入口函数*/
 void flag1_thread_entry( void *p_arg )
 {
 	for( ;; )
@@ -163,35 +164,40 @@ void flag1_thread_entry( void *p_arg )
 	}
 }
 
-/* 线程2 */
+/* 线程2 入口函数*/
 void flag2_thread_entry( void *p_arg )
 {
 	for( ;; )
 	{
-        flag2 = 1;
-        //rt_thread_delay(2);
+		flag2 = 1;
+		//rt_thread_delay(2);
 		delay( 100 ); 		
 		flag2 = 0;
-        //rt_thread_delay(2);
+    //rt_thread_delay(2);
 		delay( 100 );        
 	}
 }
 
-/* 线程3 */
+/* 线程3 入口函数*/
 void flag3_thread_entry( void *p_arg )
 {
 	for( ;; )
 	{
-        flag3 = 1;
-        //rt_thread_delay(3);
+		flag3 = 1;
+		//rt_thread_delay(3);
 		delay( 100 ); 		
 		flag3 = 0;
-        //rt_thread_delay(3);
+    //rt_thread_delay(3);
 		delay( 100 );        
 	}
 }
 
-
+/*************************************************************
+***函数名：
+***函数功能：系统时钟处理函数  （在汇编语言中调用）
+***输入：
+***输出：
+**************************************************************/
 void SysTick_Handler(void)
 {
     /* 进入中断 */
