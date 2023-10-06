@@ -128,7 +128,7 @@ void rt_system_scheduler_init(void)
 
     for (offset = 0; offset < RT_THREAD_PRIORITY_MAX; offset ++)
     {
-        rt_list_init(&rt_thread_priority_table[offset]);
+        rt_list_init(&rt_thread_priority_table[offset]);   //线程优先级列表
     }
 
     rt_current_priority = RT_THREAD_PRIORITY_MAX - 1;

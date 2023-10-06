@@ -77,7 +77,6 @@ int main(void)
 *                             线程定义
 *************************************************************************
 */
-
 static void test_thread_entry(void* parameter)
 {	
     while (1)

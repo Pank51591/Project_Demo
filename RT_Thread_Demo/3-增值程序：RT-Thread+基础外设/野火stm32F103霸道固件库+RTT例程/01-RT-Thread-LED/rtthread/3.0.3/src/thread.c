@@ -297,7 +297,7 @@ rt_err_t rt_thread_startup(rt_thread_t thread)
     if (rt_thread_self() != RT_NULL)
     {
         /* do a scheduling */
-        rt_schedule();
+        rt_schedule();    //线程调度
     }
 
     return RT_EOK;

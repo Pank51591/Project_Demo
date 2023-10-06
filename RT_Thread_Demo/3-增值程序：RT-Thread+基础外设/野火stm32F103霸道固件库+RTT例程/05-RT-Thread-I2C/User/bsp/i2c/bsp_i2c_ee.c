@@ -109,6 +109,7 @@ uint8_t ee_ReadBytes(uint8_t *_pReadBuf, uint16_t _usAddress, uint16_t _usSize)
 	return 1;	/* 执行成功 */
 
 cmd_fail: /* 命令执行失败后，切记发送停止信号，避免影响I2C总线上其他设备 */
+	
 	/* 发送I2C总线停止信号 */
 	i2c_Stop();
 	return 0;

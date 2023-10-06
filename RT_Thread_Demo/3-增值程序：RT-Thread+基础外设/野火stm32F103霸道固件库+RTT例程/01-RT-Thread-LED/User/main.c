@@ -68,7 +68,7 @@ int main(void)
                    
     /* 启动线程，开启调度 */
    if (led1_thread != RT_NULL)
-        rt_thread_startup(led1_thread);
+        rt_thread_startup(led1_thread);     //
     else
         return -1;
 }
@@ -79,7 +79,7 @@ int main(void)
 *************************************************************************
 */
 
-static void led1_thread_entry(void* parameter)
+static void led1_thread_entry(void* parameter)     //线程的入口函数
 {	
     while (1)
     {

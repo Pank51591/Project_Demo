@@ -526,7 +526,7 @@ rt_err_t rt_thread_sleep(rt_tick_t tick)
 
 /**
  * This function will let current thread delay for some ticks.
- *
+ * 此函数将使当前线程延迟一些刻度。
  * @param tick the delay ticks
  *
  * @return RT_EOK

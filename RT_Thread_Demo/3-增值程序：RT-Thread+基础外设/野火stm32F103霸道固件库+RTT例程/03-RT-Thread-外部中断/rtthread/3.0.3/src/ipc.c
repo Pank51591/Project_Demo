@@ -2114,6 +2114,7 @@ rt_err_t rt_mq_recv(rt_mq_t    mq,
 
     /* initialize delta tick */
     tick_delta = 0;
+	
     /* get current thread */
     thread = rt_thread_self();
     RT_OBJECT_HOOK_CALL(rt_object_trytake_hook, (&(mq->parent.parent)));
@@ -2166,6 +2167,7 @@ rt_err_t rt_mq_recv(rt_mq_t    mq,
             rt_timer_control(&(thread->thread_timer),
                              RT_TIMER_CTRL_SET_TIME,
                              &timeout);
+					
             rt_timer_start(&(thread->thread_timer));
         }
 
@@ -2173,7 +2175,7 @@ rt_err_t rt_mq_recv(rt_mq_t    mq,
         rt_hw_interrupt_enable(temp);
 
         /* re-schedule */
-        rt_schedule();
+        rt_schedule();      //选择一个当前最高优先级的线程
 
         /* recv message */
         if (thread->error != RT_EOK)

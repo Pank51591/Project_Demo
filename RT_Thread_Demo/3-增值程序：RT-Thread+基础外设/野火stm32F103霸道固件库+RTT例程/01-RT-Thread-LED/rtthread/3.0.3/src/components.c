@@ -149,7 +149,7 @@ extern int $Super$$main(void);
 int $Sub$$main(void)
 {
     rt_hw_interrupt_disable();
-    rtthread_startup();
+    rtthread_startup(); 
     return 0;
 }
 #elif defined(__ICCARM__)
@@ -199,12 +199,19 @@ void main_thread_entry(void *parameter)
 #endif
 }
 
+
+/*************************************************************
+***函数名：
+***函数功能：创建初始化线程
+***输入：
+***输出：
+**************************************************************/
 void rt_application_init(void)
 {
     rt_thread_t tid;
 
 #ifdef RT_USING_HEAP
-    tid = rt_thread_create("main", main_thread_entry, RT_NULL,
+    tid = rt_thread_create("main", main_thread_entry, RT_NULL,        //创建系统主线程
                            RT_MAIN_THREAD_STACK_SIZE, RT_THREAD_PRIORITY_MAX / 3, 20);
     RT_ASSERT(tid != RT_NULL);
 #else
@@ -222,6 +229,12 @@ void rt_application_init(void)
     rt_thread_startup(tid);
 }
 
+/*************************************************************
+***函数名：
+***函数功能：启动函数，在OS的主函数中调用
+***输入：
+***输出：
+**************************************************************/
 int rtthread_startup(void)
 {
     rt_hw_interrupt_disable();
@@ -246,7 +259,7 @@ int rtthread_startup(void)
 #endif
 
     /* create init_thread */
-    rt_application_init();
+    rt_application_init();       //系统主线程的创建
 
     /* timer thread initialization */
     rt_system_timer_thread_init();

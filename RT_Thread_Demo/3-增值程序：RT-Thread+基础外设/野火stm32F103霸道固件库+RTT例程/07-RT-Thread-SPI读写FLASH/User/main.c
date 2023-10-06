@@ -29,27 +29,27 @@
 *                               变量
 *************************************************************************
 */
-	typedef enum { FAILED = 0, PASSED = !FAILED} TestStatus;
+typedef enum { FAILED = 0, PASSED = !FAILED} TestStatus;
 
-	/* 获取缓冲区的长度 */
-	#define TxBufferSize1   (countof(TxBuffer1) - 1)
-	#define RxBufferSize1   (countof(TxBuffer1) - 1)
-	#define countof(a)      (sizeof(a) / sizeof(*(a)))
-	#define  BufferSize (countof(Tx_Buffer)-1)
+/* 获取缓冲区的长度 */
+#define TxBufferSize1   (countof(TxBuffer1) - 1)
+#define RxBufferSize1   (countof(TxBuffer1) - 1)
+#define countof(a)      (sizeof(a) / sizeof(*(a)))
+#define  BufferSize (countof(Tx_Buffer)-1)
 
-	#define  FLASH_WriteAddress     0x00000
-	#define  FLASH_ReadAddress      FLASH_WriteAddress
-	#define  FLASH_SectorToErase    FLASH_WriteAddress
+#define  FLASH_WriteAddress     0x00000
+#define  FLASH_ReadAddress      FLASH_WriteAddress
+#define  FLASH_SectorToErase    FLASH_WriteAddress
 
-			 
+		 
 
-	/* 发送缓冲区初始化 */
-	uint8_t Tx_Buffer[] = "感谢您选用秉火stm32开发板\r\n";
-	uint8_t Rx_Buffer[BufferSize];
+/* 发送缓冲区初始化 */
+uint8_t Tx_Buffer[] = "感谢您选用秉火stm32开发板\r\n";
+uint8_t Rx_Buffer[BufferSize];
 
-	__IO uint32_t DeviceID = 0;
-	__IO uint32_t FlashID = 0;
-	__IO TestStatus TransferStatus1 = FAILED;
+__IO uint32_t DeviceID = 0;
+__IO uint32_t FlashID = 0;
+__IO TestStatus TransferStatus1 = FAILED;
 	
 
 
@@ -133,6 +133,7 @@ static void led1_thread_entry(void* parameter)
     }
 }
 
+
 static void test_thread_entry(void* parameter)
 {	
 
@@ -170,16 +171,25 @@ TestStatus Buffercmp(uint8_t* pBuffer1, uint8_t* pBuffer2, uint16_t BufferLength
   return PASSED;
 }
 
+
+/*************************************************************
+***函数名：
+***函数功能：
+***输入：
+***输出：
+**************************************************************/
 void spi_test(void)
 {
 		/* 获取 Flash Device ID */
 	DeviceID = SPI_FLASH_ReadDeviceID();	
+	
 	/* 获取 SPI Flash ID */
-	FlashID = SPI_FLASH_ReadID();	
+	FlashID = SPI_FLASH_ReadID();
 	rt_kprintf("\r\n FlashID is 0x%X,\
 	Manufacturer Device ID is 0x%X\r\n", FlashID, DeviceID);
+	
 	/* 检验 SPI Flash ID */
-	if (FlashID == sFLASH_ID)
+	if (FlashID == sFLASH_ID)    //0XEF4017
 	{	
 		printf("\r\n 检测到串行flash W25Q64 !\r\n");
 		

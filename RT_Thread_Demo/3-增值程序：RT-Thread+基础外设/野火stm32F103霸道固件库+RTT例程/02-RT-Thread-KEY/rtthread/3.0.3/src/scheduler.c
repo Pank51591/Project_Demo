@@ -116,6 +116,7 @@ static void _rt_scheduler_stack_check(struct rt_thread *thread)
 /**
  * @ingroup SystemInit
  * This function will initialize the system scheduler
+ * 此函数将初始化系统调度程序
  */
 void rt_system_scheduler_init(void)
 {

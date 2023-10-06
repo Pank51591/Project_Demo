@@ -662,7 +662,7 @@ typedef struct rt_mailbox *rt_mailbox_t;
 
 #ifdef RT_USING_MESSAGEQUEUE
 /**
- * message queue structure
+ * message queue structure   消息队列结构
  */
 struct rt_messagequeue
 {

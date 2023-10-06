@@ -31,6 +31,7 @@
 */
 /* 定义线程控制块 */
 static rt_thread_t key_thread = RT_NULL;
+
 /* 定义消息队列控制块 */
 rt_mq_t test_mq = RT_NULL;
 
@@ -68,6 +69,7 @@ int main(void)
 	 */
 	rt_kprintf("这是一个[野火]-STM32F103-指南者-RTT外部中断管理实验！\n");
   rt_kprintf("按下KEY1 | KEY2触发中断！\n");
+	
   /* 创建一个消息队列 */
 	test_mq = rt_mq_create("test_mq",/* 消息队列名字 */
                      4,     /* 消息的最大长度 */
@@ -98,7 +100,6 @@ int main(void)
 *                             线程定义
 *************************************************************************
 */
-
 static void key_thread_entry(void* parameter)
 {		
   rt_err_t uwRet = RT_EOK;	
@@ -108,9 +109,10 @@ static void key_thread_entry(void* parameter)
 	{
     /* 队列读取（接收），等待时间为一直等待 */
 		uwRet = rt_mq_recv(test_mq,	/* 读取（接收）队列的ID(句柄) */
-								&r_queue,			/* 读取（接收）的数据保存位置 */
+								&r_queue,			  /* 读取（接收）的数据保存位置 */
 								sizeof(r_queue),		/* 读取（接收）的数据的长度 */
 								RT_WAITING_FOREVER); 	/* 等待时间：一直等 */
+								
 		if(RT_EOK == uwRet)
 		{
 			rt_kprintf("触发中断的是KEY%d!\n",r_queue);
