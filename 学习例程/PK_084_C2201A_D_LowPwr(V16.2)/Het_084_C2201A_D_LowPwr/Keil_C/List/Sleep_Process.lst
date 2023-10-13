@@ -1,0 +1,142 @@
+C51 COMPILER V9.60.0.0   SLEEP_PROCESS                                                     10/13/2023 17:22:47 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE SLEEP_PROCESS
+OBJECT MODULE PLACED IN ..\Output\Sleep_Process.obj
+COMPILER INVOKED BY: D:\Program Files (x86)\keil_v5\C51\BIN\C51.EXE ..\User\Funtion\Sleep_Process.c LARGE OBJECTADVANCED
+                    - OPTIMIZE(9,SIZE) BROWSE INCDIR(..\FWLib\SC95F_Lib\inc;..\User;..\User\Funtion;..\SOC_DebugTouchKey_Lib;..\SOC_DebugTouc
+                    -hKey_Lib) DEFINE(SC95F8x1xB) DEBUG PRINT(..\List\Sleep_Process.lst) TABS(2) OBJECT(..\Output\Sleep_Process.obj)
+
+line level    source
+
+   1          #include "SC_System.h"
+   2          #include "Burner_Process.h"
+   3          #include "Output_Process.h"
+   4          #include "Sleep_Process.h"
+   5          extern uint8_t gcBurner1OpenCount;       
+   6          extern uint8_t gcBurner1CloseCount;       
+   7          
+   8          extern uint8_t gcBurner2OpenCount;        
+   9          extern uint8_t gcBurner2CloseCount;       
+  10          
+  11          extern uint8_t gcBurner3OpenCount;        
+  12          extern uint8_t gcBurner3CloseCount;      
+  13          
+  14          extern uint8_t gcBurner4OpenCount;         
+  15          extern uint8_t gcBurner4CloseCount;        
+  16          
+  17          extern uint8_t gcBurner5OpenCount;        
+  18          extern uint8_t gcBurner5CloseCount;        
+  19          
+  20          extern uint8_t gcBurner6OpenCount;         
+  21          extern uint8_t gcBurner6CloseCount;        
+  22          
+  23          extern uint8_t gcBurnerStatus;            
+  24          extern uint8_t gcBurnerOpenCount;   
+  25          
+  26          extern uint8_t gcKeyStatus;                
+  27          extern uint8_t gcKeyCount;                
+  28          extern uint8_t gcOneMsCount;               
+  29          extern uint32_t gcButton1State;             
+  30          extern uint8_t gcKeyValue;                
+  31          extern uint16_t giKeySW6LongDownTime;      
+  32          extern uint8_t gcBuzzerTime; 
+  33          extern uint8_t  gcPowerUpTime;
+  34          extern uint16_t giLEDPwmValue;
+  35          extern volatile uint16_t giLightDelayOffTime;  // 5minute
+  36          extern volatile uint16_t giSpeedDelayOffTime;  // 5minute
+  37          
+  38          sfr   TKCR  = 0xE8; 
+  39          //=======================================================================================
+  40          //                  void Sleep_Process(void)
+  41          //                  Run once in 10ms         
+  42          //                  Return value::No
+  43          //=======================================================================================
+  44           void Sleep_Process(void)
+  45           {
+  46   1          Key_Scan();
+  47   1       }
+  48           
+  49           void Sleep_Clr()//关闭耗电外设
+  50           {
+  51   1            TKCR &=0x7F;
+  52   1            Delay1ms();
+  53   1            Delay1ms();
+C51 COMPILER V9.60.0.0   SLEEP_PROCESS                                                     10/13/2023 17:22:47 PAGE 2   
+
+  54   1            OPTION_WDT_Cmd(DISABLE);
+  55   1            OPTION_XTIPLL_Cmd(DISABLE);
+  56   1            PWM_IndependentModeConfigEX(PWM05, 0, PWM_OUTPUTSTATE_DISABLE); /*PWM05 独立模式*/
+  57   1          //  PWM_IndependentModeConfigEX(PWM07, 0, PWM_OUTPUTSTATE_DISABLE); /*PWM07 独立模式*/
+  58   1            PWM_IndependentModeConfigEX(PWM20, 0, PWM_OUTPUTSTATE_DISABLE);
+  59   1            PWM_IndependentModeConfigEX(PWM30, 0, PWM_OUTPUTSTATE_DISABLE);
+  60   1            PWM_CmdEX(PWM0_Type, DISABLE); /*PWM0开关*/
+  61   1            //PWM_CmdEX(PWM2_Type, DISABLE); /*PWM2开关*/
+  62   1            PWM_CmdEX(PWM3_Type, DISABLE); /*PWM3开关*/
+  63   1            TIM0_ITConfig(DISABLE, HIGH);
+  64   1            TIM0_Cmd(DISABLE);
+  65   1            TIM1_ITConfig(DISABLE, HIGH);
+  66   1            TIM1_Cmd(DISABLE);
+  67   1            ADC_EAINConfig(ADC_EAIN_1, DISABLE);
+  68   1            ADC_EAINConfig(ADC_EAIN_9, DISABLE);
+  69   1            ADC_ChannelConfig(ADC_CHANNEL_9, DISABLE);
+  70   1            ADC_Cmd(DISABLE);
+  71   1            P0CON=0xEF;
+  72   1            P0PH=~0xEF;
+  73   1            P1CON=0x3F;
+  74   1            P1PH=~0X3F;
+  75   1            P2CON=0xF8;
+  76   1            P2PH=~0XF8;
+  77   1            P3CON=0xFF;
+  78   1            P3PH=0X00;
+  79   1            P4CON=0xFF;
+  80   1            P4PH=0X00;
+  81   1            P5CON =0xFF;
+  82   1            P5PH=0X00;
+  83   1            P0=0;
+  84   1            P1=0;
+  85   1            P2&=0X08;// P23保持不变
+  86   1            P3=0;
+  87   1            P4=0;
+  88   1            P5=0; 
+  89   1       }
+  90          
+  91           
+  92           void Task_Sleep()
+  93           {
+  94   1        PCON |= 0x02; //PCON的bit1 STOP位写1，配置MCU进入STOP模式
+  95   1        _nop_();    //至少需要8个_nop_()
+  96   1        _nop_();
+  97   1        _nop_();
+  98   1        _nop_();
+  99   1        _nop_();
+ 100   1        _nop_();
+ 101   1        _nop_();
+ 102   1        _nop_();
+ 103   1        TKCR |=0x80;
+ 104   1        Delay1ms();
+ 105   1        Delay1ms();
+ 106   1        Delay1ms();
+ 107   1        Delay1ms();
+ 108   1       }
+ 109           
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    188    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+C51 COMPILER V9.60.0.0   SLEEP_PROCESS                                                     10/13/2023 17:22:47 PAGE 3   
+
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,395 @@
+C51 COMPILER V9.60.0.0   SC_INIT                                                           10/13/2023 17:22:46 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE SC_INIT
+OBJECT MODULE PLACED IN ..\Output\SC_Init.obj
+COMPILER INVOKED BY: D:\Program Files (x86)\keil_v5\C51\BIN\C51.EXE ..\User\SC_Init.c LARGE OBJECTADVANCED OPTIMIZE(9,SI
+                    -ZE) BROWSE INCDIR(..\FWLib\SC95F_Lib\inc;..\User;..\User\Funtion;..\SOC_DebugTouchKey_Lib;..\SOC_DebugTouchKey_Lib) DEFI
+                    -NE(SC95F8x1xB) DEBUG PRINT(..\List\SC_Init.lst) TABS(2) OBJECT(..\Output\SC_Init.obj)
+
+line level    source
+
+   1          #include "SC_System.h"
+   2          
+   3          /*****************************************************
+   4          *函数名称: SC_Init
+   5          *函数功能: MCU初始化函数
+   6          *入口参数：void
+   7          *出口参数：void
+   8          *****************************************************/
+   9          void SC_Init(void)
+  10          {
+  11   1        SC_GPIO_Init();
+  12   1        SC_OPTION_Init();
+  13   1      //  SC_GPIO_LowOutput();
+  14   1        SC_TIM0_Init();
+  15   1        SC_TIM1_Init();
+  16   1        SC_PWM0_Init();
+  17   1      //  SC_PWM2_Init();
+  18   1        SC_PWM3_Init();
+  19   1        SC_INT_Init();
+  20   1        SC_ADC_Init();
+  21   1        SC_WDT_Init();
+  22   1        SC_EXtern_Init();
+  23   1      }
+  24          
+  25          /*对P31进行判断*/
+  26          void SC_JP1 (void)
+  27          {
+  28   1        if( P31 == 0)      //接上
+  29   1        {
+  30   2          Set_JP1Flag;
+  31   2        }
+  32   1        else
+  33   1        {
+  34   2          Clr_JP1Flag;
+  35   2        }
+  36   1      }
+  37          
+  38          /*****************************************************
+  39          *函数名称: SC_OPTION_Init
+  40          *函数功能: OPTION配置初始化函数
+  41          *入口参数：void
+  42          *出口参数：void
+  43          *****************************************************/
+  44          void SC_OPTION_Init(void)
+  45          {
+  46   1        /*OPTION_Init write here*/    
+  47   1      }
+  48          
+  49          /*****************************************************
+  50          *函数名称: SC_GPIO_Init
+  51          *函数功能: GPIO初始化函数
+  52          *入口参数：void
+  53          *出口参数：void
+C51 COMPILER V9.60.0.0   SC_INIT                                                           10/13/2023 17:22:46 PAGE 2   
+
+  54          *****************************************************/
+  55          void SC_GPIO_Init(void)
+  56          {
+  57   1        GPIO_Init(GPIO1, GPIO_PIN_4, GPIO_MODE_OUT_PP);
+  58   1        GPIO_Init(GPIO0, GPIO_PIN_2, GPIO_MODE_OUT_PP);
+  59   1        GPIO_Init(GPIO0, GPIO_PIN_3, GPIO_MODE_OUT_PP);
+  60   1        GPIO_Init(GPIO0, GPIO_PIN_5, GPIO_MODE_OUT_PP);
+  61   1        GPIO_Init(GPIO0, GPIO_PIN_6, GPIO_MODE_OUT_PP);
+  62   1        GPIO_Init(GPIO5, GPIO_PIN_2, GPIO_MODE_OUT_PP);
+  63   1        GPIO_Init(GPIO5, GPIO_PIN_3, GPIO_MODE_OUT_PP);
+  64   1        GPIO_Init(GPIO5, GPIO_PIN_4, GPIO_MODE_OUT_PP);
+  65   1        GPIO_Init(GPIO5, GPIO_PIN_5, GPIO_MODE_OUT_PP);
+  66   1        GPIO_Init(GPIO4, GPIO_PIN_7, GPIO_MODE_OUT_PP);
+  67   1        GPIO_Init(GPIO4, GPIO_PIN_6, GPIO_MODE_OUT_PP);
+  68   1        GPIO_Init(GPIO4, GPIO_PIN_5, GPIO_MODE_OUT_PP);
+  69   1        GPIO_Init(GPIO4, GPIO_PIN_4, GPIO_MODE_OUT_PP);
+  70   1        GPIO_Init(GPIO4, GPIO_PIN_3, GPIO_MODE_OUT_PP);
+  71   1        GPIO_Init(GPIO4, GPIO_PIN_1, GPIO_MODE_OUT_PP);
+  72   1        GPIO_Init(GPIO3, GPIO_PIN_7, GPIO_MODE_OUT_PP);
+  73   1        GPIO_Init(GPIO3, GPIO_PIN_6, GPIO_MODE_OUT_PP);
+  74   1        GPIO_Init(GPIO3, GPIO_PIN_4, GPIO_MODE_OUT_PP);
+  75   1        GPIO_Init(GPIO3, GPIO_PIN_3, GPIO_MODE_OUT_PP);
+  76   1        GPIO_Init(GPIO3, GPIO_PIN_2, GPIO_MODE_IN_PU);    //自检模式的按键引脚
+  77   1        GPIO_Init(GPIO3, GPIO_PIN_1, GPIO_MODE_IN_PU);    /* 面板选择厚度 */
+  78   1        GPIO_Init(GPIO3, GPIO_PIN_0, GPIO_MODE_OUT_PP);
+  79   1        GPIO_Init(GPIO1, GPIO_PIN_0, GPIO_MODE_OUT_PP);
+  80   1        GPIO_Init(GPIO1, GPIO_PIN_1, GPIO_MODE_OUT_PP);
+  81   1        GPIO_Init(GPIO1, GPIO_PIN_2, GPIO_MODE_OUT_PP);
+  82   1        GPIO_Init(GPIO1, GPIO_PIN_3, GPIO_MODE_OUT_PP);
+  83   1        GPIO_Init(GPIO2, GPIO_PIN_3, GPIO_MODE_OUT_PP);   // P2.3输出
+  84   1        GPIO_Init(GPIO2, GPIO_PIN_5, GPIO_MODE_OUT_PP);
+  85   1        GPIO_Init(GPIO2, GPIO_PIN_6, GPIO_MODE_OUT_PP);
+  86   1        GPIO_Init(GPIO2, GPIO_PIN_7, GPIO_MODE_OUT_PP);
+  87   1        GPIO_Init(GPIO0, GPIO_PIN_0, GPIO_MODE_OUT_PP);
+  88   1        GPIO_Init(GPIO0, GPIO_PIN_1, GPIO_MODE_OUT_PP);
+  89   1        GPIO_Init(GPIO2, GPIO_PIN_3, GPIO_MODE_OUT_PP);
+  90   1        /*GPIO_Init write here*/    
+  91   1      }
+  92          
+  93          void SC_GPIO_LowOutput(void)
+  94          {
+  95   1          GPIO_Init(GPIO3, GPIO_PIN_2, GPIO_MODE_OUT_PP);    //将P32设置成推挽输出，以达到省电 
+  96   1          P02 = 0;
+  97   1          P03 = 0;
+  98   1          P05 = 0;
+  99   1          P06 = 0;
+ 100   1          P52 = 0;
+ 101   1          P53 = 0;
+ 102   1          P54 = 0;
+ 103   1          P55 = 0;
+ 104   1          P47 = 0;
+ 105   1          P46 = 0;
+ 106   1          P45 = 0;
+ 107   1          P44 = 0;
+ 108   1          P43 = 0;
+ 109   1          P41 = 0;
+ 110   1          P36 = 0;
+ 111   1          P34 = 0;
+ 112   1          P33 = 0;
+ 113   1          P32 = 0;
+ 114   1          P30 = 0;
+ 115   1          P10 = 0;
+C51 COMPILER V9.60.0.0   SC_INIT                                                           10/13/2023 17:22:46 PAGE 3   
+
+ 116   1          P11 = 0;
+ 117   1          P12 = 0;
+ 118   1          P13 = 0;
+ 119   1          P14 = 0;
+ 120   1          P25 = 0;
+ 121   1          P26 = 0;
+ 122   1          P27 = 0;
+ 123   1          P00 = 0;
+ 124   1          P01 = 0;
+ 125   1          P23 = 1;
+ 126   1      }
+ 127          
+ 128          
+ 129          /*****************************************************
+ 130          *函数名称: SC_TIM0_Init
+ 131          *函数功能: TIMER0初始化函数   （705us中断一次）
+ 132          *入口参数：void
+ 133          *出口参数：void 
+ 134          *****************************************************/
+ 135          void SC_TIM0_Init(void)
+ 136          {
+ 137   1        TIM0_TimeBaseInit(TIM0_PRESSEL_FSYS_D12, TIM0_MODE_TIMER);
+ 138   1        TIM0_WorkModeConfig(TIM0_WORK_MODE1, Time_705us, 0);
+ 139   1        TIM0_ITConfig(ENABLE, HIGH);
+ 140   1        TIM0_Cmd(ENABLE);
+ 141   1        /*TIM0_Init write here*/    
+ 142   1      }
+ 143          
+ 144          /*****************************************************
+ 145          *函数名称: SC_TIM1_Init
+ 146          *函数功能: TIMER1初始化函数    （1ms中断一次）
+ 147          *入口参数：void
+ 148          *出口参数：void
+ 149          *****************************************************/
+ 150          void SC_TIM1_Init(void)
+ 151          {
+ 152   1        TIM1_TimeBaseInit(TIM1_PRESSEL_FSYS_D12, TIM1_MODE_TIMER);
+ 153   1        TIM1_WorkModeConfig(TIM1_WORK_MODE1, Time_1ms);
+ 154   1        TIM1_ITConfig(ENABLE, HIGH);
+ 155   1        TIM1_Cmd(ENABLE);
+ 156   1        /*TIM1_Init write here*/  
+ 157   1      }
+ 158          
+ 159          
+ 160          
+ 161          /*****************************************************
+ 162          *函数名称: SC_PWM0_Init
+ 163          *函数功能: PWM0初始化函数
+ 164          *入口参数：void
+ 165          *出口参数：void 
+ 166          *****************************************************/
+ 167          void SC_PWM0_Init(void)
+ 168          {
+ 169   1        /*PWM0独立模式*/ PWM_Init(PWM0_PRESSEL_FHRC_D8, 111);
+ 170   1        /*PWM05 独立模式*/ PWM_IndependentModeConfigEX(PWM05, 0, PWM_OUTPUTSTATE_ENABLE);
+ 171   1        /*PWM07 独立模式*/ PWM_IndependentModeConfigEX(PWM07, 0, PWM_OUTPUTSTATE_ENABLE);
+ 172   1        /*PWM0*/ PWM_Aligned_Mode_Select(PWM0_Edge_Aligned_Mode);
+ 173   1        /*PWM0*/ PWM_FaultDetectionConfigEX(PWM0_Type, DISABLE);
+ 174   1        /*PWM0*/ PWM_FaultDetectionModeConfigEX(PWM0_Type, PWM0_Immediate_Mode, PWM0_FaultDetectionVoltage_Low, P
+             -WM0_WaveFilteringTime_0us);
+ 175   1        /*PWM0中断使能*/ PWM_ITConfigEX(PWM0_Type, DISABLE, LOW);
+ 176   1        /*PWM0开关*/ PWM_CmdEX(PWM0_Type, ENABLE);
+C51 COMPILER V9.60.0.0   SC_INIT                                                           10/13/2023 17:22:46 PAGE 4   
+
+ 177   1        /*PWM0_Init write here*/  
+ 178   1      }
+ 179          
+ 180          
+ 181          
+ 182          /*****************************************************
+ 183          *函数名称: SC_PWM2_Init
+ 184          *函数功能: PWM1初始化函数
+ 185          *入口参数：void
+ 186          *出口参数：void 
+ 187          *****************************************************/
+ 188          void SC_PWM2_Init(void)
+ 189          {
+ 190   1        PWM_Init(PWM2_PRESSEL_FHRC_D1, PWM_1KPressel);          /*PWM2初始化*/
+ 191   1        PWM_IndependentModeConfigEX(PWM20, 31999, PWM_OUTPUTSTATE_ENABLE); /*PWM20 独立模式*/
+ 192   1        PWM_ITConfigEX(PWM2_Type, DISABLE, LOW);            /*PWM2中断使能*/
+ 193   1        PWM_CmdEX(PWM2_Type, ENABLE);
+ 194   1        /*PWM2_Init write here*/  
+ 195   1      }
+ 196          
+ 197          /*****************************************************
+ 198          *函数名称: SC_PWM3_Init
+ 199          *函数功能: PWM1初始化函数
+ 200          *入口参数：void
+ 201          *出口参数：void 
+ 202          *****************************************************/
+ 203          void SC_PWM3_Init(void)
+ 204          {
+ 205   1        PWM_Init(PWM3_PRESSEL_FHRC_D1, PWM_4KPressel);         /*PWM3初始化*/
+ 206   1        PWM_IndependentModeConfigEX(PWM30, 0, PWM_OUTPUTSTATE_ENABLE); /*PWM30 独立模式*/
+ 207   1        PWM_ITConfigEX(PWM3_Type, DISABLE, LOW);           /*PWM3中断使能*/
+ 208   1        PWM_CmdEX(PWM3_Type, ENABLE);                /*PWM3开关*/
+ 209   1        /*PWM3_Init write here*/  
+ 210   1      }
+ 211          
+ 212          void SC_PWM3_Init_2Khz(void)
+ 213          {
+ 214   1        PWM_Init(PWM3_PRESSEL_FHRC_D1, PWM_2KPressel);         /*PWM3初始化*/
+ 215   1        PWM_IndependentModeConfigEX(PWM30, 0, PWM_OUTPUTSTATE_ENABLE); /*PWM30 独立模式*/
+ 216   1        PWM_ITConfigEX(PWM3_Type, DISABLE, LOW);           /*PWM3中断使能*/
+ 217   1        PWM_CmdEX(PWM3_Type, ENABLE);                /*PWM3开关*/
+ 218   1      }
+ 219          
+ 220          void SC_PWM3_Init_41Khz(void)
+ 221          {
+ 222   1        PWM_Init(PWM3_PRESSEL_FHRC_D1, PWM_4_1KPressel);         /*PWM3初始化*/
+ 223   1        PWM_IndependentModeConfigEX(PWM30, 0, PWM_OUTPUTSTATE_ENABLE); /*PWM30 独立模式*/
+ 224   1        PWM_ITConfigEX(PWM3_Type, DISABLE, LOW);           /*PWM3中断使能*/
+ 225   1        PWM_CmdEX(PWM3_Type, ENABLE);                /*PWM3开关*/
+ 226   1      }
+ 227          void SC_PWM3_Init_33Khz(void)
+ 228          {
+ 229   1        PWM_Init(PWM3_PRESSEL_FHRC_D1, PWM_3_3KPressel);         /*PWM3初始化*/
+ 230   1        PWM_IndependentModeConfigEX(PWM30, 0, PWM_OUTPUTSTATE_ENABLE); /*PWM30 独立模式*/
+ 231   1        PWM_ITConfigEX(PWM3_Type, DISABLE, LOW);           /*PWM3中断使能*/
+ 232   1        PWM_CmdEX(PWM3_Type, ENABLE);                /*PWM3开关*/
+ 233   1      }
+ 234          
+ 235          /*****************************************************
+ 236          *函数名称: SC_INT_Init
+ 237          *函数功能: INT初始化函数
+ 238          *入口参数：void
+C51 COMPILER V9.60.0.0   SC_INIT                                                           10/13/2023 17:22:46 PAGE 5   
+
+ 239          *出口参数：void
+ 240          *****************************************************/
+ 241          void SC_INT_Init(void)
+ 242          {
+ 243   1        GPIO_Init(GPIO2, GPIO_PIN_0, GPIO_MODE_IN_PU);
+ 244   1        GPIO_Init(GPIO2, GPIO_PIN_1, GPIO_MODE_IN_PU);
+ 245   1        GPIO_Init(GPIO2, GPIO_PIN_2, GPIO_MODE_IN_PU);
+ 246   1        GPIO_Init(GPIO1, GPIO_PIN_6, GPIO_MODE_IN_PU);
+ 247   1        GPIO_Init(GPIO1, GPIO_PIN_7, GPIO_MODE_IN_PU);
+ 248   1        GPIO_Init(GPIO0, GPIO_PIN_4, GPIO_MODE_IN_PU);
+ 249   1        INT2_SetTriggerMode(0x00 | INT20 | INT21 | INT22, INT_TRIGGER_RISE_FALL);
+ 250   1        INT2_ITConfig(ENABLE, LOW);
+ 251   1        INT1_SetTriggerMode(0x00 | INT16 | INT17, INT_TRIGGER_RISE_FALL);
+ 252   1        INT1_ITConfig(ENABLE, LOW);
+ 253   1        INT0_SetTriggerMode(0x00 | INT04, INT_TRIGGER_RISE_FALL);
+ 254   1        INT0_ITConfig(ENABLE, LOW);
+ 255   1        /*INT_Init write here*/
+ 256   1        /*INT_Init write here*/ 
+ 257   1      }
+ 258          
+ 259          /*****************************************************
+ 260          *函数名称: SC_ADC_Init
+ 261          *函数功能: ADC初始化函数
+ 262          *入口参数：void
+ 263          *出口参数：void 
+ 264          *****************************************************/
+ 265          void SC_ADC_Init(void)
+ 266          {
+ 267   1        ADC_Init(ADC_PRESSEL_32CLOCK, ADC_Cycle_Null);
+ 268   1        ADC_EAINConfig(ADC_EAIN_1, ENABLE); /*AIN1口模式设置，设置为ADC口，去除上拉*/
+ 269   1        ADC_EAINConfig(ADC_EAIN_9, ENABLE); /*AIN9口模式设置，设置为ADC口，去除上拉*/
+ 270   1        ADC_ChannelConfig(ADC_CHANNEL_9, ENABLE);/* ADCCON选择通道 */
+ 271   1        ADC_ITConfig(DISABLE, LOW);/* ADCCON|=0X80; */
+ 272   1        ADC_Cmd(ENABLE);/* 先关闭 */
+ 273   1        /*ADC_Init write here*/
+ 274   1      }
+ 275          
+ 276          /*****************************************************
+ 277           *函数名称: SC_WDT_Init
+ 278           *函数功能: 看门狗初始化函数
+ 279           *入口参数：void
+ 280           *出口参数：void
+ 281           *****************************************************/
+ 282          void SC_WDT_Init(void)
+ 283          {
+ 284   1        WDT_Init(WDT_OverflowTime_500MS);
+ 285   1        OPTION_WDT_Cmd(ENABLE);
+ 286   1        /*WDT_Init write here*/
+ 287   1      }
+ 288          /*****************************************************
+ 289           *函数名称: SC_EXtern_Init
+ 290           *函数功能: 32K晶振初始化函数
+ 291           *入口参数：void
+ 292           *出口参数：void
+ 293           *****************************************************/
+ 294          
+ 295          void SC_EXtern_Init(void)
+ 296          {
+ 297   1        OPTION_XTIPLL_Cmd(ENABLE);
+ 298   1      }
+ 299          
+ 300          /* 选择完面板厚度后将管脚设置推挽关闭，达到省电 */
+C51 COMPILER V9.60.0.0   SC_INIT                                                           10/13/2023 17:22:46 PAGE 6   
+
+ 301          void Clr_IO(void)
+ 302          {
+ 303   1        Delay1ms();
+ 304   1        GPIO_Init(GPIO3, GPIO_PIN_1, GPIO_MODE_OUT_PP);
+ 305   1        Delay1ms();
+ 306   1        P31 = 0;
+ 307   1      }
+ 308          
+ 309          /*上電先清所有的標誌*/
+ 310          void Clr_AllFlag(void)
+ 311          {   
+ 312   1          Clr_SysWakeUpSleepFlag;
+ 313   1          Clr_AllDataSendEndFlag;
+ 314   1          Clr_BatLowWarrnEnFlag;
+ 315   1          Clr_LowFlashLedFlag;
+ 316   1          Clr_BatLowWarrnFlag;
+ 317   1          Clr_SendSpeedCommandEnFlag;
+ 318   1          Clr_SendSpeedOffEnFlag;
+ 319   1          Clr_SendLightOffEnFlag;
+ 320   1          Clr_SendLightOnEnFlag;
+ 321   1          Clr_SleepEnFlag;
+ 322   1          Clr_INTENSIVEONModeFlag;
+ 323   1          Clr_AllSwitchOFFFlag;
+ 324   1          Clr_DeactivateModeFirstLightFlag;
+ 325   1          Clr_ActivateModeFlag;
+ 326   1          Clr_FirstPowerUpFlag;
+ 327   1          Clr_KeySureBuzzerFlag;
+ 328   1          Clr_FirstSendSpeedCommandFlag;
+ 329   1          Clr_SendSpeedCommandFlag;
+ 330   1          Clr_FirstSendSpeedOffCommandFlag;
+ 331   1          Clr_SpeedDelayOffStartFlag;
+ 332   1          Clr_FirstSpeedOffFlag;
+ 333   1          Clr_SendSpeedOffCommandFlag;
+ 334   1          Clr_LightOffDelayStartFlag;
+ 335   1          Clr_FirstLightOffFlag;
+ 336   1          Clr_SendLightOffCommandFlag;
+ 337   1          Clr_FirSendLightOnCommandFlag;
+ 338   1          Clr_FirstBurner1CloseFlag;
+ 339   1          Clr_FirstBurner2CloseFlag;
+ 340   1          Clr_FirstBurner3CloseFlag;
+ 341   1          Clr_FirstBurner4CloseFlag;
+ 342   1          Clr_FirstBurner5CloseFlag;
+ 343   1          Clr_FirstBurner6CloseFlag;
+ 344   1          Clr_FirstBurner1OpenFlag;
+ 345   1          Clr_FirstBurner2OpenFlag;
+ 346   1          Clr_FirstBurner3OpenFlag;
+ 347   1          Clr_FirstBurner4OpenFlag;
+ 348   1          Clr_FirstBurner5OpenFlag;
+ 349   1          Clr_FirstBurner6OpenFlag;   
+ 350   1          Clr_LightOffDelay250ms_Flag;
+ 351   1          Clr_LightOnDelay250ms_Flag;
+ 352   1          
+ 353   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1037    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+C51 COMPILER V9.60.0.0   SC_INIT                                                           10/13/2023 17:22:46 PAGE 7   
+
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

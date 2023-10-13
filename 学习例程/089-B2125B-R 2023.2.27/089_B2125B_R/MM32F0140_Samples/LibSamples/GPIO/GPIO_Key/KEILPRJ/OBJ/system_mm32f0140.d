@@ -1,0 +1,30 @@
+.\obj\system_mm32f0140.o: ..\..\..\..\..\Device\MM32F0140\Source\system_mm32f0140.c
+.\obj\system_mm32f0140.o: ..\..\..\..\..\Device\MM32F0140\Include\mm32_device.h
+.\obj\system_mm32f0140.o: ..\..\..\..\..\Device\MM32F0140\Include\mm32_reg.h
+.\obj\system_mm32f0140.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\system_mm32f0140.o: D:\Program Files (x86)\keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\obj\system_mm32f0140.o: ..\..\..\..\..\Device\MM32F0140\Include\types.h
+.\obj\system_mm32f0140.o: ..\..\..\..\..\Device\MM32F0140\Include\reg_common.h
+.\obj\system_mm32f0140.o: ..\..\..\..\..\Device\CMSIS\KEIL_Core\core_cm0.h
+.\obj\system_mm32f0140.o: ..\..\..\..\..\Device\CMSIS\KEIL_Core\cmsis_compiler.h
+.\obj\system_mm32f0140.o: ..\..\..\..\..\Device\CMSIS\KEIL_Core\cmsis_armcc.h
+.\obj\system_mm32f0140.o: ..\..\..\..\..\Device\MM32F0140\Include\reg_adc.h
+.\obj\system_mm32f0140.o: ..\..\..\..\..\Device\MM32F0140\Include\reg_comp.h
+.\obj\system_mm32f0140.o: ..\..\..\..\..\Device\MM32F0140\Include\reg_crc.h
+.\obj\system_mm32f0140.o: ..\..\..\..\..\Device\MM32F0140\Include\reg_dbg.h
+.\obj\system_mm32f0140.o: ..\..\..\..\..\Device\MM32F0140\Include\reg_div.h
+.\obj\system_mm32f0140.o: ..\..\..\..\..\Device\MM32F0140\Include\reg_dma.h
+.\obj\system_mm32f0140.o: ..\..\..\..\..\Device\MM32F0140\Include\reg_exti.h
+.\obj\system_mm32f0140.o: ..\..\..\..\..\Device\MM32F0140\Include\reg_flash.h
+.\obj\system_mm32f0140.o: ..\..\..\..\..\Device\MM32F0140\Include\reg_flexcan.h
+.\obj\system_mm32f0140.o: ..\..\..\..\..\Device\MM32F0140\Include\reg_gpio.h
+.\obj\system_mm32f0140.o: ..\..\..\..\..\Device\MM32F0140\Include\reg_i2c.h
+.\obj\system_mm32f0140.o: ..\..\..\..\..\Device\MM32F0140\Include\reg_iwdg.h
+.\obj\system_mm32f0140.o: ..\..\..\..\..\Device\MM32F0140\Include\reg_pwr.h
+.\obj\system_mm32f0140.o: ..\..\..\..\..\Device\MM32F0140\Include\reg_rcc.h
+.\obj\system_mm32f0140.o: ..\..\..\..\..\Device\MM32F0140\Include\reg_spi.h
+.\obj\system_mm32f0140.o: ..\..\..\..\..\Device\MM32F0140\Include\reg_syscfg.h
+.\obj\system_mm32f0140.o: ..\..\..\..\..\Device\MM32F0140\Include\reg_tim.h
+.\obj\system_mm32f0140.o: ..\..\..\..\..\Device\MM32F0140\Include\reg_uart.h
+.\obj\system_mm32f0140.o: ..\..\..\..\..\Device\MM32F0140\Include\reg_wwdg.h
+.\obj\system_mm32f0140.o: ..\..\..\..\..\Device\MM32F0140\Include\mm32_reg_redefine_v1.h

@@ -1,0 +1,396 @@
+C51 COMPILER V9.60.0.0   SC_IT                                                             10/13/2023 17:22:46 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE SC_IT
+OBJECT MODULE PLACED IN ..\Output\SC_it.obj
+COMPILER INVOKED BY: D:\Program Files (x86)\keil_v5\C51\BIN\C51.EXE ..\User\SC_it.c LARGE OBJECTADVANCED OPTIMIZE(9,SIZE
+                    -) BROWSE INCDIR(..\FWLib\SC95F_Lib\inc;..\User;..\User\Funtion;..\SOC_DebugTouchKey_Lib;..\SOC_DebugTouchKey_Lib) DEFINE
+                    -(SC95F8x1xB) DEBUG PRINT(..\List\SC_it.lst) TABS(2) OBJECT(..\Output\SC_it.obj)
+
+line level    source
+
+   1          #include "SC_System.h"
+   2          
+   3          
+   4          extern void Buzzer_Process(void);
+   5          
+   6          void IR_StartSend_36KHZ(void);
+   7          void IR_StopSend_36KHZ(void);
+   8          
+   9          extern uint8_t gcOneMsCount;
+  10          extern uint8_t  gcIRSendStatus;
+  11          extern uint8_t IRSendDataBitCount; // 24bit
+  12          extern uint32_t gllIRSendData;    // IR Send Data
+  13          extern uint32_t gllIRSendDataBak; // IR Send Data
+  14          extern uint16_t gcIRSendDelayTime; // 1S
+  15          extern uint8_t gcIRSendCount;      // 3
+  16          extern uint8_t gcSpeedLevel;
+  17          extern volatile uint8_t gcADCDelayTime;
+  18          extern uint8_t gcIRSendLightOnCount;
+  19          extern uint8_t gcIRSendLightOnTime ;
+  20          extern uint8_t gcIRSendLightOffCount ;        //灯开发送计数
+  21          extern uint8_t gcIRSendLightOffTime ;
+  22          extern uint8_t gcIRSendSpeedOffCount;        
+  23          extern uint8_t gcIRSendSpeedOffTime;
+  24          extern uint8_t gcIRSendSpeedCommandCount ;   
+  25          extern uint8_t gcIRSendSpeedCommandTime ;
+  26          extern uint8_t gcT250MsCount;
+  27          
+  28          extern bit  BTM_WakeUpFlag ;  //BTM唤醒标志位
+  29          extern uint8_t gcBurnerStatus;
+  30          extern uint8_t gcBurnerOpenCount;
+  31          
+  32          extern uint8_t gcIRSendTestACount;
+  33          extern uint8_t gcIRSendTestBCount;
+  34          extern uint8_t gcIRSendTestCCount;
+  35          extern uint8_t gcTestSendIRStatus;
+  36          
+  37          extern uint8_t gcIRSendTestATime;
+  38          extern uint8_t gcIRSendTestBTime;
+  39          extern uint8_t gcIRSendTestCTime;
+  40          
+  41          extern uint8_t gcWaitKeyTime;
+  42          
+  43          //uint8_t gc250msCount = 0;
+  44          
+  45          void TC1_Timer16bitPeriodSet(uint16_t Count)
+  46          {
+  47   1        TIM0_Mode1SetReloadCounter(Count);
+  48   1      }
+  49          
+  50          void INT0Interrupt()    interrupt 0       
+  51          {
+  52   1          TCON &= 0XFD;
+  53   1      //  BTM_WakeUpFlag = 1;
+C51 COMPILER V9.60.0.0   SC_IT                                                             10/13/2023 17:22:46 PAGE 2   
+
+  54   1      }
+  55          void INT1Interrupt()    interrupt 2   
+  56          {
+  57   1          TCON &= 0XF7;    //Clear interrupt flag bit       
+  58   1      //  BTM_WakeUpFlag = 1;
+  59   1      }
+  60          
+  61          
+  62          void INT2Interrupt()    interrupt 10
+  63          { 
+  64   1        
+  65   1      //  BTM_WakeUpFlag = 1;
+  66   1      }
+  67          
+  68          /*定时器0中断*/
+  69          void Timer0Interrupt()    interrupt 1       //中断号：1    
+  70          {
+  71   1          // P31 = ~P31;  
+  72   1          if (IRSendEnFlag)
+  73   1          {
+  74   2              switch (gcIRSendStatus)
+  75   2              {
+  76   3                  case 0:     // Start Conditon 1088us
+  77   3                  {
+  78   4                      IR_StartSend_36KHZ();
+  79   4                      if (gcIRSendCount !=1 )
+  80   4                      {
+  81   5                           TC1_Timer16bitPeriodSet(Time_705us);    // 1 and 3   Faber 
+  82   5                      }
+  83   4                      else
+  84   4                      {
+  85   5                           TC1_Timer16bitPeriodSet(Time_738us);  //2 Elica
+  86   5                      }
+  87   4                      gcIRSendStatus = 1;
+  88   4                      IRSendDataBitCount = 0;
+  89   4                  }
+  90   3                  break;
+  91   3                  case 1:         // Send Data 
+  92   3                  {
+  93   4                      if (gllIRSendData&0x0001)      //1
+  94   4                      {
+  95   5                          IR_StopSend_36KHZ();
+  96   5                          if (gcIRSendCount !=1 )
+  97   5                          {
+  98   6                              TC1_Timer16bitPeriodSet(Time_705us);  // 1 and 3  Faber 
+  99   6                          }
+ 100   5                          else
+ 101   5                          {
+ 102   6                              TC1_Timer16bitPeriodSet(Time_738us);
+ 103   6                          }
+ 104   5                          
+ 105   5                      }
+ 106   4                      else                        // 0
+ 107   4                      {
+ 108   5                         IR_StartSend_36KHZ();
+ 109   5                         if (gcIRSendCount !=1 )
+ 110   5                         {
+ 111   6                             TC1_Timer16bitPeriodSet(Time_738us); 
+ 112   6                         }
+ 113   5                         else
+ 114   5                         {
+ 115   6                             TC1_Timer16bitPeriodSet(Time_705us); 
+C51 COMPILER V9.60.0.0   SC_IT                                                             10/13/2023 17:22:46 PAGE 3   
+
+ 116   6                         }
+ 117   5                         
+ 118   5                      }
+ 119   4                      gllIRSendData = (gllIRSendData>>1);
+ 120   4                      IRSendDataBitCount++;
+ 121   4                      if (IRSendDataBitCount > 24)
+ 122   4                      {
+ 123   5                          IRSendDataBitCount = 0;
+ 124   5                          gllIRSendData = gllIRSendDataBak;
+ 125   5                          gcIRSendStatus = 0;
+ 126   5                          IR_StopSend_36KHZ();             // stop PWM 36KHZ
+ 127   5                          TC1_Timer16bitPeriodSet(Time_5ms);  // 50ms
+ 128   5                          gcIRSendDelayTime = 0;
+ 129   5                          Clr_IRSendEnFlag;    // Send End
+ 130   5                         
+ 131   5                          if (SendLightOnEnFlag)
+ 132   5                          {
+ 133   6                            gcIRSendLightOnTime = 0;
+ 134   6                            Clr_SendLightOnEnFlag;
+ 135   6                            gcIRSendLightOnCount++;
+ 136   6                            if (gcIRSendLightOnCount >= 3)
+ 137   6                            {
+ 138   7                              gcIRSendLightOnCount = 0;
+ 139   7                              Clr_SendLightOnCommandFlag;
+ 140   7                              if(ToBurnerOpen_Flag)
+ 141   7                              {
+ 142   8                                Set_LightOnDelay250ms_Flag;     //开始计时250ms
+ 143   8                              }
+ 144   7                            }
+ 145   6                          }
+ 146   5                           
+ 147   5                          if (SendLightOffEnFlag)
+ 148   5                          {
+ 149   6                            gcIRSendLightOffTime = 0;
+ 150   6                            Clr_SendLightOffEnFlag;
+ 151   6                            gcIRSendLightOffCount++;
+ 152   6                            if (gcIRSendLightOffCount >= 3)
+ 153   6                            {
+ 154   7                              gcIRSendLightOffCount = 0;                  
+ 155   7                              Clr_SendLightOffCommandFlag;
+ 156   7                              Set_LightOffDelay250ms_Flag;        //开始计时250ms
+ 157   7                              
+ 158   7                            }
+ 159   6                          }     
+ 160   5      
+ 161   5                          /**/
+ 162   5                          if (SendSpeedOffEnFlag)
+ 163   5                          {
+ 164   6                            gcIRSendSpeedOffTime = 0;
+ 165   6                            Clr_SendSpeedOffEnFlag;
+ 166   6                            gcIRSendSpeedOffCount++;
+ 167   6                            if (gcIRSendSpeedOffCount >= 3)       //发送关风扇的指令3次
+ 168   6                            {
+ 169   7                              gcIRSendSpeedOffCount = 0;
+ 170   7                              Clr_SendSpeedOffCommandFlag;
+ 171   7                              
+ 172   7                              /**/
+ 173   7                              if(AutoFanFlag)       //AutoFan
+ 174   7                              {
+ 175   8                                  Clr_AutoFanFlag;
+ 176   8                                  Clr_IRSendEnFlag;                                
+ 177   8      //                          Clr_INTENSIVEONModeFlag;        //清除密集模式                               
+C51 COMPILER V9.60.0.0   SC_IT                                                             10/13/2023 17:22:46 PAGE 4   
+
+ 178   8                                  Set_SendSpeedCommandFlag;
+ 179   8      //                          Clr_FirstSendSpeedCommandFlag;
+ 180   8                                  gcIRSendSpeedCommandTime =  SPEEDCOMMANDTIME;      //
+ 181   8                                
+ 182   8                                  Clr_FirstSendSpeedOffCommandFlag; 
+ 183   8      
+ 184   8                                  Clr_LightOffDelayStartFlag;
+ 185   8                                  Clr_SpeedDelayOffStartFlag;
+ 186   8                                  
+ 187   8                                  if ((gcBurnerStatus&0x01) ||(gcBurnerStatus&0x02) )   // work burner 
+ 188   8                                  {
+ 189   9                                     gcSpeedLevel = 2;
+ 190   9                                  }
+ 191   8                                  else if (gcBurnerOpenCount > 1)
+ 192   8                                  {
+ 193   9                                     gcSpeedLevel = 2;
+ 194   9                                  }
+ 195   8                                  else
+ 196   8                                  {
+ 197   9                                    gcSpeedLevel = 1; 
+ 198   9                                  }
+ 199   8                                 
+ 200   8                              }
+ 201   7                              
+ 202   7                              if(INTENSIVEONModeFlag)
+ 203   7                              {
+ 204   8                                    Clr_INTENSIVEONModeFlag;
+ 205   8                                    Set_SendSpeedCommandFlag;
+ 206   8                                    Clr_FirstSendSpeedCommandFlag;
+ 207   8                                    gcSpeedLevel = 1;   
+ 208   8                                    gcIRSendSpeedCommandTime = 100;
+ 209   8                                    if (FirstLightOffFlag == 0)
+ 210   8                                    {
+ 211   9                                        Set_FirstLightOffFlag;
+ 212   9                                        Set_LightOffDelayStartFlag;
+ 213   9                                    }
+ 214   8                                   if (FirstSpeedOffFlag == 0)
+ 215   8                                   {
+ 216   9                                       Set_FirstSpeedOffFlag;
+ 217   9                                       Set_SpeedDelayOffStartFlag;
+ 218   9                                   }
+ 219   8                              }                       
+ 220   7                            }
+ 221   6                          } 
+ 222   5                          
+ 223   5                          if (SendSpeedCommandEnFlag)
+ 224   5                          {
+ 225   6                            gcIRSendSpeedCommandTime = 0;
+ 226   6                            Clr_SendSpeedCommandEnFlag;
+ 227   6                            gcIRSendSpeedCommandCount++;
+ 228   6                            if (gcIRSendSpeedCommandCount >= 3)
+ 229   6                            {
+ 230   7                              gcIRSendSpeedCommandCount = 0;
+ 231   7                              Clr_SendSpeedCommandFlag;
+ 232   7                            }
+ 233   6                          } 
+ 234   5                          
+ 235   5                         if(SendTestAEnFlag)         //测试自检A
+ 236   5                          {
+ 237   6                            gcIRSendTestATime = 0; 
+ 238   6                            Clr_SendTestAEnFlag;            
+ 239   6                            Clr_IRSendEnFlag;          //
+C51 COMPILER V9.60.0.0   SC_IT                                                             10/13/2023 17:22:46 PAGE 5   
+
+ 240   6      ////                      gcIRSendTestACount++;
+ 241   6      ////                      if(gcIRSendTestACount >= 3)      //发送3次，发完就不用再发了
+ 242   6      ////                      {
+ 243   6      ////                        gcIRSendTestACount = 0;
+ 244   6                              Clr_SendTestAFlag;        //清按键按下标志
+ 245   6      //                        Clr_TestKeyDownFlag;          //发送完3次，清测试按键按下的标志
+ 246   6                              Clr_IRSendEnFlag;                         
+ 247   6                              gcTestSendIRStatus = 1; 
+ 248   6                              
+ 249   6      ////                      }                   
+ 250   6                          }
+ 251   5                          
+ 252   5                          if(SendTestBEnFlag)         //测试自检B
+ 253   5                          {
+ 254   6                            gcIRSendTestBTime = 0;
+ 255   6                            Clr_SendTestBEnFlag;
+ 256   6                            Clr_IRSendEnFlag;
+ 257   6      ////                      gcIRSendTestBCount++;
+ 258   6      ////                      if(gcIRSendTestBCount >= 3)      //发送3次，发完就不用再发了
+ 259   6      ////                      {
+ 260   6                              gcIRSendTestBCount = 0;
+ 261   6                              Clr_SendTestBFlag;
+ 262   6                              Clr_IRSendEnFlag; 
+ 263   6                              gcTestSendIRStatus = 2; 
+ 264   6      ////                      }
+ 265   6                            
+ 266   6                          }
+ 267   5                          
+ 268   5                          if(SendTestCEnFlag)         //测试自检C
+ 269   5                          {
+ 270   6                            gcIRSendTestCTime = 0;
+ 271   6                            Clr_SendTestCEnFlag;
+ 272   6                            Clr_IRSendEnFlag;
+ 273   6      ////                      gcIRSendTestCCount++;
+ 274   6      ////                      if(gcIRSendTestCCount >= 3)        //发送3次，发完就不用再发了
+ 275   6      ////                      {
+ 276   6      ////                        gcIRSendTestCCount = 0;
+ 277   6      //                        gcWaitKeyTime = 0;
+ 278   6                              Clr_IRSendEnFlag;
+ 279   6                              Clr_SendTestCFlag;
+ 280   6      //                        Clr_WaitKeyTimeFlag;
+ 281   6      //                        Set_TestIROverFlag;
+ 282   6                              gcTestSendIRStatus = 0;
+ 283   6                              
+ 284   6                              Set_SendTestAFlag;
+ 285   6                              Set_SendTestBFlag;
+ 286   6                              Set_SendTestCFlag;
+ 287   6                              Clr_IRSendEnFlag;
+ 288   6      //                        Clr_TestONFlag;              //退出自检模式,此时可以准备测试睡眠电流
+ 289   6      ////                      }                   
+ 290   6                          }               
+ 291   5                                          
+ 292   5                      }
+ 293   4                  }
+ 294   3                  break;
+ 295   3                  case 2:         // 3???  这里是进不来的
+ 296   3                  {
+ 297   4                     TC1_Timer16bitPeriodSet(Time_5ms);  // 50ms
+ 298   4                      gcIRSendDelayTime++;
+ 299   4                      if (gcIRSendDelayTime >= 199 ) // (199+1)*5ms = 1S
+ 300   4                      {
+ 301   5                          gcIRSendStatus = 0;         //reSendIR
+C51 COMPILER V9.60.0.0   SC_IT                                                             10/13/2023 17:22:46 PAGE 6   
+
+ 302   5                                          
+ 303   5                      }
+ 304   4                  }
+ 305   3                  break;
+ 306   3              }
+ 307   2          }
+ 308   1          else
+ 309   1          {
+ 310   2              IR_StopSend_36KHZ();             // stop PWM 36KHZ
+ 311   2              gcIRSendStatus = 0;
+ 312   2              gcIRSendDelayTime = 0;
+ 313   2              IRSendDataBitCount = 0;      
+ 314   2          }
+ 315   1      }
+ 316          
+ 317          
+ 318          /* 定时器中断 1ms一次 */
+ 319          void Timer1Interrupt()    interrupt 3   
+ 320          {
+ 321   1          
+ 322   1          TIM1_Mode1SetReloadCounter(Time_1ms);    //重载值
+ 323   1          gcOneMsCount++;
+ 324   1          gcT250MsCount++;
+ 325   1          Buzzer_Process();
+ 326   1        
+ 327   1                    
+ 328   1      }
+ 329          
+ 330          void IR_StartSend_36KHZ(void)
+ 331          {
+ 332   1          if (ExtIRFlag == 0)
+ 333   1          {
+ 334   2      
+ 335   2              Set_InsideIR_Send;
+ 336   2          }
+ 337   1          else
+ 338   1          {
+ 339   2              Set_ExternalIR_Send;
+ 340   2          }
+ 341   1      }
+ 342          
+ 343          void IR_StopSend_36KHZ(void)
+ 344          {
+ 345   1          if (ExtIRFlag == 0)
+ 346   1          {
+ 347   2              Clr_InsideIR_Send;
+ 348   2          }
+ 349   1          else
+ 350   1          {
+ 351   2              Clr_ExternalIR_Send;
+ 352   2          }
+ 353   1      }
+ 354          
+ 355           
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    958    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+C51 COMPILER V9.60.0.0   SC_IT                                                             10/13/2023 17:22:46 PAGE 7   
+
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

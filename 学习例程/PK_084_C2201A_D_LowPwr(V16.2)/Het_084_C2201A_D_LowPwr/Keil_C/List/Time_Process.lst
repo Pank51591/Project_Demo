@@ -1,0 +1,273 @@
+C51 COMPILER V9.60.0.0   TIME_PROCESS                                                      10/13/2023 17:22:47 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE TIME_PROCESS
+OBJECT MODULE PLACED IN ..\Output\Time_Process.obj
+COMPILER INVOKED BY: D:\Program Files (x86)\keil_v5\C51\BIN\C51.EXE ..\User\Funtion\Time_Process.c LARGE OBJECTADVANCED 
+                    -OPTIMIZE(9,SIZE) BROWSE INCDIR(..\FWLib\SC95F_Lib\inc;..\User;..\User\Funtion;..\SOC_DebugTouchKey_Lib;..\SOC_DebugTouch
+                    -Key_Lib) DEFINE(SC95F8x1xB) DEBUG PRINT(..\List\Time_Process.lst) TABS(2) OBJECT(..\Output\Time_Process.obj)
+
+line level    source
+
+   1          #include "SC_System.h"
+   2          #include "Burner_Process.h"
+   3          #include "Output_Process.h"
+   4          
+   5          extern uint8_t gcBurner1OpenCount;       
+   6          extern uint8_t gcBurner1CloseCount;       
+   7          
+   8          extern uint8_t gcBurner2OpenCount;        
+   9          extern uint8_t gcBurner2CloseCount;       
+  10          
+  11          extern uint8_t gcBurner3OpenCount;        
+  12          extern uint8_t gcBurner3CloseCount;      
+  13          
+  14          extern uint8_t gcBurner4OpenCount;         
+  15          extern uint8_t gcBurner4CloseCount;        
+  16          
+  17          extern uint8_t gcBurner5OpenCount;        
+  18          extern uint8_t gcBurner5CloseCount;        
+  19          
+  20          extern uint8_t gcBurner6OpenCount;         
+  21          extern uint8_t gcBurner6CloseCount;        
+  22          
+  23          extern uint8_t gcBurnerStatus;            
+  24          extern uint8_t gcBurnerOpenCount;   
+  25          
+  26          extern uint8_t gcKeyStatus;                
+  27          extern uint8_t gcKeyCount;                
+  28          extern uint8_t gcOneMsCount;               
+  29          extern uint32_t gcButton1State;             
+  30          extern uint8_t gcKeyValue;                
+  31          extern uint16_t giKeySW6LongDownTime;      
+  32          extern uint8_t gcBuzzerTime; 
+  33          extern uint8_t  gcPowerUpTime;
+  34          extern uint16_t giLEDPwmValue;
+  35          extern volatile uint16_t giLightDelayOffTime;  // 5minute
+  36          extern volatile uint16_t giSpeedDelayOffTime;  // 5minute
+  37          extern uint8_t gcIRSendLightOnCount;
+  38          extern uint8_t gcIRSendLightOnTime;
+  39          
+  40          extern uint8_t gcIRSendLightOffCount ;        //灯开发送计数
+  41          extern uint8_t gcIRSendLightOffTime ;
+  42          
+  43          extern uint8_t gcIRSendSpeedOffCount;        
+  44          extern uint8_t gcIRSendSpeedOffTime;
+  45          
+  46          extern uint8_t gcIRSendSpeedCommandCount ;   
+  47          extern uint8_t gcIRSendSpeedCommandTime ;
+  48          
+  49          extern uint8_t gcSpeedLevel;
+  50          
+  51          uint8_t gc250msCount = 0;
+  52          uint8_t gc250msCount2 = 0;
+  53          
+C51 COMPILER V9.60.0.0   TIME_PROCESS                                                      10/13/2023 17:22:47 PAGE 2   
+
+  54          uint8_t gcTenMsCount = 0;
+  55          uint8_t gcT10MsCount = 0;
+  56          
+  57          uint8_t gcT500MsCount = 0;
+  58          uint16_t giTestTime = 0;
+  59          uint8_t gcWaitKeyTime = 0;
+  60          
+  61          //=======================================================================================
+  62          //                  void Time_Process(void)
+  63          //                  Run once in 125ms         
+  64          //                  Return value::No
+  65          //=======================================================================================
+  66           void Time_Process(void)
+  67           {   
+  68   1         /*（用于一键关闭的功能）当发送完关灯的信号后，间隔250ms再发送关风扇的信号*/
+  69   1         if(LightOffDelay250ms_Flag)            //开始计时250ms
+  70   1         {
+  71   2           if(gc250msCount < 2)
+  72   2           {
+  73   3              gc250msCount++; 
+  74   3           }       
+  75   2           if(gc250msCount >= 2)
+  76   2           {
+  77   3             gc250msCount = 0;
+  78   3             Clr_LightOffDelay250ms_Flag;
+  79   3             
+  80   3             Set_SendSpeedOffCommandFlag;                
+  81   3             gcIRSendSpeedOffTime = 100;           //立即发送关风扇的信号
+  82   3             Set_SysWakeUpSleepFlag;     
+  83   3           }
+  84   2         }
+  85   1         
+  86   1         /*250ms后发送开风扇命令*/
+  87   1         if(LightOnDelay250ms_Flag)
+  88   1         {
+  89   2           if(gc250msCount2 < 2)
+  90   2           {
+  91   3             gc250msCount2++;
+  92   3           }
+  93   2           if(gc250msCount2 >= 2)
+  94   2           {
+  95   3             gc250msCount2 = 0;
+  96   3             Clr_LightOnDelay250ms_Flag;     
+  97   3             Clr_ToBurnerOpen_Flag;            //清有炉头闭合的标志
+  98   3             
+  99   3             /*判断风速*/
+ 100   3            if ((gcBurnerStatus&0x01) ||(gcBurnerStatus&0x02) )     // work burner 
+ 101   3            {
+ 102   4               gcSpeedLevel = 2;
+ 103   4            }
+ 104   3            else if (gcBurnerOpenCount > 1)
+ 105   3            {
+ 106   4               gcSpeedLevel = 2;
+ 107   4            }
+ 108   3            else
+ 109   3            {                                     
+ 110   4               gcSpeedLevel = 1;                                          
+ 111   4            }     
+ 112   3             /*开风扇*/
+ 113   3             Clr_IRSendEnFlag;                                
+ 114   3             Clr_INTENSIVEONModeFlag;          //清除密集模式                                                                 
+ 115   3             Set_SendSpeedCommandFlag;
+C51 COMPILER V9.60.0.0   TIME_PROCESS                                                      10/13/2023 17:22:47 PAGE 3   
+
+ 116   3             Set_SysWakeUpSleepFlag;          //退出低功耗模式
+ 117   3             gcIRSendSpeedCommandTime =  100;         //SPEEDCOMMANDTIME;      //75                                                             
+             -  
+ 118   3      
+ 119   3           }   
+ 120   2             
+ 121   2         }
+ 122   1         
+ 123   1         
+ 124   1         
+ 125   1         gcT500MsCount++;
+ 126   1         if (gcT500MsCount >= 2 * 2)
+ 127   1         {
+ 128   2           gcT500MsCount = 0;
+ 129   2           if (LowFlashLedFlag)
+ 130   2             Clr_LowFlashLedFlag;
+ 131   2           else
+ 132   2             Set_LowFlashLedFlag;
+ 133   2         }
+ 134   1         
+ 135   1          gcT10MsCount++;
+ 136   1          if (gcT10MsCount >= 4  * 2 )    //按照define设定时间进行闪烁
+ 137   1          {
+ 138   2            gcT10MsCount = 0;
+ 139   2             
+ 140   2             if (HalfSecondFlag)
+ 141   2             {
+ 142   3                 Clr_HalfSecondFlag;
+ 143   3             }
+ 144   2             else
+ 145   2             {
+ 146   3                 Set_HalfSecondFlag;
+ 147   3               
+ 148   3             }
+ 149   2          }
+ 150   1           gcTenMsCount++;
+ 151   1           if (gcTenMsCount >= 4  * 2)   // 1s
+ 152   1           {
+ 153   2               gcTenMsCount = 0;
+ 154   2      
+ 155   2               if (LightOffDelayStartFlag)      // 计时5分钟
+ 156   2               {           
+ 157   3                   if (giLightDelayOffTime <= 60*5)
+ 158   3                      giLightDelayOffTime++;
+ 159   3                   if (giLightDelayOffTime == 60*5)
+ 160   3                   {
+ 161   4                       
+ 162   4                       Set_KeySureBuzzerFlag;         //五分钟结束后，蜂鸣器响一声
+ 163   4                       giLightDelayOffTime = 0;
+ 164   4                       Clr_LightOffDelayStartFlag;
+ 165   4                       Set_SendLightOffCommandFlag; 
+ 166   4                       Clr_FirSendLightOnCommandFlag;
+ 167   4                     
+ 168   4                       gcIRSendLightOffTime = LIGHTOFFTIME;
+ 169   4                       Set_SysWakeUpSleepFlag;
+ 170   4                   }
+ 171   3               }
+ 172   2               else
+ 173   2               {
+ 174   3                   giLightDelayOffTime = 0;
+ 175   3               }
+ 176   2               
+C51 COMPILER V9.60.0.0   TIME_PROCESS                                                      10/13/2023 17:22:47 PAGE 4   
+
+ 177   2               if (SpeedDelayOffStartFlag)
+ 178   2               {
+ 179   3                   if (giSpeedDelayOffTime <= 60*5)  
+ 180   3                        giSpeedDelayOffTime++;
+ 181   3                   if (giSpeedDelayOffTime == 60*5)
+ 182   3                   {
+ 183   4                       giSpeedDelayOffTime = 0;
+ 184   4                       Clr_SpeedDelayOffStartFlag;
+ 185   4                       Clr_FirstSendSpeedOffCommandFlag;
+ 186   4                     
+ 187   4                       /*这里直接共用一键关闭的功能里的代码*/              
+ 188   4      //                 Set_SendSpeedOffCommandFlag;               
+ 189   4      //                 gcIRSendSpeedOffTime = SPEEDOFFTIME;
+ 190   4      //                 Set_SysWakeUpSleepFlag;
+ 191   4                   }
+ 192   3               }
+ 193   2               else
+ 194   2               {
+ 195   3                   giSpeedDelayOffTime = 0;
+ 196   3               }
+ 197   2               
+ 198   2               if(IntoTestFlag)           //计时2分钟
+ 199   2               {
+ 200   3                 
+ 201   3                 if(giTestTime < 60*2)
+ 202   3                 {
+ 203   4                   giTestTime++;
+ 204   4                    
+ 205   4                 }
+ 206   3                 if(giTestTime >= 60*2)       //超过2分钟，退出自检
+ 207   3                 {
+ 208   4                   giTestTime = 0;
+ 209   4                   Clr_IntoTestFlag;
+ 210   4                   Clr_TestONFlag;
+ 211   4                   Delay1ms();          
+ 212   4                   GPIO_Init(GPIO3, GPIO_PIN_2, GPIO_MODE_OUT_PP);    //将P32设置成推挽输出，以达到省电
+ 213   4                   Delay1ms();
+ 214   4                   P32 = 0; 
+ 215   4                 }
+ 216   3                 
+ 217   3                 /*延时5s，等待按键按下*/
+ 218   3      ////           if(Wait5sFlag)     //计满就停止
+ 219   3      ////           {
+ 220   3      ////             if(gcWaitKeyTime < 10)
+ 221   3      ////             {
+ 222   3      ////               gcWaitKeyTime++;
+ 223   3      ////             }
+ 224   3      ////             if(gcWaitKeyTime >= 10)
+ 225   3      ////             {
+ 226   3      ////               Clr_Wait5sFlag;
+ 227   3      ////               gcWaitKeyTime = 0;
+ 228   3      ////               Set_WaitKeyTimeFlag;
+ 229   3      ////             }
+ 230   3      ////           }
+ 231   3                 
+ 232   3               }
+ 233   2           }
+ 234   1        
+ 235   1       }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+C51 COMPILER V9.60.0.0   TIME_PROCESS                                                      10/13/2023 17:22:47 PAGE 5   
+
+   CODE SIZE        =    557    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      8    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
