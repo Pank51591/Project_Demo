@@ -1177,7 +1177,7 @@ void rt_kprintf(const char *fmt, ...)
         _console_device->open_flag = old_flag;
     }
 #else
-    rt_hw_console_output(rt_log_buf);
+    rt_hw_console_output(rt_log_buf);     //重映射串口DEBUG_USARTx到rt_kprintf()函数
 #endif
     va_end(args);
 }

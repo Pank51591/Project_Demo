@@ -35,7 +35,7 @@
 #include <rtthread.h>
 #include <rthw.h>
 
-/* hard timer list */
+/* hard timer list 硬定时器列表 */
 static rt_list_t rt_timer_list[RT_TIMER_SKIP_LIST_LEVEL];
 
 #ifdef RT_USING_TIMER_SOFT
@@ -667,6 +667,7 @@ static void rt_thread_timer_entry(void *parameter)
  * @ingroup SystemInit
  *
  * This function will initialize system timer
+ * 此函数用于初始化系统定时器
  */
 void rt_system_timer_init(void)
 {
@@ -674,7 +675,7 @@ void rt_system_timer_init(void)
 
     for (i = 0; i < sizeof(rt_timer_list) / sizeof(rt_timer_list[0]); i++)
     {
-        rt_list_init(rt_timer_list + i);
+        rt_list_init(rt_timer_list + i);   //定时器列表初始化
     }
 }
 
@@ -682,6 +683,7 @@ void rt_system_timer_init(void)
  * @ingroup SystemInit
  *
  * This function will initialize system timer thread
+ * 此函数将初始化系统计时器线程
  */
 void rt_system_timer_thread_init(void)
 {

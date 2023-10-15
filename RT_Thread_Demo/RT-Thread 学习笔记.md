@@ -13,10 +13,10 @@ RT-Thread 采用内核对象管理系统来访问 / 管理所有内核对象，�
 | rtconfig.h | rtconfig.h 是 RT-Thread 功能的配置头文件，里面定义了很多宏，通过这些宏定义，我们可以裁剪 RT-Thread 的功能。 |
 | board.c    | board.c 是直接从 RT-Thread/3.0.3/bsp 文件夹下面拷贝过来的，里面存放的是与硬件相关的初始化函数 |
 | rthw.h     | rthw.h 是处理器相关                                          |
-|            |                                                              |
-|            |                                                              |
+| clock.c    | clock.c 第一次使用需要自行在文件夹 rtthread\3.0.3\src 中新建并添加到工程的 rtt/source 组中，里面存放着与系统时钟相关的函数。 |
+| timer.c    | 与系统定时器相关的函数。                                     |
 
-### RT-Thread官方文件夹包含的内容
+### 官方文件夹包含的内容
 
 | 名称          | 描述                                                    |
 | ------------- | ------------------------------------------------------- |
@@ -31,7 +31,7 @@ RT-Thread 采用内核对象管理系统来访问 / 管理所有内核对象，�
 
 ### 什么是容器？
 
-容器是一个全部变量的数组，数据类型为 ==struct  rt_object_information==，这是一个结构体类型，包含对象的三个信息，分别为对象类型、对象列表节点头和对象的大小。
+容器是一个全部变量的数组，数据类型为 ==struct  rt_object_information==，这是一个结构体类型，包含对象的三个信息，分别为 <u>对象类型、对象列表节点头和对象的大小</u>。
 
 
 
@@ -230,6 +230,8 @@ rt_list_insert_before( &(rt_thread_priority_table[1]),&(rt_flag2_thread.tlist) )
 
 ==调度器==是操作系统的核心，其主要功能就是**实现线程的切换**，即从就绪列表里面找到优先级最高的线程，然后去执行该线程。从代码上来看，调度器无非也就是由几个全局变量和一些可以实现线程切换的函数组成，全部都在 scheduler.c 文件中实现。
 
+**初始化系统调度器**
+
 ```c
 /***********初始化系统调度器**********/
 /**
@@ -267,7 +269,7 @@ void rt_system_scheduler_init(void)
 }
 ```
 
-
+**启动系统调度器**
 
 ```c
 /************启动系统调度器**********/
@@ -304,7 +306,7 @@ void rt_system_scheduler_start(void)
 }
 ```
 
-
+**系统调度函数**
 
 ```c
 /**
@@ -422,14 +424,6 @@ struct rt_messagequeue
     void                *msg_queue_free;      /**< pointer indicated the free node of queue 指针指示队列的空闲节点*/
 };
 typedef struct rt_messagequeue *rt_mq_t;
-```
-
-
-
-
-
-```c
-
 ```
 
 
@@ -744,5 +738,427 @@ rt_mq_t rt_mq_create(const char *name,
     return mq;
 }
 RTM_EXPORT(rt_mq_create);
+```
+
+### Printf的重映射
+
+```c
+/**
+  * @brief：  重映射串口DEBUG_USARTx到rt_kprintf()函数
+  *   Note：DEBUG_USARTx是在bsp_usart.h中定义的宏，默认使用串口1
+  * @param str：要输出到串口的字符串
+  * @retval ：无
+  *
+  * @attention
+  * 
+  */
+void rt_hw_console_output(const char *str)
+{	
+	/* 进入临界段 （代码保护，不会进入中断）*/
+    rt_enter_critical();
+
+	/* 直到字符串结束 */
+    while (*str!='\0')
+	{
+		/* 换行 */
+        if (*str=='\n')
+		{
+			USART_SendData(DEBUG_USARTx, '\r');     //输入一个回车
+			while (USART_GetFlagStatus(DEBUG_USARTx, USART_FLAG_TXE) == RESET);
+		}
+
+		USART_SendData(DEBUG_USARTx, *str++); 				
+		while (USART_GetFlagStatus(DEBUG_USARTx, USART_FLAG_TXE) == RESET);	
+	}	
+
+	/* 退出临界段 */
+    rt_exit_critical();
+}
+```
+
+### 线程计时时间增长的函数
+
+```c
+/**
+ * This function will notify kernel there is one tick passed. Normally,
+ * this function is invoked by clock ISR.
+ */
+void rt_tick_increase(void)
+{
+    struct rt_thread *thread;
+
+    /* increase the global tick */
+    ++ rt_tick;
+
+    /* check time slice 检查时间片*/
+    thread = rt_thread_self();
+
+    -- thread->remaining_tick;   //剩余时间
+    if (thread->remaining_tick == 0)
+    {
+        /* change to initialized tick */
+        thread->remaining_tick = thread->init_tick;
+
+        /* yield 这个函数将出让当前线程产生处理器，调度程序将选择最高线程运行。在yield处理器之后，当前			线程仍然处于READY状态。*/
+        rt_thread_yield();
+    }
+
+    /* check timer */
+    rt_timer_check();
+}
+```
+
+
+
+```c
+/**
+ * This function will let current thread yield processor, and scheduler will
+ * choose a highest thread to run. After yield processor, the current thread
+ * is still in READY state.
+ *
+ * @return RT_EOK
+ */
+rt_err_t rt_thread_yield(void)
+{
+    register rt_base_t level;
+    struct rt_thread *thread;
+
+    /* disable interrupt */
+    level = rt_hw_interrupt_disable();
+
+    /* set to current thread */
+    thread = rt_current_thread;
+
+    /* if the thread stat is READY and on ready queue list */
+    if ((thread->stat & RT_THREAD_STAT_MASK) == RT_THREAD_READY &&
+        thread->tlist.next != thread->tlist.prev)
+    {
+        /* remove thread from thread list */
+        rt_list_remove(&(thread->tlist));
+
+        /* put thread to end of ready queue */
+        rt_list_insert_before(&(rt_thread_priority_table[thread->current_priority]),
+                              &(thread->tlist));
+
+        /* enable interrupt */
+        rt_hw_interrupt_enable(level);
+        
+        /*线程调度：切换到最高优先级的线程*/
+        rt_schedule();
+
+        return RT_EOK;
+    }
+
+    /* enable interrupt */
+    rt_hw_interrupt_enable(level);
+
+    return RT_EOK;
+}
+RTM_EXPORT(rt_thread_yield);
+```
+
+### 定时器的实现
+
+​		在 RT-Thread 中，每个线程都内置一个定时器，当线程需要延时的时候，则先将线程挂起，然后内置的定时器就会启动，并且将定时器插入到一个==全局的系统定时器列表rt_timer_list==，这个全局的系统定时器列表维护着一条双向链表，每个节点代表了正在延时的线程的定时器，节点按照延时时间大小做升序排列。当每次时基中断SysTick 中断）来临时，就扫描系统定时器列表的第一个定时器，看看延时时间是否到，如果到则让该定时器对应的线程就绪，如果延时时间不到，则退出扫描，因为定时器节点是按照延时时间升序排列的，第一个定时器延时时间不到期的话，那后面的定时器延时时间自然不到期。比起第一种方法，这种方法就大大缩短了寻找延时到期的线程的时间。
+
+**定时器结构体**
+
+```c
+/**
+ * timer structure
+ */
+struct rt_timer
+{
+    struct rt_object parent;                            /**< inherit from rt_object */
+
+    rt_list_t        row[RT_TIMER_SKIP_LIST_LEVEL];     /*节点*/
+
+    void (*timeout_func)(void *parameter);          /**< timeout function */
+    void            *parameter;                     /**< timeout function's parameter */
+
+    rt_tick_t        init_tick;                         /**< 定时器实际需要延时的时间 */
+    rt_tick_t        timeout_tick;                      /**< 定时器实际超时时的系统节拍数 */
+};
+typedef struct rt_timer *rt_timer_t;
+```
+
+**定时器启动函数**
+
+核心实现算法是将定时器<u>按照延时时间做升序排列插入到系统定时器列表 rt_timer_list 中</u>
+
+```c
+/**
+ * This function will start the timer
+ *
+ * @param timer the timer to be started
+ *
+ * @return the operation status, RT_EOK on OK, -RT_ERROR on error
+ */
+rt_err_t rt_timer_start(rt_timer_t timer)
+{
+    unsigned int row_lvl;
+    rt_list_t *timer_list;
+    register rt_base_t level;
+    rt_list_t *row_head[RT_TIMER_SKIP_LIST_LEVEL];
+    unsigned int tst_nr;
+    static unsigned int random_nr;
+
+    /* timer check */
+    RT_ASSERT(timer != RT_NULL);
+
+    /* stop timer firstly */
+    level = rt_hw_interrupt_disable();
+    /* remove timer from list */
+    _rt_timer_remove(timer);
+    /* change status of timer */
+    timer->parent.flag &= ~RT_TIMER_FLAG_ACTIVATED;
+    rt_hw_interrupt_enable(level);
+
+    RT_OBJECT_HOOK_CALL(rt_object_take_hook, (&(timer->parent)));
+
+    /*
+     * get timeout tick,
+     * the max timeout tick shall not great than RT_TICK_MAX/2
+     * 最大超时刻度不应大于 RT_tick_max/2
+     */
+    RT_ASSERT(timer->init_tick < RT_TICK_MAX / 2);
+    timer->timeout_tick = rt_tick_get() + timer->init_tick;
+
+    /* disable interrupt */
+    level = rt_hw_interrupt_disable();
+
+#ifdef RT_USING_TIMER_SOFT
+    if (timer->parent.flag & RT_TIMER_FLAG_SOFT_TIMER)
+    {
+        /* insert timer to soft timer list */
+        timer_list = rt_soft_timer_list;
+    }
+    else
+#endif
+    {
+        /* insert timer to system timer list */
+        timer_list = rt_timer_list;
+    }
+
+    row_head[0]  = &timer_list[0];
+    for (row_lvl = 0; row_lvl < RT_TIMER_SKIP_LIST_LEVEL; row_lvl++)
+    {
+        for (; row_head[row_lvl] != timer_list[row_lvl].prev;
+             row_head[row_lvl]  = row_head[row_lvl]->next)
+        {
+            struct rt_timer *t;
+            rt_list_t *p = row_head[row_lvl]->next;
+
+            /* fix up the entry pointer 修复入口指针*/
+            t = rt_list_entry(p, struct rt_timer, row[row_lvl]);
+
+            /* If we have two timers that timeout at the same time, it's
+             * preferred that the timer inserted early get called early.
+             * So insert the new timer to the end the the some-timeout timer
+             * list.
+             */
+            //比较两个定时器的 timeout_tick 值, 两个定时器的超时时间相同，则继续在定时器列表中寻找下一个节点
+            if ((t->timeout_tick - timer->timeout_tick) == 0)
+            {
+                continue;
+            }
+            else if ((t->timeout_tick - timer->timeout_tick) < RT_TICK_MAX / 2)
+            {
+                break;
+            }
+        }
+        if (row_lvl != RT_TIMER_SKIP_LIST_LEVEL - 1)
+            row_head[row_lvl + 1] = row_head[row_lvl] + 1;
+    }
+
+    /* Interestingly, this super simple timer insert counter works very very
+     * well on distributing the list height uniformly. By means of "very very
+     * well", I mean it beats the randomness of timer->timeout_tick very easily
+     * (actually, the timeout_tick is not random and easy to be attacked). */
+    random_nr++;
+    tst_nr = random_nr;
+    
+    /*将定时器插入到系统定时器列表*/
+    rt_list_insert_after(row_head[RT_TIMER_SKIP_LIST_LEVEL - 1],      //双向列表根节点地址
+                         &(timer->row[RT_TIMER_SKIP_LIST_LEVEL - 1]));//要被插入的节点的地址
+    for (row_lvl = 2; row_lvl <= RT_TIMER_SKIP_LIST_LEVEL; row_lvl++)
+    {
+        if (!(tst_nr & RT_TIMER_SKIP_LIST_MASK))
+            rt_list_insert_after(row_head[RT_TIMER_SKIP_LIST_LEVEL - row_lvl],
+                                 &(timer->row[RT_TIMER_SKIP_LIST_LEVEL - row_lvl]));
+        else
+            break;
+        /* Shift over the bits we have tested. Works well with 1 bit and 2
+         * bits. */
+        tst_nr >>= (RT_TIMER_SKIP_LIST_MASK + 1) >> 1;
+    }
+    /*设置定时器标志位为激活态*/
+    timer->parent.flag |= RT_TIMER_FLAG_ACTIVATED;
+
+    /* enable interrupt */
+    rt_hw_interrupt_enable(level);
+
+#ifdef RT_USING_TIMER_SOFT
+    if (timer->parent.flag & RT_TIMER_FLAG_SOFT_TIMER)
+    {
+        /* check whether timer thread is ready */
+        if ((timer_thread.stat & RT_THREAD_STAT_MASK) != RT_THREAD_READY)
+        {
+            /* resume timer thread to check soft timer */
+            rt_thread_resume(&timer_thread);
+            rt_schedule();
+        }
+    }
+#endif
+
+    return -RT_EOK;
+}
+RTM_EXPORT(rt_timer_start);
+
+```
+
+**定时器扫描函数**
+
+查询定时器的延时是否到期，如果到期则让对应的线程就绪。
+
+```c
+1 /**
+2 * 该函数用于扫描系统定时器列表，当有超时事件发生时
+3 * 就调用对应的超时函数
+4 *
+5 * @note 该函数在操作系统定时器中断中被调用
+6 */
+7 void rt_timer_check(void)
+8 {
+9 struct rt_timer *t;
+10 rt_tick_t current_tick;
+11 register rt_base_t level;
+12 
+13 /* 获取系统时基计数器 rt_tick 的值 */
+14 current_tick = rt_tick_get(); (1)
+15 
+16 /* 关中断 */
+17 level = rt_hw_interrupt_disable(); (2)
+18 
+19 /* 系统定时器列表不为空，则扫描定时器列表 */ (3)
+20 while (!rt_list_isempty(&rt_timer_list[RT_TIMER_SKIP_LIST_LEVEL - 1]))
+21 {
+22 /* 获取第一个节点定时器的地址 */ (4)
+23 t = rt_list_entry(rt_timer_list[RT_TIMER_SKIP_LIST_LEVEL - 1].next,
+24 struct rt_timer,
+25 row[RT_TIMER_SKIP_LIST_LEVEL - 1]);
+26 
+27 if ((current_tick - t->timeout_tick) < RT_TICK_MAX / 2) (5)
+28 {
+29 /* 先将定时器从系统定时器列表移除 */
+30 _rt_timer_remove(t); (6)
+31 
+32 /* 调用超时函数（调用超时函数 rt_thread_timeout，将线程就绪）*/
+33 t->timeout_func(t->parameter); (7)
+34 
+35 /* 重新获取 rt_tick */
+36 current_tick = rt_tick_get(); (8)
+37 
+38 /* 周期定时器 */ (9)
+39 if ((t->parent.flag & RT_TIMER_FLAG_PERIODIC) &&
+40 (t->parent.flag & RT_TIMER_FLAG_ACTIVATED))
+41 {
+42 /* 启动定时器 */
+43 t->parent.flag &= ~RT_TIMER_FLAG_ACTIVATED;
+44 rt_timer_start(t);
+45 }
+46 /* 单次定时器 */ (10)
+47 else
+48 {
+49 /* 停止定时器 */
+50 t->parent.flag &= ~RT_TIMER_FLAG_ACTIVATED;
+51 }
+52 }
+53 else
+54 break; (11)
+55 }
+56 
+57 /* 开中断 */
+58 rt_hw_interrupt_enable(level); (12)
+59 }
+```
+
+**线程超时函数**
+
+```c
+1 /**
+2 * 线程超时函数
+3 * 当线程延时到期或者等待的资源可用或者超时时，该函数会被调用
+4 *
+5 * @param parameter 超时函数的形参
+6 */
+7 void rt_thread_timeout(void *parameter)
+8 {
+9 struct rt_thread *thread;
+10 
+11 thread = (struct rt_thread *)parameter;
+12 
+13 /* 设置错误码为超时 */ 
+14 thread->error = -RT_ETIMEOUT;
+15 
+16 /* 将线程从挂起列表中删除 */ 
+17 rt_list_remove(&(thread->tlist));
+18 
+19 /* 将线程插入到就绪列表 */ 
+20 rt_schedule_insert_thread(thread);
+21 
+22 /* 系统调度 */ 
+23 rt_schedule();
+24 }
+```
+
+### 初始化一个线程
+
+在线程初始化函数中，需要将自身内置的定时器初始化好。即调用 rt_timer_init（）函数。
+
+```c
+1 rt_err_t rt_thread_init( struct rt_thread *thread,
+2 const char *name,
+3 void (*entry)(void *parameter),
+4 void *parameter,
+5 void *stack_start,
+6 rt_uint32_t stack_size,
+7 rt_uint8_t priority)
+8 {
+9 /* 线程对象初始化 */
+10 /* 线程结构体开头部分的成员就是 rt_object_t 类型 */
+11 rt_object_init((rt_object_t)thread, RT_Object_Class_Thread, name);
+12 rt_list_init(&(thread->tlist));
+13 
+14 thread->entry = (void *)entry;
+15 thread->parameter = parameter;
+16 
+17 thread->stack_addr = stack_start;
+18 thread->stack_size = stack_size;
+19 
+20 /* 初始化线程栈，并返回线程栈指针 */
+21 thread->sp = (void *)rt_hw_stack_init( thread->entry,
+22 thread->parameter,
+23 (void *)((char *)thread->stack_addr + thread->stack_size - 4) );
+24 
+25 thread->init_priority = priority;
+26 thread->current_priority = priority;
+27 thread->number_mask = 0;
+28 
+29 /* 错误码和状态 */
+30 thread->error = RT_EOK;
+31 thread->stat = RT_THREAD_INIT;
+32 
+    
+33 /* 初始化线程定时器 （注意）*/ 
+34 rt_timer_init(&(thread->thread_timer), /* 静态定时器对象 */ 
+35 thread->name, /* 定时器的名字，直接使用的是线程的名字 */ 
+36 rt_thread_timeout, /* 超时函数 */ 
+37 thread, /* 超时函数形参 */ 
+38 0, /* 延时时间 */ 
+39 RT_TIMER_FLAG_ONE_SHOT); /* 定时器的标志 */ 
+40 
+41 return RT_EOK;
+42 }
 ```
 

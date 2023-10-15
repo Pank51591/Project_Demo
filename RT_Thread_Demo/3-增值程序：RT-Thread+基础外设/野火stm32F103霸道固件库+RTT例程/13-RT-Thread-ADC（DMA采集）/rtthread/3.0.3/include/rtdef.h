@@ -433,9 +433,9 @@ struct rt_object_information
  */
 struct rt_timer
 {
-    struct rt_object parent;                            /**< inherit from rt_object */
+    struct rt_object parent;                            /**< inherit¼Ì³Ð from rt_object */
 
-    rt_list_t        row[RT_TIMER_SKIP_LIST_LEVEL];
+    rt_list_t        row[RT_TIMER_SKIP_LIST_LEVEL];     /*½Úµã*/
 
     void (*timeout_func)(void *parameter);              /**< timeout function */
     void            *parameter;                         /**< timeout function's parameter */

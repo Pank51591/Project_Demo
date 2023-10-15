@@ -166,8 +166,8 @@ static rt_err_t _rt_thread_init(struct rt_thread *thread,
 #endif
 
     /* tick init */
-    thread->init_tick      = tick;
-    thread->remaining_tick = tick;
+    thread->init_tick      = tick;       //初始化时间片
+    thread->remaining_tick = tick;       //线程的剩余时间片
 
     /* error and flags */
     thread->error = RT_EOK;
@@ -514,7 +514,8 @@ rt_err_t rt_thread_sleep(rt_tick_t tick)
 
     /* enable interrupt */
     rt_hw_interrupt_enable(temp);
-
+    
+	  /*切换到最高优先级的线程*/
     rt_schedule();
 
     /* clear error number of this thread to RT_EOK */

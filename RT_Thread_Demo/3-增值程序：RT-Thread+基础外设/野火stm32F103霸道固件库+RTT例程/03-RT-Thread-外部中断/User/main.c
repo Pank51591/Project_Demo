@@ -74,7 +74,7 @@ int main(void)
 	test_mq = rt_mq_create("test_mq",/* 消息队列名字 */
                      4,     /* 消息的最大长度 */
                      2,    /* 消息队列的最大容量 */
-                     RT_IPC_FLAG_FIFO);/* 队列模式 FIFO(0x00)*/
+                     RT_IPC_FLAG_FIFO);     /* 队列模式 FIFO(0x00)*/
   if (test_mq != RT_NULL)
     rt_kprintf("消息队列创建成功！\n\n");
   

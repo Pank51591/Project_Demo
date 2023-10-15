@@ -87,10 +87,10 @@ void rt_tick_increase(void)
     /* increase the global tick */
     ++ rt_tick;
 
-    /* check time slice */
+    /* check time slice 检查时间片*/
     thread = rt_thread_self();
 
-    -- thread->remaining_tick;
+    -- thread->remaining_tick;   //剩余时间
     if (thread->remaining_tick == 0)
     {
         /* change to initialized tick */
@@ -101,7 +101,7 @@ void rt_tick_increase(void)
     }
 
     /* check timer */
-    rt_timer_check();
+    rt_timer_check();      //查询定时器是否到期
 }
 
 /**

@@ -64,7 +64,7 @@ rt_inline void rt_list_init(rt_list_t *l)
 }
 
 /**
- * @brief insert a node after a list
+ * @brief insert a node after a list 在列表后插入节点
  *
  * @param l list to insert it
  * @param n new node to be inserted

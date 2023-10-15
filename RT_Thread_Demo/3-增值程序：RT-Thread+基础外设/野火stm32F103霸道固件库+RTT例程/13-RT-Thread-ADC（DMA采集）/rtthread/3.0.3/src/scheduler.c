@@ -241,7 +241,7 @@ void rt_schedule(void)
             if (rt_interrupt_nest == 0)
             {
                 extern void rt_thread_handle_sig(rt_bool_t clean_state);
-
+                /*允许上下文切换*/
                 rt_hw_context_switch((rt_uint32_t)&from_thread->sp,
                                      (rt_uint32_t)&to_thread->sp);
 

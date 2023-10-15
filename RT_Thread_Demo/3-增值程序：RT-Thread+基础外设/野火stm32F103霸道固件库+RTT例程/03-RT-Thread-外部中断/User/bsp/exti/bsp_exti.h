@@ -14,6 +14,7 @@
 #define KEY1_INT_EXTI_LINE         EXTI_Line0
 #define KEY1_INT_EXTI_IRQ          EXTI0_IRQn
 
+//给外部向量重命名，取一个更合适的名字
 #define KEY1_IRQHandler            EXTI0_IRQHandler
 
 
