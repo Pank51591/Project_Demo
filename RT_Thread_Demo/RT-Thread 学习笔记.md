@@ -86,24 +86,32 @@ RT-Thread 采用内核对象管理系统来访问 / 管理所有内核对象，�
 ```c
 struct rt_thread
 {
-    /* rt 对象 */
-    char        name[RT_NAME_MAX];    /* 对象的名字 */
-    rt_uint8_t  type;                 /* 对象类型 */
-    rt_uint8_t  flags;                /* 对象的状态 */
-    rt_list_t   list;                 /* 对象的列表节点 */
-    
+/* rt 对象 */
+char name[RT_NAME_MAX]; /* 对象的名字 */
+rt_uint8_t type; /* 对象类型 */
+rt_uint8_t flags; /* 对象的状态 */
+rt_list_t list; /* 对象的列表节点 */
 
-	rt_list_t   tlist;                /* 线程链表节点 */
-	
-	void        *sp;	              /* 线程栈指针 */
-	void        *entry;	              /* 线程入口地址 */
-	void        *parameter;	          /* 线程形参 */	
-	void        *stack_addr;          /* 线程起始地址 */
-	rt_uint32_t stack_size;           /* 线程栈大小，单位为字节 */
+rt_list_t tlist; /* 线程链表节点 */
 
-    rt_ubase_t remaining_tick;       /* 用于实现阻塞延时 */
+void *sp; /* 线程栈指针 */
+void *entry; /* 线程入口地址 */
+void *parameter; /* 线程形参 */
+void *stack_addr; /* 线程起始地址 */
+rt_uint32_t stack_size; /* 线程栈大小，单位为字节 */
+
+rt_ubase_t init_tick; /* 初始时间片 */ 
+rt_ubase_t remaining_tick; /* 剩余时间片 */ 
+
+rt_uint8_t current_priority; /* 当前优先级 */
+rt_uint8_t init_priority; /* 初始优先级 */
+rt_uint32_t number_mask; /* 当前优先级掩码 */
+
+rt_err_t error; /* 错误码 */
+rt_uint8_t stat; /* 线程的状态 */
+
+struct rt_timer thread_timer; /* 内置的线程定时器 */
 };
-typedef struct rt_thread *rt_thread_t;
 ```
 
 
@@ -1125,7 +1133,7 @@ RTM_EXPORT(rt_timer_start);
 6 rt_uint32_t stack_size,
 7 rt_uint8_t priority)
 8 {
-9 /* 线程对象初始化 */
+9  /* 线程对象初始化 */
 10 /* 线程结构体开头部分的成员就是 rt_object_t 类型 */
 11 rt_object_init((rt_object_t)thread, RT_Object_Class_Thread, name);
 12 rt_list_init(&(thread->tlist));
@@ -1161,4 +1169,86 @@ RTM_EXPORT(rt_timer_start);
 41 return RT_EOK;
 42 }
 ```
+
+
+
+函数开头的“_rt”表示该函数是一个内部函数
+
+
+
+### 消息队列
+
+队列又称消息队列，是一种常用于<u>线程间通信的数据结构</u>，队列可以在线程与线程间、中断和线程间传送信息，实现了线程接收来自其他线程或中断的不固定长度的消息，并根据不同的接口选择传递消息是否存放在线程自己的空间。线程能够从队列里面读取消息，当队列中的消息是空时，挂起读取线程，用户还可以指定挂起的线程时间 timeout；当队列中有新消息时，挂起的读取线程被唤醒并处理新消息，消息队列是一种异步的通信方式。
+
+RT-Thread 中使用队列数据结构实现线程异步通信工作，具有如下特性：
+
+- 消息支持先进先出方式排队与优先级排队方式，支持异步读写工作方式。
+- 读队列支持超时机制。
+- 支持发送紧急消息，这里的紧急消息是往队列头发送消息。
+- 可以允许不同长度（不超过队列节点最大值）的任意类型消息。
+-  一个线程能够从任意一个消息队列接收和发送消息。
+- 多个线程能够从同一个消息队列接收和发送消息。
+- 当队列使用结束后，需要通过删除队列操作释放内存函数回收。
+
+
+
+### 信号量
+
+
+
+### 互斥量
+
+
+
+### 事件
+
+
+
+### 软件定时器
+
+
+
+### 邮箱
+
+
+
+### 内存管理
+
+
+
+### 中断管理
+
+
+
+### 双向链表
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
