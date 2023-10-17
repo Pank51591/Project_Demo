@@ -265,7 +265,7 @@ void rt_system_heap_init(void *begin_addr, void *end_addr)
 
 /**
  * Allocate a block of memory with a minimum of 'size' bytes.
- *
+ * 分配一个最小为“size”字节的内存块。
  * @param size is the minimum size of the requested block in bytes.
  *
  * @return pointer to allocated memory or NULL if no free memory was found.

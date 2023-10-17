@@ -67,6 +67,7 @@ int main(void)
 	 */
 	rt_kprintf("这是一个[野火]-STM32F103-霸道-RTT二值信号量同步实验！\n");
   rt_kprintf("同步成功则输出Successful,反之输出Fail\n");
+	
    /* 创建一个信号量 */
 	test_sem = rt_sem_create("test_sem",/* 信号量名字 */
                      1,     /* 信号量初始值，默认有一个信号量 */

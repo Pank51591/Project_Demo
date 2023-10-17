@@ -222,6 +222,12 @@ void rt_application_init(void)
     rt_thread_startup(tid);
 }
 
+/*********************************************************
+***函数名：
+***函数功能：RT-Thread 启动函数
+***参数：
+***返回值：
+**********************************************************/
 int rtthread_startup(void)
 {
     rt_hw_interrupt_disable();

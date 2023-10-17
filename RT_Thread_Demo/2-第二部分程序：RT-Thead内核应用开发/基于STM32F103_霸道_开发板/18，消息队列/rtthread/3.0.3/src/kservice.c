@@ -401,7 +401,7 @@ RTM_EXPORT(rt_strcasecmp);
 
 /**
  * This function will copy string no more than n bytes.
- *
+ * 此函数将复制不超过n个字节的字符串。
  * @param dst the string to copy
  * @param src the string to be copied
  * @param n the maximum copied length

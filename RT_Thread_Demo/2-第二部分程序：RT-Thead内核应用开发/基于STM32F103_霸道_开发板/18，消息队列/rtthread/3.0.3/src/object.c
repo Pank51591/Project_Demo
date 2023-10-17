@@ -310,7 +310,7 @@ void rt_object_detach(rt_object_t object)
 #ifdef RT_USING_HEAP
 /**
  * This function will allocate an object from object system
- *
+ * 此函数将从对象系统中分配对象
  * @param type the type of object
  * @param name the object name. In system, the object's name must be unique.
  *
