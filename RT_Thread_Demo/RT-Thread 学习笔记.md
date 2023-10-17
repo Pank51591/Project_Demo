@@ -1547,11 +1547,83 @@ RTM_EXPORT(rt_mq_create);
 
 ​		信号量（Semaphore）是一种实现线程间通信的机制，==实现线程之间同步或临界资源的互斥访问==，常用于协助一组相互竞争的线程来访问临界资源。**在多线程系统中，各线程之间需要同步或互斥实现临界资源的保护**，信号量功能可以为用户提供这方面的支持。
 
+#### 二值信号量的应用场景
+
+​		某个线程需要等待一个标记，那么线程可以在轮询中查询这个标记有没有被置位，这样子做，就会很消耗 CPU 资源，其实根本不需要在轮询中查询这个标记，只需要使用二值信号量即可，当二值信号量没有的时候，线程进入阻塞态等待二值信号量到来即可，当得到了这个信号量（标记）之后，在进行线程的处理即可，这样子么就不会消耗太多资源了，而且实时响应也是最快的。
+
+#### 计数型信号量的应用场景
+
+​		计数型信号量与二值信号量其实都是差不多的，一样用于资源保护，**不过计数信号量则允许多个线程获取信号量访问共享资源**，但会限制线程的最大数目。访问的线程数达到信号量可支持的最大数目时，会阻塞其他试图获取该信号量的线程，直到有线程释放了信号量。
+
+
+
+**信号量的结构体**
+
+信号量属于内核对象，也会在自身结构体里面包含一个内核对象类型的成员，通过这个成员可以将信号量挂到系统对象容器里面。==rt_semaphore 对象从 rt_ipc_object 中派生，由 IPC 容器管理。==
+
+```c
+struct rt_semaphore
+{
+	struct rt_ipc_object parent;    /**< 继承自 ipc_object 类*/
+	rt_uint16_t value;              /**< 信号量的值，最大为 65535 */
+};
+typedef struct rt_semaphore *rt_sem_t;
+```
+
+**创建信号量**
+
+```c
+/**
+ * This function will create a semaphore from system resource
+ *
+ * @param name the name of semaphore
+ * @param value the init value of semaphore
+ * @param flag the flag of semaphore
+ *
+ * @return the created semaphore, RT_NULL on error happen
+ *
+ * @see rt_sem_init
+ */
+rt_sem_t rt_sem_create(const char *name, rt_uint32_t value, rt_uint8_t flag)
+{
+    rt_sem_t sem;
+
+    RT_DEBUG_NOT_IN_INTERRUPT;
+
+    /* allocate object 分配内核对象：信号量 */
+    sem = (rt_sem_t)rt_object_allocate(RT_Object_Class_Semaphore, name);
+    if (sem == RT_NULL)
+        return sem;
+
+    /* init ipc object 初始化信号量对象*/
+    rt_ipc_object_init(&(sem->parent));
+
+    /* set init value 设置可用信号量的值*/
+    sem->value = value;
+
+    /* set parent 设置信号量模式（和队列模式一样也有2种）*/
+    sem->parent.parent.flag = flag;
+
+    return sem;
+}
+RTM_EXPORT(rt_sem_create);
+```
+
+
+
+当线程完成资源的访问后，应尽快释放它持有的信号量，使得其他线程能获得该信号量。
+
+
+
+线程通过获取信号量来获得信号量资源，**当信号量值大于零时，线程将获得信号量**，并且相应的信号量值都会减 1；**如果信号量的值等于零，那么说明当前信号量资源不可用**，==（例子里面，在释放的时候会将这个信号量的值加1）==获取该信号量的线程将根据 time 参数的情况选择直接返回、或挂起等待一段时间、或永久等待，直到其他线程或中断释放该信号量。
+
 
 
 
 
 ### 互斥量
+
+
 
 
 

@@ -427,7 +427,7 @@ RTM_EXPORT(rt_sem_trytake);
 /**
  * This function will release a semaphore, if there are threads suspended on
  * semaphore, it will be waked up.
- *
+ * 这个函数会释放一个信号量，如果信号量上有线程挂起，它就会被唤醒。
  * @param sem the semaphore object
  *
  * @return the error code
@@ -451,12 +451,14 @@ rt_err_t rt_sem_release(rt_sem_t sem)
 
     if (!rt_list_isempty(&sem->parent.suspend_thread))
     {
-        /* resume the suspended thread */
+        /* resume the suspended thread 恢复阻塞线程 */
         rt_ipc_list_resume(&(sem->parent.suspend_thread));
-        need_schedule = RT_TRUE;
+        need_schedule = RT_TRUE;     //需要调度的标志
     }
     else
-        sem->value ++; /* increase value */
+			  //如果当前没有线程因为访问此信号量而进入阻塞，则不需要恢复线程，
+		    //将该信号量的可用个数加一即可。此处应注意信号量的范围（1或者其他）。
+        sem->value ++;   /* increase value */
 
     /* enable interrupt */
     rt_hw_interrupt_enable(temp);

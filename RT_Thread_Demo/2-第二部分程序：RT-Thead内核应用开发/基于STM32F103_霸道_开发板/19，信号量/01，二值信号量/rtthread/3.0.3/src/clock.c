@@ -106,7 +106,7 @@ void rt_tick_increase(void)
 
 /**
  * This function will calculate the tick from millisecond.
- *
+ * 此函数将从毫秒开始计算刻度。
  * @param ms the specified millisecond
  *           - Negative Number wait forever
  *           - Zero not wait

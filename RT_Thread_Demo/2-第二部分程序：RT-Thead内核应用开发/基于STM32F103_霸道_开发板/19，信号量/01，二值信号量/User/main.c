@@ -125,7 +125,7 @@ static void receive_thread_entry(void* parameter)
 		{
 			rt_kprintf ( "Fail\n" );			
 		}
-		rt_sem_release(	test_sem	);   //释放二值信号量 
+		rt_sem_release(test_sem);   //释放二值信号量 
 		
 		rt_thread_delay ( 1000 );  					      //每1s读一次		
   }
@@ -133,6 +133,12 @@ static void receive_thread_entry(void* parameter)
   
 }
 
+/*************************************************************
+***函数名：
+***函数功能：
+***输入：
+***输出：
+**************************************************************/
 static void send_thread_entry(void* parameter)
 {	
     /* 任务都是一个无限循环，不能返回 */
@@ -143,8 +149,8 @@ static void send_thread_entry(void* parameter)
 		ucValue [ 0 ] ++;		
 		rt_thread_delay ( 100 );        	 /* 延时100ms */		
 		ucValue [ 1 ] ++;		
-		rt_sem_release(	test_sem	);	//释放二值信号量
-		rt_thread_yield();  			//放弃剩余时间片，进行一次任务切换	
+		rt_sem_release(	test_sem	);	     //释放二值信号量
+		rt_thread_yield();  			         //放弃剩余时间片，进行一次任务切换	
     }
 }
 
