@@ -585,7 +585,7 @@ struct rt_ipc_object
 {
     struct rt_object parent;                            /**< inherit from rt_object */
 
-    rt_list_t        suspend_thread;                    /**< threads pended on this resource */
+    rt_list_t        suspend_thread;                    /**< threads pended on this resource 此资源上挂起的线程*/
 };
 
 #ifdef RT_USING_SEMAPHORE

@@ -319,7 +319,7 @@ RTM_EXPORT(rt_sem_delete);
 /**
  * This function will take a semaphore, if the semaphore is unavailable, the
  * thread shall wait for a specified time.
- *
+ * 获取信号量 （判断信号量是否等于0）
  * @param sem the semaphore object
  * @param time the waiting time
  *
@@ -350,7 +350,7 @@ rt_err_t rt_sem_take(rt_sem_t sem, rt_int32_t time)
         /* enable interrupt */
         rt_hw_interrupt_enable(temp);
     }
-    else
+    else     //信号量等于0 挂起线程
     {
         /* no waiting, return with timeout */
         if (time == 0)
@@ -364,7 +364,7 @@ rt_err_t rt_sem_take(rt_sem_t sem, rt_int32_t time)
             /* current context checking */
             RT_DEBUG_IN_THREAD_CONTEXT;
 
-            /* semaphore is unavailable, push to suspend list */
+            /* semaphore is unavailable, push to suspend list 信号量不可用，推送挂起列表*/
             /* get current thread */
             thread = rt_thread_self();
 
@@ -374,7 +374,7 @@ rt_err_t rt_sem_take(rt_sem_t sem, rt_int32_t time)
             RT_DEBUG_LOG(RT_DEBUG_IPC, ("sem take: suspend thread - %s\n",
                                         thread->name));
 
-            /* suspend thread */
+            /* suspend thread  挂起线程*/
             rt_ipc_list_suspend(&(sem->parent.suspend_thread),
                                 thread,
                                 sem->parent.parent.flag);
@@ -396,7 +396,7 @@ rt_err_t rt_sem_take(rt_sem_t sem, rt_int32_t time)
             rt_hw_interrupt_enable(temp);
 
             /* do schedule */
-            rt_schedule();
+            rt_schedule();     //进行线程调度
 
             if (thread->error != RT_EOK)
             {
@@ -428,6 +428,7 @@ RTM_EXPORT(rt_sem_trytake);
  * This function will release a semaphore, if there are threads suspended on
  * semaphore, it will be waked up.
  * 这个函数会释放一个信号量，如果信号量上有线程挂起，它就会被唤醒。
+ * 释放信号量（将等于0的）
  * @param sem the semaphore object
  *
  * @return the error code
@@ -449,8 +450,10 @@ rt_err_t rt_sem_release(rt_sem_t sem)
                                 ((struct rt_object *)sem)->name,
                                 sem->value));
 
+		/*判断阻塞线程的列表是否是空的*/														  
     if (!rt_list_isempty(&sem->parent.suspend_thread))
     {
+			  /* 如果是非空的就恢复阻塞线程 */
         /* resume the suspended thread 恢复阻塞线程 */
         rt_ipc_list_resume(&(sem->parent.suspend_thread));
         need_schedule = RT_TRUE;     //需要调度的标志

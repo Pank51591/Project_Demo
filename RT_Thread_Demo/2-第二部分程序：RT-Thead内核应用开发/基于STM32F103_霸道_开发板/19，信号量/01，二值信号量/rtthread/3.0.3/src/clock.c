@@ -79,13 +79,14 @@ void rt_tick_set(rt_tick_t tick)
 /**
  * This function will notify kernel there is one tick passed. Normally,
  * this function is invoked by clock ISR.
+ * 
  */
 void rt_tick_increase(void)
 {
     struct rt_thread *thread;
 
     /* increase the global tick */
-    ++ rt_tick;
+    ++rt_tick;
 
     /* check time slice */
     thread = rt_thread_self();

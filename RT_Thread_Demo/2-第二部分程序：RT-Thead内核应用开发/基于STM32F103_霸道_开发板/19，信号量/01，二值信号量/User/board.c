@@ -61,7 +61,7 @@ void rt_hw_board_init()
 }
 
 /**
-  * @brief  SysTick中断服务函数
+  * @brief  SysTick中断服务函数     （1ms中断一次）
   * @param  无
   * @retval 无
   *

@@ -115,8 +115,8 @@ static void receive_thread_entry(void* parameter)
   /* 任务都是一个无限循环，不能返回 */
   while(1)
 	{
-		rt_sem_take(test_sem,	/* 获取信号量 */
-                RT_WAITING_FOREVER); 	/* 等待时间：一直等 */
+		rt_sem_take(test_sem,    	/* 获取信号量 */
+                RT_WAITING_FOREVER);   	/* 等待时间：一直等 */
 		if ( ucValue [ 0 ] == ucValue [ 1 ] )
 		{ 			
 			rt_kprintf ( "Successful\n" );			
@@ -149,7 +149,7 @@ static void send_thread_entry(void* parameter)
 		ucValue [ 0 ] ++;		
 		rt_thread_delay ( 100 );        	 /* 延时100ms */		
 		ucValue [ 1 ] ++;		
-		rt_sem_release(	test_sem	);	     //释放二值信号量
+		rt_sem_release(	test_sem	);	     //释放二值信号量（将信号量的值加1，进行阻塞线程的释放）
 		rt_thread_yield();  			         //放弃剩余时间片，进行一次任务切换	
     }
 }
