@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   KEY_PROCESS                                                       10/13/2023 17:22:46 PAGE 1   
+C51 COMPILER V9.60.0.0   KEY_PROCESS                                                       10/18/2023 18:03:57 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE KEY_PROCESS
@@ -62,7 +62,7 @@ line level    source
   51          extern uint8_t gcPWMCly;
   52          extern uint8_t  gcPWMWaitTime;
   53          extern uint16_t gcPWMCount;
-C51 COMPILER V9.60.0.0   KEY_PROCESS                                                       10/13/2023 17:22:46 PAGE 2   
+C51 COMPILER V9.60.0.0   KEY_PROCESS                                                       10/18/2023 18:03:57 PAGE 2   
 
   54          extern uint8_t gcLEDFlashCount;
   55          extern uint16_t giLEDFlashTime;
@@ -126,7 +126,7 @@ line level    source
  113   4                    {
  114   5                      if(gcBurnerStatus != 0)        //表示有炉头开启
  115   5                      {
-C51 COMPILER V9.60.0.0   KEY_PROCESS                                                       10/13/2023 17:22:46 PAGE 3   
+C51 COMPILER V9.60.0.0   KEY_PROCESS                                                       10/18/2023 18:03:57 PAGE 3   
 
  116   6      //                  if(BatLowWarrnFlag == 0)     //有炉头开启，并且不在低电压模式下
  117   6      //                  {
@@ -190,7 +190,7 @@ line level    source
  175   6      //                    Set_SendTestCFlag;
  176   6      //                    Clr_IRSendEnFlag;                           
  177   6                          //  Clr_TestKeyDownFlag;        //这个表标志不要在这里清掉
-C51 COMPILER V9.60.0.0   KEY_PROCESS                                                       10/13/2023 17:22:46 PAGE 4   
+C51 COMPILER V9.60.0.0   KEY_PROCESS                                                       10/18/2023 18:03:57 PAGE 4   
 
  178   6                        }
  179   5                      }     
@@ -254,7 +254,7 @@ line level    source
  237   4                   Clr_IRSendEnFlag;
  238   4                   
  239   4                 }
-C51 COMPILER V9.60.0.0   KEY_PROCESS                                                       10/13/2023 17:22:46 PAGE 5   
+C51 COMPILER V9.60.0.0   KEY_PROCESS                                                       10/18/2023 18:03:57 PAGE 5   
 
  240   3                 else
  241   3                   {
@@ -318,7 +318,7 @@ line level    source
  299   5                   if (gcSpeedLevel == 1)
  300   5                   {
  301   6                      Clr_SendSpeedOffCommandFlag;
-C51 COMPILER V9.60.0.0   KEY_PROCESS                                                       10/13/2023 17:22:46 PAGE 6   
+C51 COMPILER V9.60.0.0   KEY_PROCESS                                                       10/18/2023 18:03:57 PAGE 6   
 
  302   6                      Clr_SendLightOffCommandFlag;  
  303   6                   }
@@ -382,7 +382,7 @@ line level    source
  361   3           }
  362   2           break;
  363   2           case 1:      //测试按键的处理
-C51 COMPILER V9.60.0.0   KEY_PROCESS                                                       10/13/2023 17:22:46 PAGE 7   
+C51 COMPILER V9.60.0.0   KEY_PROCESS                                                       10/18/2023 18:03:57 PAGE 7   
 
  364   2           {
  365   3               Clr_LEDONFlag;         //9.23 断开后LED灭

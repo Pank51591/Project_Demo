@@ -1,4 +1,4 @@
-LX51 LINKER/LOCATER V4.66.97.0                                                          10/13/2023  17:22:48  PAGE 1
+LX51 LINKER/LOCATER V4.66.97.0                                                          10/18/2023  18:03:58  PAGE 1
 
 
 LX51 LINKER/LOCATER V4.66.97.0, INVOKED BY:
@@ -67,7 +67,7 @@ INPUT MODULES INCLUDED:
   D:\PROGRAM FILES (X86)\KEIL_V5\C51\LIB\C51L.LIB (?C?UIDIV)
          COMMENT TYPE 1: A51 / ASM51 Assembler
   D:\PROGRAM FILES (X86)\KEIL_V5\C51\LIB\C51L.LIB (?C?IILDX)
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 2
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 2
 
 
          COMMENT TYPE 1: A51 / ASM51 Assembler
@@ -135,7 +135,7 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 * * * * * * * * * * *   C O D E   M E M O R Y   * * * * * * * * * * * * *
 000000H   000002H   000003H   ---    OFFS..   CODE           ?CO??C_STARTUP?0
 000003H   000005H   000003H   BYTE   OFFS..   CODE           ?SC_IT?00003
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 3
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 3
 
 
 000006H   00000AH   000005H   ---    ---      **GAP**
@@ -203,7 +203,7 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 001790H   001796H   000007H   BYTE   UNIT     CODE           ?L?COM0092
 001797H   00179FH   000009H   BYTE   UNIT     CODE           ?L?COM004F
 0017A0H   0017AAH   00000BH   BYTE   UNIT     CODE           ?PR?SC_PWM3_INIT?SC_INIT
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 4
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 4
 
 
 0017ABH   0017B5H   00000BH   BYTE   UNIT     CODE           ?PR?SC_PWM3_INIT_33KHZ?SC_INIT
@@ -271,7 +271,7 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 0025D8H   0025F9H   000022H   BYTE   UNIT     CODE           ?PR?SC_ADC_INIT?SC_INIT
 0025FAH   002604H   00000BH   BYTE   UNIT     CODE           ?PR?_ADC_CMD?SC95F_ADC
 002605H   002631H   00002DH   BYTE   UNIT     CODE           ?PR?_ADC_CHANNELCONFIG?SC95F_ADC
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 5
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 5
 
 
 002632H   002637H   000006H   BYTE   UNIT     CODE           ?PR?SC_ADC1_MULTICHANNAL?ADC_PROCESS
@@ -339,7 +339,7 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 002AADH   002AADH   000001H   BYTE   UNIT     CODE           ?PR?INT2INTERRUPT?SC_IT
 002AAEH   002AC3H   000016H   BYTE   UNIT     CODE           ?PR?IR_STARTSEND_36KHZ?SC_IT
 002AC4H   002AD9H   000016H   BYTE   UNIT     CODE           ?PR?IR_STOPSEND_36KHZ?SC_IT
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 6
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 6
 
 
 002ADAH   002B1DH   000044H   BYTE   UNIT     CODE           ?PR?ADC_PROCESS?ADC_PROCESS
@@ -407,7 +407,7 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 0035B2H   0035BAH   000009H   BYTE   UNIT     CODE           ?L?COM0077
 0035BBH   0035C3H   000009H   BYTE   UNIT     CODE           ?L?COM007C
 0035C4H   0035CCH   000009H   BYTE   UNIT     CODE           ?L?COM007D
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 7
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 7
 
 
 0035CDH   0035D5H   000009H   BYTE   UNIT     CODE           ?L?COM007E
@@ -475,7 +475,7 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 
 
 
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 8
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 8
 
 
 OVERLAY MAP OF MODULE:   ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
@@ -543,7 +543,7 @@ SC_PWM3_INIT/SC_INIT                          ----- -----  ----- -----  ----- --
   +--> _PWM_INDEPENDENTMODECONFIGEX/SC95F_PWM
   +--> _PWM_ITCONFIGEX/SC95F_PWM
   +--> _PWM_CMDEX/SC95F_PWM
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 9
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 9
 
 
 
@@ -611,7 +611,7 @@ MAIN/MAIN                                     ----- -----  ----- -----  ----- --
   +--> _TIM1_CMD/SC95F_TIMER1
   +--> _GPIO_INIT/SC95F_GPIO
   +--> GETLOWPOWERSCANFLAG/TKDRIVER
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 10
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 10
 
 
   +--> LOWPOWER_TOUCHKEY_SCAN/TKDRIVER
@@ -679,7 +679,7 @@ SC_TIM1_INIT/SC_INIT                          ----- -----  ----- -----  ----- --
 _TIM1_TIMEBASEINIT/SC95F_TIMER1               ----- -----  ----- -----  ----- -----
 
 _TIM1_WORKMODECONFIG/SC95F_TIMER1             ----- -----  ----- -----  ----- -----
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 11
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 11
 
 
   +--> _TIM1_WORKMODE0CONFIG/SC95F_TIMER1
@@ -747,7 +747,7 @@ _ADC_CHANNELCONFIG/SC95F_ADC                  ----- -----  ----- -----  ----- --
 
 _ADC_CMD/SC95F_ADC                            ----- -----  ----- -----  ----- -----
 
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 12
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 12
 
 
 SC_WDT_INIT/SC_INIT                           ----- -----  ----- -----  ----- -----
@@ -815,7 +815,7 @@ FILTERIIRINIT/SENSORMETHOD                    ----- -----  ----- -----  ----- --
 
 GETINITAUTOUPDATETIME/TKDRIVER                ----- -----  ----- -----  ----- -----
 
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 13
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 13
 
 
 _FILTERDATADEAL/SENSORMETHOD                  ----- -----  ----- -----  010FH 0111H
@@ -883,7 +883,7 @@ SC_GPIO_LOWOUTPUT/SC_INIT                     ----- -----  ----- -----  ----- --
 CUSTOMER_BTM_DISPOSE/SYSFUNVARDEFINE          ----- -----  ----- -----  ----- -----
 
 TIME_PROCESS/TIME_PROCESS                     ----- -----  ----- -----  ----- -----
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 14
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 14
 
 
   +--> DELAY1MS/SYSFUNVARDEFINE
@@ -951,7 +951,7 @@ SENSORKEYFLAG/SENSORMETHOD                    ----- -----  ----- -----  010DH 01
 _SENSORRENOVATE/SENSORMETHOD                  ----- -----  ----- -----  010EH 0116H
   +--> SENSORMETHOD
   +--> _GETCURRFINGERVALUE/TKDRIVER
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 15
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 15
 
 
   +--> GETCSFUNCTION/TKDRIVER
@@ -1019,7 +1019,7 @@ TOUCHKEYRESTART/SENSORMETHOD                  ----- -----  ----- -----  ----- --
 PUBLIC SYMBOLS OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
 
 
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 16
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 16
 
 
       VALUE       CLASS    TYPE      PUBLIC SYMBOL NAME
@@ -1087,7 +1087,7 @@ PUBLIC SYMBOLS OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
 *DEL*:00000000H   CODE     ---       _PWM_ClearFaultDetectionFlagEX
 *DEL*:00000000H   CODE     ---       _PWM_ClearFlagEX
       010025BDH   CODE     ---       _PWM_CmdEX
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 17
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 17
 
 
 *DEL*:00000000H   CODE     ---       _PWM_ComplementaryModeConfig
@@ -1155,7 +1155,7 @@ PUBLIC SYMBOLS OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
 *SFR* 000000FBH   DATA     BYTE      BTMCON
       0100333AH   CODE     ---       BtmInit
       0100184AH   CODE     ---       Burner_Process
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 18
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 18
 
 
       010030C6H   CODE     ---       BurnerOpenNumber_Check
@@ -1223,7 +1223,7 @@ PUBLIC SYMBOLS OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       02000132H   XDATA    BYTE      gcAHCloseBuzzerTime
       02000122H   XDATA    BYTE      gcBatAdcCount
       020000FBH   XDATA    BYTE      gcBatHigh4bit
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 19
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 19
 
 
       020000E4H   XDATA    BYTE      gcBatLow8bit
@@ -1291,7 +1291,7 @@ PUBLIC SYMBOLS OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       02000139H   XDATA    BYTE      gcTenMsCount
       020000E7H   XDATA    BYTE      gcTestDataACount
       020000E8H   XDATA    BYTE      gcTestDataBCount
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 20
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 20
 
 
       020000E9H   XDATA    BYTE      gcTestDataCCount
@@ -1359,7 +1359,7 @@ PUBLIC SYMBOLS OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
 *SFR* 000000B8H.3 DATA     BIT       IPT1
 *SFR* 000000B8H.5 DATA     BIT       IPT2
 *SFR* 000000B8H.4 DATA     BIT       IPUART
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 21
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 21
 
 
       01002AAEH   CODE     ---       IR_StartSend_36KHZ
@@ -1427,7 +1427,7 @@ PUBLIC SYMBOLS OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
 *SFR* 000000A0H.6 DATA     BIT       P26
 *SFR* 000000A0H.7 DATA     BIT       P27
 *SFR* 000000A1H   DATA     BYTE      P2CON
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 22
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 22
 
 
 *SFR* 000000A2H   DATA     BYTE      P2PH
@@ -1495,7 +1495,7 @@ PUBLIC SYMBOLS OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       010012FEH   CODE     ---       SC_GPIO_Init
       01002009H   CODE     ---       SC_GPIO_LowOutput
       01001761H   CODE     ---       SC_Init
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 23
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 23
 
 
       0100155BH   CODE     ---       SC_INT_Init
@@ -1563,7 +1563,7 @@ PUBLIC SYMBOLS OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
 *SFR* 000000E5H   DATA     BYTE      TKCNTH
 *SFR* 000000E4H   DATA     BYTE      TKCNTL
 *SFR* 000000E8H   DATA     BYTE      TKCR
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 24
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 24
 
 
       010033E0H   CODE     ---       TKSleepMode
@@ -1631,7 +1631,7 @@ LINKER CODE PACKING SYMBOLS OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       01002F3FH   CODE     END       ?L?COM0003
       01002EE7H   CODE     PART      ?L?COM0004
       01002EE7H   CODE     END       ?L?COM0005
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 25
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 25
 
 
       01001391H   CODE     BEGIN     ?L?COM0006
@@ -1699,7 +1699,7 @@ LINKER CODE PACKING SYMBOLS OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       010015BBH   CODE     PART      ?L?COM0044
       01002798H   CODE     PART      ?L?COM0045
       01002510H   CODE     PART      ?L?COM0046
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 26
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 26
 
 
       010015C2H   CODE     PART      ?L?COM0047
@@ -1767,7 +1767,7 @@ LINKER CODE PACKING SYMBOLS OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       01002729H   CODE     PART      ?L?COM0085
       01002339H   CODE     PART      ?L?COM0086
       010035D6H   CODE     PART      ?L?COM0087
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 27
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 27
 
 
       010035DEH   CODE     PART      ?L?COM0088
@@ -1835,7 +1835,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       02000012H   PUBLIC    XDATA    WORD      giKeySW6LongDownTime
       02000011H   PUBLIC    XDATA    BYTE      gcIRSendLightOffCount
       02000010H   PUBLIC    XDATA    BYTE      gcADCDelayTime
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 28
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 28
 
 
       0200000FH   PUBLIC    XDATA    BYTE      gcIRSendSpeedOffTime
@@ -1903,7 +1903,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000B8H.3 SFRSYM    DATA     BIT       IPT1
       000000B8H.5 SFRSYM    DATA     BIT       IPT2
       00000081H   SFRSYM    DATA     BYTE      SP
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 29
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 29
 
 
       000000D0H.2 SFRSYM    DATA     BIT       OV
@@ -1971,7 +1971,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000B0H.6 SFRSYM    DATA     BIT       P36
       000000A0H.7 SFRSYM    DATA     BIT       P27
       000000D8H.5 SFRSYM    DATA     BIT       P55
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 30
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 30
 
 
       000000C0H.6 SFRSYM    DATA     BIT       P46
@@ -2039,7 +2039,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000D9H   SFRSYM    DATA     BYTE      P5CON
       000000AFH   SFRSYM    DATA     BYTE      ADCVH
       00000086H   SFRSYM    DATA     BYTE      DPS
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 31
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 31
 
 
       00000095H   SFRSYM    DATA     BYTE      US0CON0
@@ -2107,7 +2107,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       0100117CH   LINE      ---      ---       #157
       0100117FH   LINE      ---      ---       #158
       0100117FH   LINE      ---      ---       #160
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 32
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 32
 
 
       01001185H   LINE      ---      ---       #161
@@ -2175,7 +2175,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       00000090H   SFRSYM    DATA     BYTE      P1
       000000A0H   SFRSYM    DATA     BYTE      P2
       000000A8H.4 SFRSYM    DATA     BIT       EUART
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 33
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 33
 
 
       0000008EH   SFRSYM    DATA     BYTE      TMCON
@@ -2243,7 +2243,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       00000090H.1 SFRSYM    DATA     BIT       P11
       00000080H.2 SFRSYM    DATA     BIT       P02
       000000B6H   SFRSYM    DATA     BYTE      CMPCFG
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 34
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 34
 
 
       000000B0H.0 SFRSYM    DATA     BIT       P30
@@ -2311,7 +2311,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000A8H.3 SFRSYM    DATA     BIT       ET1
       000000ABH   SFRSYM    DATA     BYTE      ADCCFG0
       000000B9H   SFRSYM    DATA     BYTE      IP1
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 35
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 35
 
 
       00000088H.7 SFRSYM    DATA     BIT       TF1
@@ -2379,7 +2379,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000D0H.5 SFRSYM    DATA     BIT       F0
       000000D0H.1 SFRSYM    DATA     BIT       F1
       000000CCH   SFRSYM    DATA     BYTE      TLX
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 36
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 36
 
 
       000000D0H   SFRSYM    DATA     BYTE      PSW
@@ -2447,7 +2447,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       0100202AH   LINE      ---      ---       #111
       0100202CH   LINE      ---      ---       #112
       0100202EH   LINE      ---      ---       #113
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 37
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 37
 
 
       01002030H   LINE      ---      ---       #114
@@ -2515,7 +2515,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       010015C9H   LINE      ---      ---       #221
       010015C9H   LINE      ---      ---       #222
       010015CFH   LINE      ---      ---       #224
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 38
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 38
 
 
       ---         BLOCKEND  ---      ---       LVL=0
@@ -2583,7 +2583,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       01002A1CH   LINE      ---      ---       #316
       01002A20H   LINE      ---      ---       #317
       01002A24H   LINE      ---      ---       #318
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 39
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 39
 
 
       01002A28H   LINE      ---      ---       #319
@@ -2651,7 +2651,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000C8H.3 SFRSYM    DATA     BIT       EXENX
       000000A8H.6 SFRSYM    DATA     BIT       EADC
       000000C9H   SFRSYM    DATA     BYTE      TXMOD
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 40
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 40
 
 
       000000C8H   SFRSYM    DATA     BYTE      TXCON
@@ -2719,7 +2719,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000C0H.1 SFRSYM    DATA     BIT       P41
       000000B0H.2 SFRSYM    DATA     BIT       P32
       000000A0H.3 SFRSYM    DATA     BIT       P23
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 41
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 41
 
 
       00000090H.4 SFRSYM    DATA     BIT       P14
@@ -2787,7 +2787,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000D0H.0 SFRSYM    DATA     BIT       P
       00000098H.7 SFRSYM    DATA     BIT       SM0
       0000008AH   SFRSYM    DATA     BYTE      TL0
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 42
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 42
 
 
       00000098H.6 SFRSYM    DATA     BIT       SM1
@@ -2855,7 +2855,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       ---         BLOCKEND  ---      ---       LVL=0
 
       01002AA9H   BLOCK     CODE     ---       LVL=0
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 43
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 43
 
 
       01002AA9H   LINE      ---      ---       #55
@@ -2923,7 +2923,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       01001E2DH   LINE      ---      ---       #132
       01001E2DH   LINE      ---      ---       #133
       01001E32H   LINE      ---      ---       #134
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 44
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 44
 
 
       01001E36H   LINE      ---      ---       #135
@@ -2991,7 +2991,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       01001EE2H   LINE      ---      ---       #220
       01001EE2H   LINE      ---      ---       #221
       01001EE2H   LINE      ---      ---       #223
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 45
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 45
 
 
       01001EE8H   LINE      ---      ---       #224
@@ -3059,7 +3059,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       0100294FH   LINE      ---      ---       #324
       01002955H   LINE      ---      ---       #325
       01002958H   LINE      ---      ---       #328
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 46
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 46
 
 
       ---         BLOCKEND  ---      ---       LVL=0
@@ -3127,7 +3127,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000C8H.0 SFRSYM    DATA     BIT       CP
       000000C4H   SFRSYM    DATA     BYTE      USXCON0
       000000C5H   SFRSYM    DATA     BYTE      USXCON1
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 47
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 47
 
 
       000000C6H   SFRSYM    DATA     BYTE      USXCON2
@@ -3195,7 +3195,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       00000090H.5 SFRSYM    DATA     BIT       P15
       00000080H.6 SFRSYM    DATA     BIT       P06
       000000B8H.0 SFRSYM    DATA     BIT       IPINT0
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 48
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 48
 
 
       000000D8H.2 SFRSYM    DATA     BIT       P52
@@ -3263,7 +3263,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000D4H   SFRSYM    DATA     BYTE      PWMPDL
       00000088H.6 SFRSYM    DATA     BIT       TR1
       000000B8H.4 SFRSYM    DATA     BIT       IPUART
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 49
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 49
 
 
       000000D7H   SFRSYM    DATA     BYTE      PWMFLT
@@ -3331,7 +3331,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       01002671H   LINE      ---      ---       #39
       01002671H   LINE      ---      ---       #40
       01002674H   LINE      ---      ---       #41
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 50
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 50
 
 
       0100267CH   LINE      ---      ---       #46
@@ -3399,7 +3399,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000A8H.6 SFRSYM    DATA     BIT       EADC
       000000C9H   SFRSYM    DATA     BYTE      TXMOD
       000000C8H   SFRSYM    DATA     BYTE      TXCON
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 51
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 51
 
 
       000000A8H   SFRSYM    DATA     BYTE      IE
@@ -3467,7 +3467,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000B0H.2 SFRSYM    DATA     BIT       P32
       000000A0H.3 SFRSYM    DATA     BIT       P23
       00000090H.4 SFRSYM    DATA     BIT       P14
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 52
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 52
 
 
       00000080H.5 SFRSYM    DATA     BIT       P05
@@ -3535,7 +3535,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       00000098H.7 SFRSYM    DATA     BIT       SM0
       0000008AH   SFRSYM    DATA     BYTE      TL0
       00000098H.6 SFRSYM    DATA     BIT       SM1
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 53
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 53
 
 
       000000CFH   SFRSYM    DATA     BYTE      WDTCON
@@ -3603,7 +3603,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       010011CBH   LINE      ---      ---       #71
       010011D0H   LINE      ---      ---       #73
       010011E8H   LINE      ---      ---       #74
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 54
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 54
 
 
       010011E8H   LINE      ---      ---       #75
@@ -3671,7 +3671,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       0100303FH   LINE      ---      ---       #150
       02000102H   SYMBOL    XDATA    BYTE      ADC_CHANNEL1_NUM
       0100303FH   BLOCK     CODE     NEAR LAB  LVL=1
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 55
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 55
 
 
       0100303FH   LINE      ---      ---       #152
@@ -3739,7 +3739,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       0000009BH   SFRSYM    DATA     BYTE      P0PH
       000000B8H   SFRSYM    DATA     BYTE      IP
       00000092H   SFRSYM    DATA     BYTE      P1PH
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 56
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 56
 
 
       00000098H.0 SFRSYM    DATA     BIT       RI
@@ -3807,7 +3807,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000A0H.5 SFRSYM    DATA     BIT       P25
       00000090H.6 SFRSYM    DATA     BIT       P16
       00000080H.7 SFRSYM    DATA     BIT       P07
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 57
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 57
 
 
       000000B8H.2 SFRSYM    DATA     BIT       IPINT1
@@ -3875,7 +3875,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000A8H.0 SFRSYM    DATA     BIT       EINT0
       0000009AH   SFRSYM    DATA     BYTE      P0CON
       000000A8H.2 SFRSYM    DATA     BIT       EINT1
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 58
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 58
 
 
       000000B8H.6 SFRSYM    DATA     BIT       IPADC
@@ -3943,7 +3943,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       0100184DH   LINE      ---      ---       #79
       01001852H   LINE      ---      ---       #80
       01001858H   LINE      ---      ---       #81
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 59
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 59
 
 
       01001858H   LINE      ---      ---       #82
@@ -4011,7 +4011,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       010018FFH   LINE      ---      ---       #164
       010018FFH   LINE      ---      ---       #165
       01001904H   LINE      ---      ---       #166
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 60
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 60
 
 
       0100190AH   LINE      ---      ---       #167
@@ -4079,7 +4079,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       010019AEH   LINE      ---      ---       #248
       010019B1H   LINE      ---      ---       #249
       010019B1H   LINE      ---      ---       #250
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 61
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 61
 
 
       010019B6H   LINE      ---      ---       #251
@@ -4147,7 +4147,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       01001A60H   LINE      ---      ---       #331
       01001A60H   LINE      ---      ---       #333
       01001A63H   LINE      ---      ---       #336
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 62
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 62
 
 
       01001A6BH   LINE      ---      ---       #337
@@ -4215,7 +4215,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       01001B2FH   LINE      ---      ---       #429
       01001B3FH   LINE      ---      ---       #430
       01001B3FH   LINE      ---      ---       #431
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 63
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 63
 
 
       01001B43H   LINE      ---      ---       #435
@@ -4283,7 +4283,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       01001BF0H   LINE      ---      ---       #517
       01001BF6H   LINE      ---      ---       #518
       01001BFBH   LINE      ---      ---       #519
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 64
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 64
 
 
       01001C04H   LINE      ---      ---       #520
@@ -4351,7 +4351,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000C8H.2 SFRSYM    DATA     BIT       TRX
       000000FFH   SFRSYM    DATA     BYTE      OPREG
       00000080H   SFRSYM    DATA     BYTE      P0
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 65
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 65
 
 
       00000090H   SFRSYM    DATA     BYTE      P1
@@ -4419,7 +4419,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       00000099H   SFRSYM    DATA     BYTE      SBUF
       00000087H   SFRSYM    DATA     BYTE      PCON
       000000A0H.0 SFRSYM    DATA     BIT       P20
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 66
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 66
 
 
       00000090H.1 SFRSYM    DATA     BIT       P11
@@ -4487,7 +4487,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000A8H.1 SFRSYM    DATA     BIT       ET0
       000000FCH   SFRSYM    DATA     BYTE      CRCINX
       00000088H.5 SFRSYM    DATA     BIT       TF0
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 67
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 67
 
 
       000000A8H.3 SFRSYM    DATA     BIT       ET1
@@ -4555,7 +4555,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       00000096H   SFRSYM    DATA     BYTE      IOHCON0
       00000097H   SFRSYM    DATA     BYTE      IOHCON1
       000000CDH   SFRSYM    DATA     BYTE      THX
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 68
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 68
 
 
       000000D0H.5 SFRSYM    DATA     BIT       F0
@@ -4623,7 +4623,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       01001469H   LINE      ---      ---       #124
       0100146FH   LINE      ---      ---       #126
       0100146FH   LINE      ---      ---       #127
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 69
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 69
 
 
       01001474H   LINE      ---      ---       #133
@@ -4691,7 +4691,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       010014FAH   LINE      ---      ---       #216
       010014FFH   LINE      ---      ---       #217
       010014FFH   LINE      ---      ---       #218
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 70
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 70
 
 
       010014FFH   LINE      ---      ---       #220
@@ -4759,7 +4759,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000ECH   SFRSYM    DATA     BYTE      EXA3
       00000084H   SFRSYM    DATA     BYTE      DPL1
       000000C8H.0 SFRSYM    DATA     BIT       CP
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 71
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 71
 
 
       000000C4H   SFRSYM    DATA     BYTE      USXCON0
@@ -4827,7 +4827,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000B0H.3 SFRSYM    DATA     BIT       P33
       000000A0H.4 SFRSYM    DATA     BIT       P24
       00000090H.5 SFRSYM    DATA     BIT       P15
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 72
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 72
 
 
       00000080H.6 SFRSYM    DATA     BIT       P06
@@ -4895,7 +4895,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       00000088H.4 SFRSYM    DATA     BIT       TR0
       000000D0H.4 SFRSYM    DATA     BIT       RS1
       000000D4H   SFRSYM    DATA     BYTE      PWMPDL
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 73
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 73
 
 
       00000088H.6 SFRSYM    DATA     BIT       TR1
@@ -4963,7 +4963,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       01003146H   LINE      ---      ---       #106
       01003146H   LINE      ---      ---       #107
       01003146H   LINE      ---      ---       #108
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 74
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 74
 
 
       0100314AH   LINE      ---      ---       #109
@@ -5031,7 +5031,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       0100322AH   LINE      ---      ---       #193
       01003230H   LINE      ---      ---       #194
       01003230H   LINE      ---      ---       #196
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 75
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 75
 
 
       01003236H   LINE      ---      ---       #197
@@ -5099,7 +5099,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       01001D02H   LINE      ---      ---       #286
       01001D04H   LINE      ---      ---       #288
       01001D09H   LINE      ---      ---       #289
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 76
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 76
 
 
       01001D0FH   LINE      ---      ---       #290
@@ -5167,7 +5167,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       01003298H   LINE      ---      ---       #371
       0100329AH   LINE      ---      ---       #373
       0100329FH   LINE      ---      ---       #374
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 77
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 77
 
 
       0100329FH   LINE      ---      ---       #375
@@ -5235,7 +5235,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000C4H   SFRSYM    DATA     BYTE      USXCON0
       000000C5H   SFRSYM    DATA     BYTE      USXCON1
       000000C6H   SFRSYM    DATA     BYTE      USXCON2
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 78
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 78
 
 
       000000C7H   SFRSYM    DATA     BYTE      USXCON3
@@ -5303,7 +5303,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       00000080H.6 SFRSYM    DATA     BIT       P06
       000000B8H.0 SFRSYM    DATA     BIT       IPINT0
       000000D8H.2 SFRSYM    DATA     BIT       P52
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 79
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 79
 
 
       000000C0H.3 SFRSYM    DATA     BIT       P43
@@ -5371,7 +5371,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       00000088H.6 SFRSYM    DATA     BIT       TR1
       000000B8H.4 SFRSYM    DATA     BIT       IPUART
       000000D7H   SFRSYM    DATA     BYTE      PWMFLT
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 80
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 80
 
 
       00000083H   SFRSYM    DATA     BYTE      DPH
@@ -5439,7 +5439,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       ---         BLOCKEND  ---      ---       LVL=0
 
       01002F80H   BLOCK     CODE     ---       LVL=0
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 81
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 81
 
 
       01002F80H   LINE      ---      ---       #137
@@ -5507,7 +5507,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       01002B35H   LINE      ---      ---       #215
       01002B3BH   LINE      ---      ---       #216
       01002B4AH   LINE      ---      ---       #217
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 82
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 82
 
 
       01002B4AH   LINE      ---      ---       #218
@@ -5575,7 +5575,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       01002C2CH   LINE      ---      ---       #304
       01002C2CH   LINE      ---      ---       #305
       01002C35H   LINE      ---      ---       #306
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 83
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 83
 
 
       01002C35H   LINE      ---      ---       #307
@@ -5643,7 +5643,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       01002D26H   LINE      ---      ---       #388
       01002D26H   LINE      ---      ---       #389
       01002D26H   LINE      ---      ---       #390
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 84
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 84
 
 
       01002D28H   LINE      ---      ---       #391
@@ -5711,7 +5711,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       01002DF2H   LINE      ---      ---       #478
       01002DF4H   LINE      ---      ---       #479
       01002DF9H   LINE      ---      ---       #480
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 85
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 85
 
 
       01002DF9H   LINE      ---      ---       #481
@@ -5779,7 +5779,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       01002ECEH   LINE      ---      ---       #555
       01002ECEH   LINE      ---      ---       #557
       01002ECEH   LINE      ---      ---       #559
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 86
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 86
 
 
       ---         BLOCKEND  ---      ---       LVL=0
@@ -5847,7 +5847,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000B3H   SFRSYM    DATA     BYTE      P3VO
       000000ADH   SFRSYM    DATA     BYTE      ADCCON
       000000C8H.1 SFRSYM    DATA     BIT       TX
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 87
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 87
 
 
       000000EDH   SFRSYM    DATA     BYTE      EXBL
@@ -5915,7 +5915,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000A9H   SFRSYM    DATA     BYTE      IE1
       000000AAH   SFRSYM    DATA     BYTE      IE2
       000000F0H   SFRSYM    DATA     BYTE      B
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 88
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 88
 
 
       000000B7H   SFRSYM    DATA     BYTE      CMPCON
@@ -5983,7 +5983,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       0000009EH   SFRSYM    DATA     BYTE      US0CON2
       000000A6H   SFRSYM    DATA     BYTE      US1CON2
       0000009FH   SFRSYM    DATA     BYTE      US0CON3
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 89
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 89
 
 
       000000A7H   SFRSYM    DATA     BYTE      US1CON3
@@ -6051,7 +6051,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       0200013BH   PUBLIC    XDATA    BYTE      gc250msCount
       0200013AH   PUBLIC    XDATA    BYTE      gcT10MsCount
       02000139H   PUBLIC    XDATA    BYTE      gcTenMsCount
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 90
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 90
 
 
       02000138H   PUBLIC    XDATA    BYTE      gcWaitKeyTime
@@ -6119,7 +6119,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000B3H   SFRSYM    DATA     BYTE      P3VO
       000000ADH   SFRSYM    DATA     BYTE      ADCCON
       000000C8H.1 SFRSYM    DATA     BIT       TX
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 91
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 91
 
 
       000000EDH   SFRSYM    DATA     BYTE      EXBL
@@ -6187,7 +6187,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000AAH   SFRSYM    DATA     BYTE      IE2
       000000F0H   SFRSYM    DATA     BYTE      B
       000000B7H   SFRSYM    DATA     BYTE      CMPCON
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 92
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 92
 
 
       000000F1H   SFRSYM    DATA     BYTE      IAPKEY
@@ -6255,7 +6255,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000A6H   SFRSYM    DATA     BYTE      US1CON2
       0000009FH   SFRSYM    DATA     BYTE      US0CON3
       000000A7H   SFRSYM    DATA     BYTE      US1CON3
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 93
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 93
 
 
       000000BBH   SFRSYM    DATA     BYTE      INT0R
@@ -6323,7 +6323,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       01001680H   LINE      ---      ---       #130
       01001684H   LINE      ---      ---       #132
       0100168AH   LINE      ---      ---       #133
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 94
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 94
 
 
       0100168AH   LINE      ---      ---       #135
@@ -6391,7 +6391,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       ---         MODULE    ---      ---       SENSORMETHOD
       0200012BH   PUBLIC    XDATA    BYTE      IsInNosicValue
       0200012AH   PUBLIC    XDATA    BYTE      CurrentIndex
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 95
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 95
 
 
       00000010H   PUBLIC    DATA     BYTE      CurrentChannelMax
@@ -6459,7 +6459,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       01000FB0H   BLOCK     CODE     NEAR LAB  LVL=1
       02000101H   SYMBOL    XDATA    VOID      t
       02000102H   SYMBOL    XDATA    VOID      i
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 96
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 96
 
 
       ---         BLOCKEND  ---      ---       LVL=1
@@ -6527,7 +6527,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       020000DEH   PUBLIC    XDATA    BYTE      WakeUpThenScanCount
       020000D6H   PUBLIC    XDATA    ---       TKChannelCfg
       020000D5H   PUBLIC    XDATA    BYTE      MultipleDealTpye
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 97
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 97
 
 
       020000D4H   PUBLIC    XDATA    ---       NoTouchCnt
@@ -6595,7 +6595,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       00000090H   SFRSYM    DATA     BYTE      P1
       000000A0H   SFRSYM    DATA     BYTE      P2
       000000A8H.4 SFRSYM    DATA     BIT       EUART
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 98
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 98
 
 
       0000008EH   SFRSYM    DATA     BYTE      TMCON
@@ -6663,7 +6663,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000EDH   SFRSYM    DATA     BYTE      EXBL
       000000F2H   SFRSYM    DATA     BYTE      IAPADL
       00000080H.0 SFRSYM    DATA     BIT       P00
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 99
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 99
 
 
       00000090H.0 SFRSYM    DATA     BIT       P10
@@ -6731,7 +6731,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000A9H   SFRSYM    DATA     BYTE      IE1
       000000AAH   SFRSYM    DATA     BYTE      IE2
       000000E6H   SFRSYM    DATA     WORD      TKTM
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 100
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 100
 
 
       000000F0H   SFRSYM    DATA     BYTE      B
@@ -6799,7 +6799,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000AEH   SFRSYM    DATA     BYTE      ADCVL
       000000F7H   SFRSYM    DATA     BYTE      EXADH
       000000A5H   SFRSYM    DATA     BYTE      US1CON1
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 101
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 101
 
 
       0000009EH   SFRSYM    DATA     BYTE      US0CON2
@@ -6867,7 +6867,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       010027C6H   LINE      ---      ---       #276
       ---         BLOCKEND  ---      ---       LVL=0
 
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 102
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 102
 
 
       0100333DH   BLOCK     CODE     ---       LVL=0
@@ -6935,7 +6935,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       0100335AH   LINE      ---      ---       #382
       0100335DH   LINE      ---      ---       #383
       00000006H   SYMBOL    DATA     WORD      SetFingerThresholdtmp
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 103
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 103
 
 
       ---         BLOCKEND  CODE     ---       LVL=1
@@ -7003,7 +7003,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       0100330EH   LINE      ---      ---       #459
       01003316H   LINE      ---      ---       #460
       01003316H   LINE      ---      ---       #461
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 104
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 104
 
 
       01003332H   LINE      ---      ---       #462
@@ -7071,7 +7071,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       01002202H   LINE      ---      ---       #545
       01002213H   LINE      ---      ---       #546
       01002213H   LINE      ---      ---       #547
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 105
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 105
 
 
       01002216H   LINE      ---      ---       #548
@@ -7139,7 +7139,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       0200010BH   SYMBOL    XDATA    INT       WakeupDiffData
       00000004H   SYMBOL    DATA     INT       WakeupSetFingerThresholdtmp
       ---         BLOCKEND  CODE     ---       LVL=1
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 106
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 106
 
 
       ---         BLOCKEND  CODE     ---       LVL=0
@@ -7207,7 +7207,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       01002076H   LINE      ---      ---       #725
       01002078H   LINE      ---      ---       #726
       ---         BLOCKEND  ---      ---       LVL=0
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 107
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 107
 
 
       00000005H   SYMBOL    DATA     BYTE      i
@@ -7275,7 +7275,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       00000016H   SYMBOL    DATA     INT       differData
       00000018H   SYMBOL    DATA     BYTE      WakeUpKey_Index
       ---         BLOCKEND  CODE     ---       LVL=1
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 108
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 108
 
 
       ---         BLOCKEND  CODE     ---       LVL=0
@@ -7343,7 +7343,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       01002390H   LINE      ---      ---       #910
       01002391H   LINE      ---      ---       #911
       01002392H   LINE      ---      ---       #912
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 109
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 109
 
 
       01002393H   LINE      ---      ---       #913
@@ -7411,7 +7411,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       00000098H.0 SFRSYM    DATA     BIT       RI
       000000A2H   SFRSYM    DATA     BYTE      P2PH
       000000D0H.7 SFRSYM    DATA     BIT       CY
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 110
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 110
 
 
       000000B2H   SFRSYM    DATA     BYTE      P3PH
@@ -7479,7 +7479,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000B8H.2 SFRSYM    DATA     BIT       IPINT1
       000000D8H.3 SFRSYM    DATA     BIT       P53
       000000C0H.4 SFRSYM    DATA     BIT       P44
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 111
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 111
 
 
       000000B0H.5 SFRSYM    DATA     BIT       P35
@@ -7547,7 +7547,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000B8H.6 SFRSYM    DATA     BIT       IPADC
       000000B4H   SFRSYM    DATA     BYTE      INT0F
       00000091H   SFRSYM    DATA     BYTE      P1CON
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 112
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 112
 
 
       000000BCH   SFRSYM    DATA     BYTE      INT1F
@@ -7615,7 +7615,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       01001273H   LINE      ---      ---       #92
       01001277H   LINE      ---      ---       #93
       01001279H   LINE      ---      ---       #94
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 113
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 113
 
 
       0100127AH   LINE      ---      ---       #96
@@ -7683,7 +7683,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       010012D8H   LINE      ---      ---       #169
       010012DBH   LINE      ---      ---       #170
       010012DCH   LINE      ---      ---       #172
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 114
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 114
 
 
       010012DCH   LINE      ---      ---       #173
@@ -7751,7 +7751,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       0000008FH   SFRSYM    DATA     BYTE      OTCON
       000000D8H   SFRSYM    DATA     BYTE      P5
       000000A8H.7 SFRSYM    DATA     BIT       EA
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 115
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 115
 
 
       000000C8H.5 SFRSYM    DATA     BIT       RCLKX
@@ -7819,7 +7819,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000C0H.0 SFRSYM    DATA     BIT       P40
       000000B0H.1 SFRSYM    DATA     BIT       P31
       000000A0H.2 SFRSYM    DATA     BIT       P22
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 116
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 116
 
 
       00000090H.3 SFRSYM    DATA     BIT       P13
@@ -7887,7 +7887,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000DFH   SFRSYM    DATA     BYTE      ROMBNK
       00000098H.2 SFRSYM    DATA     BIT       RB8
       000000B5H   SFRSYM    DATA     BYTE      ADCCFG2
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 117
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 117
 
 
       000000CAH   SFRSYM    DATA     BYTE      RCAPXL
@@ -7955,7 +7955,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       010029E1H   LINE      ---      ---       #21
       010029E1H   LINE      ---      ---       #22
       010029E4H   LINE      ---      ---       #24
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 118
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 118
 
 
       010029E7H   LINE      ---      ---       #25
@@ -8023,7 +8023,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000EAH   SFRSYM    DATA     BYTE      EXA1
       000000EBH   SFRSYM    DATA     BYTE      EXA2
       000000ECH   SFRSYM    DATA     BYTE      EXA3
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 119
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 119
 
 
       00000084H   SFRSYM    DATA     BYTE      DPL1
@@ -8091,7 +8091,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000D8H.1 SFRSYM    DATA     BIT       P51
       000000C0H.2 SFRSYM    DATA     BIT       P42
       000000B0H.3 SFRSYM    DATA     BIT       P33
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 120
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 120
 
 
       000000A0H.4 SFRSYM    DATA     BIT       P24
@@ -8159,7 +8159,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000D5H   SFRSYM    DATA     BYTE      PWMPDH
       000000D0H.3 SFRSYM    DATA     BIT       RS0
       00000088H.4 SFRSYM    DATA     BIT       TR0
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 121
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 121
 
 
       000000D0H.4 SFRSYM    DATA     BIT       RS1
@@ -8227,7 +8227,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       0100340FH   LINE      ---      ---       #77
       01003410H   LINE      ---      ---       #79
       01003410H   LINE      ---      ---       #80
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 122
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 122
 
 
       01003414H   LINE      ---      ---       #81
@@ -8295,7 +8295,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       00000005H   SYMBOL    DATA     BYTE      TriggerMode
       ---         BLOCKEND  ---      ---       LVL=0
 
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 123
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 123
 
 
       0100159EH   BLOCK     CODE     ---       LVL=0
@@ -8363,7 +8363,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       00000007H   SYMBOL    DATA     BYTE      NewState
       00000005H   SYMBOL    DATA     BYTE      Priority
       ---         BLOCKEND  ---      ---       LVL=0
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 124
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 124
 
 
 
@@ -8431,7 +8431,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000C8H.1 SFRSYM    DATA     BIT       TX
       000000EDH   SFRSYM    DATA     BYTE      EXBL
       000000F2H   SFRSYM    DATA     BYTE      IAPADL
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 125
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 125
 
 
       00000080H.0 SFRSYM    DATA     BIT       P00
@@ -8499,7 +8499,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000B7H   SFRSYM    DATA     BYTE      CMPCON
       000000F1H   SFRSYM    DATA     BYTE      IAPKEY
       000000FBH   SFRSYM    DATA     BYTE      BTMCON
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 126
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 126
 
 
       000000D1H   SFRSYM    DATA     BYTE      PWMCFG
@@ -8567,7 +8567,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000A7H   SFRSYM    DATA     BYTE      US1CON3
       000000BBH   SFRSYM    DATA     BYTE      INT0R
       000000BDH   SFRSYM    DATA     BYTE      INT1R
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 127
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 127
 
 
       000000BFH   SFRSYM    DATA     BYTE      INT2R
@@ -8635,7 +8635,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000C8H.0 SFRSYM    DATA     BIT       CP
       000000C4H   SFRSYM    DATA     BYTE      USXCON0
       000000C5H   SFRSYM    DATA     BYTE      USXCON1
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 128
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 128
 
 
       000000C6H   SFRSYM    DATA     BYTE      USXCON2
@@ -8703,7 +8703,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       00000090H.5 SFRSYM    DATA     BIT       P15
       00000080H.6 SFRSYM    DATA     BIT       P06
       000000B8H.0 SFRSYM    DATA     BIT       IPINT0
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 129
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 129
 
 
       000000D8H.2 SFRSYM    DATA     BIT       P52
@@ -8771,7 +8771,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000D4H   SFRSYM    DATA     BYTE      PWMPDL
       00000088H.6 SFRSYM    DATA     BIT       TR1
       000000B8H.4 SFRSYM    DATA     BIT       IPUART
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 130
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 130
 
 
       000000D7H   SFRSYM    DATA     BYTE      PWMFLT
@@ -8839,7 +8839,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
 
       010029C7H   BLOCK     CODE     ---       LVL=0
       010029C7H   LINE      ---      ---       #1168
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 131
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 131
 
 
       010029C7H   LINE      ---      ---       #1169
@@ -8907,7 +8907,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       010034F8H   LINE      ---      ---       #1291
       010034F8H   LINE      ---      ---       #1293
       010034F8H   LINE      ---      ---       #1294
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 132
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 132
 
 
       01003508H   LINE      ---      ---       #1295
@@ -8975,7 +8975,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
 
       01001391H   BLOCK     CODE     ---       LVL=0
       0100139CH   LINE      ---      ---       #1407
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 133
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 133
 
 
       010013A0H   LINE      ---      ---       #1410
@@ -9043,7 +9043,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       010017D2H   LINE      ---      ---       #1581
       010017D5H   LINE      ---      ---       #1582
       010017D5H   LINE      ---      ---       #1583
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 134
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 134
 
 
       010017D7H   LINE      ---      ---       #1584
@@ -9111,7 +9111,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       0000009BH   SFRSYM    DATA     BYTE      P0PH
       000000B8H   SFRSYM    DATA     BYTE      IP
       00000092H   SFRSYM    DATA     BYTE      P1PH
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 135
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 135
 
 
       00000098H.0 SFRSYM    DATA     BIT       RI
@@ -9179,7 +9179,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000A0H.5 SFRSYM    DATA     BIT       P25
       00000090H.6 SFRSYM    DATA     BIT       P16
       00000080H.7 SFRSYM    DATA     BIT       P07
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 136
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 136
 
 
       000000B8H.2 SFRSYM    DATA     BIT       IPINT1
@@ -9247,7 +9247,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000A8H.0 SFRSYM    DATA     BIT       EINT0
       0000009AH   SFRSYM    DATA     BYTE      P0CON
       000000A8H.2 SFRSYM    DATA     BIT       EINT1
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 137
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 137
 
 
       000000B8H.6 SFRSYM    DATA     BIT       IPADC
@@ -9315,7 +9315,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       010028D8H   LINE      ---      ---       #70
       010028DBH   LINE      ---      ---       #71
       010028DDH   LINE      ---      ---       #72
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 138
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 138
 
 
       010028E9H   LINE      ---      ---       #73
@@ -9383,7 +9383,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       010027E7H   LINE      ---      ---       #176
       010027E7H   LINE      ---      ---       #177
       00000007H   SYMBOL    DATA     BYTE      NewState
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 139
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 139
 
 
       ---         BLOCKEND  ---      ---       LVL=0
@@ -9451,7 +9451,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       00000084H   SFRSYM    DATA     BYTE      DPL1
       000000C8H.0 SFRSYM    DATA     BIT       CP
       000000C4H   SFRSYM    DATA     BYTE      USXCON0
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 140
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 140
 
 
       000000C5H   SFRSYM    DATA     BYTE      USXCON1
@@ -9519,7 +9519,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000A0H.4 SFRSYM    DATA     BIT       P24
       00000090H.5 SFRSYM    DATA     BIT       P15
       00000080H.6 SFRSYM    DATA     BIT       P06
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 141
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 141
 
 
       000000B8H.0 SFRSYM    DATA     BIT       IPINT0
@@ -9587,7 +9587,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000D0H.4 SFRSYM    DATA     BIT       RS1
       000000D4H   SFRSYM    DATA     BYTE      PWMPDL
       00000088H.6 SFRSYM    DATA     BIT       TR1
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 142
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 142
 
 
       000000B8H.4 SFRSYM    DATA     BIT       IPUART
@@ -9655,7 +9655,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       00000007H   SYMBOL    DATA     BYTE      TIM0_PrescalerSelection
       00000005H   SYMBOL    DATA     BYTE      TIM0_CountMode
       ---         BLOCKEND  ---      ---       LVL=0
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 143
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 143
 
 
 
@@ -9723,7 +9723,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       01002854H   LINE      ---      ---       #152
       01002858H   LINE      ---      ---       #153
       00000007H   SYMBOL    DATA     BYTE      TIM0_SetCounter
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 144
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 144
 
 
       00000005H   SYMBOL    DATA     BYTE      TIM1_SetCounter
@@ -9791,7 +9791,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       0000008FH   SFRSYM    DATA     BYTE      OTCON
       000000D8H   SFRSYM    DATA     BYTE      P5
       000000A8H.7 SFRSYM    DATA     BIT       EA
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 145
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 145
 
 
       000000C8H.5 SFRSYM    DATA     BIT       RCLKX
@@ -9859,7 +9859,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000C0H.0 SFRSYM    DATA     BIT       P40
       000000B0H.1 SFRSYM    DATA     BIT       P31
       000000A0H.2 SFRSYM    DATA     BIT       P22
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 146
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 146
 
 
       00000090H.3 SFRSYM    DATA     BIT       P13
@@ -9927,7 +9927,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000DFH   SFRSYM    DATA     BYTE      ROMBNK
       00000098H.2 SFRSYM    DATA     BIT       RB8
       000000B5H   SFRSYM    DATA     BYTE      ADCCFG2
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 147
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 147
 
 
       000000CAH   SFRSYM    DATA     BYTE      RCAPXL
@@ -9995,7 +9995,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       010027C0H   LINE      ---      ---       #39
       010027C0H   LINE      ---      ---       #41
       010027C2H   LINE      ---      ---       #43
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 148
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 148
 
 
       010027C2H   LINE      ---      ---       #44
@@ -10063,7 +10063,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       000000E0H   SYMBOL    DATA     ---       ACC
       000000F0H   SYMBOL    DATA     ---       B
       00000083H   SYMBOL    DATA     ---       DPH
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 149
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 149
 
 
       00000082H   SYMBOL    DATA     ---       DPL
@@ -10131,7 +10131,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       ---         MODULE    ---      ---       ?C?ULCMP
       010006A5H   PUBLIC    CODE     ---       ?C?ULCMP
 
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 150
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 150
 
 
       ---         MODULE    ---      ---       ?C?ULSHR
@@ -10199,7 +10199,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       010015B4H   SYMBOL    CODE     NEAR LAB  ?L?COM0043
       010015BBH   SYMBOL    CODE     NEAR LAB  ?L?COM0044
       01002798H   SYMBOL    CODE     NEAR LAB  ?L?COM0045
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 151
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 151
 
 
       01002510H   SYMBOL    CODE     NEAR LAB  ?L?COM0046
@@ -10267,7 +10267,7 @@ SYMBOL TABLE OF MODULE:  ..\Output\Het_084_C2201A_D_LowPwr (MAIN)
       01002FDCH   SYMBOL    CODE     NEAR LAB  ?L?COM008A
       01001FF0H   SYMBOL    CODE     NEAR LAB  ?L?COM008B
       010035E6H   SYMBOL    CODE     NEAR LAB  ?L?COM008C
-LX51 LINKER/LOCATER V4.66.97.0                                                        10/13/2023  17:22:48  PAGE 152
+LX51 LINKER/LOCATER V4.66.97.0                                                        10/18/2023  18:03:58  PAGE 152
 
 
       0100325BH   SYMBOL    CODE     NEAR LAB  ?L?COM008D

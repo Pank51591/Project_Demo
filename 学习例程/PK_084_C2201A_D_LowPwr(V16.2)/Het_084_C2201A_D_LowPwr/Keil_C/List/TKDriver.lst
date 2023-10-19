@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/13/2023 17:22:47 PAGE 1   
+C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/18/2023 18:03:58 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE TKDRIVER
@@ -62,7 +62,7 @@ line level    source
   51          sbit  ENTKS = TKCR^7;               //TouchKey开关电源
   52          sbit  TRIG  = TKCR^6;               //TouchKey触发开关：写1有效，触发一次key扫描周期
   53          sbit  TRIF  = TKCR^5;               //TouchKey中断标志
-C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/13/2023 17:22:47 PAGE 2   
+C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/18/2023 18:03:58 PAGE 2   
 
   54          //===========================================================================
   55          //全局变量定义
@@ -126,7 +126,7 @@ line level    source
  112          #define     AUTO_UPDATE_TIME            8
  113          #define     FilteredKValue          9
  114          #define     SET_ANTIJAM             10
-C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/13/2023 17:22:47 PAGE 3   
+C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/18/2023 18:03:58 PAGE 3   
 
  115          #define     BAUD                    11
  116          #define     DwellTime               12
@@ -190,7 +190,7 @@ line level    source
               #endif
  172          
  173          bit  LowPowerScan_Flag = 0;                                         //低功耗扫描标志
-C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/13/2023 17:22:47 PAGE 4   
+C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/18/2023 18:03:58 PAGE 4   
 
  174          bit  SingleKeyFastScan_Flag = 0;                                    //单按键快速扫描标志
  175          bit  BTM_WakeUpFlag =0;                       //BTM唤醒标志位
@@ -254,7 +254,7 @@ line level    source
  231          void BTM_Init(void)
  232          {
  233   1          BTMCON = BTMCON & 0XF0 | TK_SeepTimervSetting;
-C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/13/2023 17:22:47 PAGE 5   
+C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/18/2023 18:03:58 PAGE 5   
 
  234   1          BTMCON |= 0X80;
  235   1          TK_IE1 |= 0X04;
@@ -318,7 +318,7 @@ line level    source
  293          *入口参数：void
  294          *出口参数：char SOCAPI_SET_CS_FUNCTION
  295          *备注  ：
-C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/13/2023 17:22:47 PAGE 6   
+C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/18/2023 18:03:58 PAGE 6   
 
  296          **************************************************/
  297          char GetCsFunction(void)
@@ -382,7 +382,7 @@ line level    source
  355          {
  356   1        return ConfirmTouchCnt>>1;
  357   1      }
-C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/13/2023 17:22:47 PAGE 7   
+C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/18/2023 18:03:58 PAGE 7   
 
  358          /**************************************************
  359          *函数名称：unsigned char GetTKYzCnt(void)
@@ -446,7 +446,7 @@ line level    source
  417   3                  #endif
  418   3            Ctk_Channel_mark++;
  419   3            if(Ctk_Channel_mark >= SOCAPI_SET_TOUCHKEY_TOTAL)
-C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/13/2023 17:22:47 PAGE 8   
+C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/18/2023 18:03:58 PAGE 8   
 
  420   3              break;
  421   3          }   
@@ -510,7 +510,7 @@ line level    source
  479          unsigned char OffHandCount = 0;
  480          unsigned int  NumCount = 0;
  481          unsigned long int TouchKeyScan(void)
-C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/13/2023 17:22:47 PAGE 9   
+C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/18/2023 18:03:58 PAGE 9   
 
  482          {
  483   1        unsigned char t;
@@ -574,7 +574,7 @@ line level    source
  540   3            {
  541   4              SetNeedUpdateBaseline(); 
  542   4              UpdateBaseLNum = 0;
-C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/13/2023 17:22:47 PAGE 10  
+C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/18/2023 18:03:58 PAGE 10  
 
  543   4            }
  544   3                
@@ -638,7 +638,7 @@ line level    source
  602   3            
  603   3          
  604   3          }
-C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/13/2023 17:22:47 PAGE 11  
+C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/18/2023 18:03:58 PAGE 11  
 
  605   2          else
  606   2          {
@@ -702,7 +702,7 @@ line level    source
  664          int   data       SetFingerThresholdtmp_Low[SOCAPI_SET_TOUCHKEY_TOTAL];
  665          void TouchKey_LowPower_Init(void)
  666          {
-C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/13/2023 17:22:47 PAGE 12  
+C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/18/2023 18:03:58 PAGE 12  
 
  667   1          unsigned char i;
  668   1            
@@ -766,7 +766,7 @@ line level    source
  724   1         TK_IE1 = TK_IE1|0x10;            //使能TK中断
  725   1           TRIG = 1; 
  726   1           Customer_QuitLowPowerMode_Init();
-C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/13/2023 17:22:47 PAGE 13  
+C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/18/2023 18:03:58 PAGE 13  
 
  727   1      }
  728          
@@ -830,7 +830,7 @@ line level    source
  785   2          TKCFG1 =  BaseLineAdjusttmp_Low[WakeUpKeyValue]; 
  786   2          TKTM = ScanTimeTemp_Low[WakeUpKeyValue];//ScanTimeTemp;
  787   2          TKCR = CurrentChannel_Low[WakeUpKeyValue];
-C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/13/2023 17:22:47 PAGE 14  
+C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/18/2023 18:03:58 PAGE 14  
 
  788   2      
  789   2              PCON = 0x02;  //PCON的bit1 STOP位写1，配置MCU进入STOP模式
@@ -894,7 +894,7 @@ line level    source
  847   1        
  848   1        for(i=0;i<TK_WakeUpConfirmTouchCnt;i++)      //
  849   1          {        
-C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/13/2023 17:22:47 PAGE 15  
+C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/18/2023 18:03:58 PAGE 15  
 
  850   2        
  851   2           TRIG = 1;
@@ -958,7 +958,7 @@ line level    source
  909   1          PCON = 0x02;  //PCON的bit1 STOP位写1，配置MCU进入STOP模式
  910   1          _nop_();    //至少需要8个_nop_()
  911   1          _nop_();
-C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/13/2023 17:22:47 PAGE 16  
+C51 COMPILER V9.60.0.0   TKDRIVER                                                          10/18/2023 18:03:58 PAGE 16  
 
  912   1          _nop_();
  913   1          _nop_();

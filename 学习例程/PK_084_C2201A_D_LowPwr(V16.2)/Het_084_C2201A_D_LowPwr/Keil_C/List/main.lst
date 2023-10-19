@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   MAIN                                                              10/13/2023 17:22:46 PAGE 1   
+C51 COMPILER V9.60.0.0   MAIN                                                              10/18/2023 18:03:56 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
@@ -62,7 +62,7 @@ line level    source
   50          uint8_t gcKeyValue = 0;                 
   51          uint16_t giKeySW6LongDownTime = 0;      
   52          uint8_t  IRSendCommand[4]={0,0,0,0};
-C51 COMPILER V9.60.0.0   MAIN                                                              10/13/2023 17:22:46 PAGE 2   
+C51 COMPILER V9.60.0.0   MAIN                                                              10/18/2023 18:03:56 PAGE 2   
 
   53          uint32_t gllIRSendData = 0;                //IR Send Data
   54          uint32_t gllIRSendDataBak = 0;                //IR Send Data
@@ -126,7 +126,7 @@ line level    source
  112   1          Set_PowerUpFlag;
  113   1          SC_Init();
  114   1          SC_JP1();
-C51 COMPILER V9.60.0.0   MAIN                                                              10/13/2023 17:22:46 PAGE 3   
+C51 COMPILER V9.60.0.0   MAIN                                                              10/18/2023 18:03:56 PAGE 3   
 
  115   1          Set_Cfg();      /* Ñ¡ÔñÃæ°åºñ¶Èº¯Êý */
  116   1          //    SOCAPI_DeBugTouchKey_Init();      //Á¿²úÊ±Õâ¸öº¯ÊýÒªÆÁ±Îµô
@@ -190,7 +190,7 @@ line level    source
  173   4                   ADC_Process();                                         
  174   4                   Output_Process();
  175   4                   Sleep_Process();
-C51 COMPILER V9.60.0.0   MAIN                                                              10/13/2023 17:22:46 PAGE 4   
+C51 COMPILER V9.60.0.0   MAIN                                                              10/18/2023 18:03:56 PAGE 4   
 
  176   4                          
  177   4                  //GPIO_Init(GPIO3, GPIO_PIN_1, GPIO_MODE_OUT_PP);         //* Ãæ°åÑ¡Ôñºñ¶È       µ÷ÊÔÊ±Ôö¼Ó£¬±ÜÃâ»½ÐÑº

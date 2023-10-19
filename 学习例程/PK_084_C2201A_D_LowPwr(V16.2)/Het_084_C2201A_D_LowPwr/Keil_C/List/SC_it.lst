@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   SC_IT                                                             10/13/2023 17:22:46 PAGE 1   
+C51 COMPILER V9.60.0.0   SC_IT                                                             10/18/2023 18:03:57 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE SC_IT
@@ -62,7 +62,7 @@ line level    source
   51          {
   52   1          TCON &= 0XFD;
   53   1      //  BTM_WakeUpFlag = 1;
-C51 COMPILER V9.60.0.0   SC_IT                                                             10/13/2023 17:22:46 PAGE 2   
+C51 COMPILER V9.60.0.0   SC_IT                                                             10/18/2023 18:03:57 PAGE 2   
 
   54   1      }
   55          void INT1Interrupt()    interrupt 2   
@@ -126,7 +126,7 @@ line level    source
  113   5                         else
  114   5                         {
  115   6                             TC1_Timer16bitPeriodSet(Time_705us); 
-C51 COMPILER V9.60.0.0   SC_IT                                                             10/13/2023 17:22:46 PAGE 3   
+C51 COMPILER V9.60.0.0   SC_IT                                                             10/18/2023 18:03:57 PAGE 3   
 
  116   6                         }
  117   5                         
@@ -190,7 +190,7 @@ line level    source
  175   8                                  Clr_AutoFanFlag;
  176   8                                  Clr_IRSendEnFlag;                                
  177   8      //                          Clr_INTENSIVEONModeFlag;        //清除密集模式                               
-C51 COMPILER V9.60.0.0   SC_IT                                                             10/13/2023 17:22:46 PAGE 4   
+C51 COMPILER V9.60.0.0   SC_IT                                                             10/18/2023 18:03:57 PAGE 4   
 
  178   8                                  Set_SendSpeedCommandFlag;
  179   8      //                          Clr_FirstSendSpeedCommandFlag;
@@ -254,7 +254,7 @@ line level    source
  237   6                            gcIRSendTestATime = 0; 
  238   6                            Clr_SendTestAEnFlag;            
  239   6                            Clr_IRSendEnFlag;          //
-C51 COMPILER V9.60.0.0   SC_IT                                                             10/13/2023 17:22:46 PAGE 5   
+C51 COMPILER V9.60.0.0   SC_IT                                                             10/18/2023 18:03:57 PAGE 5   
 
  240   6      ////                      gcIRSendTestACount++;
  241   6      ////                      if(gcIRSendTestACount >= 3)      //发送3次，发完就不用再发了
@@ -318,7 +318,7 @@ line level    source
  299   4                      if (gcIRSendDelayTime >= 199 ) // (199+1)*5ms = 1S
  300   4                      {
  301   5                          gcIRSendStatus = 0;         //reSendIR
-C51 COMPILER V9.60.0.0   SC_IT                                                             10/13/2023 17:22:46 PAGE 6   
+C51 COMPILER V9.60.0.0   SC_IT                                                             10/18/2023 18:03:57 PAGE 6   
 
  302   5                                          
  303   5                      }
@@ -382,7 +382,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
-C51 COMPILER V9.60.0.0   SC_IT                                                             10/13/2023 17:22:46 PAGE 7   
+C51 COMPILER V9.60.0.0   SC_IT                                                             10/18/2023 18:03:57 PAGE 7   
 
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
