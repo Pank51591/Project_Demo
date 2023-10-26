@@ -1,0 +1,8 @@
+--cpu Cortex-M3 -g --pd "__MICROLIB SETA 1"
+-I"D:\Program Files (x86)\keil_v5\MindMotion\MM32F3270_DFP\1.0.5\Device\MM32F327x\Include"
+-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\Include"
+--pd "__UVISION_VERSION SETA 533"
+--pd "MM32F3273G8P SETA 1"
+--list .\obj\startup_mm32f327x_keil.lst
+--xref -o .\obj\startup_mm32f327x_keil.o
+--depend .\obj\startup_mm32f327x_keil.d "..\..\..\..\..\Device\MM32F327x\Source\KEIL_StartAsm\startup_mm32f327x_keil.s"

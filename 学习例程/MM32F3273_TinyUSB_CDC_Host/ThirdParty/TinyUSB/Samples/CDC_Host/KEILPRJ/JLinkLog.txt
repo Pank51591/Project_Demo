@@ -1,0 +1,86 @@
+T4A18 000:172.652   SEGGER J-Link V7.92d Log File
+T4A18 000:174.011   DLL Compiled: Sep  8 2023 09:49:39
+T4A18 000:174.032   Logging started @ 2023-10-26 08:37
+T4A18 000:174.049   Process: D:\Program Files (x86)\keil_v5\UV4\UV4.exe
+T4A18 000:174.581 - 174.067ms
+T4A18 000:175.170 JLINK_SetWarnOutHandler(...)
+T4A18 000:175.206 - 0.580ms
+T4A18 000:175.227 JLINK_OpenEx(...)
+T4A18 000:184.332   Firmware: J-Link V9 compiled May  7 2021 16:26:12
+T4A18 000:185.014   Firmware: J-Link V9 compiled May  7 2021 16:26:12
+T4A18 000:186.947   Decompressing FW timestamp took 1507 us
+T4A18 000:195.774   Hardware: V9.60
+T4A18 000:195.834   S/N: 63610034
+T4A18 000:195.849   OEM: SEGGER
+T4A18 000:195.864   Feature(s): RDI, GDB, FlashDL, FlashBP, JFlash
+T4A18 000:197.717   Bootloader: (Could not read)
+T4A18 000:198.681   TELNET listener socket opened on port 19021
+T4A18 000:199.147   WEBSRV WEBSRV_Init(): Starting webserver thread(s)
+T4A18 000:199.251   WEBSRV Webserver running on local port 19080
+T4A18 000:199.327   Looking for J-Link GUI Server exe at: D:\Program Files (x86)\keil_v5\ARM\Segger\JLinkGUIServer.exe
+T4A18 000:199.381   Looking for J-Link GUI Server exe at: D:\Program Files\SEGGER\JLink\JLinkGUIServer.exe
+T4A18 000:199.391   Forking J-Link GUI Server: D:\Program Files\SEGGER\JLink\JLinkGUIServer.exe
+T4A18 000:231.860   J-Link GUI Server info: "J-Link GUI server V7.92d "
+T4A18 000:234.176 - 58.556ms returns "O.K."
+T4A18 000:234.215 JLINK_GetEmuCaps()
+T4A18 000:234.231 - 0.011ms returns 0xB9FF7BBF
+T4A18 000:234.243 JLINK_TIF_GetAvailable(...)
+T4A18 000:234.479 - 0.236ms
+T4A18 000:234.492 JLINK_SetErrorOutHandler(...)
+T4A18 000:234.496 - 0.003ms
+T4A18 000:234.858 JLINK_ExecCommand("ProjectFile = "E:\github\P40_about\P40_Demo\回复_ 回复：USB-CDC 模拟串口工程的搭建的全部附件20231026\MM32F3273_TinyUSB_CDC_Host\MM32F3273_TinyUSB_CDC_Host\ThirdParty\TinyUSB\Samples\CDC_Host\KEILPRJ\JLinkSettings.ini"", ...). 
+T4A18 000:280.785   Ref file found at: D:\Program Files (x86)\keil_v5\ARM\Segger\JLinkDevices.ref
+T4A18 000:280.896   REF file references invalid XML file: D:\Program Files\SEGGER\JLink\JLinkDevices.xml
+T4A18 000:285.518 - 50.659ms returns 0x00
+T4A18 000:285.543 JLINK_ExecCommand("Device = MM32F3273G8P", ...). 
+T4A18 000:288.115   Device "MM32F3273G8P" selected.
+T4A18 000:288.373 - 2.825ms returns 0x00
+T4A18 000:288.384 JLINK_ExecCommand("DisableConnectionTimeout", ...). 
+T4A18 000:288.390 - 0.001ms returns 0x01
+T4A18 000:288.395 JLINK_GetHardwareVersion()
+T4A18 000:288.402 - 0.003ms returns 96000
+T4A18 000:288.434 JLINK_GetDLLVersion()
+T4A18 000:288.437 - 0.003ms returns 79204
+T4A18 000:288.442 JLINK_GetOEMString(...)
+T4A18 000:288.446 JLINK_GetFirmwareString(...)
+T4A18 000:288.449 - 0.003ms
+T4A18 000:288.455 JLINK_GetDLLVersion()
+T4A18 000:288.458 - 0.003ms returns 79204
+T4A18 000:288.462 JLINK_GetCompileDateTime()
+T4A18 000:288.465 - 0.003ms
+T4A18 000:288.471 JLINK_GetFirmwareString(...)
+T4A18 000:288.474 - 0.003ms
+T4A18 000:288.479 JLINK_GetHardwareVersion()
+T4A18 000:288.482 - 0.003ms returns 96000
+T4A18 000:288.486 JLINK_GetSN()
+T4A18 000:288.490 - 0.003ms returns 63610034
+T4A18 000:288.494 JLINK_GetOEMString(...)
+T4A18 000:288.500 JLINK_TIF_Select(JLINKARM_TIF_JTAG)
+T4A18 000:289.451 - 0.950ms returns 0x00
+T4A18 000:289.461 JLINK_HasError()
+T4A18 000:289.762 JLINK_SetSpeed(5000)
+T4A18 000:289.851 - 0.090ms
+T4A18 000:290.101 JLINK_HasError()
+T4A18 000:290.109 JLINK_SetResetType(JLINKARM_RESET_TYPE_NORMAL)
+T4A18 000:290.112 - 0.003ms returns JLINKARM_RESET_TYPE_NORMAL
+T4A18 000:290.117 JLINK_Reset()
+T4A18 000:291.293   TotalIRLen = ?, IRPrint = 0x..000000000000000000000000
+T4A18 000:291.543   Failed to identify target. Resetting via Reset pin and trying again.
+T4A18 000:443.996   TotalIRLen = ?, IRPrint = 0x..000000000000000000000000
+T4A18 000:444.509 - 154.390ms
+T4A18 000:444.554 JLINK_GetIdData(pIdData)
+T4A18 000:446.455   TotalIRLen = ?, IRPrint = 0x..000000000000000000000000
+T4A18 000:447.116   Failed to identify target. Resetting via Reset pin and trying again.
+T4A18 000:600.565   TotalIRLen = ?, IRPrint = 0x..000000000000000000000000
+T4A18 000:601.308 - 156.753ms
+T4A18 000:601.345 JLINK_GetIdData(pIdData)
+T4A18 000:603.349   TotalIRLen = ?, IRPrint = 0x..000000000000000000000000
+T4A18 000:603.952   Failed to identify target. Resetting via Reset pin and trying again.
+T4A18 000:757.750   TotalIRLen = ?, IRPrint = 0x..000000000000000000000000
+T4A18 000:758.443 - 157.096ms
+T4A18 000:766.201 JLINK_GetFirmwareString(...)
+T4A18 000:766.217 - 0.016ms
+T4A18 001:830.849 JLINK_Close()
+T4A18 001:838.007 - 7.157ms
+T4A18 001:838.018   
+T4A18 001:838.021   Closed

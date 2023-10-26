@@ -1,0 +1,7 @@
+-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c
+-fno-rtti -funsigned-char
+-D__MICROLIB -gdwarf-3 -O0 -ffunction-sections -w -I ../../../../../Device/CMSIS/KEIL_Core -I ../../../../../Device/MM32F327x/Include -I ../../../../../Device/MM32F327x/HAL_Lib/Inc -I ../USER -I ../SYSTEM/UART -I ../SYSTEM/SYS -I ../SYSTEM/DELAY -I ../HARDWARE/LED -I ../../../tinyusb/src -I ../../../tinyusb/src/class/cdc -I ../../../tinyusb/src/class/hid -I ../../../tinyusb/src/class/msc -I ../../../tinyusb/src/common -I ../../../tinyusb/src/host -I ../../../tinyusb/src/device -I ../../../tinyusb/lib/fatfs/source -I ../../../tinyusb/lib/embedded-cli
+-I"D:/Program Files (x86)/keil_v5/MindMotion/MM32F3270_DFP/1.0.5/Device/MM32F327x/Include"
+-I"D:/Program Files (x86)/keil_v5/ARM/CMSIS/Include"
+-D__UVISION_VERSION="533" -DMM32F3273G8P -DUSE_STDPERIPH_DRIVER -DTUP_USBIP_OHCI
+-o ./obj/hal_exti.o -MD "../../../../../Device/MM32F327x/HAL_Lib/Src/hal_exti.c"
