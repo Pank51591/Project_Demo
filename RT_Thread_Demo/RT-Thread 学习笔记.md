@@ -1680,15 +1680,69 @@ RT-Thread 提供的事件具有如下特点：
 
 
 
-
-
-
-
 ### 软件定时器
+
+​		软件定时器是由操作系统提供的一类系统接口，它构建在硬件定时器基础之上，使系统能够提供不受硬件定时器资源限制的定时器服务，它实现的功能与硬件定时器也是类似的。
+
+#### 创建软件定时器
+
+```c
+/**
+ * This function will create a timer
+ *
+ * @param name the name of timer
+ * @param timeout the timeout function
+ * @param parameter the parameter of timeout function
+ * @param time the tick of timer
+ * @param flag the flag of timer
+ *
+ * @return the created timer object
+ */
+rt_timer_t rt_timer_create(const char *name,
+                           void (*timeout)(void *parameter),
+                           void       *parameter,
+                           rt_tick_t   time,
+                           rt_uint8_t  flag)
+{
+    struct rt_timer *timer;
+
+    /* allocate a object */
+    timer = (struct rt_timer *)rt_object_allocate(RT_Object_Class_Timer, name);
+    if (timer == RT_NULL)
+    {
+        return RT_NULL;
+    }
+
+    /*定时器初始化*/
+    _rt_timer_init(timer, timeout, parameter, time, flag);
+
+    return timer;
+}
+RTM_EXPORT(rt_timer_create);
+```
 
 
 
 ### 邮箱
+
+​		邮箱在操作系统中是一种常用的 IPC 通信方式，邮箱可以在线程与线程之间。中断与线程之间进行消息的传递，此外，邮箱相比于信号量与消息队列来说，其开销更低，效率更高，所以常用来做线程与线程、中断与线程间的通信。邮箱中的每一封邮件只能容纳固定的 4 字节内容（STM32 是 32 位处理系统，一个指针的大小即为 4 个字节，所以一封邮件恰好能够容纳一个指针），当需要在线程间传递比较大的消息时，可以把指向一个缓冲区的指针作为邮件发送到邮箱中。
+
+​		线程能够从邮箱里面读取邮件消息，当邮箱中的邮件是空时，根据用户自定义的阻塞时间决定是否挂起读取线程；当邮箱中有新邮件时，挂起的读取线程被唤醒，邮箱也是一种异步的通信方式。
+
+
+
+RT-Thread 中使用邮箱实现线程异步通信工作，具有如下特性：
+
+- 邮件支持先进先出方式排队与优先级排队方式，支持异步读写工作方式。
+- 发送与接收邮件均支持超时机制。
+- 一个线程能够从任意一个消息队列接收和发送邮件。
+- 多个线程能够向同一个邮箱发送邮件和从中接收邮件。
+- 邮箱中的每一封邮件只能容纳固定的 4 字节内容（可以存放地址）。
+- 当队列使用结束后，需要通过删除邮箱以释放内存。
+
+
+
+
 
 
 

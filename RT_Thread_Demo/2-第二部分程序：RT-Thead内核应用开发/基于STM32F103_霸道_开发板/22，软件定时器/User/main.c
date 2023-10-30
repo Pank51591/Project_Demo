@@ -68,6 +68,7 @@ int main(void)
 	rt_kprintf("这是一个[野火]-STM32F103-霸道-RTT软件定时器实验！\n");
 	rt_kprintf("定时器回调函数1只执行一次就被销毁\n");
 	rt_kprintf("定时器回调函数2则循环执行\n");
+	
   /* 创建一个软件定时器 */
 	swtmr1 = rt_timer_create("swtmr1_callback", /* 软件定时器的名称 */
                         swtmr1_callback,/* 软件定时器的回调函数 */

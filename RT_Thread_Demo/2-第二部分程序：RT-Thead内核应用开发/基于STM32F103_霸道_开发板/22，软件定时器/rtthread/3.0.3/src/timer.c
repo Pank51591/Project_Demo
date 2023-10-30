@@ -249,11 +249,13 @@ rt_timer_t rt_timer_create(const char *name,
         return RT_NULL;
     }
 
+		/**调用_rt_timer_init 初始化函数进行定时器的初始化**/
     _rt_timer_init(timer, timeout, parameter, time, flag);
 
     return timer;
 }
 RTM_EXPORT(rt_timer_create);
+
 
 /**
  * This function will delete a timer and release timer memory

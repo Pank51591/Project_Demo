@@ -120,6 +120,7 @@ static void receive_thread_entry(void* parameter)
                    RT_EVENT_FLAG_AND|RT_EVENT_FLAG_CLEAR,/* 接收选项 */
                    RT_WAITING_FOREVER,/* 指定超时事件,一直等 */
                    &recved);    /* 指向接收到的事件 */
+		  /*应该是接收完成才会有返回值*/
       if(recved == (KEY1_EVENT|KEY2_EVENT)) /* 如果接收完成并且正确 */
       {
         rt_kprintf ( "Key1与Key2都按下\n");		
