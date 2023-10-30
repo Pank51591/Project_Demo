@@ -132,6 +132,7 @@ static void receive_thread_entry(void* parameter)
   }
 }
 
+
 static void send_thread_entry(void* parameter)
 {	
   rt_err_t uwRet = RT_EOK;

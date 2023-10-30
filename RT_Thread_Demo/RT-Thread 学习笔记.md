@@ -1740,9 +1740,158 @@ RT-Thread 中使用邮箱实现线程异步通信工作，具有如下特性：
 - 邮箱中的每一封邮件只能容纳固定的 4 字节内容（可以存放地址）。
 - 当队列使用结束后，需要通过删除邮箱以释放内存。
 
+#### 邮箱的运作机制
+
+​		RT-Thread 操作系统的邮箱对象由多个元素组成，当邮箱被创建时，它就被分配了邮箱控制块：邮箱名称、邮箱缓冲区起始地址、邮箱大小等。同时每个邮箱对象中包含着多个邮件框，每个邮件框可以存放一封邮件；所有邮箱中的邮件框总数即是邮箱的大小，这个大小可在邮箱创建时指定。
+
+​		线程或者中断服务程序都可以给邮箱发送邮件，非阻塞方式的邮件发送过程能够安全的应用于中断服务中，中断服务函数、定时器向线程发送消息的有效手段，而阻塞方式的邮件发送只能应用于线程中。当发送邮件时，当且仅当邮箱还没满邮件的时候才能进行发送，如果邮箱已满，可以根据用户设定的等待时间进行等待，当邮箱中的邮件被收取而空出空间来时，等待挂起的发送线程将被唤醒继续发送的过程，当等待时间到了还未完成发送邮件，或者未设置等待时间，此时发送邮件失败，发送邮件的线程或者中断程序会收到一个错误码（-RT_EFULL）。线程发送邮件可以带阻塞，但在中断中不能采用任何带阻塞的方式发送邮件。
+
+#### 邮箱控制块
+
+```c
+struct rt_mailbox
+{
+    struct rt_ipc_object parent;                    /**< inherit from ipc_object */
+    
+    rt_uint32_t         *msg_pool;             /**< start address of message buffer */
+    rt_uint16_t          size;                 /**< size of message pool */
+    rt_uint16_t          entry;                /**< index of messages in msg_pool */
+    rt_uint16_t          in_offset;         /**< input offset of the message buffer */
+    rt_uint16_t          out_offset;        /**< output offset of the message buffer */
+    rt_list_t           suspend_sender_thread;       /**< sender thread suspended on this mailbox */
+};
+typedef struct rt_mailbox *rt_mailbox_t;
+```
 
 
 
+#### 发送邮件
+
+```c
+1 /**
+2 * 如果这个邮箱对象是空的话,这个函数会发送一个邮件到邮箱对象. 
+3 * 如果这个邮箱对象是满的话，将会挂起当前线程
+4 *
+5 * @param 邮箱对象
+6 * @param 邮箱大小
+7 * @param 等待时间
+8 *
+9 * @return 错误代码
+10 */
+11 rt_err_t rt_mb_send_wait(rt_mailbox_t mb, (1)
+12 rt_uint32_t value, (2)
+13 rt_int32_t timeout) (3)
+14 {
+15 struct rt_thread *thread;
+16 register rt_ubase_t temp;
+17 rt_uint32_t tick_delta;
+18
+19 /* 检查邮箱对象 */
+20 RT_ASSERT(mb != RT_NULL); (4)
+21 
+22 /* 初始化系统时间差 */
+23 tick_delta = 0;
+24 /* 获取当前线程 */
+25 thread = rt_thread_self(); (5)
+26 
+27 RT_OBJECT_HOOK_CALL(rt_object_put_hook, (&(mb->parent.parent)));
+28 
+29 /* 关中断 */
+30 temp = rt_hw_interrupt_disable();
+31 
+32 /* 无阻塞调用 */
+33 if (mb->entry == mb->size && timeout == 0) { (6)
+34 rt_hw_interrupt_enable(temp);
+35 
+36 return -RT_EFULL;
+37 }
+38 
+39 /* 邮箱满了 */
+40 while (mb->entry == mb->size) { (7)
+41 /* 重置线程错误代码 */
+42 thread->error = RT_EOK;
+43 
+44 /* 不等待，返回错误 */
+45 if (timeout == 0) { (8)
+46 /* 开中断 */
+47 rt_hw_interrupt_enable(temp);
+48 
+49 return -RT_EFULL;
+50 }
+51 
+52 RT_DEBUG_IN_THREAD_CONTEXT;
+53 /* 挂起当前线程 */
+54 rt_ipc_list_suspend(&(mb->suspend_sender_thread), (9)
+55 thread,
+56 mb->parent.parent.flag);
+57 
+58 /* 有等待时间 */
+59 if (timeout > 0) { (10)
+60 /* 获取当前系统时间 */
+61 tick_delta = rt_tick_get();
+62 
+63 RT_DEBUG_LOG(RT_DEBUG_IPC, ("mb_send_wait: start timer of thread:%s\n",
+64 thread->name));
+65 
+66 /* 重置线程超时时间并开始定时 */
+67 rt_timer_control(&(thread->thread_timer), (11)
+68 RT_TIMER_CTRL_SET_TIME,
+69 &timeout);
+70 rt_timer_start(&(thread->thread_timer)); (12)
+71 }
+72 
+73 /* 开中断 */
+74 rt_hw_interrupt_enable(temp);
+75 
+76 /* 进行线程调度 */
+77 rt_schedule(); (13)
+78 
+79 /* 从挂起状态恢复 */
+80 if (thread->error != RT_EOK) { (14)
+81 /* 返回错误代码 */
+82 return thread->error;
+83 }
+84 
+85 /* 关中断 */
+86 temp = rt_hw_interrupt_disable();
+87 
+88 /* 如果它不是永远等待 */
+89 if (timeout > 0) {
+90 tick_delta = rt_tick_get() - tick_delta;
+91 timeout -= tick_delta;
+92 if (timeout < 0)
+93 timeout = 0;
+94 }
+95 }
+96 
+97 /* 将要发送的信息放入邮件中 */
+98 mb->msg_pool[mb->in_offset] = value; (15)
+99 /* 邮件进指针偏移 */
+100 ++ mb->in_offset; (16)
+101 if (mb->in_offset >= mb->size) (17)
+102 mb->in_offset = 0;
+103 /* 记录邮箱中邮件的数量 */
+104 mb->entry ++; (18)
+105 
+106 /* 恢复线程 */
+107 if (!rt_list_isempty(&mb->parent.suspend_thread)) { (19)
+108 rt_ipc_list_resume(&(mb->parent.suspend_thread));
+109 
+110 /* 开中断 */
+111 rt_hw_interrupt_enable(temp);
+112 
+113 rt_schedule(); (20)
+114 
+115 return RT_EOK;
+116 }
+117 
+118 /* 开中断 */
+119 rt_hw_interrupt_enable(temp);
+120 
+121 return RT_EOK; (21)
+122 }
+123 RTM_EXPORT(rt_mb_send_wait);
+```
 
 
 
