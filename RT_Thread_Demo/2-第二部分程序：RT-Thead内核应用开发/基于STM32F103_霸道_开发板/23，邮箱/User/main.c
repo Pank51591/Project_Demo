@@ -32,6 +32,7 @@
 /* 定义线程控制块 */
 static rt_thread_t receive_thread = RT_NULL;
 static rt_thread_t send_thread = RT_NULL;
+
 /* 定义邮箱控制块 */
 static rt_mailbox_t test_mail = RT_NULL;
 
@@ -75,7 +76,7 @@ int main(void)
   if (test_mail != RT_NULL)
     rt_kprintf("邮箱创建成功！\n\n");
     
-	receive_thread =                          /* 线程控制块指针 */
+	receive_thread =                          /* 线程控制块 */
     rt_thread_create( "receive",              /* 线程名字 */
                       receive_thread_entry,   /* 线程入口函数 */
                       RT_NULL,             /* 线程入口函数参数 */
@@ -109,7 +110,6 @@ int main(void)
 *                             线程定义
 *************************************************************************
 */
-
 static void receive_thread_entry(void* parameter)
 {		
   rt_err_t uwRet = RT_EOK;

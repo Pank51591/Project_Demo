@@ -1758,7 +1758,7 @@ struct rt_mailbox
     rt_uint16_t          entry;                /**< index of messages in msg_pool */
     rt_uint16_t          in_offset;         /**< input offset of the message buffer */
     rt_uint16_t          out_offset;        /**< output offset of the message buffer */
-    rt_list_t           suspend_sender_thread;       /**< sender thread suspended on this mailbox */
+    rt_list_t    suspend_sender_thread;   /**< sender thread suspended on this mailbox */
 };
 typedef struct rt_mailbox *rt_mailbox_t;
 ```
@@ -1896,6 +1896,39 @@ typedef struct rt_mailbox *rt_mailbox_t;
 
 
 ### 内存管理
+
+#### 静态内存控制块
+
+```c
+/**
+ * Base structure of Memory pool object
+ */
+struct rt_mempool
+{
+    struct rt_object parent;                            /**< inherit from rt_object */
+
+    void            *start_address;                     /**< memory pool start */
+    rt_size_t        size;                              /**< size of memory pool */
+
+    rt_size_t        block_size;                        /**< size of memory blocks */
+    rt_uint8_t      *block_list;                        /**< memory blocks list */
+
+    rt_size_t        block_total_count;             /**< numbers of memory block */
+    rt_size_t        block_free_count;              /**< numbers of free memory block */
+
+    rt_list_t        suspend_thread;                    /**< threads pended on this resource */
+    rt_size_t        suspend_thread_count;              /**< numbers of thread pended on this resource */
+};
+typedef struct rt_mempool *rt_mp_t;
+```
+
+
+
+
+
+
+
+
 
 
 
