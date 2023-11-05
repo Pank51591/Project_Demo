@@ -1188,7 +1188,7 @@ RTM_EXPORT(rt_timer_start);
 
 ### 消息队列
 
-队列又称消息队列，是一种常用于<u>线程间通信的数据结构</u>，队列可以在线程与线程间、中断和线程间传送信息，实现了线程接收来自其他线程或中断的不固定长度的消息，并根据不同的接口选择传递消息是否存放在线程自己的空间。线程能够从队列里面读取消息，当队列中的消息是空时，挂起读取线程，用户还可以指定挂起的线程时间 timeout；当队列中有新消息时，挂起的读取线程被唤醒并处理新消息，消息队列是一种异步的通信方式。
+​		队列又称消息队列，是一种常用于<u>线程间通信的数据结构</u>，队列可以在线程与线程间、中断和线程间传送信息，实现了线程接收来自其他线程或中断的不固定长度的消息，并根据不同的接口选择传递消息是否存放在线程自己的空间。线程能够从队列里面读取消息，当队列中的消息是空时，挂起读取线程，用户还可以指定挂起的线程时间 timeout；当队列中有新消息时，挂起的读取线程被唤醒并处理新消息，消息队列是一种异步的通信方式。
 
 RT-Thread 中使用队列数据结构实现线程异步通信工作，具有如下特性：
 
@@ -1210,7 +1210,7 @@ RT-Thread 中使用队列数据结构实现线程异步通信工作，具有如�
 
 #### 什么是队列句柄？
 
-​		说白了就是消息队列的对象实例。通过下面的消息队列控制块的类可以进行创建实例，可以得到对象句柄
+​		说白了就是消息队列的对象实例。通过下面的消息队列控制块的类可以进行创建实例，可以得到对象句柄。
 
 #### 队列模式 (2种) 
 
@@ -1897,7 +1897,9 @@ typedef struct rt_mailbox *rt_mailbox_t;
 
 ### 内存管理
 
-#### 静态内存控制块
+#### 静态内存管理的接口函数
+
+##### 静态内存控制块
 
 ```c
 /**
@@ -1922,22 +1924,322 @@ struct rt_mempool
 typedef struct rt_mempool *rt_mp_t;
 ```
 
+##### 静态内存申请函数
+
+```c
+/**
+ * This function will allocate a block from memory pool
+ * 静态内存申请函数
+ * @param mp the memory pool object
+ * @param time the waiting time
+ *
+ * @return the allocated memory block or RT_NULL on allocated failed
+ */
+void *rt_mp_alloc(rt_mp_t mp, rt_int32_t time)
+{
+    rt_uint8_t *block_ptr;
+    register rt_base_t level;
+    struct rt_thread *thread;
+    rt_uint32_t before_sleep = 0;
+
+    /* get current thread */
+    thread = rt_thread_self();
+
+    /* disable interrupt */
+    level = rt_hw_interrupt_disable();
+
+    while (mp->block_free_count == 0)
+    {
+        /* memory block is unavailable. 内存块不可用 */
+        if (time == 0)
+        {
+            /* enable interrupt */
+            rt_hw_interrupt_enable(level);
+
+            rt_set_errno(-RT_ETIMEOUT);
+
+            return RT_NULL;
+        }
+
+        RT_DEBUG_NOT_IN_INTERRUPT;
+
+        thread->error = RT_EOK;
+
+        /* need suspend thread 需要挂起线程*/
+        rt_thread_suspend(thread);
+        rt_list_insert_after(&(mp->suspend_thread), &(thread->tlist));
+        mp->suspend_thread_count++;      //挂起的线程数
+
+        if (time > 0)
+        {
+            /* get the start tick of timer */
+            before_sleep = rt_tick_get();
+
+            /* init thread timer and start it 初始化线程计时器并启动它*/
+            rt_timer_control(&(thread->thread_timer),
+                             RT_TIMER_CTRL_SET_TIME,
+                             &time);
+            rt_timer_start(&(thread->thread_timer));
+        }
+
+        /* enable interrupt */
+        rt_hw_interrupt_enable(level);
+
+        /* do a schedule */
+        rt_schedule();    //线程调度
+
+        if (thread->error != RT_EOK)
+            return RT_NULL;
+
+        if (time > 0)
+        {
+            time -= rt_tick_get() - before_sleep;
+            if (time < 0)
+                time = 0;
+        }
+        /* disable interrupt */
+        level = rt_hw_interrupt_disable();
+    }
+
+    /* memory block is available. decrease the free block counter */
+    mp->block_free_count--;
+
+    /* get block from block list */
+    block_ptr = mp->block_list;
+    RT_ASSERT(block_ptr != RT_NULL);
+
+    /* Setup the next free node. */
+    mp->block_list = *(rt_uint8_t **)block_ptr;
+
+    /* point to memory pool */
+    *(rt_uint8_t **)block_ptr = (rt_uint8_t *)mp;
+
+    /* enable interrupt */
+    rt_hw_interrupt_enable(level);
+
+    RT_OBJECT_HOOK_CALL(rt_mp_alloc_hook,
+                        (mp, (rt_uint8_t *)(block_ptr + sizeof(rt_uint8_t *))));
+
+    return (rt_uint8_t *)(block_ptr + sizeof(rt_uint8_t *));
+}
+RTM_EXPORT(rt_mp_alloc);
+```
 
 
 
+#### 动态内存管理的函数接口
 
+动态内存的典型场景开发流程：
 
+1. 初始化系统堆内存空间：rt_system_heap_init()。
 
+2. 申请任意大小的动态内存：rt_malloc()。
 
+3. 释放动态内存 rt_free()。回收系统内存，供下一次使用。
+
+##### 内存管理的数据头（结构体）
+
+```c
+struct heap_mem
+{
+ 
+	rt_uint16_t magic;
+	rt_uint16_t used; 
+
+	rt_size_t next, prev; 
+
+    #ifdef RT_USING_MEMTRACE
+	rt_uint8_t thread[4]; /* thread name */
+	#endif
+};
+```
+
+##### 系统堆内存初始化的实例
+
+一般系统在初始化时会自动对堆内存进行初始化。
+
+```c
+1 #define RT_HEAP_SIZE 1024
+2 /* 从内部 SRAM 里面分配一部分静态内存来作为 rtt 的堆空间，这里配置为 4KB */
+3 static uint32_t rt_heap[RT_HEAP_SIZE];
+4 RT_WEAK void *rt_heap_begin_get(void)
+5 {
+6 return rt_heap;
+7 }
+8 
+9 RT_WEAK void *rt_heap_end_get(void)
+10 {
+11 return rt_heap + RT_HEAP_SIZE;
+12 }
+13 
+14 rt_system_heap_init(rt_heap_begin_get(), rt_heap_end_get());    //系统堆内存初始化
+```
+
+##### 动态内存申请
+
+```c
+/**
+ * Allocate a block of memory with a minimum of 'size' bytes.
+ * 动态内存申请函数
+ * @param size is the minimum size of the requested block in bytes.
+ *
+ * @return pointer to allocated memory or NULL if no free memory was found.
+ */
+void *rt_malloc(rt_size_t size)
+{
+    rt_size_t ptr, ptr2;
+    struct heap_mem *mem, *mem2;
+  
+    RT_DEBUG_NOT_IN_INTERRUPT;
+
+    if (size == 0)
+        return RT_NULL;
+
+    if (size != RT_ALIGN(size, RT_ALIGN_SIZE))
+        RT_DEBUG_LOG(RT_DEBUG_MEM, ("malloc size %d, but align to %d\n",
+                                    size, RT_ALIGN(size, RT_ALIGN_SIZE)));
+    else
+        RT_DEBUG_LOG(RT_DEBUG_MEM, ("malloc size %d\n", size));
+
+    /* alignment size 对齐大小 */
+    size = RT_ALIGN(size, RT_ALIGN_SIZE);
+
+    if (size > mem_size_aligned)
+    {
+        RT_DEBUG_LOG(RT_DEBUG_MEM, ("no memory\n"));
+
+        return RT_NULL;
+    }
+
+    /* every data block must be at least MIN_SIZE_ALIGNED long */
+    if (size < MIN_SIZE_ALIGNED)
+        size = MIN_SIZE_ALIGNED;
+
+    /* take memory semaphore 获取信号量*/
+    rt_sem_take(&heap_sem, RT_WAITING_FOREVER);
+
+    for (ptr = (rt_uint8_t *)lfree - heap_ptr;
+         ptr < mem_size_aligned - size;
+         ptr = ((struct heap_mem *)&heap_ptr[ptr])->next)
+    {
+        mem = (struct heap_mem *)&heap_ptr[ptr];
+
+        if ((!mem->used) && (mem->next - (ptr + SIZEOF_STRUCT_MEM)) >= size)
+        {
+            /* mem is not used and at least perfect fit is possible:
+             * mem->next - (ptr + SIZEOF_STRUCT_MEM) gives us the 'user data size' of mem */
+
+            if (mem->next - (ptr + SIZEOF_STRUCT_MEM) >=
+                (size + SIZEOF_STRUCT_MEM + MIN_SIZE_ALIGNED))
+            {
+                /* (in addition to the above, we test if another struct heap_mem (SIZEOF_STRUCT_MEM) containing
+                 * at least MIN_SIZE_ALIGNED of data also fits in the 'user data space' of 'mem')
+                 * -> split large block, create empty remainder,
+                 * remainder must be large enough to contain MIN_SIZE_ALIGNED data: if
+                 * mem->next - (ptr + (2*SIZEOF_STRUCT_MEM)) == size,
+                 * struct heap_mem would fit in but no data between mem2 and mem2->next
+                 * @todo we could leave out MIN_SIZE_ALIGNED. We would create an empty
+                 *       region that couldn't hold data, but when mem->next gets freed,
+                 *       the 2 regions would be combined, resulting in more free memory
+                 */
+                ptr2 = ptr + SIZEOF_STRUCT_MEM + size;
+
+                /* create mem2 struct */
+                mem2       = (struct heap_mem *)&heap_ptr[ptr2];
+                mem2->magic = HEAP_MAGIC;
+                mem2->used = 0;
+                mem2->next = mem->next;
+                mem2->prev = ptr;
+#ifdef RT_USING_MEMTRACE
+                rt_mem_setname(mem2, "    ");
+#endif
+
+                /* and insert it between mem and mem->next */
+                mem->next = ptr2;
+                mem->used = 1;
+
+                if (mem2->next != mem_size_aligned + SIZEOF_STRUCT_MEM)
+                {
+                    ((struct heap_mem *)&heap_ptr[mem2->next])->prev = ptr2;
+                }
+#ifdef RT_MEM_STATS
+                used_mem += (size + SIZEOF_STRUCT_MEM);
+                if (max_mem < used_mem)
+                    max_mem = used_mem;
+#endif
+            }
+            else
+            {
+                /* (a mem2 struct does no fit into the user data space of mem and mem->next will always
+                 * be used at this point: if not we have 2 unused structs in a row, plug_holes should have
+                 * take care of this).
+                 * -> near fit or excact fit: do not split, no mem2 creation
+                 * also can't move mem->next directly behind mem, since mem->next
+                 * will always be used at this point!
+                 */
+                mem->used = 1;
+#ifdef RT_MEM_STATS
+                used_mem += mem->next - ((rt_uint8_t *)mem - heap_ptr);
+                if (max_mem < used_mem)
+                    max_mem = used_mem;
+#endif
+            }
+            /* set memory block magic */
+            mem->magic = HEAP_MAGIC;
+#ifdef RT_USING_MEMTRACE
+            if (rt_thread_self())
+                rt_mem_setname(mem, rt_thread_self()->name);
+            else
+                rt_mem_setname(mem, "NONE");
+#endif
+
+            if (mem == lfree)
+            {
+                /* Find next free block after mem and update lowest free pointer */
+                while (lfree->used && lfree != heap_end)
+                    lfree = (struct heap_mem *)&heap_ptr[lfree->next];
+
+                RT_ASSERT(((lfree == heap_end) || (!lfree->used)));
+            }
+
+            rt_sem_release(&heap_sem);      //释放信号量
+            RT_ASSERT((rt_uint32_t)mem + SIZEOF_STRUCT_MEM + size <= (rt_uint32_t)heap_end);
+            RT_ASSERT((rt_uint32_t)((rt_uint8_t *)mem + SIZEOF_STRUCT_MEM) % RT_ALIGN_SIZE == 0);
+            RT_ASSERT((((rt_uint32_t)mem) & (RT_ALIGN_SIZE - 1)) == 0);
+
+            RT_DEBUG_LOG(RT_DEBUG_MEM,
+                         ("allocate memory at 0x%x, size: %d\n",
+                          (rt_uint32_t)((rt_uint8_t *)mem + SIZEOF_STRUCT_MEM),
+                          (rt_uint32_t)(mem->next - ((rt_uint8_t *)mem - heap_ptr))));
+
+            RT_OBJECT_HOOK_CALL(rt_malloc_hook,
+                                (((void *)((rt_uint8_t *)mem + SIZEOF_STRUCT_MEM)), size));
+
+            /* return the memory data except mem struct */
+            return (rt_uint8_t *)mem + SIZEOF_STRUCT_MEM;
+        }
+    }
+
+    rt_sem_release(&heap_sem);
+
+    return RT_NULL;
+}
+RTM_EXPORT(rt_malloc);
+```
 
 
 
 ### 中断管理
 
+中断的处理过程是：外界硬件发生了中断后，CPU 到中断处理器读取中断向量，并且查找中断向量表，找到对应的中断服务子程序（ISR）的首地址，然后跳转到对应的 ISR去做相应处理。这部分时间，我称之为：识别中断时间。
+
+在操作系统中，很多时候我们会主动进入临界段，系统不允许当前状态被中断打断，故而在临界区发生的中断会被挂起，直到退出临界段时候打开中断。此部分时间，我称其为：关闭中断时间。
+
 
 
 ### 双向链表
 
+​		双向链表也叫双链表，是链表的一种，是在操作系统中常用的数据结构，它的每个数据结点中都有两个指针，分别指向直接后继和直接前驱，其头指针 head 是唯一确定的。所以，从双向链表中的任意一个结点开始，都可以很方便地访问它的前驱结点和后继结点，这种数据结构形式使得双向链表在查找时更加方便，特别是大量数据的遍历。由于双向链表具有对称性，能方便地完成各种插入、删除等操作，但需要注意前后方向的操作。
 
 
 
@@ -1967,4 +2269,4 @@ typedef struct rt_mempool *rt_mp_t;
 
 
 
-
+##### 

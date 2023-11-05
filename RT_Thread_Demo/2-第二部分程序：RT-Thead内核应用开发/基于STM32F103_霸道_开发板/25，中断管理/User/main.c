@@ -148,6 +148,12 @@ static void key_thread_entry(void* parameter)
   }
 }
 
+/*************************************************************
+***函数名：
+***函数功能：串口接收回显的线程
+***输入：
+***输出：
+**************************************************************/
 static void usart_thread_entry(void* parameter)
 {
   rt_err_t uwRet = RT_EOK;	

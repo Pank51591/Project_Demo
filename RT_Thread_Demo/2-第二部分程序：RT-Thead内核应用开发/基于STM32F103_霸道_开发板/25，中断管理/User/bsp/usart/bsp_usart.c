@@ -88,6 +88,7 @@ void USART_Config(void)
 	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
 	// 完成串口的初始化配置
 	USART_Init(DEBUG_USARTx, &USART_InitStructure);
+	
 	// 串口中断优先级配置
 	NVIC_Configuration();
 	// 开启 串口空闲IDEL 中断
@@ -147,7 +148,8 @@ void Uart_DMA_Rx_Data(void)
    DMA_ClearFlag( DMA1_FLAG_TC5 );          
    //  重新赋值计数值，必须大于等于最大可能接收到的数据帧数目
    USART_RX_DMA_CHANNEL->CNDTR = USART_RBUFF_SIZE;    
-   DMA_Cmd(USART_RX_DMA_CHANNEL, ENABLE);       
+   DMA_Cmd(USART_RX_DMA_CHANNEL, ENABLE);
+	
    //给出二值信号量 ，发送接收到新数据标志，供前台程序查询
    rt_sem_release(test_sem);  
   /* 

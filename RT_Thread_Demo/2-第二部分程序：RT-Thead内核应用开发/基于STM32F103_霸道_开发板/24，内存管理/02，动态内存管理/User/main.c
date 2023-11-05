@@ -73,7 +73,7 @@ int main(void)
 	rt_kprintf("这是一个[野火]-STM32F103-霸道-RTT动态内存管理实验！\n");
 
   /* 创建一个任务 */
-	alloc_thread =                          /* 线程控制块指针 */
+	alloc_thread =                            /* 线程控制块指针 */
     rt_thread_create( "alloc",              /* 线程名字 */
                       alloc_thread_entry,   /* 线程入口函数 */
                       RT_NULL,             /* 线程入口函数参数 */
@@ -87,7 +87,7 @@ int main(void)
     else
         return -1;
     
-  free_thread =                          /* 线程控制块指针 */
+  free_thread =                            /* 线程控制块指针 */
     rt_thread_create( "free",              /* 线程名字 */
                       free_thread_entry,   /* 线程入口函数 */
                       RT_NULL,             /* 线程入口函数参数 */
@@ -102,12 +102,12 @@ int main(void)
         return -1;
 }
 
+
 /*
 *************************************************************************
 *                             线程定义
 *************************************************************************
 */
-
 static void alloc_thread_entry(void* parameter)
 {		
   rt_kprintf("正在向内存池申请内存...........\n");
@@ -148,3 +148,5 @@ static void free_thread_entry(void* parameter)
 
 
 /********************************END OF FILE****************************/
+
+

@@ -312,7 +312,7 @@ RTM_EXPORT(rt_mp_delete);
 
 /**
  * This function will allocate a block from memory pool
- *
+ * 静态内存申请函数
  * @param mp the memory pool object
  * @param time the waiting time
  *
@@ -333,7 +333,7 @@ void *rt_mp_alloc(rt_mp_t mp, rt_int32_t time)
 
     while (mp->block_free_count == 0)
     {
-        /* memory block is unavailable. */
+        /* memory block is unavailable. 内存块不可用 */
         if (time == 0)
         {
             /* enable interrupt */
@@ -348,17 +348,17 @@ void *rt_mp_alloc(rt_mp_t mp, rt_int32_t time)
 
         thread->error = RT_EOK;
 
-        /* need suspend thread */
+        /* need suspend thread 需要挂起线程*/
         rt_thread_suspend(thread);
         rt_list_insert_after(&(mp->suspend_thread), &(thread->tlist));
-        mp->suspend_thread_count++;
+        mp->suspend_thread_count++;      //挂起的线程数
 
         if (time > 0)
         {
             /* get the start tick of timer */
             before_sleep = rt_tick_get();
 
-            /* init thread timer and start it */
+            /* init thread timer and start it 初始化线程计时器并启动它*/
             rt_timer_control(&(thread->thread_timer),
                              RT_TIMER_CTRL_SET_TIME,
                              &time);
@@ -369,7 +369,7 @@ void *rt_mp_alloc(rt_mp_t mp, rt_int32_t time)
         rt_hw_interrupt_enable(level);
 
         /* do a schedule */
-        rt_schedule();
+        rt_schedule();   //线程调度
 
         if (thread->error != RT_EOK)
             return RT_NULL;
@@ -409,7 +409,7 @@ RTM_EXPORT(rt_mp_alloc);
 
 /**
  * This function will release a memory block
- *
+ * 释放内存函数
  * @param block the address of memory block to be released
  */
 void rt_mp_free(void *block)
