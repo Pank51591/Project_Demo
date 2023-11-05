@@ -1,4 +1,0 @@
----- WorkMode Matches (3 in 3 files) ----
-MonitorState in appsystem.c (code\User) : 	if(gUISet.WorkMode)
-{anonUIset_t} in appsystem.h (code\User) : 	INT16U WorkMode;
-DesktopUpdate in Windesktop.c (code\win) : 	if(gUISet.WorkMode)

@@ -1,0 +1,1055 @@
+Dependencies for Project 'sys', Target 'Load': (DO NOT MODIFY !)
+CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
+F (..\Library\Device\Source\system_BAT32G135.c)(0x63A41648)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\system_bat32g135.o --omf_browse .\objects\system_bat32g135.crf --depend .\objects\system_bat32g135.d)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+F (..\Library\Device\Source\ARM\startup_BAT32G135.s)(0x5FAE49BE)(--cpu Cortex-M0+ -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"--pd "__UVISION_VERSION SETA 533" --pd "_RTE_ SETA 1" --pd "_RTE_ SETA 1"--list .\listings\startup_bat32g135.lst --xref -o .\objects\startup_bat32g135.o --depend .\objects\startup_bat32g135.d)
+F (..\Library\Driver\src\adc.c)(0x5FAE49BE)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\adc.o --omf_browse .\objects\adc.crf --depend .\objects\adc.d)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\userdefine.h)(0x646473C5)
+I (..\Library\Driver\inc\adc.h)(0x5FAE49BE)
+F (..\Library\Driver\src\gpio.c)(0x5FAE49BE)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\gpio.o --omf_browse .\objects\gpio.crf --depend .\objects\gpio.d)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\gpio.h)(0x5FAE49BE)
+F (..\Library\Driver\src\sci.c)(0x63A548E4)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\sci.o --omf_browse .\objects\sci.crf --depend .\objects\sci.d)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E2EB2)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\userdefine.h)(0x646473C5)
+I (..\Library\Driver\inc\sci.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\dma.h)(0x5FAE49BE)
+F (..\Library\Driver\src\flash.c)(0x5FAE49BE)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\flash.o --omf_browse .\objects\flash.crf --depend .\objects\flash.d)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\flash.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\userdefine.h)(0x646473C5)
+F (..\Library\Driver\src\wdt.c)(0x5FAE49BE)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\wdt.o --omf_browse .\objects\wdt.crf --depend .\objects\wdt.d)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\wdt.h)(0x5FAE49BE)
+F (..\Library\Driver\src\retarget.c)(0x5FAE49BE)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\retarget.o --omf_browse .\objects\retarget.crf --depend .\objects\retarget.d)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\rt_misc.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stddef.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\userdefine.h)(0x646473C5)
+I (..\Library\Driver\inc\sci.h)(0x5FAE49BE)
+F (..\Library\Driver\src\intp.c)(0x5FAE49BE)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\intp.o --omf_browse .\objects\intp.crf --depend .\objects\intp.d)
+I (..\Library\Driver\inc\userdefine.h)(0x646473C5)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\intp.h)(0x5FAE49BE)
+F (..\code\SysFile\AppUart.c)(0x63A518BF)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\appuart.o --omf_browse .\objects\appuart.crf --depend .\objects\appuart.d)
+I (..\code\SysFile\config.h)(0x6434F458)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\userdefine.h)(0x646473C5)
+I (..\code\SysFile\typedef.h)(0x6260E85F)
+I (..\code\MCU\MCU.h)(0x63A3AF2A)
+I (..\Library\Driver\inc\gpio.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\adc.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\sci.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\wdt.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\flash.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\intp.h)(0x5FAE49BE)
+I (..\code\SysFile\sys_clock.h)(0x557A5740)
+I (..\code\SysFile\ioinit.h)(0x62469D59)
+I (..\code\SysFile\system.h)(0x63A40732)
+I (..\code\SysFile\window.h)(0x6434F3FF)
+I (..\code\SysFile\task.h)(0x64356BA2)
+I (..\code\SysFile\delay.h)(0x59F2A21F)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\string.h)(0x6438EE8D)
+I (..\code\drv\drvLCD1602.h)(0x6433B5FD)
+I (..\code\SysFile\keyscan.h)(0x63A4089C)
+I (..\code\SysFile\AppUart.h)(0x62679AD9)
+I (..\code\User\appsystem.h)(0x64647F9B)
+I (..\code\SysFile\fifo.h)(0x5F853F6C)
+I (..\code\User\modbus.h)(0x6178C532)
+I (..\code\User\DisplayBoard.h)(0x63A40122)
+I (..\code\win\Windesktop.h)(0x5A4476CE)
+I (..\code\win\WinOreration.h)(0x63A4F6FA)
+I (..\code\win\WinService.h)(0x63A4F6E9)
+I (..\code\win\WinData.h)(0x63A4F709)
+I (..\code\win\WinLEDLevel.h)(0x63C4ABE5)
+I (..\code\win\WinTypeSize.h)(0x63FD9743)
+I (..\code\win\WinDispenseCnt.h)(0x6434F3B9)
+I (..\code\User\savedata.h)(0x62EA1849)
+I (..\code\User\FCT.h)(0x62C4FEC9)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdarg.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
+F (..\code\SysFile\delay.c)(0x63A41DF6)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\delay.o --omf_browse .\objects\delay.crf --depend .\objects\delay.d)
+I (..\code\SysFile\config.h)(0x6434F458)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\userdefine.h)(0x646473C5)
+I (..\code\SysFile\typedef.h)(0x6260E85F)
+I (..\code\MCU\MCU.h)(0x63A3AF2A)
+I (..\Library\Driver\inc\gpio.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\adc.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\sci.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\wdt.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\flash.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\intp.h)(0x5FAE49BE)
+I (..\code\SysFile\sys_clock.h)(0x557A5740)
+I (..\code\SysFile\ioinit.h)(0x62469D59)
+I (..\code\SysFile\system.h)(0x63A40732)
+I (..\code\SysFile\window.h)(0x6434F3FF)
+I (..\code\SysFile\task.h)(0x64356BA2)
+I (..\code\SysFile\delay.h)(0x59F2A21F)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\string.h)(0x6438EE8D)
+I (..\code\drv\drvLCD1602.h)(0x6433B5FD)
+I (..\code\SysFile\keyscan.h)(0x63A4089C)
+I (..\code\SysFile\AppUart.h)(0x62679AD9)
+I (..\code\User\appsystem.h)(0x64647F9B)
+I (..\code\SysFile\fifo.h)(0x5F853F6C)
+I (..\code\User\modbus.h)(0x6178C532)
+I (..\code\User\DisplayBoard.h)(0x63A40122)
+I (..\code\win\Windesktop.h)(0x5A4476CE)
+I (..\code\win\WinOreration.h)(0x63A4F6FA)
+I (..\code\win\WinService.h)(0x63A4F6E9)
+I (..\code\win\WinData.h)(0x63A4F709)
+I (..\code\win\WinLEDLevel.h)(0x63C4ABE5)
+I (..\code\win\WinTypeSize.h)(0x63FD9743)
+I (..\code\win\WinDispenseCnt.h)(0x6434F3B9)
+I (..\code\User\savedata.h)(0x62EA1849)
+I (..\code\User\FCT.h)(0x62C4FEC9)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdarg.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
+F (..\code\SysFile\fifo.c)(0x614D67B0)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\fifo.o --omf_browse .\objects\fifo.crf --depend .\objects\fifo.d)
+I (..\code\SysFile\config.h)(0x6434F458)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\userdefine.h)(0x646473C5)
+I (..\code\SysFile\typedef.h)(0x6260E85F)
+I (..\code\MCU\MCU.h)(0x63A3AF2A)
+I (..\Library\Driver\inc\gpio.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\adc.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\sci.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\wdt.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\flash.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\intp.h)(0x5FAE49BE)
+I (..\code\SysFile\sys_clock.h)(0x557A5740)
+I (..\code\SysFile\ioinit.h)(0x62469D59)
+I (..\code\SysFile\system.h)(0x63A40732)
+I (..\code\SysFile\window.h)(0x6434F3FF)
+I (..\code\SysFile\task.h)(0x64356BA2)
+I (..\code\SysFile\delay.h)(0x59F2A21F)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\string.h)(0x6438EE8D)
+I (..\code\drv\drvLCD1602.h)(0x6433B5FD)
+I (..\code\SysFile\keyscan.h)(0x63A4089C)
+I (..\code\SysFile\AppUart.h)(0x62679AD9)
+I (..\code\User\appsystem.h)(0x64647F9B)
+I (..\code\SysFile\fifo.h)(0x5F853F6C)
+I (..\code\User\modbus.h)(0x6178C532)
+I (..\code\User\DisplayBoard.h)(0x63A40122)
+I (..\code\win\Windesktop.h)(0x5A4476CE)
+I (..\code\win\WinOreration.h)(0x63A4F6FA)
+I (..\code\win\WinService.h)(0x63A4F6E9)
+I (..\code\win\WinData.h)(0x63A4F709)
+I (..\code\win\WinLEDLevel.h)(0x63C4ABE5)
+I (..\code\win\WinTypeSize.h)(0x63FD9743)
+I (..\code\win\WinDispenseCnt.h)(0x6434F3B9)
+I (..\code\User\savedata.h)(0x62EA1849)
+I (..\code\User\FCT.h)(0x62C4FEC9)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdarg.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
+F (..\code\SysFile\IOInit.c)(0x64336ADD)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\ioinit.o --omf_browse .\objects\ioinit.crf --depend .\objects\ioinit.d)
+I (..\code\SysFile\config.h)(0x6434F458)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\userdefine.h)(0x646473C5)
+I (..\code\SysFile\typedef.h)(0x6260E85F)
+I (..\code\MCU\MCU.h)(0x63A3AF2A)
+I (..\Library\Driver\inc\gpio.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\adc.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\sci.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\wdt.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\flash.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\intp.h)(0x5FAE49BE)
+I (..\code\SysFile\sys_clock.h)(0x557A5740)
+I (..\code\SysFile\ioinit.h)(0x62469D59)
+I (..\code\SysFile\system.h)(0x63A40732)
+I (..\code\SysFile\window.h)(0x6434F3FF)
+I (..\code\SysFile\task.h)(0x64356BA2)
+I (..\code\SysFile\delay.h)(0x59F2A21F)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\string.h)(0x6438EE8D)
+I (..\code\drv\drvLCD1602.h)(0x6433B5FD)
+I (..\code\SysFile\keyscan.h)(0x63A4089C)
+I (..\code\SysFile\AppUart.h)(0x62679AD9)
+I (..\code\User\appsystem.h)(0x64647F9B)
+I (..\code\SysFile\fifo.h)(0x5F853F6C)
+I (..\code\User\modbus.h)(0x6178C532)
+I (..\code\User\DisplayBoard.h)(0x63A40122)
+I (..\code\win\Windesktop.h)(0x5A4476CE)
+I (..\code\win\WinOreration.h)(0x63A4F6FA)
+I (..\code\win\WinService.h)(0x63A4F6E9)
+I (..\code\win\WinData.h)(0x63A4F709)
+I (..\code\win\WinLEDLevel.h)(0x63C4ABE5)
+I (..\code\win\WinTypeSize.h)(0x63FD9743)
+I (..\code\win\WinDispenseCnt.h)(0x6434F3B9)
+I (..\code\User\savedata.h)(0x62EA1849)
+I (..\code\User\FCT.h)(0x62C4FEC9)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdarg.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
+F (..\code\SysFile\sys_clock.c)(0x63C4BF11)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\sys_clock.o --omf_browse .\objects\sys_clock.crf --depend .\objects\sys_clock.d)
+I (..\code\SysFile\config.h)(0x6434F458)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\userdefine.h)(0x646473C5)
+I (..\code\SysFile\typedef.h)(0x6260E85F)
+I (..\code\MCU\MCU.h)(0x63A3AF2A)
+I (..\Library\Driver\inc\gpio.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\adc.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\sci.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\wdt.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\flash.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\intp.h)(0x5FAE49BE)
+I (..\code\SysFile\sys_clock.h)(0x557A5740)
+I (..\code\SysFile\ioinit.h)(0x62469D59)
+I (..\code\SysFile\system.h)(0x63A40732)
+I (..\code\SysFile\window.h)(0x6434F3FF)
+I (..\code\SysFile\task.h)(0x64356BA2)
+I (..\code\SysFile\delay.h)(0x59F2A21F)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\string.h)(0x6438EE8D)
+I (..\code\drv\drvLCD1602.h)(0x6433B5FD)
+I (..\code\SysFile\keyscan.h)(0x63A4089C)
+I (..\code\SysFile\AppUart.h)(0x62679AD9)
+I (..\code\User\appsystem.h)(0x64647F9B)
+I (..\code\SysFile\fifo.h)(0x5F853F6C)
+I (..\code\User\modbus.h)(0x6178C532)
+I (..\code\User\DisplayBoard.h)(0x63A40122)
+I (..\code\win\Windesktop.h)(0x5A4476CE)
+I (..\code\win\WinOreration.h)(0x63A4F6FA)
+I (..\code\win\WinService.h)(0x63A4F6E9)
+I (..\code\win\WinData.h)(0x63A4F709)
+I (..\code\win\WinLEDLevel.h)(0x63C4ABE5)
+I (..\code\win\WinTypeSize.h)(0x63FD9743)
+I (..\code\win\WinDispenseCnt.h)(0x6434F3B9)
+I (..\code\User\savedata.h)(0x62EA1849)
+I (..\code\User\FCT.h)(0x62C4FEC9)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdarg.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
+F (..\code\SysFile\system.c)(0x614D2ED5)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\system.o --omf_browse .\objects\system.crf --depend .\objects\system.d)
+I (..\code\SysFile\config.h)(0x6434F458)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\userdefine.h)(0x646473C5)
+I (..\code\SysFile\typedef.h)(0x6260E85F)
+I (..\code\MCU\MCU.h)(0x63A3AF2A)
+I (..\Library\Driver\inc\gpio.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\adc.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\sci.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\wdt.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\flash.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\intp.h)(0x5FAE49BE)
+I (..\code\SysFile\sys_clock.h)(0x557A5740)
+I (..\code\SysFile\ioinit.h)(0x62469D59)
+I (..\code\SysFile\system.h)(0x63A40732)
+I (..\code\SysFile\window.h)(0x6434F3FF)
+I (..\code\SysFile\task.h)(0x64356BA2)
+I (..\code\SysFile\delay.h)(0x59F2A21F)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\string.h)(0x6438EE8D)
+I (..\code\drv\drvLCD1602.h)(0x6433B5FD)
+I (..\code\SysFile\keyscan.h)(0x63A4089C)
+I (..\code\SysFile\AppUart.h)(0x62679AD9)
+I (..\code\User\appsystem.h)(0x64647F9B)
+I (..\code\SysFile\fifo.h)(0x5F853F6C)
+I (..\code\User\modbus.h)(0x6178C532)
+I (..\code\User\DisplayBoard.h)(0x63A40122)
+I (..\code\win\Windesktop.h)(0x5A4476CE)
+I (..\code\win\WinOreration.h)(0x63A4F6FA)
+I (..\code\win\WinService.h)(0x63A4F6E9)
+I (..\code\win\WinData.h)(0x63A4F709)
+I (..\code\win\WinLEDLevel.h)(0x63C4ABE5)
+I (..\code\win\WinTypeSize.h)(0x63FD9743)
+I (..\code\win\WinDispenseCnt.h)(0x6434F3B9)
+I (..\code\User\savedata.h)(0x62EA1849)
+I (..\code\User\FCT.h)(0x62C4FEC9)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdarg.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
+F (..\code\SysFile\Task.c)(0x643E36E7)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\task.o --omf_browse .\objects\task.crf --depend .\objects\task.d)
+I (..\code\SysFile\config.h)(0x6434F458)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\userdefine.h)(0x646473C5)
+I (..\code\SysFile\typedef.h)(0x6260E85F)
+I (..\code\MCU\MCU.h)(0x63A3AF2A)
+I (..\Library\Driver\inc\gpio.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\adc.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\sci.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\wdt.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\flash.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\intp.h)(0x5FAE49BE)
+I (..\code\SysFile\sys_clock.h)(0x557A5740)
+I (..\code\SysFile\ioinit.h)(0x62469D59)
+I (..\code\SysFile\system.h)(0x63A40732)
+I (..\code\SysFile\window.h)(0x6434F3FF)
+I (..\code\SysFile\task.h)(0x64356BA2)
+I (..\code\SysFile\delay.h)(0x59F2A21F)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\string.h)(0x6438EE8D)
+I (..\code\drv\drvLCD1602.h)(0x6433B5FD)
+I (..\code\SysFile\keyscan.h)(0x63A4089C)
+I (..\code\SysFile\AppUart.h)(0x62679AD9)
+I (..\code\User\appsystem.h)(0x64647F9B)
+I (..\code\SysFile\fifo.h)(0x5F853F6C)
+I (..\code\User\modbus.h)(0x6178C532)
+I (..\code\User\DisplayBoard.h)(0x63A40122)
+I (..\code\win\Windesktop.h)(0x5A4476CE)
+I (..\code\win\WinOreration.h)(0x63A4F6FA)
+I (..\code\win\WinService.h)(0x63A4F6E9)
+I (..\code\win\WinData.h)(0x63A4F709)
+I (..\code\win\WinLEDLevel.h)(0x63C4ABE5)
+I (..\code\win\WinTypeSize.h)(0x63FD9743)
+I (..\code\win\WinDispenseCnt.h)(0x6434F3B9)
+I (..\code\User\savedata.h)(0x62EA1849)
+I (..\code\User\FCT.h)(0x62C4FEC9)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdarg.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
+F (..\code\SysFile\window.c)(0x6434F433)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\window.o --omf_browse .\objects\window.crf --depend .\objects\window.d)
+I (..\code\SysFile\config.h)(0x6434F458)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\userdefine.h)(0x646473C5)
+I (..\code\SysFile\typedef.h)(0x6260E85F)
+I (..\code\MCU\MCU.h)(0x63A3AF2A)
+I (..\Library\Driver\inc\gpio.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\adc.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\sci.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\wdt.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\flash.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\intp.h)(0x5FAE49BE)
+I (..\code\SysFile\sys_clock.h)(0x557A5740)
+I (..\code\SysFile\ioinit.h)(0x62469D59)
+I (..\code\SysFile\system.h)(0x63A40732)
+I (..\code\SysFile\window.h)(0x6434F3FF)
+I (..\code\SysFile\task.h)(0x64356BA2)
+I (..\code\SysFile\delay.h)(0x59F2A21F)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\string.h)(0x6438EE8D)
+I (..\code\drv\drvLCD1602.h)(0x6433B5FD)
+I (..\code\SysFile\keyscan.h)(0x63A4089C)
+I (..\code\SysFile\AppUart.h)(0x62679AD9)
+I (..\code\User\appsystem.h)(0x64647F9B)
+I (..\code\SysFile\fifo.h)(0x5F853F6C)
+I (..\code\User\modbus.h)(0x6178C532)
+I (..\code\User\DisplayBoard.h)(0x63A40122)
+I (..\code\win\Windesktop.h)(0x5A4476CE)
+I (..\code\win\WinOreration.h)(0x63A4F6FA)
+I (..\code\win\WinService.h)(0x63A4F6E9)
+I (..\code\win\WinData.h)(0x63A4F709)
+I (..\code\win\WinLEDLevel.h)(0x63C4ABE5)
+I (..\code\win\WinTypeSize.h)(0x63FD9743)
+I (..\code\win\WinDispenseCnt.h)(0x6434F3B9)
+I (..\code\User\savedata.h)(0x62EA1849)
+I (..\code\User\FCT.h)(0x62C4FEC9)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdarg.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
+F (..\code\SysFile\KeyScan.c)(0x6441DCB5)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\keyscan.o --omf_browse .\objects\keyscan.crf --depend .\objects\keyscan.d)
+I (..\code\SysFile\config.h)(0x6434F458)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\userdefine.h)(0x646473C5)
+I (..\code\SysFile\typedef.h)(0x6260E85F)
+I (..\code\MCU\MCU.h)(0x63A3AF2A)
+I (..\Library\Driver\inc\gpio.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\adc.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\sci.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\wdt.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\flash.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\intp.h)(0x5FAE49BE)
+I (..\code\SysFile\sys_clock.h)(0x557A5740)
+I (..\code\SysFile\ioinit.h)(0x62469D59)
+I (..\code\SysFile\system.h)(0x63A40732)
+I (..\code\SysFile\window.h)(0x6434F3FF)
+I (..\code\SysFile\task.h)(0x64356BA2)
+I (..\code\SysFile\delay.h)(0x59F2A21F)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\string.h)(0x6438EE8D)
+I (..\code\drv\drvLCD1602.h)(0x6433B5FD)
+I (..\code\SysFile\keyscan.h)(0x63A4089C)
+I (..\code\SysFile\AppUart.h)(0x62679AD9)
+I (..\code\User\appsystem.h)(0x64647F9B)
+I (..\code\SysFile\fifo.h)(0x5F853F6C)
+I (..\code\User\modbus.h)(0x6178C532)
+I (..\code\User\DisplayBoard.h)(0x63A40122)
+I (..\code\win\Windesktop.h)(0x5A4476CE)
+I (..\code\win\WinOreration.h)(0x63A4F6FA)
+I (..\code\win\WinService.h)(0x63A4F6E9)
+I (..\code\win\WinData.h)(0x63A4F709)
+I (..\code\win\WinLEDLevel.h)(0x63C4ABE5)
+I (..\code\win\WinTypeSize.h)(0x63FD9743)
+I (..\code\win\WinDispenseCnt.h)(0x6434F3B9)
+I (..\code\User\savedata.h)(0x62EA1849)
+I (..\code\User\FCT.h)(0x62C4FEC9)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdarg.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
+F (..\code\drv\drvLCD1602.c)(0x6433B5F4)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\drvlcd1602.o --omf_browse .\objects\drvlcd1602.crf --depend .\objects\drvlcd1602.d)
+I (..\code\SysFile\config.h)(0x6434F458)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\userdefine.h)(0x646473C5)
+I (..\code\SysFile\typedef.h)(0x6260E85F)
+I (..\code\MCU\MCU.h)(0x63A3AF2A)
+I (..\Library\Driver\inc\gpio.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\adc.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\sci.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\wdt.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\flash.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\intp.h)(0x5FAE49BE)
+I (..\code\SysFile\sys_clock.h)(0x557A5740)
+I (..\code\SysFile\ioinit.h)(0x62469D59)
+I (..\code\SysFile\system.h)(0x63A40732)
+I (..\code\SysFile\window.h)(0x6434F3FF)
+I (..\code\SysFile\task.h)(0x64356BA2)
+I (..\code\SysFile\delay.h)(0x59F2A21F)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\string.h)(0x6438EE8D)
+I (..\code\drv\drvLCD1602.h)(0x6433B5FD)
+I (..\code\SysFile\keyscan.h)(0x63A4089C)
+I (..\code\SysFile\AppUart.h)(0x62679AD9)
+I (..\code\User\appsystem.h)(0x64647F9B)
+I (..\code\SysFile\fifo.h)(0x5F853F6C)
+I (..\code\User\modbus.h)(0x6178C532)
+I (..\code\User\DisplayBoard.h)(0x63A40122)
+I (..\code\win\Windesktop.h)(0x5A4476CE)
+I (..\code\win\WinOreration.h)(0x63A4F6FA)
+I (..\code\win\WinService.h)(0x63A4F6E9)
+I (..\code\win\WinData.h)(0x63A4F709)
+I (..\code\win\WinLEDLevel.h)(0x63C4ABE5)
+I (..\code\win\WinTypeSize.h)(0x63FD9743)
+I (..\code\win\WinDispenseCnt.h)(0x6434F3B9)
+I (..\code\User\savedata.h)(0x62EA1849)
+I (..\code\User\FCT.h)(0x62C4FEC9)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdarg.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
+F (..\code\win\Windesktop.c)(0x646C2EF6)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\windesktop.o --omf_browse .\objects\windesktop.crf --depend .\objects\windesktop.d)
+I (..\code\SysFile\config.h)(0x6434F458)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\userdefine.h)(0x646473C5)
+I (..\code\SysFile\typedef.h)(0x6260E85F)
+I (..\code\MCU\MCU.h)(0x63A3AF2A)
+I (..\Library\Driver\inc\gpio.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\adc.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\sci.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\wdt.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\flash.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\intp.h)(0x5FAE49BE)
+I (..\code\SysFile\sys_clock.h)(0x557A5740)
+I (..\code\SysFile\ioinit.h)(0x62469D59)
+I (..\code\SysFile\system.h)(0x63A40732)
+I (..\code\SysFile\window.h)(0x6434F3FF)
+I (..\code\SysFile\task.h)(0x64356BA2)
+I (..\code\SysFile\delay.h)(0x59F2A21F)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\string.h)(0x6438EE8D)
+I (..\code\drv\drvLCD1602.h)(0x6433B5FD)
+I (..\code\SysFile\keyscan.h)(0x63A4089C)
+I (..\code\SysFile\AppUart.h)(0x62679AD9)
+I (..\code\User\appsystem.h)(0x64647F9B)
+I (..\code\SysFile\fifo.h)(0x5F853F6C)
+I (..\code\User\modbus.h)(0x6178C532)
+I (..\code\User\DisplayBoard.h)(0x63A40122)
+I (..\code\win\Windesktop.h)(0x5A4476CE)
+I (..\code\win\WinOreration.h)(0x63A4F6FA)
+I (..\code\win\WinService.h)(0x63A4F6E9)
+I (..\code\win\WinData.h)(0x63A4F709)
+I (..\code\win\WinLEDLevel.h)(0x63C4ABE5)
+I (..\code\win\WinTypeSize.h)(0x63FD9743)
+I (..\code\win\WinDispenseCnt.h)(0x6434F3B9)
+I (..\code\User\savedata.h)(0x62EA1849)
+I (..\code\User\FCT.h)(0x62C4FEC9)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdarg.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
+F (..\code\win\WinOreration.c)(0x646C6BB0)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\winoreration.o --omf_browse .\objects\winoreration.crf --depend .\objects\winoreration.d)
+I (..\code\SysFile\config.h)(0x6434F458)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\userdefine.h)(0x646473C5)
+I (..\code\SysFile\typedef.h)(0x6260E85F)
+I (..\code\MCU\MCU.h)(0x63A3AF2A)
+I (..\Library\Driver\inc\gpio.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\adc.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\sci.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\wdt.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\flash.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\intp.h)(0x5FAE49BE)
+I (..\code\SysFile\sys_clock.h)(0x557A5740)
+I (..\code\SysFile\ioinit.h)(0x62469D59)
+I (..\code\SysFile\system.h)(0x63A40732)
+I (..\code\SysFile\window.h)(0x6434F3FF)
+I (..\code\SysFile\task.h)(0x64356BA2)
+I (..\code\SysFile\delay.h)(0x59F2A21F)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\string.h)(0x6438EE8D)
+I (..\code\drv\drvLCD1602.h)(0x6433B5FD)
+I (..\code\SysFile\keyscan.h)(0x63A4089C)
+I (..\code\SysFile\AppUart.h)(0x62679AD9)
+I (..\code\User\appsystem.h)(0x64647F9B)
+I (..\code\SysFile\fifo.h)(0x5F853F6C)
+I (..\code\User\modbus.h)(0x6178C532)
+I (..\code\User\DisplayBoard.h)(0x63A40122)
+I (..\code\win\Windesktop.h)(0x5A4476CE)
+I (..\code\win\WinOreration.h)(0x63A4F6FA)
+I (..\code\win\WinService.h)(0x63A4F6E9)
+I (..\code\win\WinData.h)(0x63A4F709)
+I (..\code\win\WinLEDLevel.h)(0x63C4ABE5)
+I (..\code\win\WinTypeSize.h)(0x63FD9743)
+I (..\code\win\WinDispenseCnt.h)(0x6434F3B9)
+I (..\code\User\savedata.h)(0x62EA1849)
+I (..\code\User\FCT.h)(0x62C4FEC9)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdarg.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
+F (..\code\win\WinData.c)(0x64647412)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\windata.o --omf_browse .\objects\windata.crf --depend .\objects\windata.d)
+I (..\code\SysFile\config.h)(0x6434F458)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\userdefine.h)(0x646473C5)
+I (..\code\SysFile\typedef.h)(0x6260E85F)
+I (..\code\MCU\MCU.h)(0x63A3AF2A)
+I (..\Library\Driver\inc\gpio.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\adc.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\sci.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\wdt.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\flash.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\intp.h)(0x5FAE49BE)
+I (..\code\SysFile\sys_clock.h)(0x557A5740)
+I (..\code\SysFile\ioinit.h)(0x62469D59)
+I (..\code\SysFile\system.h)(0x63A40732)
+I (..\code\SysFile\window.h)(0x6434F3FF)
+I (..\code\SysFile\task.h)(0x64356BA2)
+I (..\code\SysFile\delay.h)(0x59F2A21F)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\string.h)(0x6438EE8D)
+I (..\code\drv\drvLCD1602.h)(0x6433B5FD)
+I (..\code\SysFile\keyscan.h)(0x63A4089C)
+I (..\code\SysFile\AppUart.h)(0x62679AD9)
+I (..\code\User\appsystem.h)(0x64647F9B)
+I (..\code\SysFile\fifo.h)(0x5F853F6C)
+I (..\code\User\modbus.h)(0x6178C532)
+I (..\code\User\DisplayBoard.h)(0x63A40122)
+I (..\code\win\Windesktop.h)(0x5A4476CE)
+I (..\code\win\WinOreration.h)(0x63A4F6FA)
+I (..\code\win\WinService.h)(0x63A4F6E9)
+I (..\code\win\WinData.h)(0x63A4F709)
+I (..\code\win\WinLEDLevel.h)(0x63C4ABE5)
+I (..\code\win\WinTypeSize.h)(0x63FD9743)
+I (..\code\win\WinDispenseCnt.h)(0x6434F3B9)
+I (..\code\User\savedata.h)(0x62EA1849)
+I (..\code\User\FCT.h)(0x62C4FEC9)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdarg.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
+F (..\code\win\WinService.c)(0x649A34FF)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\winservice.o --omf_browse .\objects\winservice.crf --depend .\objects\winservice.d)
+I (..\code\SysFile\config.h)(0x6434F458)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\userdefine.h)(0x646473C5)
+I (..\code\SysFile\typedef.h)(0x6260E85F)
+I (..\code\MCU\MCU.h)(0x63A3AF2A)
+I (..\Library\Driver\inc\gpio.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\adc.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\sci.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\wdt.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\flash.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\intp.h)(0x5FAE49BE)
+I (..\code\SysFile\sys_clock.h)(0x557A5740)
+I (..\code\SysFile\ioinit.h)(0x62469D59)
+I (..\code\SysFile\system.h)(0x63A40732)
+I (..\code\SysFile\window.h)(0x6434F3FF)
+I (..\code\SysFile\task.h)(0x64356BA2)
+I (..\code\SysFile\delay.h)(0x59F2A21F)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\string.h)(0x6438EE8D)
+I (..\code\drv\drvLCD1602.h)(0x6433B5FD)
+I (..\code\SysFile\keyscan.h)(0x63A4089C)
+I (..\code\SysFile\AppUart.h)(0x62679AD9)
+I (..\code\User\appsystem.h)(0x64647F9B)
+I (..\code\SysFile\fifo.h)(0x5F853F6C)
+I (..\code\User\modbus.h)(0x6178C532)
+I (..\code\User\DisplayBoard.h)(0x63A40122)
+I (..\code\win\Windesktop.h)(0x5A4476CE)
+I (..\code\win\WinOreration.h)(0x63A4F6FA)
+I (..\code\win\WinService.h)(0x63A4F6E9)
+I (..\code\win\WinData.h)(0x63A4F709)
+I (..\code\win\WinLEDLevel.h)(0x63C4ABE5)
+I (..\code\win\WinTypeSize.h)(0x63FD9743)
+I (..\code\win\WinDispenseCnt.h)(0x6434F3B9)
+I (..\code\User\savedata.h)(0x62EA1849)
+I (..\code\User\FCT.h)(0x62C4FEC9)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdarg.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
+F (..\code\win\WinLEDLevel.c)(0x63C4ABF2)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\winledlevel.o --omf_browse .\objects\winledlevel.crf --depend .\objects\winledlevel.d)
+I (..\code\SysFile\config.h)(0x6434F458)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\userdefine.h)(0x646473C5)
+I (..\code\SysFile\typedef.h)(0x6260E85F)
+I (..\code\MCU\MCU.h)(0x63A3AF2A)
+I (..\Library\Driver\inc\gpio.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\adc.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\sci.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\wdt.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\flash.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\intp.h)(0x5FAE49BE)
+I (..\code\SysFile\sys_clock.h)(0x557A5740)
+I (..\code\SysFile\ioinit.h)(0x62469D59)
+I (..\code\SysFile\system.h)(0x63A40732)
+I (..\code\SysFile\window.h)(0x6434F3FF)
+I (..\code\SysFile\task.h)(0x64356BA2)
+I (..\code\SysFile\delay.h)(0x59F2A21F)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\string.h)(0x6438EE8D)
+I (..\code\drv\drvLCD1602.h)(0x6433B5FD)
+I (..\code\SysFile\keyscan.h)(0x63A4089C)
+I (..\code\SysFile\AppUart.h)(0x62679AD9)
+I (..\code\User\appsystem.h)(0x64647F9B)
+I (..\code\SysFile\fifo.h)(0x5F853F6C)
+I (..\code\User\modbus.h)(0x6178C532)
+I (..\code\User\DisplayBoard.h)(0x63A40122)
+I (..\code\win\Windesktop.h)(0x5A4476CE)
+I (..\code\win\WinOreration.h)(0x63A4F6FA)
+I (..\code\win\WinService.h)(0x63A4F6E9)
+I (..\code\win\WinData.h)(0x63A4F709)
+I (..\code\win\WinLEDLevel.h)(0x63C4ABE5)
+I (..\code\win\WinTypeSize.h)(0x63FD9743)
+I (..\code\win\WinDispenseCnt.h)(0x6434F3B9)
+I (..\code\User\savedata.h)(0x62EA1849)
+I (..\code\User\FCT.h)(0x62C4FEC9)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdarg.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
+F (..\code\win\WinTypeSize.c)(0x646C6C14)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\wintypesize.o --omf_browse .\objects\wintypesize.crf --depend .\objects\wintypesize.d)
+I (..\code\SysFile\config.h)(0x6434F458)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\userdefine.h)(0x646473C5)
+I (..\code\SysFile\typedef.h)(0x6260E85F)
+I (..\code\MCU\MCU.h)(0x63A3AF2A)
+I (..\Library\Driver\inc\gpio.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\adc.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\sci.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\wdt.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\flash.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\intp.h)(0x5FAE49BE)
+I (..\code\SysFile\sys_clock.h)(0x557A5740)
+I (..\code\SysFile\ioinit.h)(0x62469D59)
+I (..\code\SysFile\system.h)(0x63A40732)
+I (..\code\SysFile\window.h)(0x6434F3FF)
+I (..\code\SysFile\task.h)(0x64356BA2)
+I (..\code\SysFile\delay.h)(0x59F2A21F)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\string.h)(0x6438EE8D)
+I (..\code\drv\drvLCD1602.h)(0x6433B5FD)
+I (..\code\SysFile\keyscan.h)(0x63A4089C)
+I (..\code\SysFile\AppUart.h)(0x62679AD9)
+I (..\code\User\appsystem.h)(0x64647F9B)
+I (..\code\SysFile\fifo.h)(0x5F853F6C)
+I (..\code\User\modbus.h)(0x6178C532)
+I (..\code\User\DisplayBoard.h)(0x63A40122)
+I (..\code\win\Windesktop.h)(0x5A4476CE)
+I (..\code\win\WinOreration.h)(0x63A4F6FA)
+I (..\code\win\WinService.h)(0x63A4F6E9)
+I (..\code\win\WinData.h)(0x63A4F709)
+I (..\code\win\WinLEDLevel.h)(0x63C4ABE5)
+I (..\code\win\WinTypeSize.h)(0x63FD9743)
+I (..\code\win\WinDispenseCnt.h)(0x6434F3B9)
+I (..\code\User\savedata.h)(0x62EA1849)
+I (..\code\User\FCT.h)(0x62C4FEC9)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdarg.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
+F (..\code\win\WinDispenseCnt.c)(0x646C2E2B)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\windispensecnt.o --omf_browse .\objects\windispensecnt.crf --depend .\objects\windispensecnt.d)
+I (..\code\SysFile\config.h)(0x6434F458)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\userdefine.h)(0x646473C5)
+I (..\code\SysFile\typedef.h)(0x6260E85F)
+I (..\code\MCU\MCU.h)(0x63A3AF2A)
+I (..\Library\Driver\inc\gpio.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\adc.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\sci.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\wdt.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\flash.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\intp.h)(0x5FAE49BE)
+I (..\code\SysFile\sys_clock.h)(0x557A5740)
+I (..\code\SysFile\ioinit.h)(0x62469D59)
+I (..\code\SysFile\system.h)(0x63A40732)
+I (..\code\SysFile\window.h)(0x6434F3FF)
+I (..\code\SysFile\task.h)(0x64356BA2)
+I (..\code\SysFile\delay.h)(0x59F2A21F)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\string.h)(0x6438EE8D)
+I (..\code\drv\drvLCD1602.h)(0x6433B5FD)
+I (..\code\SysFile\keyscan.h)(0x63A4089C)
+I (..\code\SysFile\AppUart.h)(0x62679AD9)
+I (..\code\User\appsystem.h)(0x64647F9B)
+I (..\code\SysFile\fifo.h)(0x5F853F6C)
+I (..\code\User\modbus.h)(0x6178C532)
+I (..\code\User\DisplayBoard.h)(0x63A40122)
+I (..\code\win\Windesktop.h)(0x5A4476CE)
+I (..\code\win\WinOreration.h)(0x63A4F6FA)
+I (..\code\win\WinService.h)(0x63A4F6E9)
+I (..\code\win\WinData.h)(0x63A4F709)
+I (..\code\win\WinLEDLevel.h)(0x63C4ABE5)
+I (..\code\win\WinTypeSize.h)(0x63FD9743)
+I (..\code\win\WinDispenseCnt.h)(0x6434F3B9)
+I (..\code\User\savedata.h)(0x62EA1849)
+I (..\code\User\FCT.h)(0x62C4FEC9)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdarg.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
+F (..\code\win\WinDispenseCnt.h)(0x6434F3B9)()
+F (..\code\User\main.c)(0x63C4F893)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (..\code\SysFile\config.h)(0x6434F458)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\userdefine.h)(0x646473C5)
+I (..\code\SysFile\typedef.h)(0x6260E85F)
+I (..\code\MCU\MCU.h)(0x63A3AF2A)
+I (..\Library\Driver\inc\gpio.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\adc.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\sci.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\wdt.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\flash.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\intp.h)(0x5FAE49BE)
+I (..\code\SysFile\sys_clock.h)(0x557A5740)
+I (..\code\SysFile\ioinit.h)(0x62469D59)
+I (..\code\SysFile\system.h)(0x63A40732)
+I (..\code\SysFile\window.h)(0x6434F3FF)
+I (..\code\SysFile\task.h)(0x64356BA2)
+I (..\code\SysFile\delay.h)(0x59F2A21F)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\string.h)(0x6438EE8D)
+I (..\code\drv\drvLCD1602.h)(0x6433B5FD)
+I (..\code\SysFile\keyscan.h)(0x63A4089C)
+I (..\code\SysFile\AppUart.h)(0x62679AD9)
+I (..\code\User\appsystem.h)(0x64647F9B)
+I (..\code\SysFile\fifo.h)(0x5F853F6C)
+I (..\code\User\modbus.h)(0x6178C532)
+I (..\code\User\DisplayBoard.h)(0x63A40122)
+I (..\code\win\Windesktop.h)(0x5A4476CE)
+I (..\code\win\WinOreration.h)(0x63A4F6FA)
+I (..\code\win\WinService.h)(0x63A4F6E9)
+I (..\code\win\WinData.h)(0x63A4F709)
+I (..\code\win\WinLEDLevel.h)(0x63C4ABE5)
+I (..\code\win\WinTypeSize.h)(0x63FD9743)
+I (..\code\win\WinDispenseCnt.h)(0x6434F3B9)
+I (..\code\User\savedata.h)(0x62EA1849)
+I (..\code\User\FCT.h)(0x62C4FEC9)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdarg.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
+F (..\code\User\appsystem.c)(0x646C3046)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\appsystem.o --omf_browse .\objects\appsystem.crf --depend .\objects\appsystem.d)
+I (..\code\SysFile\config.h)(0x6434F458)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\userdefine.h)(0x646473C5)
+I (..\code\SysFile\typedef.h)(0x6260E85F)
+I (..\code\MCU\MCU.h)(0x63A3AF2A)
+I (..\Library\Driver\inc\gpio.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\adc.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\sci.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\wdt.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\flash.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\intp.h)(0x5FAE49BE)
+I (..\code\SysFile\sys_clock.h)(0x557A5740)
+I (..\code\SysFile\ioinit.h)(0x62469D59)
+I (..\code\SysFile\system.h)(0x63A40732)
+I (..\code\SysFile\window.h)(0x6434F3FF)
+I (..\code\SysFile\task.h)(0x64356BA2)
+I (..\code\SysFile\delay.h)(0x59F2A21F)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\string.h)(0x6438EE8D)
+I (..\code\drv\drvLCD1602.h)(0x6433B5FD)
+I (..\code\SysFile\keyscan.h)(0x63A4089C)
+I (..\code\SysFile\AppUart.h)(0x62679AD9)
+I (..\code\User\appsystem.h)(0x64647F9B)
+I (..\code\SysFile\fifo.h)(0x5F853F6C)
+I (..\code\User\modbus.h)(0x6178C532)
+I (..\code\User\DisplayBoard.h)(0x63A40122)
+I (..\code\win\Windesktop.h)(0x5A4476CE)
+I (..\code\win\WinOreration.h)(0x63A4F6FA)
+I (..\code\win\WinService.h)(0x63A4F6E9)
+I (..\code\win\WinData.h)(0x63A4F709)
+I (..\code\win\WinLEDLevel.h)(0x63C4ABE5)
+I (..\code\win\WinTypeSize.h)(0x63FD9743)
+I (..\code\win\WinDispenseCnt.h)(0x6434F3B9)
+I (..\code\User\savedata.h)(0x62EA1849)
+I (..\code\User\FCT.h)(0x62C4FEC9)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdarg.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
+F (..\code\User\Displayboard.c)(0x64356B0A)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\displayboard.o --omf_browse .\objects\displayboard.crf --depend .\objects\displayboard.d)
+I (..\code\SysFile\config.h)(0x6434F458)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\userdefine.h)(0x646473C5)
+I (..\code\SysFile\typedef.h)(0x6260E85F)
+I (..\code\MCU\MCU.h)(0x63A3AF2A)
+I (..\Library\Driver\inc\gpio.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\adc.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\sci.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\wdt.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\flash.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\intp.h)(0x5FAE49BE)
+I (..\code\SysFile\sys_clock.h)(0x557A5740)
+I (..\code\SysFile\ioinit.h)(0x62469D59)
+I (..\code\SysFile\system.h)(0x63A40732)
+I (..\code\SysFile\window.h)(0x6434F3FF)
+I (..\code\SysFile\task.h)(0x64356BA2)
+I (..\code\SysFile\delay.h)(0x59F2A21F)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\string.h)(0x6438EE8D)
+I (..\code\drv\drvLCD1602.h)(0x6433B5FD)
+I (..\code\SysFile\keyscan.h)(0x63A4089C)
+I (..\code\SysFile\AppUart.h)(0x62679AD9)
+I (..\code\User\appsystem.h)(0x64647F9B)
+I (..\code\SysFile\fifo.h)(0x5F853F6C)
+I (..\code\User\modbus.h)(0x6178C532)
+I (..\code\User\DisplayBoard.h)(0x63A40122)
+I (..\code\win\Windesktop.h)(0x5A4476CE)
+I (..\code\win\WinOreration.h)(0x63A4F6FA)
+I (..\code\win\WinService.h)(0x63A4F6E9)
+I (..\code\win\WinData.h)(0x63A4F709)
+I (..\code\win\WinLEDLevel.h)(0x63C4ABE5)
+I (..\code\win\WinTypeSize.h)(0x63FD9743)
+I (..\code\win\WinDispenseCnt.h)(0x6434F3B9)
+I (..\code\User\savedata.h)(0x62EA1849)
+I (..\code\User\FCT.h)(0x62C4FEC9)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdarg.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
+F (..\code\User\SaveData.c)(0x64337668)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\savedata.o --omf_browse .\objects\savedata.crf --depend .\objects\savedata.d)
+I (..\code\SysFile\config.h)(0x6434F458)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\userdefine.h)(0x646473C5)
+I (..\code\SysFile\typedef.h)(0x6260E85F)
+I (..\code\MCU\MCU.h)(0x63A3AF2A)
+I (..\Library\Driver\inc\gpio.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\adc.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\sci.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\wdt.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\flash.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\intp.h)(0x5FAE49BE)
+I (..\code\SysFile\sys_clock.h)(0x557A5740)
+I (..\code\SysFile\ioinit.h)(0x62469D59)
+I (..\code\SysFile\system.h)(0x63A40732)
+I (..\code\SysFile\window.h)(0x6434F3FF)
+I (..\code\SysFile\task.h)(0x64356BA2)
+I (..\code\SysFile\delay.h)(0x59F2A21F)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\string.h)(0x6438EE8D)
+I (..\code\drv\drvLCD1602.h)(0x6433B5FD)
+I (..\code\SysFile\keyscan.h)(0x63A4089C)
+I (..\code\SysFile\AppUart.h)(0x62679AD9)
+I (..\code\User\appsystem.h)(0x64647F9B)
+I (..\code\SysFile\fifo.h)(0x5F853F6C)
+I (..\code\User\modbus.h)(0x6178C532)
+I (..\code\User\DisplayBoard.h)(0x63A40122)
+I (..\code\win\Windesktop.h)(0x5A4476CE)
+I (..\code\win\WinOreration.h)(0x63A4F6FA)
+I (..\code\win\WinService.h)(0x63A4F6E9)
+I (..\code\win\WinData.h)(0x63A4F709)
+I (..\code\win\WinLEDLevel.h)(0x63C4ABE5)
+I (..\code\win\WinTypeSize.h)(0x63FD9743)
+I (..\code\win\WinDispenseCnt.h)(0x6434F3B9)
+I (..\code\User\savedata.h)(0x62EA1849)
+I (..\code\User\FCT.h)(0x62C4FEC9)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdarg.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
+I (..\code\User\sim_eeprom.h)(0x6274D594)
+F (..\code\User\sim_eeprom.c)(0x64337775)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\code\drv -I ..\code\MCU -I ..\code\SysFile -I ..\code\User -I ..\code\win -I ..\Library\Driver\inc -I ..\Library\CMSIS\Include -I ..\Library\Device\Include-I.\RTE\_Load-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Cmsemicon\BAT32G135\0.2.1\Device\Include"-D__UVISION_VERSION="533" -D_RTE_ -D_RTE_-o .\objects\sim_eeprom.o --omf_browse .\objects\sim_eeprom.crf --depend .\objects\sim_eeprom.d)
+I (..\code\SysFile\config.h)(0x6434F458)
+I (..\Library\Device\Include\BAT32G135.h)(0x5FAE49BE)
+I (..\Library\CMSIS\Include\core_cm0plus.h)(0x5FAE49BE)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
+I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
+I (..\Library\Device\Include\system_BAT32G135.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\userdefine.h)(0x646473C5)
+I (..\code\SysFile\typedef.h)(0x6260E85F)
+I (..\code\MCU\MCU.h)(0x63A3AF2A)
+I (..\Library\Driver\inc\gpio.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\adc.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\sci.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\wdt.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\flash.h)(0x5FAE49BE)
+I (..\Library\Driver\inc\intp.h)(0x5FAE49BE)
+I (..\code\SysFile\sys_clock.h)(0x557A5740)
+I (..\code\SysFile\ioinit.h)(0x62469D59)
+I (..\code\SysFile\system.h)(0x63A40732)
+I (..\code\SysFile\window.h)(0x6434F3FF)
+I (..\code\SysFile\task.h)(0x64356BA2)
+I (..\code\SysFile\delay.h)(0x59F2A21F)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\string.h)(0x6438EE8D)
+I (..\code\drv\drvLCD1602.h)(0x6433B5FD)
+I (..\code\SysFile\keyscan.h)(0x63A4089C)
+I (..\code\SysFile\AppUart.h)(0x62679AD9)
+I (..\code\User\appsystem.h)(0x64647F9B)
+I (..\code\SysFile\fifo.h)(0x5F853F6C)
+I (..\code\User\modbus.h)(0x6178C532)
+I (..\code\User\DisplayBoard.h)(0x63A40122)
+I (..\code\win\Windesktop.h)(0x5A4476CE)
+I (..\code\win\WinOreration.h)(0x63A4F6FA)
+I (..\code\win\WinService.h)(0x63A4F6E9)
+I (..\code\win\WinData.h)(0x63A4F709)
+I (..\code\win\WinLEDLevel.h)(0x63C4ABE5)
+I (..\code\win\WinTypeSize.h)(0x63FD9743)
+I (..\code\win\WinDispenseCnt.h)(0x6434F3B9)
+I (..\code\User\savedata.h)(0x62EA1849)
+I (..\code\User\FCT.h)(0x62C4FEC9)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdarg.h)(0x5E8E2EB2)
+I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
+I (..\code\User\sim_eeprom.h)(0x6274D594)
