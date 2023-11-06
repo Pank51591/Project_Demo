@@ -145,6 +145,8 @@ int rtthread_startup(void);
 
 #if defined (__CC_ARM)
 extern int $Super$$main(void);
+
+
 /* re-define main function */
 int $Sub$$main(void)
 {
@@ -222,6 +224,12 @@ void rt_application_init(void)
     rt_thread_startup(tid);
 }
 
+/*********************************************************
+***函数名：
+***函数功能：
+***参数：
+***返回值：
+**********************************************************/
 int rtthread_startup(void)
 {
     rt_hw_interrupt_disable();
@@ -229,7 +237,7 @@ int rtthread_startup(void)
     /* board level initalization
      * NOTE: please initialize heap inside board initialization.
      */
-    rt_hw_board_init();
+    rt_hw_board_init();      //开发板硬件相关的初始化
 
     /* show RT-Thread version */
     rt_show_version();

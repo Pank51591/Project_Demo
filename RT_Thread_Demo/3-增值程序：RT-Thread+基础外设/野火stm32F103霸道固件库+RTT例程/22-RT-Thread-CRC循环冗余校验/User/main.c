@@ -32,6 +32,7 @@
 /* 定义线程控制块 */
 static rt_thread_t led1_thread = RT_NULL;
 extern __IO uint32_t CRCValue;
+
 /*
 *************************************************************************
 *                             函数声明
@@ -58,7 +59,7 @@ int main(void)
 	 * 所以在main函数中，只需要创建线程和启动线程即可。
 	 */
 	
-	led1_thread =                          /* 线程控制块指针 */
+	led1_thread =                            /* 线程控制块指针 */
     rt_thread_create( "led1",              /* 线程名字 */
                       led1_thread_entry,   /* 线程入口函数 */
                       RT_NULL,             /* 线程入口函数参数 */

@@ -32,17 +32,18 @@ RT_WEAK void *rt_heap_end_get(void)
   */
 void rt_hw_board_init()
 {
-    /* 初始化SysTick */
-    SysTick_Config( SystemCoreClock / RT_TICK_PER_SECOND );	
+	/* 初始化SysTick */
+	SysTick_Config( SystemCoreClock / RT_TICK_PER_SECOND );	
     
 	/* 硬件BSP初始化统统放在这里，比如LED，串口，LCD等 */
     
-    /* 初始化开发板的LED */
+  /* 初始化开发板的LED */
 	LED_GPIO_Config();
     
-    /* 初始化开发板的串口 */
+  /* 初始化开发板的串口 */
 	USART_Config();
   
+	/*定时器初始化*/
 	GENERAL_TIM_Init();
 	
 /* 调用组件初始化函数 (use INIT_BOARD_EXPORT()) */

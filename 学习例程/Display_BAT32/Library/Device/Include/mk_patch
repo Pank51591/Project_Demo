@@ -1,6 +1,0 @@
-#!/usr/bin/bash
-
-diff -urN ../../../BAT32G135.h BAT32G135.h > patch.h
-
-#patch < patch.h
-

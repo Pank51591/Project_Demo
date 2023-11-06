@@ -94,31 +94,31 @@ RT-Thread 采用内核对象管理系统来访问 / 管理所有内核对象，�
 ```c
 struct rt_thread
 {
-/* rt 对象 */
-char name[RT_NAME_MAX]; /* 对象的名字 */
-rt_uint8_t type; /* 对象类型 */
-rt_uint8_t flags; /* 对象的状态 */
-rt_list_t list; /* 对象的列表节点 */
+    /* rt 对象 */
+    char name[RT_NAME_MAX]; /* 对象的名字 */
+    rt_uint8_t type; /* 对象类型 */
+    rt_uint8_t flags; /* 对象的状态 */
+    rt_list_t list; /* 对象的列表节点 */
 
-rt_list_t tlist; /* 线程链表节点 */
+    rt_list_t tlist; /* 线程链表节点 */
 
-void *sp; /* 线程栈指针 */
-void *entry; /* 线程入口地址 */
-void *parameter; /* 线程形参 */
-void *stack_addr; /* 线程起始地址 */
-rt_uint32_t stack_size; /* 线程栈大小，单位为字节 */
+    void *sp; /* 线程栈指针 */
+    void *entry; /* 线程入口地址 */
+    void *parameter; /* 线程形参 */
+    void *stack_addr; /* 线程起始地址 */
+    rt_uint32_t stack_size; /* 线程栈大小，单位为字节 */
 
-rt_ubase_t init_tick; /* 初始时间片 */ 
-rt_ubase_t remaining_tick; /* 剩余时间片 */ 
+    rt_ubase_t init_tick; /* 初始时间片 */ 
+    rt_ubase_t remaining_tick; /* 剩余时间片 */ 
 
-rt_uint8_t current_priority; /* 当前优先级 */
-rt_uint8_t init_priority; /* 初始优先级 */
-rt_uint32_t number_mask; /* 当前优先级掩码 */
+    rt_uint8_t current_priority; /* 当前优先级 */
+    rt_uint8_t init_priority; /* 初始优先级 */
+    rt_uint32_t number_mask; /* 当前优先级掩码 */
 
-rt_err_t error; /* 错误码 */
-rt_uint8_t stat; /* 线程的状态 */
+    rt_err_t error; /* 错误码 */
+    rt_uint8_t stat; /* 线程的状态 */
 
-struct rt_timer thread_timer; /* 内置的线程定时器 */
+    struct rt_timer thread_timer; /* 内置的线程定时器 */
 };
 ```
 
@@ -135,7 +135,7 @@ struct rt_timer thread_timer; /* 内置的线程定时器 */
     ; */
     rt_hw_interrupt_disable PROC
     EXPORT rt_hw_interrupt_disable
-    CPSID I (1)
+    CPSID I
     BX LR
     ENDP
 
@@ -144,20 +144,20 @@ struct rt_timer thread_timer; /* 内置的线程定时器 */
     ; */
     rt_hw_interrupt_enable PROC
     EXPORT rt_hw_interrupt_enable
-    CPSIE I (2)
+    CPSIE I
     BX LR
     ENDP 
         
-    PRIMASK = 0; /* PRIMASK 初始值为 0,表示没有关中断 */ (3) 
+    PRIMASK = 0; /* PRIMASK 初始值为 0,表示没有关中断 */
     /* 临界段代码保护 */
     {
         /* 临界段开始 */
-        rt_hw_interrupt_disable(); /* 关中断,PRIMASK = 1 */ (4)
+        rt_hw_interrupt_disable(); /* 关中断,PRIMASK = 1 */
         {
-            /* 执行临界段代码，不可中断 */ (5)
+            /* 执行临界段代码，不可中断 */
         }
         /* 临界段结束 */
-        rt_hw_interrupt_enable(); /* 开中断,PRIMASK = 0 */ (6)
+        rt_hw_interrupt_enable(); /* 开中断,PRIMASK = 0 */
      }
 ```
 
