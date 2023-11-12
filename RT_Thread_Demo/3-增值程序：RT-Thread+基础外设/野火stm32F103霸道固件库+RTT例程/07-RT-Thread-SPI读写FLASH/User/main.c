@@ -84,7 +84,7 @@ int main(void)
 	 * 所以在main函数中，只需要创建线程和启动线程即可。
 	 */
 	
-	led1_thread =                          /* 线程控制块指针 */
+	led1_thread =                            /* 线程控制块指针 */
     rt_thread_create( "led1",              /* 线程名字 */
                       led1_thread_entry,   /* 线程入口函数 */
                       RT_NULL,             /* 线程入口函数参数 */
@@ -98,7 +98,7 @@ int main(void)
     else
         return -1;
 		
-	test_thread =                          /* 线程控制块指针 */
+	test_thread =                           /* 线程控制块指针 */
     rt_thread_create( "test",              /* 线程名字 */
                       test_thread_entry,   /* 线程入口函数 */
                       RT_NULL,             /* 线程入口函数参数 */
@@ -112,6 +112,7 @@ int main(void)
     else
         return -1;
 }
+
 
 /*
 *************************************************************************
@@ -133,7 +134,12 @@ static void led1_thread_entry(void* parameter)
     }
 }
 
-
+/*************************************************************
+***函数名：
+***函数功能：
+***输入：
+***输出：
+**************************************************************/
 static void test_thread_entry(void* parameter)
 {	
 

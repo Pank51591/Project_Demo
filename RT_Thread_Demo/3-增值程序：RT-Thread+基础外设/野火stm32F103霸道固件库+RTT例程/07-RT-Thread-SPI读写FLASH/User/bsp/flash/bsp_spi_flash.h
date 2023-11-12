@@ -7,10 +7,11 @@
 //#define  sFLASH_ID              0xEF3015   //W25X16
 //#define  sFLASH_ID              0xEF4015	 //W25Q16
 //#define  sFLASH_ID              0XEF4018   //W25Q128
-#define  sFLASH_ID              0XEF4017    //W25Q64
+#define  sFLASH_ID                0XEF4017    //W25Q64
 
 #define SPI_FLASH_PageSize              256
 #define SPI_FLASH_PerWritePageSize      256
+
 
 /*命令定义-开头*******************************/
 #define W25X_WriteEnable		      0x06 
