@@ -1,35 +1,0 @@
-Dependencies for Project 'STM32F103-USB-CDC-CMSIS', Target 'STM32F103-USB-CDC-CMSIS': (DO NOT MODIFY !)
-CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
-F (.\Src\main.c)(0x6530E52D)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork -I .\Inc-I.\RTE\Device\STM32F103C8-I.\RTE\_STM32F103-USB-CDC-CMSIS-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Keil\STM32F1xx_DFP\2.4.0\Device\Include"-I"D:\Program Files (x86)\keil_v5\Keil\STM32F1xx_DFP\2.4.0"-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
-I (D:\Program Files (x86)\keil_v5\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h)(0x61AD795E)
-I (.\RTE\_STM32F103-USB-CDC-CMSIS\RTE_Components.h)(0x6530D86A)
-I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm3.h)(0x626F4ADE)
-I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
-I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
-I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
-I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
-I (D:\Program Files (x86)\keil_v5\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h)(0x61AD795E)
-I (.\Inc\usblib.h)(0x5BCE4ACC)
-F (.\Src\usblib.c)(0x6530E52D)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork -I .\Inc-I.\RTE\Device\STM32F103C8-I.\RTE\_STM32F103-USB-CDC-CMSIS-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Keil\STM32F1xx_DFP\2.4.0\Device\Include"-I"D:\Program Files (x86)\keil_v5\Keil\STM32F1xx_DFP\2.4.0"-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o .\objects\usblib.o --omf_browse .\objects\usblib.crf --depend .\objects\usblib.d)
-I (.\Inc\usblib.h)(0x5BCE4ACC)
-I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
-I (D:\Program Files (x86)\keil_v5\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h)(0x61AD795E)
-I (.\RTE\_STM32F103-USB-CDC-CMSIS\RTE_Components.h)(0x6530D86A)
-I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm3.h)(0x626F4ADE)
-I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
-I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
-I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
-I (D:\Program Files (x86)\keil_v5\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h)(0x61AD795E)
-I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8E2EB2)
-I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\string.h)(0x6438EE8D)
-F (RTE\Device\STM32F103C8\RTE_Device.h)(0x5BCE4ACC)()
-F (RTE\Device\STM32F103C8\startup_stm32f10x_md.s)(0x5BCE4ACC)(--cpu Cortex-M3 -g --apcs=interwork -I.\RTE\Device\STM32F103C8-I.\RTE\_STM32F103-USB-CDC-CMSIS-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Keil\STM32F1xx_DFP\2.4.0\Device\Include"-I"D:\Program Files (x86)\keil_v5\Keil\STM32F1xx_DFP\2.4.0"--pd "__UVISION_VERSION SETA 533" --pd "_RTE_ SETA 1" --pd "STM32F10X_MD SETA 1" --pd "_RTE_ SETA 1"--list .\listings\startup_stm32f10x_md.lst --xref -o .\objects\startup_stm32f10x_md.o --depend .\objects\startup_stm32f10x_md.d)
-F (RTE\Device\STM32F103C8\system_stm32f10x.c)(0x5BCE4ACC)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork -I .\Inc-I.\RTE\Device\STM32F103C8-I.\RTE\_STM32F103-USB-CDC-CMSIS-I"D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"D:\Program Files (x86)\keil_v5\Keil\STM32F1xx_DFP\2.4.0\Device\Include"-I"D:\Program Files (x86)\keil_v5\Keil\STM32F1xx_DFP\2.4.0"-D__UVISION_VERSION="533" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o .\objects\system_stm32f10x.o --omf_browse .\objects\system_stm32f10x.crf --depend .\objects\system_stm32f10x.d)
-I (D:\Program Files (x86)\keil_v5\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h)(0x61AD795E)
-I (.\RTE\_STM32F103-USB-CDC-CMSIS\RTE_Components.h)(0x6530D86A)
-I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm3.h)(0x626F4ADE)
-I (D:\Program Files (x86)\keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
-I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F4ADE)
-I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F4ADE)
-I (D:\Program Files (x86)\keil_v5\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armcc.h)(0x626F4ADE)
-I (D:\Program Files (x86)\keil_v5\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h)(0x61AD795E)
