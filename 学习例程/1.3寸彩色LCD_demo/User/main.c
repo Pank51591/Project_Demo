@@ -1881,7 +1881,7 @@ int main(void)
 	
 		TFT_full(GREEN);
 		Delay_ms(2000);
-//		
+		
 //		TFT_full(BLUE);
 //		Delay_ms(2000);
 //		
