@@ -1,0 +1,52 @@
+<p>
+    The AI software is made to learn the registered gesture data. <br>
+    To start learning, click on the "Start Training" button in the "Gesture Learning" dialog box that is displayed by clicking on the "Start AI Training" button. Learning will take several minutes.<br>
+</p>
+<br>
+<p>
+    <b><span style="color: steelBlue">Tips for AI learning :</span></b>
+    <ul>
+        <li>
+            QE provides several AI models (neural networks) of different sizes. The trade-off between the amounts of ROM and RAM required and the accuracy of recognizing gestures depends on the size of the network. Ideally, select the largest model that allows implementation in the available amounts of ROM and RAM in consideration of the device to be used. If you do not know which size to choose, the medium size is recommended for a trial run.<br>
+            The AI model can be set by clicking on the "Setting" button -&gt; "Neural network setting". <br>
+            *In addition to the AI model, the gesture program needs to be implementable in ROM and RAM.
+        </li>
+        <li>
+            The criterion for high accuracy in the case of this AI is an accuracy of 90% or more (red target line in the graph) upon completion of training. If the results do not reach the target accuracy, try the following actions to increase the accuracy.
+        </li>
+        <ol>
+            <li>
+                <span style="color: steelBlue">Increase the number of sequences for training</span><br>
+                If the curve of accuracy does not seem to be converging, increasing the number of sequences for training may improve the accuracy. Click on the "Setting" button, select "Neural network setting", and raise the number of rounds of training (epochs).
+            </li>
+            <li>
+                <span style="color: steelBlue">Improve the quality of the training data</span><br>
+                A large amount of the training data for a single gesture being classified as non-ideal (data from failed gestures) also tends to prevent convergence of the curve. Return to the [Create Data List] dialog box, check the waveforms of the data, and try to delete data from failed gestures or to increase the number of ideally-shaped waveforms.
+            </li>
+            <li>
+                <span style="color: steelBlue">Overtraining</span><br>
+                The curve of accuracy will sometimes drop in the latter half of the training process. This occurs due to excessive optimization based on only the data used in training. Decreasing the number of waveforms for training until right before the accuracy starts to fall can improve the versatility of recognition by the AI in such cases.
+            </li>
+        </ol>
+    </ul>
+</p>
+<br>
+<p>
+    <b><span style="color: steelBlue">Notes for AI learning :</span></b><br>
+    <ul>
+        <li>If the workspace path is as long as 100 characters, the AI framework may not be able to create a temporary file and the training may fail. If the training fails without error, try shortening the workspace path.</li>
+    </ul>
+</p>
+<style>
+    li {
+        margin: 20px;
+
+    }
+    ol {
+        margin: 20px;
+        padding-left: 0px;
+    }
+    ul{
+        padding-left: 20px;
+    }
+</style>

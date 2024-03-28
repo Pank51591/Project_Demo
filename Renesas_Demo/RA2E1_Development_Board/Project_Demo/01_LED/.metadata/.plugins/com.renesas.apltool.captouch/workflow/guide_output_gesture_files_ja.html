@@ -1,0 +1,45 @@
+<p>
+    学習済みのAIモデルをCソースに変換し、ジェスチャ用プログラムとともにファイルを生成します。<br>
+    ジェスチャ構成を変更した場合は、必ずファイルを出力してください。
+</p>
+<br>
+<p>
+    <b><span style="color: steelBlue">ファイル出力：</span></b>
+    <br>
+    ファイルの出力先は任意の場所を指定できますが、デフォルトでは以下に出力されます。
+    <br><br>
+    <p>
+        <span style="color: steelBlue">出力先：</span><br>
+    </p>
+    <ul>
+        <li>&lt;プロジェクト&gt;&#092;qe_gen</li>
+    </ul>
+    <p>
+        <span style="color: steelBlue">出力ファイル / フォルダ：</span>
+    </p>
+    <ul>
+        <li>Translatorフォルダ (e-AIトランスレータが出力したファイル群)</li>
+        <li>qe_gesture_user.c</li>
+        <li>qe_gesture.c</li>
+        <li>qe_gesture.h</li>
+    </ul>
+</p>
+<br>
+<p>
+    <b><span style="color: steelBlue">Cソース生成時の注意：</span></b>
+    <ul>
+        <li>e-AIトランスレータのライセンスファイルがない場合、ライセンスファイルが古い場合はe-AIトランスレータの実行に失敗します。[ワークフロー: ジェスチャ環境の導入]のガイドを参考に、ライセンスファイルを入手してください。</li>
+        <br>
+        <li>e-AIトランスレータの実行に失敗した場合は、以下の場所にログファイルが出力されます。<br>
+            &lt;e<sup>2</sup> studioのインストール先&gt;&#092;eclipse&#092;translator_xx_xx_xxxx.log</li>
+    </ul>
+</p>
+<style>
+    li {
+        margin-left: 20px;
+        margin-top: 10px;
+    }
+    ul{
+        padding-left: 20px;
+    }
+</style>

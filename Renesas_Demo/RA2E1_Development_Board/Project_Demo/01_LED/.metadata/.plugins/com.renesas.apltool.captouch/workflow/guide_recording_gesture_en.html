@@ -1,0 +1,22 @@
+<p>
+    Create and edit the waveform data of gestures you want the AI to learn.<br>
+    The data for each gesture can be registered by actually moving a hand over the touch sensor. To register the data, click on the "Start Recording Gesture" button in the "Create Data List" dialog that is displayed by clicking on the "Record Gesture" button.
+</p>
+<br>
+<p>
+    <b><span style="color: steelBlue">Tips for creating gesture recorfing :</span></b><br>
+    <ul>
+        <li>50 is the minimum recommended number of waveforms for a single gesture. However, preparing around 100 waveforms is helpful in terms of the AI sufficiently learning the gesture. Even when hands are moved in the same manner, the waveform shapes will vary slightly. A large number of waveforms allows the AI to learn from the various patterns of the waveforms, leading to the creation of highly accurate gesture software.</li>
+        <li>Developing highly accurate gesture software that makes few erroneous judgements requires the use of high-quality gesture data in AI training. High quality in this context indicates a state of abundant gesture data with only a small amount of data for failed gestures. Failed gesture data is deleted by clicking on the "Delete" button.</li>
+        <li>The touch sensor can recognize the series of hand movements from a user moving a hand near to the touch sensor to moving it away as one gesture. The "sensor threshold" is used to specify how near a hand must approach to be recognized. Click on the "Start recording gesture" button, and in the "Recording Your Gesture" dialog box that is opened after gesture registration has been started, select the "Tune sensor threshold" checkbox and set an appropriate threshold while viewing the actual numerical values from the touch sensor.</li>
+    </ul>
+</p>
+<style>
+    li {
+        margin: 20px;
+
+    }
+    ul{
+        padding-left: 20px;
+    }
+</style>

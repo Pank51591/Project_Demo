@@ -1,0 +1,11 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+arg1 = $(1)
+export PATH=C:\Program Files (x86)\GNU Arm Embedded Toolchain\10 2021.10\bin\;C:\Renesas\e2_studio\eclipse\plugins\com.renesas.ide.exttools.busybox.win32.x86_64_1.3.6.v20230615-0931\bin\;C:\Renesas\e2_studio\eclipse\plugins\com.renesas.ide.exttools.gnumake.win32.x86_64_4.3.0.v20220121-1024\mk\;C:\Renesas\e2_studio\eclipse\plugins\com.renesas.ide.exttools.scandep.win32.x86_64_1.0.0.v20230915-1033\sd\;C:/Renesas/e2_studio/eclipse//plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230801-1951/jre/bin/server;C:/Renesas/e2_studio/eclipse//plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.8.v20230801-1951/jre/bin;C:\Program Files (x86)\VMware\VMware Workstation\bin\;C:\Program Files\Python311\Scripts\;C:\Program Files\Python311\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\TortoiseSVN\bin;D:\Program Files\Microchip\xc8\v2.36\bin;C:\mingw-w64\x86_64-8.1.0-release-win32-seh-rt_v6-rev0\mingw64\bin;D:\Program Files\Git\cmd;C:\Users\80023166\AppData\Roaming\Python\Python311\Scripts\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Users\80023166\AppData\Local\Microsoft\WindowsApps;D:\Program Files\VS Code\Microsoft VS Code\bin;D:\Program Files\JetBrains\CLion 2023.2.2\bin;;D:\cygwin64\bin;;C:\Renesas\e2_studio\eclipse
+export TCINSTALL=C:\Program Files (x86)\GNU Arm Embedded Toolchain\10 2021.10$(call arg1,\)
+export CWD=$(CURDIR)
+export TC_VERSION=10.3.1.20210824
+export PWD=$(CURDIR)
+export GCC_VERSION=10.3.1

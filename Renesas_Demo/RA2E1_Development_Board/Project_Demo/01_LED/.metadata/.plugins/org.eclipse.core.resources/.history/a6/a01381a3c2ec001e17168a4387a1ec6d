@@ -1,0 +1,41 @@
+***** 2024/03/27 20:36:15 *****
+QE Version                                        :3.3.0.v20230526-0659
+Project Path                                      :C:\Users\80023166\Desktop\RA2E1_Development_Board\Project_Demo\01_LED\01_LED
+Configuration File                                :01_LED
+IDE                                               :e2 studio with Emulator
+Emulator                                          :
+MCU                                               :RA2E1 R7FA2E1A92DFM
+<< METHOD 0 >>
+[Button(self) 0]
+TS                                                : TS32,
+[Button(self) 1]
+TS                                                : TS33,
+[Button(self) 2]
+TS                                                : TS28,
+
+<<<< Tuning Type : Normal >>>>
+System Clock Frequency (MHz)                      :48.000
+PCLKB Frequency (MHz)                             :24.000
+CTSU Operating Frequency (MHz)                    :24.000
+Operating Voltage (V)                             :3.300
+
+---------- Phase1 ----------
+<< METHOD 0 >>
+[TS28]
+Count Value                                       : 0
+Resistance Value (ohm)                            : 560
+Parasitic Capacitance (pF)                        : 0.0
+Sensor Drive Pulse Frequency (MHz)                : 4.0
+
+[TS32]
+Count Value                                       : 0
+Resistance Value (ohm)                            : 560
+Parasitic Capacitance (pF)                        : 0.0
+Sensor Drive Pulse Frequency (MHz)                : 4.0
+
+[TS33]
+Count Value                                       : 0
+Resistance Value (ohm)                            : 560
+Parasitic Capacitance (pF)                        : 0.0
+Sensor Drive Pulse Frequency (MHz)                : 4.0
+

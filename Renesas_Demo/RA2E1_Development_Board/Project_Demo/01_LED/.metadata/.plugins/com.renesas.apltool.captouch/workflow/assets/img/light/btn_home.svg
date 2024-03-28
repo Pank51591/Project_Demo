@@ -1,0 +1,14 @@
+<svg id="コンポーネント_93_3" data-name="コンポーネント 93 – 3" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="長方形_639" data-name="長方形 639" fill="#f2f2f2" stroke="#999" stroke-width="1">
+    <rect width="32" height="32" stroke="none"/>
+    <rect x="0.5" y="0.5" width="31" height="31" fill="none"/>
+  </g>
+  <g id="長方形_641" data-name="長方形 641" transform="translate(5 5)" fill="none" stroke="#666" stroke-width="1">
+    <rect width="22" height="22" rx="2" stroke="none"/>
+    <rect x="0.5" y="0.5" width="21" height="21" rx="1.5" fill="none"/>
+  </g>
+  <g id="sharp-home-24px" transform="translate(6 6)">
+    <path id="パス_11309" data-name="パス 11309" d="M0,0H20V20H0Z" fill="none"/>
+    <path id="パス_11310" data-name="パス 11310" d="M7,17.167v-5h3.333v5h5.833V10.5h2.5L10.333,3,2,10.5H4.5v6.667Z" transform="translate(-0.333 -0.5)" fill="#333"/>
+  </g>
+</svg>

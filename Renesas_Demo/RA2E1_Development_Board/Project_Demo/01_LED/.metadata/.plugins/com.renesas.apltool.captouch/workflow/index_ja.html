@@ -1,0 +1,443 @@
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CapTouchメイン (QE)</title>
+  <link rel="stylesheet" href="assets/css/style.min.css">
+  <link rel="stylesheet" href="assets/lib/swiper/swiper-bundle.min.css" />
+  <script type="text/javascript" src="assets/lib/jquery/jquery-3.6.1.min.js"></script>
+  <script type="text/javascript" src="assets/lib/swiper/swiper-bundle.min.js"></script>
+</head>
+<!-- ライトモード:light, ダークモード:dark -->
+<body class="light">
+  <!--ナビゲーション-->
+  <div class="nav">
+    <button type="button" class="btn_home">HOME</button>
+    <div id="nav_preparation" class="nav-item default active"><span>準備</span></div>
+    <div id="nav_tuning" class="nav-item default"><span>調整</span></div>
+    <div id="nav_gesture" class="nav-item default"><span>ジェスチャ設定</span></div>
+    <div id="nav_touchless" class="nav-item default"><span>タッチレスボタン設定</span></div>
+    <div id="nav_coding" class="nav-item default"><span>実装</span></div>
+    <div id="nav_monitoring" class="nav-item default"><span>動作確認</span></div>
+  </div>
+  <div class="container">
+    <button type="button" class="btn_up">UP</button>
+    <!--disabledの場合、<button type="button" class="btn_down" disabled>DOWN</button>-->
+    <button type="button" class="btn_down">DOWN</button>
+    <div class="list-group">
+      <!--id:list_Xはnav_X（ナビゲーション）の番号と同一にする-->
+      <!--classにcompを設定するとナビゲーションにアイコンが表示され、メニューも完了状態となる(完了:comp,未完了:default)-->
+      <!--classにactiveを設定すると選択状態になる-->
+      <div id="list_preparation" class="list-parent default active">
+        <div class="list-header">1.静電容量タッチの準備</div>
+        <div id="list-sub-select-project" class="list-sub selected">
+          <!--メニューの文字左側にアイコンを表示 (完了:comp, エラー:error, 未チェック:default)-->
+          <div id="list-header_select-project" class="list-header default">プロジェクトの選択</div> <!--メニュー-->
+          <div class="list-content"><!--コンテンツ-->
+            <div class="box">
+              <div class="box-header"><p>プロジェクトの選択</p></div>
+              <div id="tooltip-ready-project" class="box-content"><!--このボックス(box-content)は複数追加可能。-->
+                <p class="sp-hidden">タッチインタフェースを使用するプロジェクトを準備します。</p>
+              </div>
+              <div id="tooltip-select-project" class="box-content"><!--このボックス(box-content)は複数追加可能。-->
+                <p class="sp-hidden">対象とするプロジェクトを選択します。</p>
+                <div class="comp-box"><!--コンポーネントを囲む要素(comp-box)-->
+                  <select id="select-project"></select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="list-sub-select-tif-config" class="list-sub">
+        <div id="list-header_select-tif-config" class="list-header default">タッチインタフェース構成の選択</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>タッチインタフェース構成の選択</p></div>
+              <div class="box-content">
+                <p id="tooltip-select-tif-config" class="sp-hidden">タッチインタフェース構成を選択/作成します。</p>
+                <div class="comp-box">
+                  <select id="select-tif-config"></select>
+                </div>
+                <div class="button-box text-right"><!-- ボタンを囲む要素(button-box) に右寄せ(text-right)を付加 -->
+                  <button type="button" id="btn-modify-tif-config" class="btn_gray">構成を編集する</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="list_tuning" class="list-parent default">
+        <div class="list-header">2.タッチセンサの調整</div>
+        <div id="list-sub-start-tuning" class="list-sub">
+          <div id="list-header_start-tuning" class="list-header default">調整の実行 (エミュレータ接続)</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>使用上の注意</p></div>
+              <div class="box-content">
+                <p class="sp-hidden">エミュレータ接続で調整を行う場合は、シリアル接続での調整は不要です。</p>
+              </div>
+              <div class="box-header"><p>ターゲットボードの接続</p></div>
+              <div id="tooltip-connect-target" class="box-content">
+                <p class="sp-hidden">
+                  各タッチセンサについて自動調整処理を行います。<br>
+                  エミュレータ経由でターゲットボードとPCを接続します。
+                </p>
+              </div>
+            </div>
+            <div class="box">
+              <div class="box-header"><p>調整の実行</p></div>
+              <div class="box-content">
+                <p  id="tooltip-start-tuning"class="sp-hidden">ダイアログの指示に従い操作します。</p>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-start-tuning" class="btn_gray">調整を開始する</button>
+                </div>
+                <div class="text-right">
+                  <input type="checkbox" id="checkbox-advanced-setting"><label>アドバンスドモード(高度な設定)</label>
+                </div>
+                <br>
+                <br>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-display-tuning-result" class="btn_gray">調整結果を確認する</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="list-sub-start-serial-tuning" class="list-sub">
+          <div id="list-header_start-serial-tuning" class="list-header default">調整の実行 (シリアル接続)</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>使用上の注意</p></div>
+              <div class="box-content">
+                <p class="sp-hidden">シリアル接続で調整を行う場合は、エミュレータ接続での調整は不要です。</p>
+              </div>
+              <div class="box-header"><p>調整用ファイルの出力</p></div>
+              <div id="tooltip-output-serial-tuning-files" class="box-content">
+                <p class="sp-hidden">調整処理に必要となるファイルを出力します。</p>
+              </div>
+              <div class="button-box text-center">
+                <button type="button" id="btn-output-serial-tuning-files" class="btn_gray">調整用ファイルを出力する</button>
+              </div>
+              <div class="box-header"><p>プログラムの仮実装</p></div>
+              <div id="tooltip-serial-tuning-build" class="box-content">
+                <p class="sp-hidden">main()関数内にタッチ用メイン関数を呼び出す処理を実装し、対象プロジェクトをビルドします。</p>
+              </div>
+              <div class="box-header"><p>プログラムの実行</p></div>
+              <div id="tooltip-serial-tuning-start-debug" class="box-content">
+                <p class="sp-hidden">
+                  各タッチセンサについて自動調整処理を行います。<br>
+                  対象プロジェクトのデバッグを開始し、プログラムを実行します。<br>
+                  ターゲットボードに書き込まれたチューニング用プログラムが動作します。
+                </p>
+              </div>
+              <div class="box-header"><p>調整の実行</p></div>
+              <div class="box-content">
+                <p  id="tooltip-start-serial-tuning" class="sp-hidden">ダイアログの指示に従い操作します。</p>
+                <div class="text-left">
+                  <label>ボーレート</label>
+                  <p><input type="text" id="text-baudrate-serial-tuning" pattern="^[0-9]*$"></p>
+                  <label>ポート番号</label>
+                  <select id="select-port-serial-tuning"></select>
+                </div>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-start-serial-tuning" class="btn_gray">調整を開始する</button>
+                </div>
+                <div class="text-right">
+                  <input type="checkbox" id="checkbox-advanced-serial-tuning-setting"><label>アドバンスドモード(高度な設定)</label>
+                </div>
+                <br>
+                <br>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-display-serial-tuning-result" class="btn_gray">調整結果を確認する</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="list-sub-output-tuning-files" class="list-sub">
+          <div id="list-header_output-tuning-files" class="list-header default">調整結果の出力</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>調整結果の出力</p></div>
+              <div class="box-content">
+                <p id="tooltip-output-tuning-files" class="sp-hidden">調整結果からパラメータファイルを出力します。</p>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-output-tuning-files" class="btn_gray">ファイルを出力する</button>
+                </div>
+                <div class="checkbox-box-outer">
+                  <div class="checkbox-box-inner">
+                    <div><input type="checkbox" id="checkbox-output-folder"><label>出力フォルダを指定する</label></div>
+                    <div>
+                      <input type="checkbox" id="checkbox-external-trigger"><label>外部トリガを使用する</label>
+                      <div id="icon-external-trigger" class="icon_warning-checkbox"></div>
+                    </div>
+                    <div>
+                      <input type="checkbox" id="checkbox-diagnostic-code"><label>診断コードを使用する</label>
+                      <div id="icon-diagnostic-code" class="icon_warning-checkbox"></div>
+                    </div>
+                    <div><input type="checkbox" id="checkbox-api-compatibility-mode"><label>API互換モードを使用する</label></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="list_gesture" class="list-parent default">
+        <div id="list-header-gesture-setup" class="list-header">ジェスチャの設定</div>
+        <div id="list-sub-gesture-environment" class="list-sub">
+          <div id="list-header_gesture-environment" class="list-header default">ジェスチャ環境の導入</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>ジェスチャの設定</p></div>
+              <div class="box-content">
+                <p class="sp-hidden">AIを使用した3Dジェスチャの設定を行います。</p>
+              </div>
+              <div class="box-header"><p>環境の導入</p></div>
+              <div class="box-content">
+                <p id="tooltip-gesture-environment" class="sp-hidden">AI学習の実行環境を導入します。</p>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-gesture-environment" class="btn_gray">ジェスチャ環境を導入する</button>
+                  <div id="icon-warning-gesture-environment" class="icon_error2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="list-sub-select-gesture-config" class="list-sub">
+          <div id="list-header_select-gesture-config" class="list-header default">ジェスチャ構成の選択</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>ジェスチャ構成の選択</p></div>
+              <div class="box-content">
+                <p id="tooltip-select-gesture-config" class="sp-hidden">ジェスチャの構成を選択/作成します。</p>
+                <div class="comp-box">
+                  <select id="select-gesture-config"></select>
+                </div>
+                <div class="button-box text-right">
+                  <button type="button" id="btn-modify-gesture-config" class="btn_gray">構成を編集する</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="list-sub-recording-gesture" class="list-sub">
+          <div id="list-header_recording-gesture" class="list-header default">ジェスチャの登録</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>ジェスチャの登録</p></div>
+              <div class="box-content">
+                <p id="tooltip-recording-gesture" class="sp-hidden">ダイアログの指示に従い操作します。</p>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-recording-gesture" class="btn_gray">ジェスチャを登録する</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="list-sub-training-gesture" class="list-sub">
+          <div id="list-header_training-gesture" class="list-header default">ジェスチャの学習</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>ジェスチャの学習</p></div>
+              <div class="box-content">
+                <p id="tooltip-training-gesture" class="sp-hidden">AIにジェスチャを学習させます。</p>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-training-gesture" class="btn_gray">AI学習を開始する</button>
+                  <div id="icon-warning-training-gesture" class="icon_warning"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="list-sub-output-gesture-files" class="list-sub">
+          <div id="list-header_output-gesture-files" class="list-header default">Cソースの生成</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>学習結果の出力</p></div>
+              <div class="box-content">
+                <p id="tooltip-output-gesture-files" class="sp-hidden">学習結果からCソースファイルを出力します。</p>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-output-gesture-files" class="btn_gray">Cソースを生成する</button>
+                  <div id="icon-warning-output-gesture-files" class="icon_warning"></div>
+                  <div id="icon-error-output-gesture-files" class="icon_error element-hidden"></div>
+                </div>
+                <div class="text-right">
+                  <p><input type="checkbox" id="checkbox-output-folder-gesture"><label>出力フォルダを指定する</label></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="list_touchless" class="list-parent default">
+        <div id="list-header-touchless-setup" class="list-header">タッチレスボタンの設定</div>
+        <div id="list-sub-touchless-environment" class="list-sub">
+          <div id="list-header_touchless-environment" class="list-header default">タッチレスボタン環境の導入</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>タッチレスボタンの設定</p></div>
+              <div class="box-content">
+                <p class="sp-hidden">AIを使用したタッチレスボタンの設定を行います。</p>
+              </div>
+              <div class="box-header"><p>環境の導入</p></div>
+              <div class="box-content">
+                <p id="tooltip-touchless-environment" class="sp-hidden">AI学習の実行環境を導入します。</p>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-touchless-environment" class="btn_gray">タッチレスボタン環境を導入する</button>
+                  <div id="icon-warning-touchless-environment" class="icon_error2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="list-sub-recording-touchless" class="list-sub">
+          <div id="list-header_recording-touchless" class="list-header default">タッチレスボタンデータの登録</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>タッチレスボタンデータの登録</p></div>
+              <div class="box-content">
+                <p id="tooltip-recording-touchless" class="sp-hidden">ダイアログの指示に従い操作します。</p>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-recording-touchless" class="btn_gray">データを登録する</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="list-sub-training-touchless" class="list-sub">
+          <div id="list-header_training-touchless" class="list-header default">タッチレスボタンの学習</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>タッチレスボタンの学習</p></div>
+              <div class="box-content">
+                <p id="tooltip-training-touchless" class="sp-hidden">AIにタッチレスボタンを学習させます。</p>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-training-touchless" class="btn_gray">AI学習を開始する</button>
+                  <div id="icon-warning-training-touchless" class="icon_warning"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="list-sub-output-touchless-files" class="list-sub">
+          <div id="list-header_output-touchless-files" class="list-header default">Cソースの生成</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>学習結果の出力</p></div>
+              <div class="box-content">
+                <p id="tooltip-output-touchless-files" class="sp-hidden">学習結果からCソースファイルを出力します。</p>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-output-touchless-files" class="btn_gray">Cソースを生成する</button>
+                  <div id="icon-warning-output-touchless-files" class="icon_warning"></div>
+                  <div id="icon-error-output-touchless-files" class="icon_error element-hidden"></div>
+                </div>
+                <div class="text-right">
+                  <p><input type="checkbox" id="checkbox-output-folder-touchless"><label>出力フォルダを指定する</label></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="list_coding" class="list-parent default">
+        <div id="list-header-coding" class="list-header">3.プログラムの実装</div>
+        <div id="list-sub-sample-code" class="list-sub">
+          <div id="list-header_sample-code" class="list-header default">サンプルコードの実装</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>サンプルコードの実装</p></div>
+              <div class="box-content">
+                <p class="sp-hidden">タッチインタフェースを使用したプログラムを実装してください。</p>
+              </div>
+              <div class="box-header"><p>実装例の表示</p></div>
+              <div class="box-content">
+                <p id="tooltip-sample-code" class="sp-hidden">main() 関数にタッチセンサの状態を定期的にスキャンするプログラムを実装します。</p>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-sample-code" class="btn_gray">例を表示する</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="list_monitoring" class="list-parent default">
+        <div id="list-header-monitoring" class="list-header">4.動作確認</div>
+        <div id="list-sub-start-monitoring-emulator" class="list-sub">
+          <div class="list-header">モニタリングの開始 (エミュレータ接続)</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>使用上の注意</p></div>
+              <div class="box-content">
+                <p class="sp-hidden">エミュレータ接続またはシリアル接続のいずれかでモニタリングしてください。</p>
+              </div>
+              <div class="box-header"><p>動作確認</p></div>
+              <div class="box-content">
+                <p class="sp-hidden">タッチインタフェースの動作確認と微調整を行えます。</p>
+              </div>
+              <div class="box-header"><p>デバッグの開始 (エミュレータ接続)</p></div>
+              <div id="tooltip-start-debug" class="box-content">
+                <p class="sp-hidden">対象プロジェクトのデバッグを開始し、プログラムを実行します。</p>
+              </div>
+              <div class="box-header"><p>モニタリングの開始</p></div>
+              <div class="box-content">
+                <p id="tooltip-open-monitor-view-emulator" class="sp-hidden">モニタリング用ビューを表示し、モニタリング機能を有効にします。</p>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-open-monitor-view-emulator" class="btn_gray">ビューを開く</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="list-sub-start-monitoring-serial" class="list-sub">
+          <div class="list-header">モニタリングの開始 (シリアル接続)</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>使用上の注意</p></div>
+              <div class="box-content">
+                <p class="sp-hidden">エミュレータ接続またはシリアル接続のいずれかでモニタリングしてください。</p>
+              </div>
+              <div class="box-header"><p>動作確認</p></div>
+              <div class="box-content">
+                <p class="sp-hidden">タッチインタフェースの動作確認と微調整を行えます。</p>
+              </div>
+              <div class="box-header"><p>シリアル接続</p></div>
+              <div class="box-content">
+                <p id="tooltip-serial-monitoring" class="sp-hidden">エミュレータを使わない場合、シリアル通信によるモニタリング機能を有効にします。</p>
+                <div class="text-left">
+                  <label>ボーレート</label>
+                  <p><input type="text" id="text-baudrate" pattern="^[0-9]*$"></p>
+                  <label>ポート番号</label>
+                  <select id="select-port"></select>
+                </div>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-connect-serial" class="btn_gray">接続する</button>
+                </div>
+              </div>
+              <div class="box-header"><p>モニタリングの開始</p></div>
+              <div class="box-content">
+                <p id="tooltip-open-monitor-view-serial" class="sp-hidden">モニタリング用ビューを表示し、モニタリング機能を有効にします。</p>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-open-monitor-view-serial" class="btn_gray">ビューを開く</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="shadow"></div>
+    <div class="fixed-box"><!-- この要素は選択中のlist-content要素に挿入される -->
+      <div id="guidance"></div>
+      <div class="box-video">
+        <!-- 動画のアドレスはプラグインから設定 -->
+        <iframe id="video" src="" title = "" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+      </div>
+      <!-- フッターは外部HTMLから読み込み -->
+      <iframe class="box-footer" src="./footer.html" scrolling="no"></iframe>
+    </div>
+  </div>
+  <script type="text/javascript" src="./assets/js/index.min.js"></script>
+</body>
+</html>

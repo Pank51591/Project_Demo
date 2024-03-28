@@ -1,0 +1,443 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CapTouch Main (QE)</title>
+  <link rel="stylesheet" href="assets/css/style.min.css">
+  <link rel="stylesheet" href="assets/lib/swiper/swiper-bundle.min.css" />
+  <script type="text/javascript" src="assets/lib/jquery/jquery-3.6.1.min.js"></script>
+  <script type="text/javascript" src="assets/lib/swiper/swiper-bundle.min.js"></script>
+</head>
+<!-- ライトモード:light, ダークモード:dark -->
+<body class="light">
+  <!--ナビゲーション-->
+  <div class="nav">
+    <button type="button" class="btn_home">HOME</button>
+    <div id="nav_preparation" class="nav-item default active"><span>Preparation</span></div>
+    <div id="nav_tuning" class="nav-item default"><span>Tuning</span></div>
+    <div id="nav_gesture" class="nav-item default"><span>Setup Gesture</span></div>
+    <div id="nav_touchless" class="nav-item default"><span>Setup Touchless button</span></div>
+    <div id="nav_coding" class="nav-item default"><span>Coding</span></div>
+    <div id="nav_monitoring" class="nav-item default"><span>Monitoring</span></div>
+  </div>
+  <div class="container">
+    <button type="button" class="btn_up">UP</button>
+    <!--disabledの場合、<button type="button" class="btn_down" disabled>DOWN</button>-->
+    <button type="button" class="btn_down">DOWN</button>
+    <div class="list-group">
+      <!--id:list_Xはnav_X（ナビゲーション）の番号と同一にする-->
+      <!--classにcompを設定するとナビゲーションにアイコンが表示され、メニューも完了状態となる(完了:comp,未完了:default)-->
+      <!--classにactiveを設定すると選択状態になる-->
+      <div id="list_preparation" class="list-parent default active">
+        <div class="list-header">1.Preparation</div>
+        <div id="list-sub-select-project" class="list-sub selected">
+          <!--メニューの文字左側にアイコンを表示 (完了:comp, エラー:error, 未チェック:default)-->
+          <div id="list-header_select-project" class="list-header default">Select a Project</div> <!--メニュー-->
+          <div class="list-content"><!--コンテンツ-->
+            <div class="box">
+              <div class="box-header"><p>Select a Project</p></div>
+              <div id="tooltip-ready-project" class="box-content"><!--このボックス(box-content)は複数追加可能。-->
+                <p class="sp-hidden">Prepare a project that uses the touch interfaces.</p>
+              </div>
+              <div id="tooltip-select-project" class="box-content"><!--このボックス(box-content)は複数追加可能。-->
+                <p class="sp-hidden">Select the target project.</p>
+                <div class="comp-box"><!--コンポーネントを囲む要素(comp-box)-->
+                  <select id="select-project"></select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="list-sub-select-tif-config" class="list-sub">
+        <div id="list-header_select-tif-config" class="list-header default">Prepare a Configuration</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>To Prepare a Configuration</p></div>
+              <div class="box-content">
+                <p id="tooltip-select-tif-config" class="sp-hidden">Select or create a touch interface configuration.</p>
+                <div class="comp-box">
+                  <select id="select-tif-config"></select>
+                </div>
+                <div class="button-box text-right"><!-- ボタンを囲む要素(button-box) に右寄せ(text-right)を付加 -->
+                  <button type="button" id="btn-modify-tif-config" class="btn_gray">Modify Configuration</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="list_tuning" class="list-parent default">
+        <div class="list-header">2.Tuning Touch Sensors</div>
+        <div id="list-sub-start-tuning" class="list-sub">
+          <div id="list-header_start-tuning" class="list-header default">Start Tuning (Emulator)</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>Note on Use</p></div>
+              <div class="box-content">
+                <p class="sp-hidden">If you are tuning using emulator connection, you do not need to tune using serial connection.</p>
+              </div>
+              <div class="box-header"><p>Start Tuning</p></div>
+              <div id="tooltip-connect-target" class="box-content">
+                <p class="sp-hidden">
+                  QE will automatically perform tuning processing for each touch sensor.<br>
+                  Connect your target board and PC via an emulator.
+                </p>
+              </div>
+            </div>
+            <div class="box">
+              <div class="box-header"><p>To Start Tuning</p></div>
+              <div class="box-content">
+                <p id="tooltip-start-tuning"class="sp-hidden">Follow instructions in the dialog.</p>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-start-tuning" class="btn_gray">Start Tuning</button>
+                </div>
+                <div class="text-right">
+                  <p><input type="checkbox" id="checkbox-advanced-setting"><label>Advanced mode</label></p>
+                </div>
+                <br>
+                <br>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-display-tuning-result" class="btn_gray">Display Tuning Result</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="list-sub-start-serial-tuning" class="list-sub">
+          <div id="list-header_start-serial-tuning" class="list-header default">Start Tuning (Serial)</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>Note on Use</p></div>
+              <div class="box-content">
+                <p class="sp-hidden">If you are tuning using serial connection, you do not need to tune using emulator connection.</p>
+              </div>
+              <div class="box-header"><p>To Output Files for Tuning</p></div>
+              <div id="tooltip-output-serial-tuning-files" class="box-content">
+                <p class="sp-hidden">Output files required for a tuning process.</p>
+              </div>
+              <div class="button-box text-center">
+                <button type="button" id="btn-output-serial-tuning-files" class="btn_gray">Output Files</button>
+              </div>
+              <div class="box-header"><p>To implement Program</p></div>
+              <div id="tooltip-serial-tuning-build" class="box-content">
+                <p class="sp-hidden">Implement a process to call the main loop for touch in the main() fuction. And build the target project.</p>
+              </div>
+              <div class="box-header"><p>To Execute Program</p></div>
+              <div id="tooltip-serial-tuning-start-debug" class="box-content">
+                <p class="sp-hidden">
+                  QE will automatically perform tuning processing for each touch sensor.<br>
+                  Start debugging the target project and execute the program.<br>
+                  The tuning program written on the target board will run.
+                </p>
+              </div>
+              <div class="box-header"><p>To Start Tuning</p></div>
+              <div class="box-content">
+                <p  id="tooltip-start-serial-tuning"class="sp-hidden">Follow instructions in the dialog.</p>
+                <div class="text-left">
+                  <label>Baud rate</label>
+                  <p><input type="text" id="text-baudrate-serial-tuning" pattern="^[0-9]*$"></p>
+                  <label>Port</label>
+                  <select id="select-port-serial-tuning"></select>
+                </div>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-start-serial-tuning" class="btn_gray">Start Tuning</button>
+                </div>
+                <div class="text-right">
+                  <input type="checkbox" id="checkbox-advanced-serial-tuning-setting"><label>Advanced mode</label>
+                </div>
+                <br>
+                <br>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-display-serial-tuning-result" class="btn_gray">Display Tuning Result</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="list-sub-output-tuning-files" class="list-sub">
+          <div id="list-header_output-tuning-files" class="list-header default">Output Parameter Files</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>To Output Parameter Files</p></div>
+              <div class="box-content">
+                <p id="tooltip-output-tuning-files" class="sp-hidden">Output parameter files from a tuning result.</p>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-output-tuning-files" class="btn_gray">Output Parameter Files</button>
+                </div>
+                <div class="checkbox-box-outer">
+                  <div class="checkbox-box-inner">
+                    <div><input type="checkbox" id="checkbox-output-folder"><label>Specify an output folder</label></div>
+                    <div>
+                      <input type="checkbox" id="checkbox-external-trigger"><label>Use an external trigger</label>
+                      <div id="icon-external-trigger" class="icon_warning-checkbox"></div>
+                    </div>
+                    <div>
+                      <input type="checkbox" id="checkbox-diagnostic-code"><label>Use diagnostic code</label>
+                      <div id="icon-diagnostic-code" class="icon_warning-checkbox"></div>
+                    </div>
+                    <div><input type="checkbox" id="checkbox-api-compatibility-mode"><label>Use API compatilibity mode</label></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="list_gesture" class="list-parent default">
+        <div id="list-header-gesture-setup" class="list-header">Setup Gesture</div>
+        <div id="list-sub-gesture-environment" class="list-sub">
+          <div id="list-header_gesture-environment" class="list-header default">Install Environment</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>Setup Gesture</p></div>
+              <div class="box-content">
+                <p class="sp-hidden">Make 3D Gesture settings using AI.</p>
+              </div>
+              <div class="box-header"><p>To Install Environment</p></div>
+              <div class="box-content">
+                <p id="tooltip-gesture-environment" class="sp-hidden">Install environment for AI Training.</p>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-gesture-environment" class="btn_gray">Install Environment for Gesture</button>
+                  <div id="icon-warning-gesture-environment" class="icon_error2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="list-sub-select-gesture-config" class="list-sub">
+          <div id="list-header_select-gesture-config" class="list-header default">Prepare a Configuration</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>To Prepare a Configuration</p></div>
+              <div class="box-content">
+                <p id="tooltip-select-gesture-config" class="sp-hidden">Select or create a gesture configuration.</p>
+                <div class="comp-box">
+                  <select id="select-gesture-config"></select>
+                </div>
+                <div class="button-box text-right">
+                  <button type="button" id="btn-modify-gesture-config" class="btn_gray">Modify Configuration</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="list-sub-recording-gesture" class="list-sub">
+          <div id="list-header_recording-gesture" class="list-header default">Record Gesture</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>To Record Gesture</p></div>
+              <div class="box-content">
+                <p id="tooltip-recording-gesture" class="sp-hidden">Follow instructions in the dialog.</p>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-recording-gesture" class="btn_gray">Record Gesture</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="list-sub-training-gesture" class="list-sub">
+          <div id="list-header_training-gesture" class="list-header default">Training Gesture</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>To Learn Gesture</p></div>
+              <div class="box-content">
+                <p id="tooltip-training-gesture" class="sp-hidden">Let AI learn gestures.</p>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-training-gesture" class="btn_gray">Start AI Training</button>
+                  <div id="icon-warning-training-gesture" class="icon_warning"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="list-sub-output-gesture-files" class="list-sub">
+          <div id="list-header_output-gesture-files" class="list-header default">Output Training Result</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>To Output Training Result</p></div>
+              <div class="box-content">
+                <p id="tooltip-output-gesture-files" class="sp-hidden">Generate C source files from a training result.</p>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-output-gesture-files" class="btn_gray">Output C Source Files</button>
+                  <div id="icon-warning-output-gesture-files" class="icon_warning"></div>
+                  <div id="icon-error-output-gesture-files" class="icon_error element-hidden"></div>
+                </div>
+                <div class="text-right">
+                  <p><input type="checkbox" id="checkbox-output-folder-gesture"><label>Specify an output folder</label></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="list_touchless" class="list-parent default">
+        <div id="list-header-touchless-setup" class="list-header">Setup Touchless Button</div>
+        <div id="list-sub-touchless-environment" class="list-sub">
+          <div id="list-header_touchless-environment" class="list-header default">Install Environment</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>Setup Touchless Button</p></div>
+              <div class="box-content">
+                <p class="sp-hidden">Make Touchless button settings using AI.</p>
+              </div>
+              <div class="box-header"><p>To Install Environment</p></div>
+              <div class="box-content">
+                <p id="tooltip-touchless-environment" class="sp-hidden">Install environment for Touchless button.</p>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-touchless-environment" class="btn_gray">Install Environment</button>
+                  <div id="icon-warning-touchless-environment" class="icon_error2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="list-sub-recording-touchless" class="list-sub">
+          <div id="list-header_recording-touchless" class="list-header default">Record Touchless button Data</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>To Record Touchless button Data</p></div>
+              <div class="box-content">
+                <p id="tooltip-recording-touchless" class="sp-hidden">Follow instructions in the dialog.</p>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-recording-touchless" class="btn_gray">Data Recording</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="list-sub-training-touchless" class="list-sub">
+          <div id="list-header_training-touchless" class="list-header default">Training Touchless button</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>To Learn Touchless button</p></div>
+              <div class="box-content">
+                <p id="tooltip-training-touchless" class="sp-hidden">Let AI learn Touchless button.</p>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-training-touchless" class="btn_gray">Start AI Training</button>
+                  <div id="icon-warning-training-touchless" class="icon_warning"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="list-sub-output-touchless-files" class="list-sub">
+          <div id="list-header_output-touchless-files" class="list-header default">Output Training Result</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>To Output Training Result</p></div>
+              <div class="box-content">
+                <p id="tooltip-output-touchless-files" class="sp-hidden">Generate C source files from a training result.</p>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-output-touchless-files" class="btn_gray">Output C Source Files</button>
+                  <div id="icon-warning-output-touchless-files" class="icon_warning"></div>
+                  <div id="icon-error-output-touchless-files" class="icon_error element-hidden"></div>
+                </div>
+                <div class="text-right">
+                  <p><input type="checkbox" id="checkbox-output-folder-touchless"><label>Specify an output folder</label></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="list_coding" class="list-parent default">
+        <div id="list-header-coding" class="list-header">3.Coding</div>
+        <div id="list-sub-sample-code" class="list-sub">
+          <div id="list-header_sample-code" class="list-header default">Implement Program</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>Coding</p></div>
+              <div class="box-content">
+                <p class="sp-hidden">Implement a program using the touch interfaces.</p>
+              </div>
+              <div class="box-header"><p>To Show Code</p></div>
+              <div class="box-content">
+                <p id="tooltip-sample-code" class="sp-hidden">Implement a program that periodically scans the status of the touch sensor in the main() function.</p>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-sample-code" class="btn_gray">Show Sample</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="list_monitoring" class="list-parent default">
+        <div id="list-header-monitoring" class="list-header">4.Monitoring</div>
+        <div id="list-sub-start-monitoring-emulator" class="list-sub">
+          <div class="list-header">Start Monitoring (Emulator)</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>Note on Use</p></div>
+              <div class="box-content">
+                <p class="sp-hidden">Monitor with either emulator connection or serial connection.</p>
+              </div>
+              <div class="box-header"><p>Monitoring</p></div>
+              <div class="box-content">
+                <p class="sp-hidden">You can check a behavior of touch interfaces and make fine adjustments.</p>
+              </div>
+              <div class="box-header"><p>To Launch Debug (via Emulator)</p></div>
+              <div id="tooltip-start-debug" class="box-content">
+                <p class="sp-hidden">Launch debugging for your target project and execute the program.</p>
+              </div>
+              <div class="box-header"><p>To Enable Monitoring</p></div>
+              <div class="box-content">
+                <p id="tooltip-open-monitor-view-emulator" class="sp-hidden">Show monitoring views and enable a monitoring function.</p>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-open-monitor-view-emulator" class="btn_gray">Show Views</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="list-sub-start-monitoring-serial" class="list-sub">
+          <div class="list-header">Start Monitoring (Serial)</div>
+          <div class="list-content">
+            <div class="box">
+              <div class="box-header"><p>Note on Use</p></div>
+              <div class="box-content">
+                <p class="sp-hidden">Monitor with either emulator connection or serial connection.</p>
+              </div>
+              <div class="box-header"><p>Monitoring</p></div>
+              <div class="box-content">
+                <p class="sp-hidden">You can check a behavior of touch interfaces and make fine adjustments.</p>
+              </div>
+              <div class="box-header"><p>To Connect UART</p></div>
+              <div class="box-content">
+                <p id="tooltip-serial-monitoring" class="sp-hidden">Enable a monitoring function via serial communication, if you do not use an emulator.</p>
+                <div class="text-left">
+                  <label>Baud rate</label>
+                  <p><input type="text" id="text-baudrate" pattern="^[0-9]*$"></p>
+                  <label>Port</label>
+                  <select id="select-port"></select>
+                </div>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-connect-serial" class="btn_gray">Connect</button>
+                </div>
+              </div>
+              <div class="box-header"><p>To Enable Monitoring</p></div>
+              <div class="box-content">
+                <p id="tooltip-open-monitor-view-serial" class="sp-hidden">Show monitoring views and enable a monitoring function.</p>
+                <div class="button-box text-center">
+                  <button type="button" id="btn-open-monitor-view-serial" class="btn_gray">Show Views</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="shadow"></div>
+    <div class="fixed-box"><!-- この要素は選択中のlist-content要素に挿入される -->
+      <div id="guidance"></div>
+      <div class="box-video">
+        <!-- 動画のアドレスはプラグインから設定 -->
+        <iframe id="video" src="" title = "" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+      </div>
+      <!-- フッターは外部HTMLから読み込み -->
+      <iframe class="box-footer" src="./footer.html" scrolling="no"></iframe>
+    </div>
+  </div>
+  <script type="text/javascript" src="./assets/js/index.min.js"></script>
+</body>
+</html>

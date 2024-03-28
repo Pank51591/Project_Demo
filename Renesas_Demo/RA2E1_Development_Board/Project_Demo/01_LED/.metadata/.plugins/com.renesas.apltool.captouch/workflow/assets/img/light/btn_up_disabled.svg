@@ -1,0 +1,7 @@
+<svg id="グループ_12076" data-name="グループ 12076" xmlns="http://www.w3.org/2000/svg" width="40" height="20" viewBox="0 0 40 20">
+  <g id="base" fill="#e6e6e6">
+    <path d="M 39.5 19.5 L 0.5 19.5 L 0.5 0.5 L 32 0.5 C 36.1355094909668 0.5 39.5 3.864490032196045 39.5 8 L 39.5 19.5 Z" stroke="none"/>
+    <path d="M 1 1 L 1 19 L 39 19 L 39 8 C 39 4.140190124511719 35.85980987548828 1 32 1 L 1 1 M 0 0 L 32 0 C 36.41828155517578 0 40 3.581720352172852 40 8 L 40 20 L 0 20 L 0 0 Z" stroke="none" fill="#ccc"/>
+  </g>
+  <path id="パス_11295" data-name="パス 11295" d="M383.109,544.038l6-6,6,6" transform="translate(-368.609 -530.538)" fill="none" stroke="#ccc" stroke-width="2"/>
+</svg>

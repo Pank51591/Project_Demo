@@ -1,0 +1,11 @@
+15:20:56 **** Incremental Build of configuration Debug for project 01_LED ****
+make -r -j8 all 
+Building file: ../src/hal_entry.c
+Building target: 01_LED.elf
+arm-none-eabi-objcopy -O srec "01_LED.elf"  "01_LED.srec"
+arm-none-eabi-size --format=berkeley "01_LED.elf"
+   text	   data	    bss	    dec	    hex	filename
+   6020	      8	   1480	   7508	   1d54	01_LED.elf
+
+15:20:57 Build Finished. 0 errors, 0 warnings. (took 403ms)
+

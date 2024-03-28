@@ -1,0 +1,488 @@
+// // X-Small devices (portrait phones, less than 576px)
+// @media (max-width: 575.98px) {
+//   body {
+//     background-color: rgb(255, 36, 36);
+//   }
+// }
+
+// // Small devices (landscape phones, less than 768px)
+// @media (max-width: 767.98px) {
+//   body {
+//     background-color: rgb(208, 255, 19);
+//   }
+// }
+
+// // Medium devices (tablets, less than 992px)
+// @media (max-width: 991.98px) {
+//   body {
+//     background-color: rgb(16, 199, 255);
+//   }
+// }
+
+// // Large devices (desktops, less than 1200px)
+// @media (max-width: 1199.98px) {
+//   body {
+//     background-color: rgb(255, 11, 239);
+//   }
+// }
+
+// // X-Large devices (large desktops, less than 1400px)
+// @media (max-width: 1399.98px) {
+//   body {
+//     background-color: rgb(255, 255, 255);
+//   }
+// }
+
+
+// // X-Small devices (portrait phones, less than 576px)
+// @media (max-width: 575.98px) {
+//   body {
+//     background-color: rgb(224, 64, 0);
+//   }
+// }
+
+// // Small devices (landscape phones, 576px and up)
+// @media (min-width: 576px) {
+//   body {
+//     background-color: rgb(255, 36, 36);
+//   }
+// }
+
+// // Medium devices (tablets, 768px and up)
+// @media (min-width: 768px) {
+//   body {
+//     background-color: rgb(208, 255, 19);
+//   }
+// }
+
+// // Large devices (desktops, 992px and up)
+// @media (min-width: 992px) {
+//   body {
+//     background-color: rgb(16, 199, 255);
+//   }
+// }
+
+// // X-Large devices (large desktops, 1200px and up)
+// @media (min-width: 1200px) {
+//   body {
+//     background-color: rgb(255, 11, 239);
+//   }
+// }
+
+// // XX-Large devices (larger desktops, 1400px and up)
+// @media (min-width: 1400px) {
+//   body {
+//     background-color: rgb(255, 255, 255);
+//   }
+// }
+
+
+@mixin list-state($height, $padding:0px) {
+  height: $height;
+  padding: $padding;
+  @if $height ==  0px {
+    overflow: hidden;
+  }
+}
+
+
+
+/* 幅が px 以下の場合 */
+@media (max-width: 239.98px) {
+  body {
+    width: 240px !important;
+  }
+  .container {
+    width: 240px;
+  }
+  .nav {
+    width: 208px;
+  }
+}
+@media (min-width: 240px) and (max-width: 539.98px) {
+  body {
+    width: 100%;
+  }
+
+  .container {
+    width: 100%;
+  }
+  .nav {
+    width: 100%;
+  }
+  
+}
+
+
+
+@media (max-width: 539.98px) {
+  .container {
+    height: calc(100% - 32px);
+    //position: absolute;
+  }
+
+  .nav-item {
+    text-align: left;
+    span {
+      margin-left: 26px;
+    }
+    &.comp span::before {
+      left: 10px;
+    }
+  
+  }
+
+  .list-parent {
+    .box {
+      display: block;
+      .box-header {
+        display: none;
+      }
+
+      ul {
+        margin:0px 15px 10px 0px;
+        padding:0px;
+      }
+    }
+
+    &.close {
+      .list-sub {
+        .list-header {
+          @include list-state(0px,0px 12px);
+        }
+        .list-content {
+          @include list-state(0px);
+        }
+      }
+    }
+
+    &:not(.close) {
+      .list-sub {
+        .list-header {
+          @include list-state(22px,5px 12px);
+        }
+        .list-content {
+          @include list-state(auto);
+        }
+      }
+    }
+  }
+  .select-box {
+    margin: 5px 0px 20px;
+  }
+
+  .sp-hidden {
+    display: none !important;
+  }
+  .fixed-box {
+    display: none;
+  }
+  .shadow {
+    display: none;
+  }
+  .btn_up, .btn_down {
+    display: none;
+  }
+
+}
+
+
+
+@media (min-width: 540px)and(max-width: 639.98px) {
+  .container {
+    width: 100%;
+    height: calc(100% - 32px);
+    //position: absolute;
+    //top: 32px;
+    
+    .btn_up,.btn_down {
+      left: calc(100% - 320px);
+    }
+
+    .list-group {
+      width: calc(100% - 320px);
+
+      
+      /*
+      .list {
+        &.list-sub {
+          &.selected {
+            .list-header {
+              color: #FFFFFF;
+              background-color: #00BBBB;
+            }
+          }
+        }
+      }
+      */
+
+      .list-parent {
+        &.close {
+          .list-sub {
+            .list-header {
+              @include list-state(0px,0px 12px);
+            }
+          }
+        }
+    
+        &:not(.close) {
+          .list-sub {
+            .list-header {
+              @include list-state(22px,5px 12px);
+            }
+            .list-content {
+              height: auto;
+            }
+          }
+        }
+        &.active .list-sub.selected .list-content { 
+          width: calc(100% - (100% - 320px));
+          height: 100%;
+          display: block;
+          position: absolute;
+          top: 0;
+          right: 0;
+          overflow: scroll;
+                  
+        }
+        &.active .list-sub:not(.selected) {
+          .box {
+            display: none;
+          }
+        }
+  
+        &:not(.active) {
+          .box {
+            display: none;
+          }
+        }
+
+      
+        /*
+        &.active {
+          .box {
+            width: 320px;
+            height: 50%;
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #Fff;
+            
+          }
+        }
+        */
+
+
+        &:not(.active) {
+          .box {
+            display: none;
+          }
+        }
+      }
+      .select-box {
+        margin: 0px 20px 25px;
+      }
+    }
+  }
+
+  .box {
+    ul {
+      margin:0px 15px 10px 50px;
+      padding:0px;
+    }
+
+    .box-header {
+      display: table;
+      p {
+        display: table-cell;
+      }
+    }
+  }
+
+  .nav {
+    width: calc(100% - 32px);
+  }
+  .nav-item {
+    text-align: center;
+
+    &.comp span::before {
+      left: 13px;
+    }
+  }
+/*
+  .fixed-box {
+    display: block;
+    
+    height:50%;
+    width: 320px;
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+    
+    background-color: #F2F2F2;
+    //z-index: 1;
+  }*/
+
+  .pc-hidden {
+    display: block !important;
+  }
+
+  .shadow {
+    height: 100%;
+    width: 5px;
+    display: block;
+    position:absolute;
+    top:0px;
+    left: calc(100% - 320px);
+    z-index: 99;
+
+    background: -moz-linear-gradient(left, #666666, #FFFFFF00);
+    background: -webkit-linear-gradient(left, #666666, #FFFFFF00);
+    background: linear-gradient(to right, #666666, #FFFFFF00);      
+  }
+  
+
+
+  .btn_up, .btn_down {
+    display: block;
+  }
+
+
+}
+
+
+
+
+/* 幅が 640px 以上の場合 */
+@media (min-width: 640px) {
+  .container {
+    width: 100%;
+    height: calc(100% - 32px);
+    //position: absolute;
+    //top: 32px;
+    
+    .btn_up,.btn_down {
+      left: 320px;
+    }
+    .list-group {
+      width: 320px;
+      .list-parent.active .list-sub.selected {
+        .list-content {
+          width: calc(100% - 320px);
+          height: 100%;
+          display: block;
+          position: absolute;
+          top: 0;
+          right: 0;
+          
+          overflow:scroll;
+          
+          .box {
+            ul {
+              margin:0px 15px 10px 50px;
+              padding:0px;
+            }
+      
+            .box-header {
+              display: table;
+              p {
+                display: table-cell;
+              }
+            }
+          }
+          
+        }
+      }
+      .list-parent {
+        &.close {
+          .list-sub {
+            .list-header {
+              @include list-state(0px,0px 12px);
+            }
+          }
+        }
+    
+        &:not(.close) {
+          .list-sub {
+            .list-header {
+              @include list-state(22px,5px 12px);
+            }
+            .list-content {
+              height: auto;
+            }
+          }
+        }
+  
+
+
+        &.active .list-sub:not(.selected) {
+          .box {
+            display: none;
+          }
+        }
+  
+        &:not(.active) {
+          .box {
+            display: none;
+          }
+        }
+          
+
+      }
+  
+
+      .select-box {
+        margin: 10px 50px 20px;
+      }
+    }
+
+ /*
+    .fixed-box {
+     
+      display: block;
+      height:50%;
+      width: calc(100% - 320px);
+      position: absolute; 
+      bottom: 0px;
+      right: 0;
+      
+      //z-index: 1;
+    }*/
+
+    .pc-hidden {
+      display: block !important;
+    }
+    .shadow {
+      height: 100%;
+      width: 5px;
+      display: block;
+      position:absolute;
+      top:0px;
+      left:320px;
+      z-index: 99;
+
+    }
+    
+    
+    .btn_up, .btn_down {
+      display: block;
+      
+    }
+  }
+
+
+  .nav {
+    width: calc(100% - 32px);
+  }
+  .nav-item {
+    text-align: center;
+
+    width: calc(100% - 32px);
+    &.comp span::before {
+      left: 13px;
+    }
+  
+  }
+
+}

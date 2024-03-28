@@ -1,0 +1,40 @@
+<p>
+    Perform tuning of each touch sensor automatically using serial (UART) connection.<br>
+    To perform tuning using serial connection, please follow the steps below.<br>
+    <ol>
+        <li>Configure settings for serial connection in the Smart Configurator. (Add drivers, configure pins, etc...)</li>
+        <li>Configure the touch middleware for serial connection.</li>
+        <li>Click on the "Output Files" button to output the files required for a tuning process.</li>
+        <li>Implement a process to call the main loop for touch in the main() function.</li>
+        <li>Build the project and run the program.</li>
+        <li>Specify the baud rate and port number, and click on the "Start Tuning" button to start tuning.</li>
+    </ol>
+</p>
+<br>
+<p>
+    <b><span style="color: steelBlue">Tuning procedure :</span></b><br>
+    <ol>
+        <li>Click on the "Start Tuning" button. The "Automatic Tuning Processing" Dialog Box will be displayed.</li>
+        <li>Follow the instructions displayed in the "Automatic Tuning Processing" Dialog Box to start tuning.</li>
+        <li>For example, in the tuning of touch-interface buttons, automatic tuning of a single button involves one time measurement. Touch the target button according to the instructions shown in this dialog. After that, press any key (e.g. Y) on the keyboard.</li>
+        <li>After the tuning of all touch interfaces is finished, the result will be displayed. Close the "Automatic Tuning Processing" Dialog Box if there are no problems. Otherwise (e.g. when you have failed to touch the touch interface in the tuning process), select the target touch interface and press the "Retry" button to start re-tuning.</li>
+    </ol>
+</p>
+<br>
+<p>
+    <b><span style="color: steelblue">Notes on tuning:</span></b><br>
+    <ul>
+        <li>If "Advanced mode" is checked, settings related to tuning can be made. However, if you will set these values inadvertently or without clear understanding, it could lead to poor tuning results.</li>
+    </ul>
+</p>
+<style>
+    li {
+        margin: 20px;
+    }
+    ul{
+        padding-left: 20px;
+    }
+    ol{
+        padding-left: 20px;
+    }
+</style>

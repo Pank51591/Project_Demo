@@ -1,0 +1,11 @@
+Output: Generates pick and place files
+Type  : Pick Place
+From  : Variant [[No Variations]] of Project [Free Documents]
+   Generated File[Pick Place for CPK_RA2_64PIN_V1.0.txt]
+   Generated File[Pick Place for CPK_RA2_64PIN_V1.0.csv]
+
+
+Files Generated   : 2
+Documents Printed : 0
+
+Finished Output Generation At 13:51:25 On 2021/12/7

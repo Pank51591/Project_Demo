@@ -1,0 +1,26 @@
+---------------------------------------------------------------------------
+NCDrill File Report For: CPK_RA2_64PIN_V1.0.PCBDOC   2021/12/7  13:50:52
+---------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : CPK_RA2_64PIN_V1.0-RoundHoles.TXT
+ASCII SlotHoles File : CPK_RA2_64PIN_V1.0-SlotHoles.TXT
+
+Tool         Hole Size           Hole Type     Hole Count Plated       Tool Travel
+---------------------------------------------------------------------------
+T1        7.87mil (0.1999mm)       Round          16               0.65 Inch (16.50 mm)
+T2        11.81mil (0.29997mm)     Round          2                0.10 Inch (2.52 mm)
+T3        12mil (0.3048mm)         Round          189              33.93 Inch (861.91 mm)
+T4        15.75mil (0.40005mm)     Slot           4                1.22 Inch (30.93 mm)
+T5        20mil (0.508mm)          Round          5                4.14 Inch (105.28 mm)
+T6        23.62mil (0.59995mm)     Round          6                0.25 Inch (6.35 mm)
+T7        25.59mil (0.64999mm)     Round          2                0.10 Inch (2.54 mm)
+T8        28mil (0.7112mm)         Round          1                0.00 Inch (0.00 mm)
+T9        35mil (0.889mm)          Round          2                0.16 Inch (4.00 mm)
+T10       35.43mil (0.89992mm)     Round          94               16.11 Inch (409.32 mm)
+T11       40mil (1.016mm)          Round          62               11.27 Inch (286.21 mm)
+T12       125.98mil (3.19989mm)    Round          6                10.44 Inch (265.19 mm)
+---------------------------------------------------------------------------
+Totals                                            389              78.38 Inch (1990.75 mm)
+
+Total Processing Time (hh:mm:ss) : 00:00:00

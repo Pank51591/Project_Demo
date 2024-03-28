@@ -1,0 +1,8 @@
+<svg id="icon_error_dark" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <rect id="Transparent_Rectangle" width="24" height="24" fill="none"/>
+  <g id="グループ_12251" data-name="グループ 12251">
+    <path id="Compound_Path" d="M12.5,2A10.5,10.5,0,1,0,23,12.5,10.531,10.531,0,0,0,12.5,2Z" transform="translate(-0.5 -0.5)" fill="#f1c21b"/>
+    <circle id="楕円形_24" data-name="楕円形 24" cx="1.5" cy="1.5" r="1.5" transform="translate(10.5 16.5)" fill="#333"/>
+    <path id="inner-path" d="M17.125,8h-3l.5,9h2Z" transform="translate(-3.625 -2)" fill="#333"/>
+  </g>
+</svg>

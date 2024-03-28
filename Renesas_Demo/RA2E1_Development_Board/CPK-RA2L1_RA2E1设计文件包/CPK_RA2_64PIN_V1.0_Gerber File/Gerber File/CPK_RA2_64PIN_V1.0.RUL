@@ -1,0 +1,5 @@
+DRC Rules Export File for PCB: D:\21S\RA2L1 Local Promotion Board\Output\CPK_RA2_64PIN\Gerber File\CPK_RA2_64PIN_V1.0.PCBDOC
+RuleKind=SolderMaskExpansion|RuleName=SolderMaskExpansion|Scope=Board|Minimum=4.00
+RuleKind=Width|RuleName=Width|Scope=Board|Minimum=5.00
+RuleKind=Clearance|RuleName=Clearance|Scope=Board|Minimum=6.00
+RuleKind=ShortCircuit|RuleName=ShortCircuit|Scope=Board|Allowed=0

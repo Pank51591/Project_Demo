@@ -1,0 +1,45 @@
+<p>
+    Convert the result of training by the neural network into C source code, providing a C source file that contains a program for handling gesture input. <br>
+    Please make sure to output the file when the gesture configuration is changed.
+</p>
+<br>
+<p>
+    <b><span style="color: steelBlue">File output :</span></b>
+    <br>
+    You can specify any location for the file output, but by default it is output to the following location.
+    <br><br>
+    <p>
+        <span style="color: steelBlue">Output location :</span><br>
+    </p>
+    <ul>
+        <li>&lt;project&gt;&#092;qe_gen<br></li>
+    </ul>
+    <p>
+        <span style="color: steelBlue">Output files :</span><br>
+    </p>
+    <ul>
+        <li>Translator folder (Files output by e-AI translator)</li>
+        <li>qe_gesture_user.c</li>
+        <li>qe_gesture.c</li>
+        <li>qe_gesture.h</li>
+    </ul>
+</p>
+<br>
+<p>
+    <b><span style="color: steelBlue">Notes on C source generation:</span></b><br>
+    <ul>
+        <li>If there is no license file for the e-AI translator, or if the license file is out of date, the e-AI translator will fail to run. Please refer to the guide "Workflow: Install Environment" to obtain the license file.</li>
+        <br>
+        <li>If e-AI translator fails to run, a log file will be output to the following location<br>
+            &lt;e<sup>2</sup> studio install path&gt;&#092;eclipse&#092;translator_xx_xx_xxxx.log</li>
+    </ul>
+</p>
+<style>
+    li {
+        margin-left: 20px;
+        margin-top: 10px;
+    }
+    ul{
+        padding-left: 20px;
+    }
+</style>
